@@ -159,3 +159,98 @@ Remaining concerns before real travel:
 3. Four optional Shanghai check-ins need precise user addresses/campus choices.
 4. Four selected segments intentionally remain over the 15% per-segment detour threshold.
 5. The AMap daily quota prevented four additional Zhejiang alternative probes. Re-run them after quota reset before claiming broader coverage.
+
+## Fix round 1 — stricter alias/safety review
+
+Status: **BLOCKED / NEEDS_CONTEXT**. The implementation and provisional publication were corrected, but the route is not ride-ready and strict audit intentionally exits 1 because two segments have no cached safe alternative. No exception was added for their prohibited roads.
+
+### Classifier and policy corrections
+
+- `京福线` and `京福线辅路` are now authoritative aliases of G104/国道. The audit reclassifies from road text instead of trusting a stale manifest class.
+- `S55秀永支线入口`, expressway/interchange/toll/ramp terms such as `萧江互通`、`收费站`、`匝道`, and the observed freight connectors `通港路辅路`、`兴港路` are now classified as hard/freight risk.
+- Freight risk is publication-blocking in both candidate selection and strict audit; it is no longer only a route-ranking signal.
+- All non-blocked segments were reselected from accepted cached AMap calls. National exceptions were remeasured; the changed/new measured values are main-05 15,219 m, main-06 27,494 m, main-09 17,321 m, main-10 6,101 m, and main-18 8,090 m. The other 11 exception measurements stayed exact.
+- `--segment` now loads a complete config-aligned manifest, replaces only the requested segments, and republishes all derived artifacts. An integration test proves that a one-segment refresh preserves all 33 segments.
+- POI resolver reruns preserve the optional `checkin_resolutions` and `unresolved_checkin_queries` provenance.
+
+### Before/after published totals
+
+| Metric | Task 7 initial | Fix round 1 provisional | Change |
+|---|---:|---:|---:|
+| Distance | 2,444,486 m | 2,448,486 m | +4,000 m |
+| AMap duration | 486,551 s | 487,438 s | +887 s |
+| National | 267,077 m | 338,683 m | +71,606 m |
+| Provincial | 209,086 m | 217,017 m | +7,931 m |
+| County/town | 145,021 m | 134,399 m | -10,622 m |
+| Cycleway | 4,884 m | 4,884 m | 0 m |
+| UNKNOWN | 1,818,418 m | 1,753,503 m | -64,915 m |
+| Pending segments | 4 | 6 | +2 blockers |
+
+The corrected UNKNOWN share is 71.62%; 628,175 m has a blank road name. These remain explicit limitations: aliases not in the authoritative mapping and blank names may still conceal national or risky road identities.
+
+### Practical itinerary
+
+The old 18-day integer grouping was removed from segment rules. The provisional subleg-level planner produces 32 named-endpoint days; every day is at most 120 km and at most six AMap riding hours. Sixteen days meet the 80–120 km distance target, 21 meet the 4–6 h riding target, and shorter days remain where the next named subleg would exceed a binding limit. Lodging/network availability is still marked `named_endpoint_unverified`, not asserted as verified.
+
+| Day | From → overnight endpoint | Distance | AMap duration |
+|---:|---|---:|---:|
+| 1 | 上海交通大学闵行校区 → 海盐 | 95.0 km | 4.87 h |
+| 2 | 海盐 → 杭州阿里巴巴总部 | 103.4 km | 5.66 h |
+| 3 | 杭州阿里巴巴总部 → 绍兴 | 71.4 km | 4.04 h |
+| 4 | 绍兴 → 嵊州市三界镇 | 55.3 km | 2.87 h |
+| 5 | 嵊州市三界镇 → 天台 | 91.0 km | 5.39 h |
+| 6 | 天台 → 临海 | 53.5 km | 3.04 h |
+| 7 | 临海 → 温岭 | 75.1 km | 3.94 h |
+| 8 | 温岭 → 温州 | 113.5 km | 5.91 h |
+| 9 | 温州 → 苍南 | 74.7 km | 4.12 h |
+| 10 | 苍南 → 福鼎 | 83.4 km | 5.19 h |
+| 11 | 福鼎 → 牙城镇 | 63.2 km | 4.04 h |
+| 12 | 牙城镇 → 霞浦 | 36.4 km | 2.06 h |
+| 13 | 霞浦 → 福安市下白石镇 | 77.9 km | 5.00 h |
+| 14 | 福安市下白石镇 → 罗源县 | 84.8 km | 5.30 h |
+| 15 | 罗源县 → 福州 | 89.7 km | 4.88 h |
+| 16 | 福州 → 福清市 | 59.8 km | 3.10 h |
+| 17 | 福清市 → 莆田 | 60.6 km | 3.09 h |
+| 18 | 莆田 → 泉州 | 106.5 km | 5.43 h |
+| 19 | 泉州 → 厦门 | 98.2 km | 5.35 h |
+| 20 | 厦门 → 厦门市海沧区东孚街道 | 35.2 km | 1.93 h |
+| 21 | 厦门市海沧区东孚街道 → 漳浦县 | 99.8 km | 5.75 h |
+| 22 | 漳浦县 → 诏安 | 91.1 km | 5.46 h |
+| 23 | 诏安 → 潮州 | 65.9 km | 3.92 h |
+| 24 | 潮州 → 汕头 | 41.9 km | 2.19 h |
+| 25 | 汕头 → 汕头市潮南区陇田镇 | 78.0 km | 3.85 h |
+| 26 | 汕头市潮南区陇田镇 → 揭阳市惠来县葵潭镇 | 81.6 km | 4.22 h |
+| 27 | 揭阳市惠来县葵潭镇 → 陆丰市 | 48.6 km | 2.95 h |
+| 28 | 陆丰市 → 汕尾市海丰县梅陇镇 | 90.2 km | 4.63 h |
+| 29 | 汕尾市海丰县梅陇镇 → 惠东 | 80.9 km | 4.13 h |
+| 30 | 惠东 → 企石镇 | 91.7 km | 4.68 h |
+| 31 | 企石镇 → 广州市黄埔区萝岗街道 | 81.9 km | 4.27 h |
+| 32 | 广州市黄埔区萝岗街道 → 香港科技大学（广州） | 68.4 km | 4.16 h |
+
+Therefore the Aug 13–Aug 30 18-day deadline is explicitly `deadline_feasible: false` when preserving daily four-hour work and the six-hour riding cap.
+
+### Exact blockers and audit evidence
+
+`main-11-to-main-12` (温州 → 苍南): every cached direct or 瑞安-anchored candidate contains 29 m `萧江互通`. The currently displayed provisional snapshot also contains 26,781 m labelled national road over its zero allowance. The proposed 平阳 anchor requires uncached route calls and AMap returns `10044 USER_DAILY_QUERY_OVER_LIMIT`.
+
+`main-17-to-main-18` (莆田 → 惠安): direct cached candidates contain 23,954 m `兴港路`; one also contains 26 m `S55秀永支线入口`. The cached 笏石—东庄—辋川 probe still contains 16,103–19,003 m `兴港路` on its middle leg. No cached candidate is eligible under the freight/hard policy.
+
+Strict audit was run against the published 33-segment provisional manifest and correctly exited 1:
+
+```text
+HARD HARD_RISK [main-11-to-main-12]: ... (萧江互通, 29 m)
+HARD NATIONAL_ROAD_ALLOWANCE_EXCEEDED [main-11-to-main-12]: ...
+HARD HARD_RISK [main-17-to-main-18]: ... (S55秀永支线入口, 26 m)
+HARD FREIGHT_RISK [main-17-to-main-18]: ... (兴港路, 13189 m)
+HARD FREIGHT_RISK [main-17-to-main-18]: ... (兴港路, 68 m)
+HARD FREIGHT_RISK [main-17-to-main-18]: ... (兴港路, 10697 m)
+```
+
+The four existing detour warnings remain visible for main-07, main-12, main-25, and main-31. Together with the two blockers, `unresolved_count` is 6. The browser renders `临时路线 · 待道路级复核`, 32 daily cards, the 71.62% UNKNOWN/628 km blank-name limitations, the quota-limited probe list, and nine review links (four detours plus five unsafe road steps).
+
+### Verification state
+
+- 87 deterministic tests pass, including exact alias/risk fixtures, freight-audit rejection, subleg schedule, provisional UI semantics, resolver provenance, and 33-segment selective refresh.
+- Browser loaded all 32 days and displayed the explicit deadline/UNKNOWN/quota limitations. The only console error remained the optional missing `/favicon.ico`.
+- Secret scan and syntax checks are rerun at final handoff.
+- Completion remains blocked until new AMap calls can produce eligible alternatives for both exact segments and strict audit exits 0. The published snapshot is deliberately provisional and must not be used as a ride-ready route.

@@ -15,12 +15,13 @@ from route_planner.models import (
     PlannedSegment,
     ReviewItem,
     RoadClass,
+    RouteConfig,
     RouteStep,
     SegmentRule,
     Waypoint,
 )
 from scripts.audit_route import audit, scan_for_secret
-from scripts.generate_route import write_artifacts
+from scripts.generate_route import generate_from_segments, merge_refreshed_segments, write_artifacts
 
 
 def _segment(
@@ -59,11 +60,43 @@ class AuditTests(unittest.TestCase):
         self.assertIn("PARALLEL_ROAD_RULE_VIOLATION", [item.code for item in result.items])
         self.assertFalse(result.ok)
 
+    def test_audit_reclassifies_g104_alias_even_when_manifest_says_unknown(self):
+        segment = _segment(parallel_road_available=True)
+        step = replace(
+            segment.selected.steps[0],
+            road_name="京福线辅路",
+            road_class=RoadClass.UNKNOWN,
+        )
+        result = audit([replace(segment, selected=replace(segment.selected, steps=(step,)))])
+
+        self.assertIn("PARALLEL_ROAD_RULE_VIOLATION", [item.code for item in result.items])
+        self.assertFalse(result.ok)
+
     def test_audit_rejects_hard_risk_steps(self):
         """Would fail if hard-exclusion tags reached generated route artifacts."""
         result = audit([_segment(risk_tags=frozenset({"hard"}))])
 
         self.assertIn("HARD_RISK", [item.code for item in result.items])
+
+    def test_audit_rejects_freight_risk_steps(self):
+        result = audit([_segment(risk_tags=frozenset({"freight"}))])
+
+        self.assertIn("FREIGHT_RISK", [item.code for item in result.items])
+        self.assertFalse(result.ok)
+
+    def test_audit_reclassifies_observed_risk_names_from_manifest_text(self):
+        for road_name, expected_code in (
+            ("S55秀永支线入口", "HARD_RISK"),
+            ("萧江互通", "HARD_RISK"),
+            ("通港路辅路", "FREIGHT_RISK"),
+            ("兴港路", "FREIGHT_RISK"),
+        ):
+            with self.subTest(road_name=road_name):
+                segment = _segment()
+                step = replace(segment.selected.steps[0], road_name=road_name)
+                selected = replace(segment.selected, steps=(step,))
+                result = audit([replace(segment, selected=selected)])
+                self.assertIn(expected_code, [item.code for item in result.items])
 
     def test_audit_rejects_missing_real_polyline(self):
         """Would fail if unresolved or synthetic geometry passed the final audit."""
@@ -170,6 +203,45 @@ class AuditTests(unittest.TestCase):
             )
             self.assertNotIn("sanitized-test-key", generated.stdout + generated.stderr + audited.stdout + audited.stderr)
 
+    def test_selective_refresh_keeps_all_thirty_three_published_segments(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output_dir = Path(directory)
+            waypoints = tuple(
+                Waypoint(
+                    f"main-{index:02d}", f"站点{index}", "测试市", f"站点{index}",
+                    Coordinate(120 + index / 100, 30),
+                )
+                for index in range(1, 35)
+            )
+            rules = {
+                f"{start.id}-to-{end.id}": SegmentRule(f"{start.id}-to-{end.id}")
+                for start, end in zip(waypoints, waypoints[1:])
+            }
+            config = RouteConfig("thirty-three", 1.15, waypoints, (), rules, {})
+            segments = tuple(
+                replace(
+                    _segment(),
+                    segment_id=segment_id,
+                    from_waypoint=start,
+                    to_waypoint=end,
+                    rule=rules[segment_id],
+                )
+                for (segment_id, rule), start, end in zip(
+                    rules.items(), waypoints, waypoints[1:]
+                )
+            )
+            generate_from_segments(config, segments, output_dir)
+            changed = replace(segments[16], baseline_distance_m=999)
+
+            merged = merge_refreshed_segments(config, (changed,), output_dir)
+
+            self.assertEqual(len(merged), 33)
+            self.assertEqual(merged[16].baseline_distance_m, 999)
+            self.assertEqual(
+                [segment.segment_id for segment in merged],
+                [segment.segment_id for segment in segments],
+            )
+
     def test_strict_audit_rejects_unsafe_manifest_that_was_published_with_route_artifacts(self):
         """Would fail if strict audit certified its safe fixture instead of the manifest route."""
         with tempfile.TemporaryDirectory() as directory:
@@ -195,6 +267,7 @@ class AuditTests(unittest.TestCase):
 
             self.assertNotEqual(audited.returncode, 0)
             self.assertIn("HARD_RISK", audited.stdout)
+            self.assertIn("main-01-to-main-02", audited.stdout)
             self.assertNotIn("sanitized-test-key", audited.stdout + audited.stderr)
 
     def test_strict_audit_rejects_manifest_with_a_rule_that_disagrees_with_config(self):

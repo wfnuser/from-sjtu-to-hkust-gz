@@ -61,11 +61,16 @@ h2 { margin-bottom: 12px; font-size: .94rem; }
 .status-badge.is-ready { color: #166534 !important; background: #dcfce7; }
 .status-badge.is-warning { color: #991b1b !important; background: #fee2e2; }
 
-.totals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0 0 12px; }
+.totals { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 0 0 12px; }
 .totals div { min-width: 0; }
 .totals dt { margin-bottom: 4px; color: var(--muted); font-size: .73rem; }
 .totals dd { margin: 0; font-size: .95rem; font-weight: 700; white-space: nowrap; }
 .summary-note { margin-bottom: 0; }
+
+#route-limitations { display: grid; gap: 8px; margin: 0; padding-left: 18px; color: #7f1d1d; font-size: .8rem; line-height: 1.5; }
+#daily-schedule { display: grid; gap: 7px; }
+.schedule-day { margin: 0; padding: 9px; color: #334155; background: #f8fafc; border-left: 3px solid #64748b; border-radius: 4px; font-size: .77rem; line-height: 1.45; }
+.schedule-day.is-warning { color: #991b1b; background: #fef2f2; border-left-color: var(--review); }
 
 .controls { display: grid; gap: 9px; }
 .controls h2 { margin-bottom: 2px; }

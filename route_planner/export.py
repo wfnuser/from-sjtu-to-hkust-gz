@@ -6,6 +6,7 @@ from collections.abc import Iterable, Sequence
 
 from route_planner.coordinates import gcj02_to_wgs84
 from route_planner.models import Coordinate, PlannedSegment, RoadClass, RouteStep
+from route_planner.roads import classify_risks
 
 
 _BRANCH_IDS = frozenset({"main", "ningbo", "shenzhen"})
@@ -14,6 +15,9 @@ _BRANCH_IDS = frozenset({"main", "ningbo", "shenzhen"})
 def build_geojson(segments: Sequence[PlannedSegment]) -> dict[str, object]:
     """Return one WGS84 LineString feature for every API road step with geometry."""
     features: list[dict[str, object]] = []
+    _, segment_days = _practical_day_summaries(
+        tuple(segment for segment in segments if not _is_optional(segment))
+    )
     for segment in segments:
         for step in segment.selected.steps:
             if not step.polyline_gcj:
@@ -27,52 +31,229 @@ def build_geojson(segments: Sequence[PlannedSegment]) -> dict[str, object]:
                             _position(point) for point in step.polyline_gcj
                         ],
                     },
-                    "properties": _step_properties(segment, step),
+                    "properties": _step_properties(
+                        segment, step, segment_days.get(segment.segment_id, [])
+                    ),
                 }
             )
     return {"type": "FeatureCollection", "features": features}
 
 
 def build_summary(
-    segments: Sequence[PlannedSegment], max_detour_ratio: float
+    segments: Sequence[PlannedSegment],
+    max_detour_ratio: float,
+    quota_limited_probes: Sequence[str] = (),
 ) -> dict[str, object]:
     """Summarize main-route totals separately from optional branches."""
     main = tuple(segment for segment in segments if not _is_optional(segment))
     optional = tuple(segment for segment in segments if _is_optional(segment))
+    main_totals = _totals(main)
+    days, segment_days = _practical_day_summaries(main)
+    distance_m = int(main_totals["distance_m"])
+    unknown_m = int(main_totals["unknown_distance_m"])
+    blank_name_m = sum(
+        step.distance_m
+        for segment in main
+        for step in segment.selected.steps
+        if not step.road_name.strip()
+    )
     return {
+        "publication_status": "provisional_road_level_review_required",
         "max_detour_ratio": max_detour_ratio,
-        "main": _totals(main),
-        "days": _day_summaries(main),
+        "main": main_totals,
+        "days": days,
+        "segment_days": segment_days,
+        "schedule": {
+            "day_count": len(days),
+            "target_distance_m": [80_000, 120_000],
+            "target_duration_s": [14_400, 21_600],
+            "max_duration_s": 21_600,
+            "deadline_start": "2026-08-13",
+            "deadline_end": "2026-08-30",
+            "deadline_available_days": 18,
+            "deadline_feasible": len(days) <= 18,
+            "deadline_note": "沿海安全优先路线无法在8月13日至8月30日内完成并同时保留每日4小时工作。",
+        },
+        "limitations": {
+            "road_level_status": "provisional",
+            "unknown_distance_m": unknown_m,
+            "unknown_percent": round(unknown_m * 100 / distance_m, 2) if distance_m else 0.0,
+            "blank_name_distance_m": blank_name_m,
+            "quota_limited_probes": list(quota_limited_probes),
+            "automatic_checks_are_not_road_level_verification": True,
+        },
         "all_branches": _totals(segments),
         "optional_branch_excluded": _totals(optional),
     }
 
 
-def _day_summaries(segments: Sequence[PlannedSegment]) -> list[dict[str, object]]:
-    by_day: dict[int, list[PlannedSegment]] = {}
-    for segment in segments:
-        if segment.rule.day is not None:
-            by_day.setdefault(segment.rule.day, []).append(segment)
+def _practical_day_summaries(
+    segments: Sequence[PlannedSegment],
+) -> tuple[list[dict[str, object]], dict[str, list[int]]]:
+    legs = _itinerary_legs(segments)
+    if not legs:
+        return [], {}
+    boundaries = _minimum_day_boundaries(legs)
     summaries: list[dict[str, object]] = []
-    for day, day_segments in sorted(by_day.items()):
-        totals = _totals(day_segments)
+    segment_days: dict[str, list[int]] = {}
+    for day, (start, end) in enumerate(boundaries, 1):
+        day_legs = legs[start:end]
+        distance_m = sum(int(leg["distance_m"]) for leg in day_legs)
+        duration_s = sum(int(leg["duration_s"]) for leg in day_legs)
+        segment_ids = list(dict.fromkeys(str(leg["segment_id"]) for leg in day_legs))
+        for segment_id in segment_ids:
+            segment_days.setdefault(segment_id, []).append(day)
         summaries.append(
             {
                 "day": day,
-                "from_name": day_segments[0].from_waypoint.name,
-                "to_name": day_segments[-1].to_waypoint.name,
-                **totals,
+                "from_name": day_legs[0]["from_name"],
+                "to_name": day_legs[-1]["to_name"],
+                "distance_m": distance_m,
+                "duration_s": duration_s,
+                "distance_target_met": 80_000 <= distance_m <= 120_000,
+                "duration_target_met": 14_400 <= duration_s <= 21_600,
+                "duration_limit_met": duration_s <= 21_600,
+                "lodging_network_endpoint": day_legs[-1]["to_name"],
+                "lodging_network_status": "named_endpoint_unverified",
+                "segment_count": len(segment_ids),
+                "segments": segment_ids,
+                "legs": [
+                    {
+                        "segment_id": leg["segment_id"],
+                        "subleg_index": leg["subleg_index"],
+                    }
+                    for leg in day_legs
+                ],
             }
         )
-    return summaries
+    return summaries, segment_days
+
+
+def _itinerary_legs(segments: Sequence[PlannedSegment]) -> list[dict[str, object]]:
+    legs: list[dict[str, object]] = []
+    for segment in segments:
+        distances = segment.subleg_distances_m or (segment.selected.distance_m,)
+        durations = segment.subleg_durations_s or _proportional_durations(
+            distances, segment.selected.duration_s
+        )
+        if len(distances) != len(durations):
+            raise ValueError("Subleg distances and durations must align.")
+        names = [
+            segment.from_waypoint.name,
+            *(query.split("::", 1)[-1] for query in segment.rule.anchor_queries),
+            segment.to_waypoint.name,
+        ]
+        if len(names) != len(distances) + 1:
+            raise ValueError("Every subleg needs a named endpoint.")
+        for index, (distance_m, duration_s) in enumerate(zip(distances, durations)):
+            legs.append(
+                {
+                    "segment_id": segment.segment_id,
+                    "subleg_index": index,
+                    "from_name": names[index],
+                    "to_name": names[index + 1],
+                    "distance_m": distance_m,
+                    "duration_s": duration_s,
+                }
+            )
+    return legs
+
+
+def _minimum_day_boundaries(
+    legs: Sequence[dict[str, object]],
+) -> list[tuple[int, int]]:
+    size = len(legs)
+    best: list[tuple[int, int, int, int, int] | None] = [None] * (size + 1)
+    previous: list[int | None] = [None] * (size + 1)
+    best[0] = (0, 0, 0, 0, 0)
+    for start in range(size):
+        if best[start] is None:
+            continue
+        distance_m = 0
+        duration_s = 0
+        for end in range(start, size):
+            distance_m += int(legs[end]["distance_m"])
+            duration_s += int(legs[end]["duration_s"])
+            if distance_m > 120_000 or duration_s > 21_600:
+                break
+            distance_miss = 0 if 80_000 <= distance_m else 1
+            duration_miss = 0 if 14_400 <= duration_s else 1
+            candidate = (
+                best[start][0] + 1,
+                best[start][1] + distance_miss,
+                best[start][2] + duration_miss,
+                best[start][3] + max(0, 80_000 - distance_m),
+                best[start][4] + max(0, 14_400 - duration_s),
+            )
+            if best[end + 1] is None or candidate < best[end + 1]:
+                best[end + 1] = candidate
+                previous[end + 1] = start
+    if previous[size] is None:
+        raise ValueError("At least one API subleg exceeds the daily riding limit.")
+    boundaries: list[tuple[int, int]] = []
+    end = size
+    while end:
+        start = previous[end]
+        if start is None:
+            raise ValueError("Unable to build a continuous daily itinerary.")
+        boundaries.append((start, end))
+        end = start
+    return list(reversed(boundaries))
+
+
+def _proportional_durations(
+    distances: Sequence[int], total_duration_s: int
+) -> tuple[int, ...]:
+    total_distance = sum(distances)
+    if not distances or total_distance <= 0:
+        return ()
+    remaining = total_duration_s
+    values: list[int] = []
+    for index, distance in enumerate(distances):
+        value = (
+            remaining
+            if index == len(distances) - 1
+            else round(total_duration_s * distance / total_distance)
+        )
+        values.append(value)
+        remaining -= value
+    return tuple(values)
 
 
 def build_review_markdown(segments: Sequence[PlannedSegment]) -> str:
     """Render the route and its unresolved review work for a human reviewer."""
+    main = tuple(segment for segment in segments if not _is_optional(segment))
+    totals = _totals(main)
+    days, _ = _practical_day_summaries(main)
+    distance_m = int(totals["distance_m"])
+    unknown_m = int(totals["unknown_distance_m"])
+    blank_name_m = sum(
+        step.distance_m
+        for segment in main
+        for step in segment.selected.steps
+        if not step.road_name.strip()
+    )
     lines = [
         "# 路线人工复核",
         "",
-        "每条道路均来自 API 步骤；国道例外须以 `NATIONAL_ROAD_EXCEPTION_APPROVED` 复核项明确记录。",
+        "> **临时路线：仍需道路级复核。** 自动分类/审核不等于现场或权威道路核验；不得据此宣称已完全避开国道、高速或货运道路。",
+        "",
+        f"- UNKNOWN：{unknown_m} m（{unknown_m * 100 / distance_m:.2f}%）；其中未命名道路 {blank_name_m} m。" if distance_m else "- UNKNOWN：0 m。",
+        "- AMap 配额受限的补充探路清单见 `summary.json`；未完成的并行道路探测保持 provisional。",
+        "- 国道例外须以 `NATIONAL_ROAD_EXCEPTION_APPROVED` 明确记录，且仍需道路级复核。",
+        "- 8月13日至8月30日的18天窗口无法兼顾本路线和每日4小时工作。",
+        "",
+        "## 每日计划",
+        "",
+        "| 天 | 起点 | 住宿/网络终点 | 距离 | 预计骑行时长 | 可行性 |",
+        "| ---: | --- | --- | ---: | ---: | --- |",
+        *(
+            f"| {day['day']} | {day['from_name']} | {day['to_name']} | {int(day['distance_m']) / 1000:.1f} km | {int(day['duration_s']) / 3600:.2f} h | "
+            f"{'≤6h' if day['duration_limit_met'] else '>6h'}；住宿/网络待确认 |"
+            for day in days
+        ),
+        "",
+        "## 路段状态",
         "",
         "| 路段 | 起点 | 终点 | 距离 (m) | 时长 (s) | 复核状态 |",
         "| --- | --- | --- | ---: | ---: | --- |",
@@ -85,7 +266,7 @@ def build_review_markdown(segments: Sequence[PlannedSegment]) -> str:
                 to_name=segment.to_waypoint.name,
                 distance=segment.selected.distance_m,
                 duration=segment.selected.duration_s,
-                status=_review_status(segment),
+                status=_review_status_label(_review_status(segment)),
             )
         )
     lines.extend(["", "## 道路步骤", ""])
@@ -107,15 +288,27 @@ def build_review_markdown(segments: Sequence[PlannedSegment]) -> str:
     return "\n".join(lines)
 
 
+def _review_status_label(status: str) -> str:
+    return {
+        "automatic_checks_passed": "自动检查通过（仍需道路级复核）",
+        "review_required": "需人工复核",
+        "unresolved": "未解析",
+        "hard_review": "阻断：不得作为可骑行路线发布",
+    }.get(status, "未标注")
+
+
 def _position(point: Coordinate) -> list[float]:
     wgs84 = gcj02_to_wgs84(point)
     return [wgs84.lon, wgs84.lat]
 
 
-def _step_properties(segment: PlannedSegment, step: RouteStep) -> dict[str, object]:
+def _step_properties(
+    segment: PlannedSegment, step: RouteStep, days: Sequence[int]
+) -> dict[str, object]:
     return {
         "segment_id": segment.segment_id,
-        "day": segment.rule.day,
+        "day": days[0] if days else None,
+        "days": list(days),
         "from_name": segment.from_waypoint.name,
         "to_name": segment.to_waypoint.name,
         "road_name": step.road_name,
@@ -156,9 +349,15 @@ def _branch_id(segment: PlannedSegment) -> str:
 def _review_status(segment: PlannedSegment) -> str:
     if any(not step.polyline_gcj for step in segment.selected.steps):
         return "unresolved"
+    if any(
+        (step.risk_tags | classify_risks(step.road_name, step.instruction))
+        & {"hard", "freight"}
+        for step in segment.selected.steps
+    ):
+        return "hard_review"
     if _has_pending_review(segment):
         return "review_required"
-    return "approved"
+    return "automatic_checks_passed"
 
 
 def _totals(segments: Iterable[PlannedSegment]) -> dict[str, object]:
@@ -193,4 +392,11 @@ def _totals(segments: Iterable[PlannedSegment]) -> dict[str, object]:
 
 
 def _has_pending_review(segment: PlannedSegment) -> bool:
-    return any(item.severity in {"warning", "hard"} for item in segment.reviews)
+    return (
+        any(item.severity in {"warning", "hard"} for item in segment.reviews)
+        or any(
+            (step.risk_tags | classify_risks(step.road_name, step.instruction))
+            & {"hard", "freight"}
+            for step in segment.selected.steps
+        )
+    )

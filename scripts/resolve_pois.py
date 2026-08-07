@@ -41,6 +41,15 @@ def _arguments() -> argparse.Namespace:
 
 def _write_report(path: Path, report: ResolutionReport) -> None:
     payload = _resolution_payload(report)
+    if path.exists():
+        try:
+            existing = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            existing = {}
+        if isinstance(existing, dict):
+            for key in ("checkin_resolutions", "unresolved_checkin_queries"):
+                if isinstance(existing.get(key), list):
+                    payload[key] = existing[key]
     path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(
         "w", encoding="utf-8", dir=path.parent, prefix=f".{path.name}.", delete=False

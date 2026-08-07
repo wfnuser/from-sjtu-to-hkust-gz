@@ -17,7 +17,7 @@ from route_planner.amap import load_amap_key
 from route_planner.config import load_route_config
 from route_planner.manifest import load_manifest
 from route_planner.models import PlannedSegment, ReviewItem, RoadClass, RouteConfig, Waypoint
-from route_planner.roads import classify_risks
+from route_planner.roads import classify_risks, classify_road
 
 
 NATIONAL_EXCEPTION_APPROVAL = "NATIONAL_ROAD_EXCEPTION_APPROVED"
@@ -68,7 +68,9 @@ def _audit_segment(segment: PlannedSegment) -> list[ReviewItem]:
         risk_tags = step.risk_tags | classify_risks(step.road_name, step.instruction)
         if "hard" in risk_tags:
             items.append(_item("HARD_RISK", segment.segment_id, "Hard-risk road step is selected.", step.distance_m, step.road_name))
-        if step.road_class is RoadClass.NATIONAL:
+        if "freight" in risk_tags:
+            items.append(_item("FREIGHT_RISK", segment.segment_id, "Freight-risk road step is selected.", step.distance_m, step.road_name))
+        if classify_road(step.road_name, step.instruction) is RoadClass.NATIONAL:
             national_distance_m += step.distance_m
     if national_distance_m:
         if segment.rule.parallel_road_available and national_distance_m > segment.rule.allowed_national_m:
@@ -100,7 +102,9 @@ def main(argv: list[str] | None = None) -> int:
         print("HARD MANIFEST_INVALID: cannot audit this published route", file=sys.stdout)
         return 1
     for item in items:
-        print(f"{item.severity.upper()} {item.code}: {item.message}")
+        segment = f" [{item.segment_id}]" if item.segment_id else ""
+        road = f" ({item.road_name}, {item.distance_m} m)" if item.road_name else ""
+        print(f"{item.severity.upper()} {item.code}{segment}: {item.message}{road}")
     return 0 if not any(item.severity == "hard" for item in items) else 1
 
 

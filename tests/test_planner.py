@@ -23,6 +23,7 @@ class RoutePlannerTests(unittest.TestCase):
         self.assertEqual(fake_client.call_count, 3)
         self.assertTrue(all(step.polyline_gcj for step in planned.selected.steps))
         self.assertEqual(planned.subleg_distances_m, (50_000, 50_000))
+        self.assertEqual(planned.subleg_durations_s, (10_000, 10_000))
 
     def test_detour_over_fifteen_percent_creates_review_item(self):
         planned = RoutePlanner(

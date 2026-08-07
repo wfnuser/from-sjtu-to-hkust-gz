@@ -2,338 +2,849 @@
   "all_branches": {
     "baseline_distance_m": 2230959,
     "city_distance_m": 0,
-    "county_distance_m": 145021,
+    "county_distance_m": 134399,
     "cycleway_distance_m": 4884,
-    "detour_ratio": 1.0957108579763233,
-    "distance_m": 2444486,
-    "duration_s": 486551,
-    "national_distance_m": 267077,
-    "provincial_distance_m": 209086,
+    "detour_ratio": 1.0975038089001188,
+    "distance_m": 2448486,
+    "duration_s": 487438,
+    "national_distance_m": 338683,
+    "provincial_distance_m": 217017,
     "segment_count": 33,
-    "unknown_distance_m": 1818418,
-    "unresolved_count": 4
+    "unknown_distance_m": 1753503,
+    "unresolved_count": 6
   },
   "days": [
     {
-      "baseline_distance_m": 120661,
-      "city_distance_m": 0,
-      "county_distance_m": 0,
-      "cycleway_distance_m": 0,
       "day": 1,
-      "detour_ratio": 1.0342032636891787,
-      "distance_m": 124788,
-      "duration_s": 23449,
+      "distance_m": 95005,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 17535,
+      "duration_target_met": true,
       "from_name": "上海交通大学闵行校区",
-      "national_distance_m": 0,
-      "provincial_distance_m": 0,
-      "segment_count": 2,
-      "to_name": "海宁",
-      "unknown_distance_m": 124788,
-      "unresolved_count": 0
+      "legs": [
+        {
+          "segment_id": "main-01-to-main-02",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "main-01-to-main-02",
+          "subleg_index": 1
+        }
+      ],
+      "lodging_network_endpoint": "海盐",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-01-to-main-02"
+      ],
+      "to_name": "海盐"
     },
     {
-      "baseline_distance_m": 145032,
-      "city_distance_m": 0,
-      "county_distance_m": 424,
-      "cycleway_distance_m": 0,
       "day": 2,
-      "detour_ratio": 1.0,
-      "distance_m": 145032,
-      "duration_s": 28972,
-      "from_name": "海宁",
-      "national_distance_m": 0,
-      "provincial_distance_m": 0,
+      "distance_m": 103374,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 20360,
+      "duration_target_met": true,
+      "from_name": "海盐",
+      "legs": [
+        {
+          "segment_id": "main-02-to-main-03",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "main-03-to-main-04",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "杭州阿里巴巴总部",
+      "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 2,
-      "to_name": "绍兴",
-      "unknown_distance_m": 144608,
-      "unresolved_count": 0
+      "segments": [
+        "main-02-to-main-03",
+        "main-03-to-main-04"
+      ],
+      "to_name": "杭州阿里巴巴总部"
     },
     {
-      "baseline_distance_m": 142990,
-      "city_distance_m": 0,
-      "county_distance_m": 8176,
-      "cycleway_distance_m": 4600,
       "day": 3,
-      "detour_ratio": 1.0191831596615148,
-      "distance_m": 145733,
-      "duration_s": 29860,
-      "from_name": "绍兴",
-      "national_distance_m": 9745,
-      "provincial_distance_m": 0,
-      "segment_count": 2,
-      "to_name": "天台",
-      "unknown_distance_m": 123212,
-      "unresolved_count": 0
+      "distance_m": 71441,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 14526,
+      "duration_target_met": true,
+      "from_name": "杭州阿里巴巴总部",
+      "legs": [
+        {
+          "segment_id": "main-04-to-main-05",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "绍兴",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-04-to-main-05"
+      ],
+      "to_name": "绍兴"
     },
     {
-      "baseline_distance_m": 120979,
-      "city_distance_m": 0,
-      "county_distance_m": 222,
-      "cycleway_distance_m": 0,
       "day": 4,
-      "detour_ratio": 1.0625893750154987,
-      "distance_m": 128551,
-      "duration_s": 25133,
-      "from_name": "天台",
-      "national_distance_m": 5510,
-      "provincial_distance_m": 63835,
-      "segment_count": 2,
-      "to_name": "温岭",
-      "unknown_distance_m": 58984,
-      "unresolved_count": 1
+      "distance_m": 55251,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 10344,
+      "duration_target_met": false,
+      "from_name": "绍兴",
+      "legs": [
+        {
+          "segment_id": "main-05-to-main-06",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "嵊州市三界镇",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-05-to-main-06"
+      ],
+      "to_name": "嵊州市三界镇"
     },
     {
-      "baseline_distance_m": 105192,
-      "city_distance_m": 0,
-      "county_distance_m": 0,
-      "cycleway_distance_m": 0,
       "day": 5,
-      "detour_ratio": 1.0496235455167693,
-      "distance_m": 110412,
-      "duration_s": 20233,
-      "from_name": "温岭",
-      "national_distance_m": 19655,
-      "provincial_distance_m": 0,
+      "distance_m": 91047,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 19390,
+      "duration_target_met": true,
+      "from_name": "嵊州市三界镇",
+      "legs": [
+        {
+          "segment_id": "main-05-to-main-06",
+          "subleg_index": 1
+        },
+        {
+          "segment_id": "main-06-to-main-07",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "天台",
+      "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 2,
-      "to_name": "温州",
-      "unknown_distance_m": 90757,
-      "unresolved_count": 0
+      "segments": [
+        "main-05-to-main-06",
+        "main-06-to-main-07"
+      ],
+      "to_name": "天台"
     },
     {
-      "baseline_distance_m": 109482,
-      "city_distance_m": 0,
-      "county_distance_m": 23117,
-      "cycleway_distance_m": 284,
       "day": 6,
-      "detour_ratio": 1.4633729745528945,
-      "distance_m": 160213,
-      "duration_s": 34356,
-      "from_name": "温州",
-      "national_distance_m": 0,
-      "provincial_distance_m": 23950,
-      "segment_count": 2,
-      "to_name": "福鼎",
-      "unknown_distance_m": 112862,
-      "unresolved_count": 1
+      "distance_m": 53458,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 10954,
+      "duration_target_met": false,
+      "from_name": "天台",
+      "legs": [
+        {
+          "segment_id": "main-07-to-main-08",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "临海",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-07-to-main-08"
+      ],
+      "to_name": "临海"
     },
     {
-      "baseline_distance_m": 90220,
-      "city_distance_m": 0,
-      "county_distance_m": 31177,
-      "cycleway_distance_m": 0,
       "day": 7,
-      "detour_ratio": 1.1039237419640877,
-      "distance_m": 99596,
-      "duration_s": 21966,
-      "from_name": "福鼎",
-      "national_distance_m": 0,
-      "provincial_distance_m": 0,
+      "distance_m": 75093,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 14179,
+      "duration_target_met": false,
+      "from_name": "临海",
+      "legs": [
+        {
+          "segment_id": "main-08-to-main-09",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "温岭",
+      "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
-      "to_name": "霞浦",
-      "unknown_distance_m": 68419,
-      "unresolved_count": 0
+      "segments": [
+        "main-08-to-main-09"
+      ],
+      "to_name": "温岭"
     },
     {
-      "baseline_distance_m": 108872,
-      "city_distance_m": 0,
-      "county_distance_m": 0,
-      "cycleway_distance_m": 0,
       "day": 8,
-      "detour_ratio": 1.0541737085752076,
-      "distance_m": 114770,
-      "duration_s": 26081,
-      "from_name": "霞浦",
-      "national_distance_m": 17001,
-      "provincial_distance_m": 13187,
-      "segment_count": 1,
-      "to_name": "宁德",
-      "unknown_distance_m": 84582,
-      "unresolved_count": 0
+      "distance_m": 113526,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 21279,
+      "duration_target_met": true,
+      "from_name": "温岭",
+      "legs": [
+        {
+          "segment_id": "main-09-to-main-10",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "main-10-to-main-11",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "温州",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 2,
+      "segments": [
+        "main-09-to-main-10",
+        "main-10-to-main-11"
+      ],
+      "to_name": "温州"
     },
     {
-      "baseline_distance_m": 119907,
-      "city_distance_m": 0,
-      "county_distance_m": 0,
-      "cycleway_distance_m": 0,
       "day": 9,
-      "detour_ratio": 1.1476561001442784,
-      "distance_m": 137612,
-      "duration_s": 28554,
-      "from_name": "宁德",
-      "national_distance_m": 17149,
-      "provincial_distance_m": 4933,
+      "distance_m": 74700,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 14849,
+      "duration_target_met": true,
+      "from_name": "温州",
+      "legs": [
+        {
+          "segment_id": "main-11-to-main-12",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "main-11-to-main-12",
+          "subleg_index": 1
+        }
+      ],
+      "lodging_network_endpoint": "苍南",
+      "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
-      "to_name": "福州",
-      "unknown_distance_m": 115530,
-      "unresolved_count": 0
+      "segments": [
+        "main-11-to-main-12"
+      ],
+      "to_name": "苍南"
     },
     {
-      "baseline_distance_m": 168281,
-      "city_distance_m": 0,
-      "county_distance_m": 6728,
-      "cycleway_distance_m": 0,
       "day": 10,
-      "detour_ratio": 1.132457021291768,
-      "distance_m": 190571,
-      "duration_s": 34940,
-      "from_name": "福州",
-      "national_distance_m": 39687,
-      "provincial_distance_m": 2090,
-      "segment_count": 2,
-      "to_name": "惠安",
-      "unknown_distance_m": 142066,
-      "unresolved_count": 0
+      "distance_m": 83443,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 18667,
+      "duration_target_met": true,
+      "from_name": "苍南",
+      "legs": [
+        {
+          "segment_id": "main-12-to-main-13",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "main-12-to-main-13",
+          "subleg_index": 1
+        }
+      ],
+      "lodging_network_endpoint": "福鼎",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-12-to-main-13"
+      ],
+      "to_name": "福鼎"
     },
     {
-      "baseline_distance_m": 130060,
-      "city_distance_m": 0,
-      "county_distance_m": 0,
-      "cycleway_distance_m": 0,
       "day": 11,
-      "detour_ratio": 1.015884976164847,
-      "distance_m": 132126,
-      "duration_s": 25346,
-      "from_name": "惠安",
-      "national_distance_m": 10035,
-      "provincial_distance_m": 0,
-      "segment_count": 2,
-      "to_name": "厦门",
-      "unknown_distance_m": 122091,
-      "unresolved_count": 0
+      "distance_m": 63246,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 14550,
+      "duration_target_met": true,
+      "from_name": "福鼎",
+      "legs": [
+        {
+          "segment_id": "main-13-to-main-14",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "牙城镇",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-13-to-main-14"
+      ],
+      "to_name": "牙城镇"
     },
     {
-      "baseline_distance_m": 163417,
-      "city_distance_m": 0,
-      "county_distance_m": 2300,
-      "cycleway_distance_m": 0,
       "day": 12,
-      "detour_ratio": 1.0952410091973295,
-      "distance_m": 178981,
-      "duration_s": 37912,
-      "from_name": "厦门",
-      "national_distance_m": 55336,
-      "provincial_distance_m": 13382,
-      "segment_count": 2,
-      "to_name": "云霄",
-      "unknown_distance_m": 107963,
-      "unresolved_count": 0
+      "distance_m": 36350,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 7416,
+      "duration_target_met": false,
+      "from_name": "牙城镇",
+      "legs": [
+        {
+          "segment_id": "main-13-to-main-14",
+          "subleg_index": 1
+        }
+      ],
+      "lodging_network_endpoint": "霞浦",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-13-to-main-14"
+      ],
+      "to_name": "霞浦"
     },
     {
-      "baseline_distance_m": 152685,
-      "city_distance_m": 0,
-      "county_distance_m": 20641,
-      "cycleway_distance_m": 0,
       "day": 13,
-      "detour_ratio": 1.014624881291548,
-      "distance_m": 154918,
-      "duration_s": 31382,
-      "from_name": "云霄",
-      "national_distance_m": 30592,
-      "provincial_distance_m": 37638,
-      "segment_count": 3,
-      "to_name": "汕头",
-      "unknown_distance_m": 66047,
-      "unresolved_count": 0
+      "distance_m": 77885,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 17991,
+      "duration_target_met": true,
+      "from_name": "霞浦",
+      "legs": [
+        {
+          "segment_id": "main-14-to-main-15",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "main-14-to-main-15",
+          "subleg_index": 1
+        }
+      ],
+      "lodging_network_endpoint": "福安市下白石镇",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-14-to-main-15"
+      ],
+      "to_name": "福安市下白石镇"
     },
     {
-      "baseline_distance_m": 93337,
-      "city_distance_m": 0,
-      "county_distance_m": 5581,
-      "cycleway_distance_m": 0,
       "day": 14,
-      "detour_ratio": 1.3145912124880808,
-      "distance_m": 122700,
-      "duration_s": 21652,
-      "from_name": "汕头",
-      "national_distance_m": 0,
-      "provincial_distance_m": 23522,
-      "segment_count": 1,
-      "to_name": "惠来",
-      "unknown_distance_m": 93597,
-      "unresolved_count": 1
+      "distance_m": 84791,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 19081,
+      "duration_target_met": true,
+      "from_name": "福安市下白石镇",
+      "legs": [
+        {
+          "segment_id": "main-14-to-main-15",
+          "subleg_index": 2
+        },
+        {
+          "segment_id": "main-15-to-main-16",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "罗源县",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 2,
+      "segments": [
+        "main-14-to-main-15",
+        "main-15-to-main-16"
+      ],
+      "to_name": "罗源县"
     },
     {
-      "baseline_distance_m": 119023,
-      "city_distance_m": 0,
-      "county_distance_m": 15830,
-      "cycleway_distance_m": 0,
       "day": 15,
-      "detour_ratio": 1.1000983003285079,
-      "distance_m": 130937,
-      "duration_s": 26274,
-      "from_name": "惠来",
-      "national_distance_m": 43308,
-      "provincial_distance_m": 26533,
+      "distance_m": 89706,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 17563,
+      "duration_target_met": true,
+      "from_name": "罗源县",
+      "legs": [
+        {
+          "segment_id": "main-15-to-main-16",
+          "subleg_index": 1
+        },
+        {
+          "segment_id": "main-15-to-main-16",
+          "subleg_index": 2
+        }
+      ],
+      "lodging_network_endpoint": "福州",
+      "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
-      "to_name": "汕尾",
-      "unknown_distance_m": 45266,
-      "unresolved_count": 0
+      "segments": [
+        "main-15-to-main-16"
+      ],
+      "to_name": "福州"
     },
     {
-      "baseline_distance_m": 121047,
-      "city_distance_m": 0,
-      "county_distance_m": 19654,
-      "cycleway_distance_m": 0,
       "day": 16,
-      "detour_ratio": 1.03735739010467,
-      "distance_m": 125569,
-      "duration_s": 23268,
-      "from_name": "汕尾",
-      "national_distance_m": 19059,
-      "provincial_distance_m": 0,
-      "segment_count": 2,
-      "to_name": "惠东",
-      "unknown_distance_m": 86856,
-      "unresolved_count": 0
+      "distance_m": 59751,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 11145,
+      "duration_target_met": false,
+      "from_name": "福州",
+      "legs": [
+        {
+          "segment_id": "main-16-to-main-17",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "福清市",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-16-to-main-17"
+      ],
+      "to_name": "福清市"
     },
     {
-      "baseline_distance_m": 111930,
-      "city_distance_m": 0,
-      "county_distance_m": 11171,
-      "cycleway_distance_m": 0,
       "day": 17,
-      "detour_ratio": 1.1665594568033593,
-      "distance_m": 130573,
-      "duration_s": 24136,
-      "from_name": "惠东",
-      "national_distance_m": 0,
-      "provincial_distance_m": 16,
-      "segment_count": 3,
-      "to_name": "增城",
-      "unknown_distance_m": 119386,
-      "unresolved_count": 1
+      "distance_m": 60648,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 11140,
+      "duration_target_met": false,
+      "from_name": "福清市",
+      "legs": [
+        {
+          "segment_id": "main-16-to-main-17",
+          "subleg_index": 1
+        }
+      ],
+      "lodging_network_endpoint": "莆田",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-16-to-main-17"
+      ],
+      "to_name": "莆田"
     },
     {
-      "baseline_distance_m": 107844,
-      "city_distance_m": 0,
-      "county_distance_m": 0,
-      "cycleway_distance_m": 0,
       "day": 18,
-      "detour_ratio": 1.033010645005749,
-      "distance_m": 111404,
-      "duration_s": 23037,
-      "from_name": "增城",
-      "national_distance_m": 0,
-      "provincial_distance_m": 0,
+      "distance_m": 106479,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 19543,
+      "duration_target_met": true,
+      "from_name": "莆田",
+      "legs": [
+        {
+          "segment_id": "main-17-to-main-18",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "main-18-to-main-19",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "泉州",
+      "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 2,
-      "to_name": "香港科技大学（广州）",
-      "unknown_distance_m": 111404,
-      "unresolved_count": 0
+      "segments": [
+        "main-17-to-main-18",
+        "main-18-to-main-19"
+      ],
+      "to_name": "泉州"
+    },
+    {
+      "day": 19,
+      "distance_m": 98210,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 19265,
+      "duration_target_met": true,
+      "from_name": "泉州",
+      "legs": [
+        {
+          "segment_id": "main-19-to-main-20",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "main-19-to-main-20",
+          "subleg_index": 1
+        }
+      ],
+      "lodging_network_endpoint": "厦门",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-19-to-main-20"
+      ],
+      "to_name": "厦门"
+    },
+    {
+      "day": 20,
+      "distance_m": 35206,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 6958,
+      "duration_target_met": false,
+      "from_name": "厦门",
+      "legs": [
+        {
+          "segment_id": "main-20-to-main-21",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "厦门市海沧区东孚街道",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-20-to-main-21"
+      ],
+      "to_name": "厦门市海沧区东孚街道"
+    },
+    {
+      "day": 21,
+      "distance_m": 99759,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 20707,
+      "duration_target_met": true,
+      "from_name": "厦门市海沧区东孚街道",
+      "legs": [
+        {
+          "segment_id": "main-20-to-main-21",
+          "subleg_index": 1
+        },
+        {
+          "segment_id": "main-21-to-main-22",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "漳浦县",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 2,
+      "segments": [
+        "main-20-to-main-21",
+        "main-21-to-main-22"
+      ],
+      "to_name": "漳浦县"
+    },
+    {
+      "day": 22,
+      "distance_m": 91099,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 19656,
+      "duration_target_met": true,
+      "from_name": "漳浦县",
+      "legs": [
+        {
+          "segment_id": "main-21-to-main-22",
+          "subleg_index": 1
+        },
+        {
+          "segment_id": "main-22-to-main-23",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "诏安",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 2,
+      "segments": [
+        "main-21-to-main-22",
+        "main-22-to-main-23"
+      ],
+      "to_name": "诏安"
+    },
+    {
+      "day": 23,
+      "distance_m": 65887,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 14098,
+      "duration_target_met": false,
+      "from_name": "诏安",
+      "legs": [
+        {
+          "segment_id": "main-23-to-main-24",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "潮州",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-23-to-main-24"
+      ],
+      "to_name": "潮州"
+    },
+    {
+      "day": 24,
+      "distance_m": 41948,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 7875,
+      "duration_target_met": false,
+      "from_name": "潮州",
+      "legs": [
+        {
+          "segment_id": "main-24-to-main-25",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "汕头",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-24-to-main-25"
+      ],
+      "to_name": "汕头"
+    },
+    {
+      "day": 25,
+      "distance_m": 77963,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 13864,
+      "duration_target_met": false,
+      "from_name": "汕头",
+      "legs": [
+        {
+          "segment_id": "main-25-to-main-26",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "汕头市潮南区陇田镇",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-25-to-main-26"
+      ],
+      "to_name": "汕头市潮南区陇田镇"
+    },
+    {
+      "day": 26,
+      "distance_m": 81568,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 15193,
+      "duration_target_met": true,
+      "from_name": "汕头市潮南区陇田镇",
+      "legs": [
+        {
+          "segment_id": "main-25-to-main-26",
+          "subleg_index": 1
+        },
+        {
+          "segment_id": "main-26-to-main-27",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "揭阳市惠来县葵潭镇",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 2,
+      "segments": [
+        "main-25-to-main-26",
+        "main-26-to-main-27"
+      ],
+      "to_name": "揭阳市惠来县葵潭镇"
+    },
+    {
+      "day": 27,
+      "distance_m": 48550,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 10603,
+      "duration_target_met": false,
+      "from_name": "揭阳市惠来县葵潭镇",
+      "legs": [
+        {
+          "segment_id": "main-26-to-main-27",
+          "subleg_index": 1
+        }
+      ],
+      "lodging_network_endpoint": "陆丰市",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-26-to-main-27"
+      ],
+      "to_name": "陆丰市"
+    },
+    {
+      "day": 28,
+      "distance_m": 90189,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 16653,
+      "duration_target_met": true,
+      "from_name": "陆丰市",
+      "legs": [
+        {
+          "segment_id": "main-26-to-main-27",
+          "subleg_index": 2
+        },
+        {
+          "segment_id": "main-27-to-main-28",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "main-28-to-main-29",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "汕尾市海丰县梅陇镇",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 3,
+      "segments": [
+        "main-26-to-main-27",
+        "main-27-to-main-28",
+        "main-28-to-main-29"
+      ],
+      "to_name": "汕尾市海丰县梅陇镇"
+    },
+    {
+      "day": 29,
+      "distance_m": 80936,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 14881,
+      "duration_target_met": true,
+      "from_name": "汕尾市海丰县梅陇镇",
+      "legs": [
+        {
+          "segment_id": "main-28-to-main-29",
+          "subleg_index": 1
+        },
+        {
+          "segment_id": "main-28-to-main-29",
+          "subleg_index": 2
+        }
+      ],
+      "lodging_network_endpoint": "惠东",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "main-28-to-main-29"
+      ],
+      "to_name": "惠东"
+    },
+    {
+      "day": 30,
+      "distance_m": 91702,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 16833,
+      "duration_target_met": true,
+      "from_name": "惠东",
+      "legs": [
+        {
+          "segment_id": "main-29-to-main-30",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "main-30-to-main-31",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "main-31-to-main-32",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "企石镇",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 3,
+      "segments": [
+        "main-29-to-main-30",
+        "main-30-to-main-31",
+        "main-31-to-main-32"
+      ],
+      "to_name": "企石镇"
+    },
+    {
+      "day": 31,
+      "distance_m": 81917,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 15359,
+      "duration_target_met": true,
+      "from_name": "企石镇",
+      "legs": [
+        {
+          "segment_id": "main-31-to-main-32",
+          "subleg_index": 1
+        },
+        {
+          "segment_id": "main-32-to-main-33",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "广州市黄埔区萝岗街道",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 2,
+      "segments": [
+        "main-31-to-main-32",
+        "main-32-to-main-33"
+      ],
+      "to_name": "广州市黄埔区萝岗街道"
+    },
+    {
+      "day": 32,
+      "distance_m": 68358,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 14981,
+      "duration_target_met": true,
+      "from_name": "广州市黄埔区萝岗街道",
+      "legs": [
+        {
+          "segment_id": "main-32-to-main-33",
+          "subleg_index": 1
+        },
+        {
+          "segment_id": "main-33-to-main-34",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "香港科技大学（广州）",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 2,
+      "segments": [
+        "main-32-to-main-33",
+        "main-33-to-main-34"
+      ],
+      "to_name": "香港科技大学（广州）"
     }
   ],
+  "limitations": {
+    "automatic_checks_are_not_road_level_verification": true,
+    "blank_name_distance_m": 628175,
+    "quota_limited_probes": [
+      "main-06-to-main-07",
+      "main-07-to-main-08",
+      "main-09-to-main-10",
+      "main-10-to-main-11",
+      "main-11-to-main-12",
+      "main-17-to-main-18"
+    ],
+    "road_level_status": "provisional",
+    "unknown_distance_m": 1753503,
+    "unknown_percent": 71.62
+  },
   "main": {
     "baseline_distance_m": 2230959,
     "city_distance_m": 0,
-    "county_distance_m": 145021,
+    "county_distance_m": 134399,
     "cycleway_distance_m": 4884,
-    "detour_ratio": 1.0957108579763233,
-    "distance_m": 2444486,
-    "duration_s": 486551,
-    "national_distance_m": 267077,
-    "provincial_distance_m": 209086,
+    "detour_ratio": 1.0975038089001188,
+    "distance_m": 2448486,
+    "duration_s": 487438,
+    "national_distance_m": 338683,
+    "provincial_distance_m": 217017,
     "segment_count": 33,
-    "unknown_distance_m": 1818418,
-    "unresolved_count": 4
+    "unknown_distance_m": 1753503,
+    "unresolved_count": 6
   },
   "max_detour_ratio": 1.15,
   "optional_branch_excluded": {
@@ -349,5 +860,137 @@
     "segment_count": 0,
     "unknown_distance_m": 0,
     "unresolved_count": 0
+  },
+  "publication_status": "provisional_road_level_review_required",
+  "schedule": {
+    "day_count": 32,
+    "deadline_available_days": 18,
+    "deadline_end": "2026-08-30",
+    "deadline_feasible": false,
+    "deadline_note": "沿海安全优先路线无法在8月13日至8月30日内完成并同时保留每日4小时工作。",
+    "deadline_start": "2026-08-13",
+    "max_duration_s": 21600,
+    "target_distance_m": [
+      80000,
+      120000
+    ],
+    "target_duration_s": [
+      14400,
+      21600
+    ]
+  },
+  "segment_days": {
+    "main-01-to-main-02": [
+      1
+    ],
+    "main-02-to-main-03": [
+      2
+    ],
+    "main-03-to-main-04": [
+      2
+    ],
+    "main-04-to-main-05": [
+      3
+    ],
+    "main-05-to-main-06": [
+      4,
+      5
+    ],
+    "main-06-to-main-07": [
+      5
+    ],
+    "main-07-to-main-08": [
+      6
+    ],
+    "main-08-to-main-09": [
+      7
+    ],
+    "main-09-to-main-10": [
+      8
+    ],
+    "main-10-to-main-11": [
+      8
+    ],
+    "main-11-to-main-12": [
+      9
+    ],
+    "main-12-to-main-13": [
+      10
+    ],
+    "main-13-to-main-14": [
+      11,
+      12
+    ],
+    "main-14-to-main-15": [
+      13,
+      14
+    ],
+    "main-15-to-main-16": [
+      14,
+      15
+    ],
+    "main-16-to-main-17": [
+      16,
+      17
+    ],
+    "main-17-to-main-18": [
+      18
+    ],
+    "main-18-to-main-19": [
+      18
+    ],
+    "main-19-to-main-20": [
+      19
+    ],
+    "main-20-to-main-21": [
+      20,
+      21
+    ],
+    "main-21-to-main-22": [
+      21,
+      22
+    ],
+    "main-22-to-main-23": [
+      22
+    ],
+    "main-23-to-main-24": [
+      23
+    ],
+    "main-24-to-main-25": [
+      24
+    ],
+    "main-25-to-main-26": [
+      25,
+      26
+    ],
+    "main-26-to-main-27": [
+      26,
+      27,
+      28
+    ],
+    "main-27-to-main-28": [
+      28
+    ],
+    "main-28-to-main-29": [
+      28,
+      29
+    ],
+    "main-29-to-main-30": [
+      30
+    ],
+    "main-30-to-main-31": [
+      30
+    ],
+    "main-31-to-main-32": [
+      30,
+      31
+    ],
+    "main-32-to-main-33": [
+      31,
+      32
+    ],
+    "main-33-to-main-34": [
+      32
+    ]
   }
 }

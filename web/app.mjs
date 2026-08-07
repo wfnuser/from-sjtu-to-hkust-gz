@@ -41,6 +41,9 @@ const elements = {
   count: document.querySelector("#segment-count"),
   mainTotals: document.querySelector("#main-totals"),
   mapMessage: document.querySelector("#map-message"),
+  limitations: document.querySelector("#route-limitations"),
+  dailySchedule: document.querySelector("#daily-schedule"),
+  scheduleCount: document.querySelector("#schedule-count"),
   reviewCount: document.querySelector("#review-count"),
   reviewList: document.querySelector("#review-list"),
   reviewPanel: document.querySelector("#review-panel"),
@@ -69,6 +72,7 @@ function renderMainTotals(summary) {
   const values = [
     ["距离", formatDistance(main.distance_m)],
     ["预计骑行", formatDuration(main.duration_s)],
+    ["UNKNOWN", `${formatDistance(main.unknown_distance_m)} · ${Number(summary.limitations?.unknown_percent || 0).toFixed(2)}%`],
     ["待复核", reviewCount ? `${reviewCount} 段` : "无"],
   ];
   for (const [label, value] of values) {
@@ -82,9 +86,40 @@ function renderMainTotals(summary) {
   }
 }
 
+function renderLimitations(summary) {
+  const limitations = summary.limitations || {};
+  const probes = Array.isArray(limitations.quota_limited_probes) ? limitations.quota_limited_probes : [];
+  const items = [
+    `道路级状态：临时；自动检查通过仍需道路级复核。`,
+    `UNKNOWN ${Number(limitations.unknown_percent || 0).toFixed(2)}%，其中未命名 ${formatDistance(limitations.blank_name_distance_m)}。`,
+    `配额受限探路：${probes.length ? probes.join("、") : "无记录"}。`,
+    summary.schedule?.deadline_note || "18天期限可行性未评估。",
+  ];
+  elements.limitations.innerHTML = "";
+  for (const value of items) {
+    const item = document.createElement("li");
+    item.textContent = value;
+    elements.limitations.append(item);
+  }
+}
+
+function renderDailySchedule(summary) {
+  const days = Array.isArray(summary.days) ? summary.days : [];
+  elements.scheduleCount.textContent = `${days.length} 天`;
+  elements.dailySchedule.innerHTML = "";
+  for (const day of days) {
+    const item = document.createElement("p");
+    item.className = `schedule-day${day.duration_limit_met ? "" : " is-warning"}`;
+    item.textContent = `第 ${day.day} 天 · ${day.from_name} → ${day.to_name} · ${formatDistance(day.distance_m)} · ${formatDuration(day.duration_s)} · ${day.duration_limit_met ? "≤6小时" : "超过6小时"} · 住宿/网络待确认`;
+    elements.dailySchedule.append(item);
+  }
+}
+
 /** Render segment buttons from real feature groups; each button zooms only to its own roads. */
 export function renderSegmentCards(summary) {
   renderMainTotals(summary);
+  renderLimitations(summary);
+  renderDailySchedule(summary);
   elements.cards.innerHTML = "";
   const entries = [...segmentGroups.values()];
   const daySummaries = new Map((summary.days || []).map((item) => [Number(item.day), item]));
@@ -93,13 +128,13 @@ export function renderSegmentCards(summary) {
   let currentDay = null;
   entries.forEach((entry, index) => {
     const first = entry.features[0].properties || {};
-    const day = Number(entry.day);
+    const day = Number((summary.segment_days?.[entry.id] || [])[0]);
     if (!entry.optional && Number.isInteger(day) && day !== currentDay) {
       currentDay = day;
       const daySummary = daySummaries.get(day) || {};
       const heading = document.createElement("h3");
       heading.className = "day-heading";
-      heading.textContent = `第 ${day} 天 · ${formatDistance(daySummary.distance_m)}`;
+      heading.textContent = `第 ${day} 天 · ${formatDistance(daySummary.distance_m)} · ${formatDuration(daySummary.duration_s)} · ${daySummary.duration_limit_met ? "≤6小时" : "超过6小时"}`;
       elements.cards.append(heading);
     }
     const card = document.createElement("button");
@@ -198,7 +233,8 @@ function renderReviews() {
 function reviewFeaturesForEntry(entry) {
   const pending = entry.features.filter((feature) => isHardReview(feature.properties || {}));
   const hardFeatures = pending.filter((feature) => (
-    Array.isArray(feature.properties?.risk_tags) && feature.properties.risk_tags.includes("hard")
+    Array.isArray(feature.properties?.risk_tags)
+    && (feature.properties.risk_tags.includes("hard") || feature.properties.risk_tags.includes("freight"))
   ));
   return hardFeatures.length ? hardFeatures : pending.slice(0, 1);
 }
@@ -268,11 +304,12 @@ function isRoadLine(feature) {
 
 function isHardReview(properties) {
   return ["review_required", "unresolved", "hard_review"].includes(properties.review_status)
-    || (Array.isArray(properties.risk_tags) && properties.risk_tags.includes("hard"));
+    || (Array.isArray(properties.risk_tags)
+      && (properties.risk_tags.includes("hard") || properties.risk_tags.includes("freight")));
 }
 
 function reviewLabel(status) {
-  return ({ approved: "已通过", review_required: "需人工复核", unresolved: "未解析", hard_review: "需人工复核" })[status] || "未标注";
+  return ({ automatic_checks_passed: "自动检查通过（仍需道路级复核）", review_required: "需人工复核", unresolved: "未解析", hard_review: "阻断：不得作为可骑行路线发布" })[status] || "未标注";
 }
 
 function sumDistance(features) {
@@ -307,8 +344,8 @@ function showDataError(message, status = "数据无效") {
 
 function showReadyState() {
   elements.mapMessage.hidden = true;
-  elements.routeStatus.textContent = "已载入";
-  elements.routeStatus.className = "status-badge is-ready";
+  elements.routeStatus.textContent = "临时路线 · 待道路级复核";
+  elements.routeStatus.className = "status-badge is-warning";
 }
 
 async function loadRoute() {

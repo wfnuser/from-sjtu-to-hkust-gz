@@ -126,3 +126,4 @@ class PlannedSegment:
     detour_ratio: float
     subleg_distances_m: tuple[int, ...]
     reviews: tuple[ReviewItem, ...] = ()
+    subleg_durations_s: tuple[int, ...] = ()

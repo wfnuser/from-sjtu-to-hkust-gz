@@ -17,9 +17,19 @@ if str(PROJECT_ROOT) not in sys.path:
 from route_planner.amap import AmapClient, load_amap_key
 from route_planner.config import load_route_config
 from route_planner.export import build_geojson, build_review_markdown, build_summary
-from route_planner.manifest import build_manifest
+from route_planner.manifest import build_manifest, load_manifest
 from route_planner.models import Coordinate, PlannedSegment, RouteConfig, Waypoint
 from route_planner.planner import RoutePlanner
+
+
+QUOTA_LIMITED_PROBES = (
+    "main-06-to-main-07",
+    "main-07-to-main-08",
+    "main-09-to-main-10",
+    "main-10-to-main-11",
+    "main-11-to-main-12",
+    "main-17-to-main-18",
+)
 
 
 def write_artifacts(
@@ -74,10 +84,42 @@ def generate_from_segments(
     write_artifacts(
         output_dir,
         build_geojson(segments),
-        build_summary(segments, config.max_detour_ratio),
+        build_summary(
+            segments,
+            config.max_detour_ratio,
+            quota_limited_probes=QUOTA_LIMITED_PROBES,
+        ),
         build_review_markdown(segments),
         build_manifest(config.route_id, segments),
     )
+
+
+def merge_refreshed_segments(
+    config: RouteConfig,
+    refreshed: tuple[PlannedSegment, ...],
+    output_dir: Path,
+) -> tuple[PlannedSegment, ...]:
+    """Merge selected refreshes into a complete, config-aligned published manifest."""
+    existing = load_manifest(output_dir / "route-manifest.json", config.route_id)
+    expected = tuple(
+        f"{start.id}-to-{end.id}"
+        for start, end in zip(config.waypoints, config.waypoints[1:])
+    )
+    if tuple(segment.segment_id for segment in existing) != expected:
+        raise ValueError("Selective refresh requires a complete ordered route manifest.")
+    replacements = {segment.segment_id: segment for segment in refreshed}
+    if len(replacements) != len(refreshed) or not replacements.keys() <= set(expected):
+        raise ValueError("Selective refresh contains duplicate or unknown segments.")
+    for segment, start, end in zip(existing, config.waypoints, config.waypoints[1:]):
+        rule = config.segment_rules.get(segment.segment_id)
+        if (
+            rule is None
+            or segment.rule != rule
+            or segment.from_waypoint.id != start.id
+            or segment.to_waypoint.id != end.id
+        ):
+            raise ValueError("Selective refresh requires a config-aligned manifest.")
+    return tuple(replacements.get(segment.segment_id, segment) for segment in existing)
 
 
 def load_resolved_config(config_path: Path, resolutions_path: Path) -> RouteConfig:
@@ -179,6 +221,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         config = load_resolved_config(args.config, args.resolutions)
         segments = plan_live_segments(config, args.env, args.cache_dir, tuple(args.segment))
+        if args.segment:
+            segments = merge_refreshed_segments(config, segments, args.output_dir)
         generate_from_segments(config, segments, args.output_dir)
     except Exception:
         print("ERROR: route generation failed", file=sys.stderr)

@@ -1,42 +1,86 @@
 # 路线人工复核
 
-每条道路均来自 API 步骤；国道例外须以 `NATIONAL_ROAD_EXCEPTION_APPROVED` 复核项明确记录。
+> **临时路线：仍需道路级复核。** 自动分类/审核不等于现场或权威道路核验；不得据此宣称已完全避开国道、高速或货运道路。
+
+- UNKNOWN：1753503 m（71.62%）；其中未命名道路 628175 m。
+- AMap 配额受限的补充探路清单见 `summary.json`；未完成的并行道路探测保持 provisional。
+- 国道例外须以 `NATIONAL_ROAD_EXCEPTION_APPROVED` 明确记录，且仍需道路级复核。
+- 8月13日至8月30日的18天窗口无法兼顾本路线和每日4小时工作。
+
+## 每日计划
+
+| 天 | 起点 | 住宿/网络终点 | 距离 | 预计骑行时长 | 可行性 |
+| ---: | --- | --- | ---: | ---: | --- |
+| 1 | 上海交通大学闵行校区 | 海盐 | 95.0 km | 4.87 h | ≤6h；住宿/网络待确认 |
+| 2 | 海盐 | 杭州阿里巴巴总部 | 103.4 km | 5.66 h | ≤6h；住宿/网络待确认 |
+| 3 | 杭州阿里巴巴总部 | 绍兴 | 71.4 km | 4.04 h | ≤6h；住宿/网络待确认 |
+| 4 | 绍兴 | 嵊州市三界镇 | 55.3 km | 2.87 h | ≤6h；住宿/网络待确认 |
+| 5 | 嵊州市三界镇 | 天台 | 91.0 km | 5.39 h | ≤6h；住宿/网络待确认 |
+| 6 | 天台 | 临海 | 53.5 km | 3.04 h | ≤6h；住宿/网络待确认 |
+| 7 | 临海 | 温岭 | 75.1 km | 3.94 h | ≤6h；住宿/网络待确认 |
+| 8 | 温岭 | 温州 | 113.5 km | 5.91 h | ≤6h；住宿/网络待确认 |
+| 9 | 温州 | 苍南 | 74.7 km | 4.12 h | ≤6h；住宿/网络待确认 |
+| 10 | 苍南 | 福鼎 | 83.4 km | 5.19 h | ≤6h；住宿/网络待确认 |
+| 11 | 福鼎 | 牙城镇 | 63.2 km | 4.04 h | ≤6h；住宿/网络待确认 |
+| 12 | 牙城镇 | 霞浦 | 36.4 km | 2.06 h | ≤6h；住宿/网络待确认 |
+| 13 | 霞浦 | 福安市下白石镇 | 77.9 km | 5.00 h | ≤6h；住宿/网络待确认 |
+| 14 | 福安市下白石镇 | 罗源县 | 84.8 km | 5.30 h | ≤6h；住宿/网络待确认 |
+| 15 | 罗源县 | 福州 | 89.7 km | 4.88 h | ≤6h；住宿/网络待确认 |
+| 16 | 福州 | 福清市 | 59.8 km | 3.10 h | ≤6h；住宿/网络待确认 |
+| 17 | 福清市 | 莆田 | 60.6 km | 3.09 h | ≤6h；住宿/网络待确认 |
+| 18 | 莆田 | 泉州 | 106.5 km | 5.43 h | ≤6h；住宿/网络待确认 |
+| 19 | 泉州 | 厦门 | 98.2 km | 5.35 h | ≤6h；住宿/网络待确认 |
+| 20 | 厦门 | 厦门市海沧区东孚街道 | 35.2 km | 1.93 h | ≤6h；住宿/网络待确认 |
+| 21 | 厦门市海沧区东孚街道 | 漳浦县 | 99.8 km | 5.75 h | ≤6h；住宿/网络待确认 |
+| 22 | 漳浦县 | 诏安 | 91.1 km | 5.46 h | ≤6h；住宿/网络待确认 |
+| 23 | 诏安 | 潮州 | 65.9 km | 3.92 h | ≤6h；住宿/网络待确认 |
+| 24 | 潮州 | 汕头 | 41.9 km | 2.19 h | ≤6h；住宿/网络待确认 |
+| 25 | 汕头 | 汕头市潮南区陇田镇 | 78.0 km | 3.85 h | ≤6h；住宿/网络待确认 |
+| 26 | 汕头市潮南区陇田镇 | 揭阳市惠来县葵潭镇 | 81.6 km | 4.22 h | ≤6h；住宿/网络待确认 |
+| 27 | 揭阳市惠来县葵潭镇 | 陆丰市 | 48.5 km | 2.95 h | ≤6h；住宿/网络待确认 |
+| 28 | 陆丰市 | 汕尾市海丰县梅陇镇 | 90.2 km | 4.63 h | ≤6h；住宿/网络待确认 |
+| 29 | 汕尾市海丰县梅陇镇 | 惠东 | 80.9 km | 4.13 h | ≤6h；住宿/网络待确认 |
+| 30 | 惠东 | 企石镇 | 91.7 km | 4.68 h | ≤6h；住宿/网络待确认 |
+| 31 | 企石镇 | 广州市黄埔区萝岗街道 | 81.9 km | 4.27 h | ≤6h；住宿/网络待确认 |
+| 32 | 广州市黄埔区萝岗街道 | 香港科技大学（广州） | 68.4 km | 4.16 h | ≤6h；住宿/网络待确认 |
+
+## 路段状态
 
 | 路段 | 起点 | 终点 | 距离 (m) | 时长 (s) | 复核状态 |
 | --- | --- | --- | ---: | ---: | --- |
-| main-01-to-main-02 | 上海交通大学闵行校区 | 海盐 | 95005 | 17535 | approved |
-| main-02-to-main-03 | 海盐 | 海宁 | 29783 | 5914 | approved |
-| main-03-to-main-04 | 海宁 | 杭州阿里巴巴总部 | 73591 | 14446 | approved |
-| main-04-to-main-05 | 杭州阿里巴巴总部 | 绍兴 | 71441 | 14526 | approved |
-| main-05-to-main-06 | 绍兴 | 新昌 | 91468 | 17558 | approved |
-| main-06-to-main-07 | 新昌 | 天台 | 54265 | 12302 | approved |
-| main-07-to-main-08 | 天台 | 临海 | 53458 | 10954 | review_required |
-| main-08-to-main-09 | 临海 | 温岭 | 75093 | 14179 | approved |
-| main-09-to-main-10 | 温岭 | 乐清 | 69090 | 12372 | approved |
-| main-10-to-main-11 | 乐清 | 温州 | 41322 | 7861 | approved |
-| main-11-to-main-12 | 温州 | 苍南 | 74700 | 14849 | approved |
-| main-12-to-main-13 | 苍南 | 福鼎 | 85513 | 19507 | review_required |
-| main-13-to-main-14 | 福鼎 | 霞浦 | 99596 | 21966 | approved |
-| main-14-to-main-15 | 霞浦 | 宁德 | 114770 | 26081 | approved |
-| main-15-to-main-16 | 宁德 | 福州 | 137612 | 28554 | approved |
-| main-16-to-main-17 | 福州 | 莆田 | 120399 | 22285 | approved |
-| main-17-to-main-18 | 莆田 | 惠安 | 70172 | 12655 | approved |
-| main-18-to-main-19 | 惠安 | 泉州 | 33916 | 6081 | approved |
-| main-19-to-main-20 | 泉州 | 厦门 | 98210 | 19265 | approved |
-| main-20-to-main-21 | 厦门 | 漳州 | 76936 | 14703 | approved |
-| main-21-to-main-22 | 漳州 | 云霄 | 102045 | 23209 | approved |
-| main-22-to-main-23 | 云霄 | 诏安 | 47083 | 9409 | approved |
-| main-23-to-main-24 | 诏安 | 潮州 | 65887 | 14098 | approved |
-| main-24-to-main-25 | 潮州 | 汕头 | 41948 | 7875 | approved |
-| main-25-to-main-26 | 汕头 | 惠来 | 122700 | 21652 | review_required |
-| main-26-to-main-27 | 惠来 | 汕尾 | 130937 | 26274 | approved |
-| main-27-to-main-28 | 汕尾 | 海丰 | 24887 | 4610 | approved |
-| main-28-to-main-29 | 海丰 | 惠东 | 100682 | 18658 | approved |
-| main-29-to-main-30 | 惠东 | 惠州 | 37160 | 6962 | approved |
-| main-30-to-main-31 | 惠州 | 博罗 | 17819 | 3237 | approved |
-| main-31-to-main-32 | 博罗 | 增城 | 75594 | 13937 | review_required |
-| main-32-to-main-33 | 增城 | 番禺 | 94448 | 19786 | approved |
-| main-33-to-main-34 | 番禺 | 香港科技大学（广州） | 16956 | 3251 | approved |
+| main-01-to-main-02 | 上海交通大学闵行校区 | 海盐 | 95005 | 17535 | 自动检查通过（仍需道路级复核） |
+| main-02-to-main-03 | 海盐 | 海宁 | 29783 | 5914 | 自动检查通过（仍需道路级复核） |
+| main-03-to-main-04 | 海宁 | 杭州阿里巴巴总部 | 73591 | 14446 | 自动检查通过（仍需道路级复核） |
+| main-04-to-main-05 | 杭州阿里巴巴总部 | 绍兴 | 71441 | 14526 | 自动检查通过（仍需道路级复核） |
+| main-05-to-main-06 | 绍兴 | 新昌 | 92033 | 17432 | 自动检查通过（仍需道路级复核） |
+| main-06-to-main-07 | 新昌 | 天台 | 54265 | 12302 | 自动检查通过（仍需道路级复核） |
+| main-07-to-main-08 | 天台 | 临海 | 53458 | 10954 | 需人工复核 |
+| main-08-to-main-09 | 临海 | 温岭 | 75093 | 14179 | 自动检查通过（仍需道路级复核） |
+| main-09-to-main-10 | 温岭 | 乐清 | 72204 | 13418 | 自动检查通过（仍需道路级复核） |
+| main-10-to-main-11 | 乐清 | 温州 | 41322 | 7861 | 自动检查通过（仍需道路级复核） |
+| main-11-to-main-12 | 温州 | 苍南 | 74700 | 14849 | 阻断：不得作为可骑行路线发布 |
+| main-12-to-main-13 | 苍南 | 福鼎 | 83443 | 18667 | 需人工复核 |
+| main-13-to-main-14 | 福鼎 | 霞浦 | 99596 | 21966 | 自动检查通过（仍需道路级复核） |
+| main-14-to-main-15 | 霞浦 | 宁德 | 114770 | 26081 | 自动检查通过（仍需道路级复核） |
+| main-15-to-main-16 | 宁德 | 福州 | 137612 | 28554 | 自动检查通过（仍需道路级复核） |
+| main-16-to-main-17 | 福州 | 莆田 | 120399 | 22285 | 自动检查通过（仍需道路级复核） |
+| main-17-to-main-18 | 莆田 | 惠安 | 70172 | 12655 | 阻断：不得作为可骑行路线发布 |
+| main-18-to-main-19 | 惠安 | 泉州 | 36307 | 6888 | 自动检查通过（仍需道路级复核） |
+| main-19-to-main-20 | 泉州 | 厦门 | 98210 | 19265 | 自动检查通过（仍需道路级复核） |
+| main-20-to-main-21 | 厦门 | 漳州 | 76936 | 14703 | 自动检查通过（仍需道路级复核） |
+| main-21-to-main-22 | 漳州 | 云霄 | 102045 | 23209 | 自动检查通过（仍需道路级复核） |
+| main-22-to-main-23 | 云霄 | 诏安 | 47083 | 9409 | 自动检查通过（仍需道路级复核） |
+| main-23-to-main-24 | 诏安 | 潮州 | 65887 | 14098 | 自动检查通过（仍需道路级复核） |
+| main-24-to-main-25 | 潮州 | 汕头 | 41948 | 7875 | 自动检查通过（仍需道路级复核） |
+| main-25-to-main-26 | 汕头 | 惠来 | 122700 | 21652 | 需人工复核 |
+| main-26-to-main-27 | 惠来 | 汕尾 | 130937 | 26274 | 自动检查通过（仍需道路级复核） |
+| main-27-to-main-28 | 汕尾 | 海丰 | 24887 | 4610 | 自动检查通过（仍需道路级复核） |
+| main-28-to-main-29 | 海丰 | 惠东 | 100682 | 18658 | 自动检查通过（仍需道路级复核） |
+| main-29-to-main-30 | 惠东 | 惠州 | 37160 | 6962 | 自动检查通过（仍需道路级复核） |
+| main-30-to-main-31 | 惠州 | 博罗 | 17819 | 3237 | 自动检查通过（仍需道路级复核） |
+| main-31-to-main-32 | 博罗 | 增城 | 75594 | 13937 | 需人工复核 |
+| main-32-to-main-33 | 增城 | 番禺 | 94448 | 19786 | 自动检查通过（仍需道路级复核） |
+| main-33-to-main-34 | 番禺 | 香港科技大学（广州） | 16956 | 3251 | 自动检查通过（仍需道路级复核） |
 
 ## 道路步骤
 
@@ -278,16 +322,16 @@
 - `unknown` 会蒋路 — 844 m
 - `unknown` 舜源路 — 3079 m
 - `unknown` 未命名道路 — 467 m
-- `unknown` 京福线 — 8543 m
+- `national` 京福线 — 8543 m
 - `unknown` 未命名道路 — 25 m
-- `unknown` 京福线 — 30 m
-- `unknown` 京福线 — 3751 m
+- `national` 京福线 — 30 m
+- `national` 京福线 — 3751 m
 - `unknown` 未命名道路 — 4518 m
 - `unknown` 未命名道路 — 32 m
 - `unknown` 未命名道路 — 32 m
 - `unknown` 未命名道路 — 2734 m
 - `cycleway` 诗画剡溪绿道 — 3224 m
-- `unknown` 京福线 — 2491 m
+- `national` 京福线 — 2491 m
 - `unknown` 未命名道路 — 212 m
 - `unknown` 未命名道路 — 149 m
 - `cycleway` 诗画剡溪绿道 — 1376 m
@@ -301,24 +345,21 @@
 - `unknown` 新七路 — 190 m
 - `unknown` 仙湖路 — 246 m
 - `unknown` 江四路 — 149 m
-- `unknown` 京福线 — 413 m
-- `unknown` 未命名道路 — 44 m
-- `unknown` 圳塍立交桥 — 189 m
-- `unknown` 京福线 — 358 m
-- `unknown` 京福线 — 3625 m
-- `unknown` 未命名道路 — 2230 m
-- `unknown` 新中路 — 52 m
-- `unknown` 新中路 — 452 m
-- `unknown` 未命名道路 — 58 m
-- `unknown` 鼓山西路 — 69 m
-- `unknown` 鼓山西路 — 458 m
-- `unknown` 未命名道路 — 30 m
-- `unknown` 人民西路 — 1250 m
+- `national` 京福线 — 404 m
+- `unknown` 未命名道路 — 430 m
+- `unknown` 未命名道路 — 2090 m
+- `unknown` 日发路 — 215 m
+- `unknown` 丽江路 — 945 m
+- `unknown` 江滨西路 — 4516 m
+- `unknown` 江滨中路 — 565 m
+- `unknown` 南坑西路 — 534 m
+- `unknown` 环城南路 — 94 m
 - `unknown` 人民中路 — 377 m
 - `unknown` 未命名道路 — 30 m
 - `unknown` 未命名道路 — 103 m
 - `unknown` 未命名道路 — 36 m
-- 无自动生成的复核项。
+- 待处理复核项：
+  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：绍兴经三界至新昌的缓存候选重新按京福线=G104分类后，绍兴—三界三条候选均含12324米京福线；三界—新昌选择三条候选中最低的2895米，合计保留实测15219米。
 
 ### main-06-to-main-07
 - `unknown` 未命名道路 — 36 m
@@ -328,7 +369,7 @@
 - `unknown` 横街 — 193 m
 - `unknown` 环城南路 — 323 m
 - `unknown` 城南路 — 1750 m
-- `unknown` 京福线 — 22 m
+- `national` 京福线 — 22 m
 - `unknown` 新胡线 — 1222 m
 - `unknown` 新胡线 — 5674 m
 - `unknown` 新胡线 — 1300 m
@@ -336,14 +377,14 @@
 - `unknown` 新胡线 — 539 m
 - `county` 619县道 — 8176 m
 - `unknown` 太下线 — 229 m
-- `unknown` 京福线 — 5041 m
-- `unknown` 京福线 — 5111 m
+- `national` 京福线 — 5041 m
+- `national` 京福线 — 5111 m
 - `national` 104国道 — 335 m
 - `national` 104国道 — 1895 m
 - `national` 104国道 — 7515 m
 - `unknown` 未命名道路 — 13 m
 - `unknown` 未命名道路 — 155 m
-- `unknown` 京福线 — 7575 m
+- `national` 京福线 — 7575 m
 - `unknown` 丽泽大道 — 21 m
 - `unknown` 未命名道路 — 25 m
 - `unknown` 济公大道 — 59 m
@@ -356,7 +397,7 @@
 - `unknown` 未命名道路 — 40 m
 - `unknown` 未命名道路 — 94 m
 - 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：新昌儒岙至天台白鹤的山口段，两条已返回骑行候选均共用同一段104国道；两侧县乡道路在分水岭山区不构成连续铺装通道，保留实测9745米。
+  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：将京福线及辅路按G104重分类后，新昌儒岙至天台白鹤两条缓存骑行候选分别含45244米和27494米国道；保留较低的实测27494米，仍须道路级复核。
 
 ### main-07-to-main-08
 - `unknown` 未命名道路 — 94 m
@@ -513,17 +554,33 @@
 - `national` 104国道 — 251 m
 - `national` 104国道 — 5045 m
 - `national` 104国道 — 261 m
-- `unknown` 京福线 — 13116 m
-- `national` 104国道 — 221 m
-- `unknown` 未命名道路 — 58 m
-- `unknown` 未命名道路 — 2084 m
-- `unknown` 未命名道路 — 1888 m
-- `unknown` 飞虹南路 — 37 m
-- `unknown` 未命名道路 — 51 m
-- `national` 104国道辅路 — 56 m
-- `unknown` 未命名道路 — 3119 m
-- `unknown` 宁康东路 — 13 m
-- `unknown` 未命名道路 — 6445 m
+- `national` 104国道 — 2291 m
+- `unknown` 石清线 — 4120 m
+- `unknown` 未命名道路 — 206 m
+- `unknown` 石清线 — 1470 m
+- `unknown` 珍上线 — 34 m
+- `unknown` 珍上线 — 63 m
+- `unknown` 未命名道路 — 73 m
+- `unknown` 未命名道路 — 88 m
+- `unknown` 未命名道路 — 101 m
+- `unknown` 未命名道路 — 1175 m
+- `unknown` 繁昌中路 — 243 m
+- `unknown` 未命名道路 — 14 m
+- `unknown` 未命名道路 — 13 m
+- `unknown` 未命名道路 — 2904 m
+- `unknown` 未命名道路 — 1730 m
+- `unknown` 东诚路 — 744 m
+- `unknown` 育英路 — 436 m
+- `unknown` 西城路 — 1585 m
+- `unknown` 未命名道路 — 72 m
+- `unknown` 未命名道路 — 64 m
+- `unknown` 西城路 — 384 m
+- `unknown` 镇小路 — 610 m
+- `unknown` 未命名道路 — 713 m
+- `unknown` 未命名道路 — 1189 m
+- `unknown` 合兴环岛 — 71 m
+- `unknown` 未命名道路 — 444 m
+- `unknown` 未命名道路 — 9365 m
 - `unknown` 未命名道路 — 105 m
 - `unknown` 未命名道路 — 26 m
 - `unknown` 宁康东路 — 16 m
@@ -531,7 +588,7 @@
 - `unknown` 未命名道路 — 215 m
 - `unknown` 未命名道路 — 191 m
 - 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：温岭大溪至乐清大荆、雁荡的山海夹峙走廊中，三条骑行候选均使用104国道且其余候选用量更高；平行镇道不能连续穿越山口，保留最短实测15307米。
+  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：将京福线及辅路按G104重分类后，温岭至乐清三条缓存骑行候选分别含28423米、17321米和35062米国道；保留最低的实测17321米，仍须道路级复核。
 
 ### main-10-to-main-11
 - `unknown` 未命名道路 — 191 m
@@ -553,7 +610,7 @@
 - `unknown` 柳江路 — 380 m
 - `unknown` 北环南路 — 6635 m
 - `national` 104国道 — 2478 m
-- `unknown` 京福线辅路 — 1753 m
+- `national` 京福线辅路 — 1753 m
 - `national` 104国道 — 637 m
 - `national` 104国道 — 219 m
 - `national` 104国道 — 1014 m
@@ -577,7 +634,7 @@
 - `unknown` 绣山路 — 1035 m
 - `unknown` 未命名道路 — 145 m
 - 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：乐清北白象一带铁路、河道与高速互通切割平行镇道，三条骑行候选均使用104国道；已选方案把国道暴露降至最低，保留实测4348米。
+  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：将京福线及辅路按G104重分类后，乐清至温州三条缓存骑行候选分别含21561米、13023米和6101米国道；保留最低的实测6101米，仍须道路级复核。
 
 ### main-11-to-main-12
 - `unknown` 未命名道路 — 123 m
@@ -631,26 +688,26 @@
 - `unknown` 未命名道路 — 99 m
 - `unknown` 大桥南路 — 692 m
 - `unknown` 瑞安段 — 34 m
-- `unknown` 京福线 — 7162 m
-- `unknown` 京福线 — 1819 m
+- `national` 京福线 — 7162 m
+- `national` 京福线 — 1819 m
 - `unknown` 会文路 — 328 m
 - `unknown` 会文路 — 1027 m
 - `unknown` 未命名道路 — 4828 m
 - `unknown` 未命名道路 — 364 m
 - `unknown` 平鳌路 — 493 m
-- `unknown` 京福线 — 187 m
-- `unknown` 京福线 — 1650 m
-- `unknown` 京福线 — 1816 m
+- `national` 京福线 — 187 m
+- `national` 京福线 — 1650 m
+- `national` 京福线 — 1816 m
 - `unknown` 广场路 — 21 m
 - `unknown` 未命名道路 — 32 m
-- `unknown` 京福线 — 8074 m
+- `national` 京福线 — 8074 m
 - `unknown` 青岱线 — 44 m
-- `unknown` 京福线 — 2330 m
+- `national` 京福线 — 2330 m
 - `unknown` 萧江互通 — 29 m
 - `unknown` 未命名道路 — 41 m
-- `unknown` 京福线 — 41 m
-- `unknown` 京福线 — 1887 m
-- `unknown` 京福线 — 1815 m
+- `national` 京福线 — 41 m
+- `national` 京福线 — 1887 m
+- `national` 京福线 — 1815 m
 - `unknown` 未命名道路 — 485 m
 - `unknown` 人民大道 — 1576 m
 - `unknown` 渎浦路 — 35 m
@@ -659,26 +716,28 @@
 - `unknown` 未命名道路 — 83 m
 - `unknown` 未命名道路 — 129 m
 - `unknown` 未命名道路 — 65 m
-- 无自动生成的复核项。
+- 待处理复核项：
+  - [hard] `SAFE_ALTERNATIVE_BLOCKED_BY_QUOTA`：缓存候选均经过萧江互通；平阳替代探路因AMap每日配额耗尽未能完成。
 
 ### main-12-to-main-13
 - `unknown` 未命名道路 — 153 m
 - `unknown` 未命名道路 — 196 m
 - `unknown` 未命名道路 — 44 m
 - `unknown` 人民大道 — 1669 m
-- `unknown` 江湾路 — 194 m
-- `unknown` 河滨东路 — 425 m
-- `unknown` 望鹤路 — 24 m
-- `unknown` 河滨西路 — 1495 m
-- `unknown` 灵溪街 — 13 m
-- `unknown` 灵溪路 — 127 m
-- `unknown` 灵浦路 — 148 m
-- `unknown` 京福线 — 4115 m
-- `unknown` 三美路 — 1984 m
-- `county` 528县道 — 2217 m
-- `county` 528县道 — 3261 m
-- `county` 528县道 — 5144 m
-- `provincial` 232省道 — 1121 m
+- `unknown` 江湾路 — 419 m
+- `unknown` 玉苍路 — 910 m
+- `unknown` 城中路 — 367 m
+- `unknown` 城中南路 — 20 m
+- `unknown` 城中南路 — 204 m
+- `unknown` 城中南路 — 1137 m
+- `unknown` 未命名道路 — 873 m
+- `unknown` 未命名道路 — 403 m
+- `unknown` 未命名道路 — 41 m
+- `unknown` 大观岭隧道 — 376 m
+- `unknown` 未命名道路 — 1805 m
+- `unknown` 未命名道路 — 1683 m
+- `unknown` 未命名道路 — 955 m
+- `provincial` 232省道 — 9005 m
 - `county` 528县道 — 3346 m
 - `provincial` 232省道 — 2053 m
 - `provincial` 232省道 — 9940 m
@@ -1232,75 +1291,73 @@
 - `unknown` 未命名道路 — 46 m
 - 待处理复核项：
   - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：莆田至惠安的内陆候选最低仍需356/324国道；经笏石、东庄、辋川的沿海镇道试跑反而增加国道至20792米并产生51%以上绕行，保留最短实测14875米。
+  - [hard] `SAFE_ALTERNATIVE_BLOCKED_BY_QUOTA`：缓存候选均经过兴港路货运连接线，部分另含S55秀永支线入口；新替代探路因AMap每日配额耗尽未能完成。
 
 ### main-18-to-main-19
 - `unknown` 未命名道路 — 46 m
-- `unknown` 世纪大道 — 258 m
-- `unknown` 后窑路 — 780 m
-- `unknown` 未命名道路 — 361 m
-- `unknown` 未命名道路 — 90 m
-- `unknown` 惠安大道 — 501 m
-- `unknown` 惠紫公路 — 47 m
-- `unknown` 未命名道路 — 29 m
-- `unknown` 未命名道路 — 83 m
-- `unknown` 惠安大道 — 6021 m
-- `unknown` 未命名道路 — 48 m
-- `unknown` 惠安大道辅路 — 528 m
-- `unknown` 黄塘街 — 30 m
-- `unknown` 未命名道路 — 27 m
-- `unknown` 黄塘街 — 71 m
-- `unknown` 黄塘街 — 1640 m
-- `unknown` 黄塘街 — 32 m
-- `unknown` 城西大道 — 5825 m
-- `unknown` 洛阳大道 — 44 m
+- `unknown` 世纪大道 — 568 m
+- `unknown` 迎宾西路 — 40 m
+- `unknown` 未命名道路 — 33 m
+- `unknown` 未命名道路 — 88 m
+- `unknown` 未命名道路 — 353 m
+- `unknown` 未命名道路 — 495 m
+- `unknown` 惠泉南路 — 751 m
+- `unknown` 南环路 — 24 m
+- `unknown` 未命名道路 — 39 m
+- `unknown` 惠泉南路 — 69 m
+- `unknown` 惠泉南路 — 3840 m
+- `national` 324国道 — 8090 m
+- `unknown` 城西大道 — 24 m
+- `unknown` 未命名道路 — 31 m
+- `unknown` 洛阳大道 — 34 m
 - `unknown` 北迎宾大道 — 544 m
 - `unknown` 北迎宾大道出口 — 266 m
 - `unknown` 滨江大道 — 28 m
 - `unknown` 未命名道路 — 1270 m
 - `unknown` 未命名道路 — 68 m
-- `unknown` 万虹大道 — 40 m
-- `unknown` 未命名道路 — 283 m
-- `unknown` 安顺路 — 258 m
-- `unknown` 广济路 — 308 m
-- `unknown` 未命名道路 — 541 m
-- `unknown` 毓秀路 — 206 m
-- `unknown` 未命名道路 — 236 m
-- `unknown` 未命名道路 — 35 m
-- `unknown` 东辅路 — 137 m
-- `unknown` 城东街 — 42 m
-- `unknown` 未命名道路 — 46 m
-- `unknown` 城东街 — 68 m
-- `unknown` 东辅路 — 443 m
-- `unknown` 体育街 — 29 m
+- `unknown` 未命名道路 — 421 m
+- `unknown` 安和路 — 171 m
+- `unknown` 安和路 — 95 m
+- `unknown` 法美路 — 1562 m
+- `unknown` 城华北路辅路 — 570 m
+- `unknown` 城华南路辅路 — 2856 m
+- `unknown` 东湖街辅路 — 417 m
+- `unknown` 东湖街辅路 — 1142 m
+- `unknown` 未命名道路 — 24 m
+- `unknown` 灵山路 — 516 m
+- `unknown` 湖心街 — 172 m
+- `unknown` 圣湖路 — 1053 m
+- `unknown` 田淮街 — 644 m
+- `unknown` 坪山路辅路 — 998 m
+- `unknown` 未命名道路 — 34 m
+- `unknown` 泉秀街 — 64 m
+- `unknown` 泉秀街 — 100 m
+- `unknown` 未命名道路 — 2542 m
 - `unknown` 未命名道路 — 41 m
-- `unknown` 东辅路 — 41 m
-- `unknown` 东辅路 — 406 m
-- `unknown` 通源街 — 31 m
-- `unknown` 东辅路 — 2577 m
-- `unknown` 山海路 — 50 m
-- `unknown` 未命名道路 — 137 m
-- `unknown` 未命名道路 — 690 m
-- `unknown` 未命名道路 — 88 m
-- `unknown` 未命名道路 — 113 m
-- `unknown` 未命名道路 — 471 m
-- `unknown` 未命名道路 — 754 m
-- `unknown` 生态路 — 858 m
-- `unknown` 未命名道路 — 195 m
-- `unknown` 后亭路 — 2079 m
-- `unknown` 未命名道路 — 71 m
-- `unknown` 未命名道路 — 76 m
-- `unknown` 未命名道路 — 99 m
-- `unknown` 未命名道路 — 53 m
-- `unknown` 通港路辅路 — 834 m
-- `unknown` 未命名道路 — 567 m
-- `unknown` 未命名道路 — 1064 m
-- `unknown` 双垵街 — 27 m
-- `unknown` 双垵街 — 612 m
-- `unknown` 未命名道路 — 264 m
-- `unknown` 海星街 — 78 m
-- `unknown` 未命名道路 — 173 m
-- `unknown` 未命名道路 — 158 m
-- 无自动生成的复核项。
+- `unknown` 未命名道路 — 305 m
+- `unknown` 海丝大街 — 15 m
+- `unknown` 未命名道路 — 263 m
+- `provincial` 201省道 — 47 m
+- `unknown` 东滨路 — 95 m
+- `unknown` 未命名道路 — 210 m
+- `unknown` 东海大街 — 17 m
+- `unknown` 东海大街 — 2675 m
+- `unknown` 未命名道路 — 46 m
+- `unknown` 东海大街 — 211 m
+- `unknown` 滨海街 — 62 m
+- `unknown` 未命名道路 — 333 m
+- `unknown` 滨海街辅路 — 36 m
+- `unknown` 滨海街辅路 — 850 m
+- `unknown` 未命名道路 — 35 m
+- `unknown` 未命名道路 — 44 m
+- `unknown` 府西路 — 47 m
+- `unknown` 府西路 — 45 m
+- `unknown` 府西路 — 413 m
+- `unknown` 海星街 — 86 m
+- `unknown` 未命名道路 — 181 m
+- `unknown` 未命名道路 — 168 m
+- 待处理复核项：
+  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：惠安至泉州的前两条缓存候选均经过834米通港路辅路，按货运道路政策拒绝；唯一无hard/freight标签的第三候选仍含8090米国道，暂保留并要求道路级复核。
 
 ### main-19-to-main-20
 - `unknown` 未命名道路 — 168 m

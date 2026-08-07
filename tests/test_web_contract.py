@@ -29,7 +29,22 @@ class WebMapContractTests(unittest.TestCase):
 
         self.assertIn("day-heading", js)
         self.assertIn("第 ${day} 天", js)
-        self.assertIn("entry.day", js)
+        self.assertIn("summary.segment_days", js)
+
+    def test_map_publishes_provisional_limits_and_practical_day_duration(self):
+        html = Path("web/index.html").read_text(encoding="utf-8")
+        js = Path("web/app.mjs").read_text(encoding="utf-8")
+
+        self.assertIn('id="route-limitations"', html)
+        self.assertIn('id="daily-schedule"', html)
+        self.assertIn("blank_name_distance_m", js)
+        self.assertIn("unknown_percent", js)
+        self.assertIn("quota_limited_probes", js)
+        self.assertIn("duration_limit_met", js)
+        self.assertIn("自动检查通过（仍需道路级复核）", js)
+        self.assertIn("阻断：不得作为可骑行路线发布", js)
+        self.assertIn('risk_tags.includes("freight")', js)
+        self.assertNotIn('approved: "已通过"', js)
 
     def test_map_deduplicates_segment_level_reviews_but_keeps_hard_steps(self):
         js = Path("web/app.mjs").read_text(encoding="utf-8")

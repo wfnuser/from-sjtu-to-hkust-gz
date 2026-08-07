@@ -19,7 +19,7 @@
         <header class="masthead">
           <p class="eyebrow">上海交通大学闵行校区 → 香港科技大学（广州）</p>
           <h1>沿海电助力骑行路线</h1>
-          <p class="intro">仅展示已生成的实际道路步骤；路线与总计以发布的 GeoJSON 和汇总文件为准。</p>
+          <p class="intro">临时路线：自动检查不等于道路级核验，请在出发前逐段复核。</p>
         </header>
 
         <section class="summary-card" aria-labelledby="main-totals-heading">
@@ -33,6 +33,19 @@
             <div><dt>待复核</dt><dd>—</dd></div>
           </dl>
           <p class="summary-note">宁波、深圳支线默认关闭，且不计入主线总计。</p>
+        </section>
+
+        <section class="panel" aria-labelledby="limitations-heading">
+          <h2 id="limitations-heading">已知限制</h2>
+          <ul id="route-limitations"></ul>
+        </section>
+
+        <section class="panel" aria-labelledby="schedule-heading">
+          <div class="section-heading">
+            <h2 id="schedule-heading">每日计划</h2>
+            <span id="schedule-count"></span>
+          </div>
+          <div id="daily-schedule"></div>
         </section>
 
         <section class="panel controls" aria-labelledby="branch-heading">

@@ -17,11 +17,15 @@ FREIGHT_RISK_TERMS = (
     "矿区",
     "砂石",
     "高速连接线",
+    "通港",
+    "兴港",
 )
 
 _NATIONAL_ROAD = re.compile(r"^\s*G\d{3,4}(?!\d)", re.IGNORECASE)
 _PROVINCIAL_ROAD = re.compile(r"^\s*S\d{3}(?!\d)", re.IGNORECASE)
 _COUNTY_ROAD = re.compile(r"^\s*[XY]\d{3,4}(?!\d)", re.IGNORECASE)
+_NATIONAL_ALIASES = ("京福线",)
+_EXPRESSWAY_ACCESS = re.compile(r"(?:支线.*(?:入口|出口)|互通|收费站|匝道)")
 
 
 @dataclass(frozen=True)
@@ -44,7 +48,11 @@ def classify_road(road_name: str, instruction: str = "") -> RoadClass:
     for text in (road_name, instruction):
         if not text:
             continue
-        if _NATIONAL_ROAD.match(text) or "国道" in text:
+        if (
+            _NATIONAL_ROAD.match(text)
+            or "国道" in text
+            or any(alias in text for alias in _NATIONAL_ALIASES)
+        ):
             return RoadClass.NATIONAL
         if _PROVINCIAL_ROAD.match(text) or "省道" in text:
             return RoadClass.PROVINCIAL
@@ -61,7 +69,7 @@ def classify_risks(road_name: str, instruction: str) -> frozenset[str]:
     """Identify hard exclusion and freight-exposure markers in route text."""
     text = f"{road_name} {instruction}"
     tags = set()
-    if any(term in text for term in HARD_RISK_TERMS):
+    if any(term in text for term in HARD_RISK_TERMS) or _EXPRESSWAY_ACCESS.search(text):
         tags.add("hard")
     if any(term in text for term in FREIGHT_RISK_TERMS):
         tags.add("freight")
@@ -97,7 +105,7 @@ def choose_candidate(
     eligible = []
     for candidate in candidates:
         metrics = candidate_metrics(candidate)
-        if metrics.hard_risk_m:
+        if metrics.hard_risk_m or metrics.freight_risk_m:
             continue
         if (
             rule.parallel_road_available

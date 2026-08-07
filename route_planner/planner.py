@@ -66,6 +66,7 @@ class RoutePlanner:
             steps=tuple(step for subleg in selected_sublegs for step in subleg.steps),
         )
         subleg_distances_m = tuple(subleg.distance_m for subleg in selected_sublegs)
+        subleg_durations_s = tuple(subleg.duration_s for subleg in selected_sublegs)
         detour_ratio = selected.distance_m / baseline.distance_m
         reviews = _reviews(rule, selected, detour_ratio, subleg_distances_m)
         return PlannedSegment(
@@ -78,6 +79,7 @@ class RoutePlanner:
             detour_ratio=detour_ratio,
             subleg_distances_m=subleg_distances_m,
             reviews=reviews,
+            subleg_durations_s=subleg_durations_s,
         )
 
 

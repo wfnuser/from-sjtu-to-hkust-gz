@@ -72,6 +72,7 @@ def _segment_data(segment: PlannedSegment) -> dict[str, object]:
         },
         "detour_ratio": segment.detour_ratio,
         "subleg_distances_m": list(segment.subleg_distances_m),
+        "subleg_durations_s": list(segment.subleg_durations_s),
         "reviews": [
             {
                 "code": review.code,
@@ -106,6 +107,16 @@ def _coordinate_data(coordinate: Coordinate) -> dict[str, float]:
 def _segment_from_data(value: dict[str, Any]) -> PlannedSegment:
     selected = _mapping(value["selected"])
     steps = tuple(_step_from_data(_mapping(item)) for item in _list(selected["steps"]))
+    subleg_distances = tuple(_integer(item) for item in _list(value["subleg_distances_m"]))
+    subleg_durations = value.get("subleg_durations_s")
+    if subleg_durations is None:
+        parsed_subleg_durations = _proportional_durations(
+            subleg_distances, _integer(selected["duration_s"])
+        )
+    else:
+        parsed_subleg_durations = tuple(
+            _integer(item) for item in _list(subleg_durations)
+        )
     return PlannedSegment(
         _string(value["segment_id"]),
         _waypoint_from_data(_mapping(value["from_waypoint"])),
@@ -119,9 +130,29 @@ def _segment_from_data(value: dict[str, Any]) -> PlannedSegment:
             steps,
         ),
         _number(value["detour_ratio"]),
-        tuple(_integer(item) for item in _list(value["subleg_distances_m"])),
+        subleg_distances,
         tuple(_review_from_data(_mapping(item)) for item in _list(value.get("reviews", []))),
+        parsed_subleg_durations,
     )
+
+
+def _proportional_durations(
+    distances: tuple[int, ...], total_duration_s: int
+) -> tuple[int, ...]:
+    total_distance = sum(distances)
+    if not distances or total_distance <= 0:
+        return ()
+    remaining = total_duration_s
+    durations: list[int] = []
+    for index, distance in enumerate(distances):
+        duration = (
+            remaining
+            if index == len(distances) - 1
+            else round(total_duration_s * distance / total_distance)
+        )
+        durations.append(duration)
+        remaining -= duration
+    return tuple(durations)
 
 
 def _waypoint_from_data(value: dict[str, Any]) -> Waypoint:

@@ -93,11 +93,23 @@ class RoadClassificationTests(unittest.TestCase):
         self.assertEqual(classify_road("环岛绿道"), RoadClass.CYCLEWAY)
         self.assertEqual(classify_road(""), RoadClass.UNKNOWN)
 
+    def test_classifies_authoritative_g104_alias_and_auxiliary_as_national(self):
+        self.assertEqual(classify_road("京福线"), RoadClass.NATIONAL)
+        self.assertEqual(classify_road("京福线辅路"), RoadClass.NATIONAL)
+        self.assertEqual(classify_road("", "沿京福线辅路向南骑行"), RoadClass.NATIONAL)
+
     def test_does_not_classify_embedded_road_numbers(self):
         self.assertEqual(classify_road("前往G228丹东线"), RoadClass.UNKNOWN)
 
     def test_classifies_risks_from_road_name_and_instruction(self):
         self.assertEqual(classify_risks("疏港大道", "进入快速路"), frozenset({"freight", "hard"}))
+
+    def test_classifies_observed_expressway_and_freight_connectors(self):
+        self.assertIn("hard", classify_risks("S55秀永支线入口", "向前骑行"))
+        self.assertIn("hard", classify_risks("萧江互通", "向前骑行"))
+        self.assertIn("hard", classify_risks("收费站匝道", "向前骑行"))
+        self.assertIn("freight", classify_risks("通港路辅路", "向前骑行"))
+        self.assertIn("freight", classify_risks("兴港路", "向前骑行"))
 
 
 class CandidateSelectionTests(unittest.TestCase):
@@ -124,6 +136,16 @@ class CandidateSelectionTests(unittest.TestCase):
 
         self.assertIs(choose_candidate([expressway, county], SegmentRule("a-b")), county)
 
+    def test_freight_risk_is_ineligible_even_if_shorter(self):
+        freight = candidate(0, freight_risk_m=100, distance_m=30_000)
+        county = candidate(1, distance_m=34_000)
+
+        self.assertIs(choose_candidate([freight, county], SegmentRule("a-b")), county)
+
+    def test_raises_review_when_all_candidates_have_freight_risk(self):
+        with self.assertRaises(ReviewRequired):
+            choose_candidate([candidate(0, freight_risk_m=100)], SegmentRule("a-b"))
+
     def test_parallel_road_rule_allows_national_distance_at_the_limit(self):
         at_limit = candidate(0, national_m=1000, distance_m=30_000)
         over_limit = candidate(1, national_m=1001, distance_m=20_000)
@@ -143,13 +165,13 @@ class CandidateSelectionTests(unittest.TestCase):
             lower_national,
         )
 
-    def test_selection_prioritizes_lower_unknown_distance_before_freight_and_distance(self):
-        lower_unknown = candidate(0, freight_risk_m=100, distance_m=50_000)
+    def test_unknown_candidate_remains_eligible_when_alternative_has_freight_risk(self):
+        freight = candidate(0, freight_risk_m=100, distance_m=50_000)
         more_unknown = candidate(1, unknown_m=50, distance_m=10_000)
 
         self.assertIs(
-            choose_candidate([more_unknown, lower_unknown], SegmentRule("a-b")),
-            lower_unknown,
+            choose_candidate([more_unknown, freight], SegmentRule("a-b")),
+            more_unknown,
         )
 
     def test_selection_prioritizes_lower_freight_risk_before_distance(self):

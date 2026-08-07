@@ -1,6 +1,9 @@
-import unittest
+import json
+from pathlib import Path
 import subprocess
 import sys
+import tempfile
+import unittest
 
 from route_planner.coordinates import gcj02_to_wgs84, parse_polyline, resolve_waypoints
 from route_planner.models import Coordinate, GeocodeCandidate, RouteConfig, Waypoint
@@ -43,6 +46,47 @@ class CoordinateTests(unittest.TestCase):
         payload = _resolution_payload(report)
 
         self.assertEqual(payload["resolutions"][0]["candidates"][0]["poi_id"], "B0IGJURJOJ")
+
+    def test_resolver_rerun_preserves_optional_checkin_provenance(self):
+        from scripts.resolve_pois import _write_report
+
+        report = resolve_waypoints(
+            RouteConfig(
+                "test", 1.15,
+                (Waypoint("start", "起点", "上海", "起点"),),
+                (), {}, {},
+            ),
+            _GeocodeClient(
+                {
+                    ("起点", "上海"): (
+                        GeocodeCandidate(
+                            "起点", "上海市起点", "静安区", Coordinate(121.4, 31.2), "POI-MAIN"
+                        ),
+                    )
+                }
+            ),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "poi-resolutions.json"
+            checkins = [{"query": "阳曲路住处", "city": "上海", "candidates": []}]
+            path.write_text(
+                json.dumps(
+                    {
+                        "resolutions": [],
+                        "unresolved_queries": [],
+                        "checkin_resolutions": checkins,
+                        "unresolved_checkin_queries": ["阳曲路住处"],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+
+            _write_report(path, report)
+
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            self.assertEqual(payload["checkin_resolutions"], checkins)
+            self.assertEqual(payload["unresolved_checkin_queries"], ["阳曲路住处"])
 
     def test_parse_polyline_preserves_order(self):
         self.assertEqual(
