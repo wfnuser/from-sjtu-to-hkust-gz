@@ -21,6 +21,8 @@ class WebMapContractTests(unittest.TestCase):
         self.assertNotIn("optionalBranchFor", js)
         self.assertIn("fitReviewFeature", js)
         self.assertIn("路线数据支线标识无效", js)
+        self.assertIn("revealReviewBranch", js)
+        self.assertIn("elements.ningboCheckbox.checked = true", js)
 
 
 if __name__ == "__main__":

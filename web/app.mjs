@@ -172,14 +172,14 @@ function renderReviews() {
   elements.reviewList.innerHTML = "";
   elements.reviewPanel.hidden = reviews.length === 0;
   elements.reviewCount.textContent = reviews.length ? `${reviews.length} 项` : "";
-  for (const { feature, stepLayer } of reviews) {
+  for (const { entry, feature, stepLayer } of reviews) {
     const properties = feature.properties || {};
     const item = document.createElement("li");
     const link = document.createElement("button");
     link.type = "button";
     link.className = "review-link";
     link.innerHTML = `<strong>待复核</strong> · ${escapeHtml(properties.road_name || "未命名道路")}<br>${escapeHtml(properties.from_name || "起点")} → ${escapeHtml(properties.to_name || "终点")}`;
-    link.addEventListener("click", () => fitReviewFeature(stepLayer));
+    link.addEventListener("click", () => fitReviewFeature(entry, stepLayer));
     item.append(link);
     elements.reviewList.append(item);
   }
@@ -190,11 +190,19 @@ function fitSegment(entry) {
   if (bounds.isValid()) map.fitBounds(bounds, { padding: [32, 32] });
 }
 
-function fitReviewFeature(stepLayer) {
+function fitReviewFeature(entry, stepLayer) {
+  revealReviewBranch(entry);
   const bounds = stepLayer?.getBounds();
   if (!bounds?.isValid()) return;
   map.fitBounds(bounds, { padding: [32, 32] });
   stepLayer.openPopup();
+}
+
+function revealReviewBranch(entry) {
+  if (!entry.optional) return;
+  if (entry.branch === "ningbo") elements.ningboCheckbox.checked = true;
+  if (entry.branch === "shenzhen") elements.shenzhenCheckbox.checked = true;
+  optionalLayers[entry.branch]?.addTo(map);
 }
 
 function popupContent(properties) {
