@@ -1,0 +1,82 @@
+import json
+from pathlib import Path
+import tempfile
+import unittest
+
+from route_planner.config import load_route_config
+
+
+class ConfigTests(unittest.TestCase):
+    def test_main_route_is_chinese_and_optional_branches_are_disabled(self):
+        cfg = load_route_config(Path("config/coastal-route.json"))
+        self.assertEqual(cfg.route_id, "coastal-main")
+        self.assertEqual(cfg.waypoints[0].name, "上海交通大学闵行校区")
+        self.assertEqual(cfg.waypoints[-1].name, "香港科技大学（广州）")
+        self.assertIn("杭州阿里巴巴总部", [p.name for p in cfg.waypoints])
+        self.assertFalse(cfg.optional_branches["宁波"].enabled)
+        self.assertFalse(cfg.optional_branches["深圳"].enabled)
+
+    def test_max_detour_is_exactly_fifteen_percent(self):
+        cfg = load_route_config(Path("config/coastal-route.json"))
+        self.assertEqual(cfg.max_detour_ratio, 1.15)
+
+    def test_rejects_a_main_route_with_a_non_chinese_display_name(self):
+        payload = _valid_payload()
+        payload["waypoints"][1]["name"] = "Haining"
+
+        with self.assertRaisesRegex(ValueError, "Chinese"):
+            _load_payload(payload)
+
+    def test_rejects_enabled_optional_branch(self):
+        payload = _valid_payload()
+        payload["optional_branches"]["宁波"]["enabled"] = True
+
+        with self.assertRaisesRegex(ValueError, "disabled"):
+            _load_payload(payload)
+
+    def test_rejects_a_route_without_both_endpoints(self):
+        payload = _valid_payload()
+        payload["waypoints"] = payload["waypoints"][:1]
+
+        with self.assertRaisesRegex(ValueError, "endpoints"):
+            _load_payload(payload)
+
+    def test_rejects_detour_ratio_other_than_fifteen_percent(self):
+        payload = _valid_payload()
+        payload["max_detour_ratio"] = 1.2
+
+        with self.assertRaisesRegex(ValueError, "1.15"):
+            _load_payload(payload)
+
+
+def _valid_payload():
+    return {
+        "route_id": "sample",
+        "max_detour_ratio": 1.15,
+        "waypoints": [
+            {
+                "id": "start",
+                "name": "上海交通大学闵行校区",
+                "city": "上海",
+                "query": "上海交通大学闵行校区",
+                "coordinate": None,
+            },
+            {
+                "id": "end",
+                "name": "香港科技大学（广州）",
+                "city": "广州",
+                "query": "香港科技大学（广州）",
+                "coordinate": None,
+            },
+        ],
+        "checkin_waypoints": [],
+        "segment_rules": {},
+        "optional_branches": {"宁波": {"enabled": False, "waypoints": []}},
+    }
+
+
+def _load_payload(payload):
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        path = Path(temporary_directory) / "route.json"
+        path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+        return load_route_config(path)

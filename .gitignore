@@ -1,4 +1,7 @@
+# Local configuration must remain outside version control.
 .env.local
+.env.*
+!.env.example
 .worktrees/
 .superpowers/
 cache/
