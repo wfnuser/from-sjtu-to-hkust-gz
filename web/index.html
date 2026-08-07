@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>沿海电助力骑行路线</title>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="route-app">
+      <aside class="sidebar" aria-label="路线概览与控制">
+        <header class="masthead">
+          <p class="eyebrow">上海交通大学闵行校区 → 香港科技大学（广州）</p>
+          <h1>沿海电助力骑行路线</h1>
+          <p class="intro">仅展示已生成的实际道路步骤；路线与总计以发布的 GeoJSON 和汇总文件为准。</p>
+        </header>
+
+        <section class="summary-card" aria-labelledby="main-totals-heading">
+          <div class="section-heading">
+            <h2 id="main-totals-heading">沿海主线</h2>
+            <span class="status-badge" id="route-status">载入中</span>
+          </div>
+          <dl class="totals" id="main-totals">
+            <div><dt>距离</dt><dd>—</dd></div>
+            <div><dt>预计骑行</dt><dd>—</dd></div>
+            <div><dt>待复核</dt><dd>—</dd></div>
+          </dl>
+          <p class="summary-note">宁波、深圳支线默认关闭，且不计入主线总计。</p>
+        </section>
+
+        <section class="panel controls" aria-labelledby="branch-heading">
+          <h2 id="branch-heading">可选支线</h2>
+          <label class="branch-control" for="ningbo-branch">
+            <input id="ningbo-branch" type="checkbox" data-branch="ningbo">
+            <span>宁波支线</span>
+          </label>
+          <label class="branch-control" for="shenzhen-branch">
+            <input id="shenzhen-branch" type="checkbox" data-branch="shenzhen">
+            <span>深圳支线</span>
+          </label>
+        </section>
+
+        <section class="panel legend" aria-labelledby="legend-heading">
+          <h2 id="legend-heading">道路图例</h2>
+          <ul>
+            <li><span class="swatch cycleway"></span>骑行道</li>
+            <li><span class="swatch county"></span>县道／旅游道路</li>
+            <li><span class="swatch provincial"></span>省道</li>
+            <li><span class="swatch national"></span>国道</li>
+            <li><span class="swatch review"></span>需人工复核</li>
+            <li><span class="swatch optional"></span>可选支线</li>
+          </ul>
+        </section>
+
+        <section class="panel" aria-labelledby="segments-heading">
+          <div class="section-heading">
+            <h2 id="segments-heading">分段路线</h2>
+            <span id="segment-count" aria-live="polite"></span>
+          </div>
+          <div class="segment-cards" id="segment-cards"></div>
+        </section>
+
+        <section class="panel reviews" id="review-panel" hidden aria-labelledby="reviews-heading">
+          <div class="section-heading">
+            <h2 id="reviews-heading">人工复核</h2>
+            <span id="review-count"></span>
+          </div>
+          <ul id="review-list"></ul>
+        </section>
+      </aside>
+
+      <section class="map-pane" aria-label="实际道路地图">
+        <div id="map" aria-label="沿海实际道路地图"></div>
+        <div class="map-message" id="map-message" role="status" aria-live="polite">正在载入路线数据…</div>
+      </section>
+    </main>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script type="module" src="app.mjs"></script>
+  </body>
+</html>
