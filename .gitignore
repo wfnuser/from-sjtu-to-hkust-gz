@@ -1,0 +1,6 @@
+.env.local
+.worktrees/
+.superpowers/
+cache/
+__pycache__/
+*.pyc
