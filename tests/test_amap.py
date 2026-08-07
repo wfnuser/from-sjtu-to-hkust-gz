@@ -97,6 +97,32 @@ class AmapClientTests(unittest.TestCase):
         self.assertEqual(candidates[0].district, "")
         self.assertEqual(candidates[0].location_gcj, ORIGIN)
 
+    def test_geocode_falls_back_to_place_search_with_poi_provenance_on_engine_error(self):
+        client = AmapClient("sanitized-test-key", Path(self.tmp.name), min_interval_s=0)
+        payloads = iter(
+            (
+                b'{"status":"0","info":"ENGINE_RESPONSE_DATA_ERROR","infocode":"30001"}',
+                (FIXTURES / "place-text-ok.json").read_bytes(),
+            )
+        )
+        requested_urls = []
+
+        def queued_urlopen(request, timeout=30, **kwargs):
+            requested_urls.append(request.full_url)
+            return _Response(next(payloads))
+
+        client._urlopen = queued_urlopen
+
+        candidates = client.geocode("香港科技大学（广州）", "广州")
+
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0].poi_id, "B0IGJURJOJ")
+        self.assertEqual(candidates[0].name, "香港科技大学(广州)")
+        self.assertEqual(candidates[0].formatted_address, "广东省广州市南沙区笃学路1号")
+        self.assertEqual(candidates[0].district, "南沙区")
+        self.assertIn("/v3/geocode/geo?", requested_urls[0])
+        self.assertIn("/v3/place/text?", requested_urls[1])
+
     def test_non_ok_infocode_raises_without_logging_key_or_cache_file(self):
         client = self.fixture_client("invalid-key.json")
         with self.assertRaisesRegex(AmapError, "10001") as caught:
@@ -153,6 +179,11 @@ class AmapClientTests(unittest.TestCase):
         sleep.assert_called_once()
         self.assertAlmostEqual(sleep.call_args.args[0], 0.24)
         self.assertEqual(client._last_start_monotonic, 10.34)
+
+    def test_default_throttle_does_not_exceed_one_live_request_per_second(self):
+        client = AmapClient("sanitized-test-key", Path(self.tmp.name))
+
+        self.assertGreaterEqual(client.min_interval_s, 1.0)
 
     def test_tls_context_verifies_certificates_and_hostnames(self):
         client = AmapClient("sanitized-test-key", Path(self.tmp.name), min_interval_s=0)

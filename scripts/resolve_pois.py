@@ -40,13 +40,26 @@ def _arguments() -> argparse.Namespace:
 
 
 def _write_report(path: Path, report: ResolutionReport) -> None:
-    payload = {
+    payload = _resolution_payload(report)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+        "w", encoding="utf-8", dir=path.parent, prefix=f".{path.name}.", delete=False
+    ) as temporary:
+        json.dump(payload, temporary, ensure_ascii=False, indent=2)
+        temporary.write("\n")
+        temporary_path = Path(temporary.name)
+    os.replace(temporary_path, path)
+
+
+def _resolution_payload(report: ResolutionReport) -> dict[str, object]:
+    return {
         "resolutions": [
             {
                 "query": resolution.query,
                 "city": resolution.city,
                 "candidates": [
                     {
+                        "poi_id": candidate.poi_id,
                         "name": candidate.name,
                         "formatted_address": candidate.formatted_address,
                         "district": candidate.district,
@@ -63,14 +76,6 @@ def _write_report(path: Path, report: ResolutionReport) -> None:
         ],
         "unresolved_queries": list(report.unresolved_queries),
     }
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile(
-        "w", encoding="utf-8", dir=path.parent, prefix=f".{path.name}.", delete=False
-    ) as temporary:
-        json.dump(payload, temporary, ensure_ascii=False, indent=2)
-        temporary.write("\n")
-        temporary_path = Path(temporary.name)
-    os.replace(temporary_path, path)
 
 
 def _print_review_table(report: ResolutionReport) -> None:

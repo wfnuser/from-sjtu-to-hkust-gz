@@ -26,6 +26,7 @@ class SegmentRule:
     parallel_road_available: bool = False
     allowed_national_m: int = 0
     day: int | None = None
+    national_exception_reason: str = ""
 
 
 @dataclass(frozen=True)
@@ -87,6 +88,7 @@ class GeocodeCandidate:
     formatted_address: str
     district: str
     location_gcj: Coordinate
+    poi_id: str = ""
 
 
 @dataclass(frozen=True)

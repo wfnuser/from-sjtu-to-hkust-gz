@@ -51,6 +51,7 @@ def _segment_data(segment: PlannedSegment) -> dict[str, object]:
             "parallel_road_available": segment.rule.parallel_road_available,
             "allowed_national_m": segment.rule.allowed_national_m,
             "day": segment.rule.day,
+            "national_exception_reason": segment.rule.national_exception_reason,
         },
         "baseline_distance_m": segment.baseline_distance_m,
         "selected": {
@@ -138,6 +139,7 @@ def _rule_from_data(value: dict[str, Any]) -> SegmentRule:
         _string(value["segment_id"]), tuple(_string(item) for item in _list(value["anchor_queries"])),
         _bool(value["parallel_road_available"]), _integer(value["allowed_national_m"]),
         _integer(day) if day is not None else None,
+        _string(value.get("national_exception_reason", "")),
     )
 
 

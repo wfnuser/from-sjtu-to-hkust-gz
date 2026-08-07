@@ -73,6 +73,8 @@ def _audit_segment(segment: PlannedSegment) -> list[ReviewItem]:
     if national_distance_m:
         if segment.rule.parallel_road_available and national_distance_m > segment.rule.allowed_national_m:
             items.append(_item("PARALLEL_ROAD_RULE_VIOLATION", segment.segment_id, "National road selected despite an available parallel road.", national_distance_m))
+        elif national_distance_m > segment.rule.allowed_national_m:
+            items.append(_item("NATIONAL_ROAD_ALLOWANCE_EXCEEDED", segment.segment_id, "National-road distance exceeds the measured unavoidable allowance.", national_distance_m))
         elif not any(item.code == NATIONAL_EXCEPTION_APPROVAL for item in segment.reviews):
             items.append(_item("NATIONAL_ROAD_EXCEPTION_UNREVIEWED", segment.segment_id, "National-road use lacks an explicit recorded review approval.", national_distance_m))
     return items

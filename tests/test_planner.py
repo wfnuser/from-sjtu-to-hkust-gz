@@ -56,6 +56,29 @@ class RoutePlannerTests(unittest.TestCase):
         with self.assertRaisesRegex(ReviewRequired, "real API polyline"):
             RoutePlanner(_EmptyRouteClient()).plan_segment(START, END, RULE)
 
+    def test_anchor_can_declare_its_actual_city_for_cross_city_segments(self):
+        client = _FakeAmapClient(direct_distance_m=100_000, subleg_distances_m=(50_000, 50_000))
+        rule = SegmentRule("a-b", ("深圳::南澳街道",), True)
+
+        RoutePlanner(client).plan_segment(START, END, rule)
+
+        self.assertIn(("南澳街道", "深圳"), client.geocode_calls)
+
+    def test_measured_national_exception_reason_creates_audit_approval(self):
+        client = _NationalAmapClient()
+        rule = SegmentRule(
+            "a-b",
+            allowed_national_m=1_000,
+            national_exception_reason="连续铺装的平行县乡道中断，保留国道接驳段。",
+        )
+
+        planned = RoutePlanner(client).plan_segment(START, END, rule)
+
+        approvals = [item for item in planned.reviews if item.code == "NATIONAL_ROAD_EXCEPTION_APPROVED"]
+        self.assertEqual(len(approvals), 1)
+        self.assertEqual(approvals[0].distance_m, 1_000)
+        self.assertIn("连续铺装", approvals[0].message)
+
 
 class _FakeAmapClient:
     def __init__(self, *, direct_distance_m, subleg_distances_m):
@@ -63,10 +86,14 @@ class _FakeAmapClient:
         self._direct_distance_m = direct_distance_m
         self._subleg_distances_m = subleg_distances_m
         self._subleg_index = 0
+        self.geocode_calls = []
 
     def geocode(self, query, city):
+        self.geocode_calls.append((query, city))
         if query != "S201省道锚点":
-            raise AssertionError(query)
+            if (query, city) == ("南澳街道", "深圳"):
+                return (ShenzhenGeocodeAnchor,)
+            raise AssertionError((query, city))
         return (GeocodeAnchor,)
 
     def electrobike(self, origin, destination):
@@ -86,6 +113,26 @@ class _EmptyRouteClient:
         return (CandidateRoute(0, 1_000, 100, ()),)
 
 
+class _NationalAmapClient:
+    def electrobike(self, origin, destination):
+        return (
+            CandidateRoute(
+                0,
+                1_000,
+                200,
+                (
+                    RouteStep(
+                        "沿104国道骑行",
+                        "104国道",
+                        1_000,
+                        (origin, destination),
+                        RoadClass.NATIONAL,
+                    ),
+                ),
+            ),
+        )
+
+
 GeocodeAnchor = type(
     "GeocodeAnchor",
     (),
@@ -94,6 +141,17 @@ GeocodeAnchor = type(
         "formatted_address": "上海市",
         "district": "",
         "location_gcj": Coordinate(121.15, 31.15),
+    },
+)()
+
+ShenzhenGeocodeAnchor = type(
+    "ShenzhenGeocodeAnchor",
+    (),
+    {
+        "name": "南澳街道",
+        "formatted_address": "广东省深圳市龙岗区",
+        "district": "龙岗区",
+        "location_gcj": Coordinate(114.48, 22.55),
     },
 )()
 

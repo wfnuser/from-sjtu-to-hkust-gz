@@ -1,0 +1,17 @@
+{
+  "status": "1",
+  "count": "1",
+  "info": "OK",
+  "infocode": "10000",
+  "pois": [
+    {
+      "id": "B0IGJURJOJ",
+      "name": "香港科技大学(广州)",
+      "address": "笃学路1号",
+      "pname": "广东省",
+      "cityname": "广州市",
+      "adname": "南沙区",
+      "location": "113.484507,22.889043"
+    }
+  ]
+}

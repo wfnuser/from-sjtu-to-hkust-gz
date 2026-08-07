@@ -42,9 +42,29 @@ def build_summary(
     return {
         "max_detour_ratio": max_detour_ratio,
         "main": _totals(main),
+        "days": _day_summaries(main),
         "all_branches": _totals(segments),
         "optional_branch_excluded": _totals(optional),
     }
+
+
+def _day_summaries(segments: Sequence[PlannedSegment]) -> list[dict[str, object]]:
+    by_day: dict[int, list[PlannedSegment]] = {}
+    for segment in segments:
+        if segment.rule.day is not None:
+            by_day.setdefault(segment.rule.day, []).append(segment)
+    summaries: list[dict[str, object]] = []
+    for day, day_segments in sorted(by_day.items()):
+        totals = _totals(day_segments)
+        summaries.append(
+            {
+                "day": day,
+                "from_name": day_segments[0].from_waypoint.name,
+                "to_name": day_segments[-1].to_waypoint.name,
+                **totals,
+            }
+        )
+    return summaries
 
 
 def build_review_markdown(segments: Sequence[PlannedSegment]) -> str:

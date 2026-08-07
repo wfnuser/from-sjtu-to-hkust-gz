@@ -52,7 +52,7 @@ def load_amap_key(path: Path) -> str:
 class AmapClient:
     """Fetch AMap responses without putting credentials in cache material or errors."""
 
-    def __init__(self, key: str, cache_dir: Path, min_interval_s: float = 0.34):
+    def __init__(self, key: str, cache_dir: Path, min_interval_s: float = 1.05):
         if not isinstance(key, str) or not key:
             raise ValueError("AMap key must be a non-empty string")
         if min_interval_s < 0:
@@ -99,9 +99,34 @@ class AmapClient:
             raise ValueError("query must be a non-empty string")
         if not isinstance(city, str) or not city:
             raise ValueError("city must be a non-empty string")
-        payload = self._fetch("/v3/geocode/geo", {"address": query, "city": city})
+        try:
+            payload = self._fetch("/v3/geocode/geo", {"address": query, "city": city})
+        except AmapError as error:
+            if "30001 ENGINE_RESPONSE_DATA_ERROR" not in str(error):
+                raise
+            return self.search_pois(query, city)
         geocodes = _expect_list(payload.get("geocodes"), "geocodes")
         return tuple(_parse_geocode(item, query) for item in geocodes)
+
+    def search_pois(self, query: str, city: str) -> tuple[GeocodeCandidate, ...]:
+        """Search named POIs and retain the official name, address, and AMap POI ID."""
+        if not isinstance(query, str) or not query:
+            raise ValueError("query must be a non-empty string")
+        if not isinstance(city, str) or not city:
+            raise ValueError("city must be a non-empty string")
+        payload = self._fetch(
+            "/v3/place/text",
+            {
+                "keywords": query,
+                "city": city,
+                "citylimit": "true",
+                "offset": "20",
+                "page": "1",
+                "extensions": "all",
+            },
+        )
+        pois = _expect_list(payload.get("pois"), "pois")
+        return tuple(_parse_place(item) for item in pois)
 
     def _fetch(self, endpoint: str, params: dict[str, str]) -> dict[str, Any]:
         cache_path = self.cache_dir / f"{self.cache_key(endpoint, params)}.json"
@@ -211,6 +236,24 @@ def _parse_geocode(value: Any, query: str) -> GeocodeCandidate:
         formatted_address=formatted_address or query,
         district=district,
         location_gcj=_parse_location(geocode.get("location")),
+    )
+
+
+def _parse_place(value: Any) -> GeocodeCandidate:
+    place = _expect_object(value, "place")
+    name = _expect_string(place.get("name"), "place name")
+    poi_id = _expect_string(place.get("id"), "place id")
+    district = _optional_text(place.get("adname"))
+    formatted_address = "".join(
+        _optional_text(place.get(field))
+        for field in ("pname", "cityname", "adname", "address")
+    )
+    return GeocodeCandidate(
+        name=name,
+        formatted_address=formatted_address or name,
+        district=district,
+        location_gcj=_parse_location(place.get("location")),
+        poi_id=poi_id,
     )
 
 

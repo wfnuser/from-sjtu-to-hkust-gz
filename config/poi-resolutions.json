@@ -1,4 +1,1802 @@
 {
-  "resolutions": [],
+  "resolutions": [
+    {
+      "query": "上海交通大学闵行校区",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "B00155R1D5",
+          "name": "上海交通大学(闵行本部校区)",
+          "formatted_address": "上海市上海市闵行区东川路800号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.436882,
+            "lat": 31.025626
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "海盐",
+      "city": "嘉兴",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "海盐",
+          "formatted_address": "浙江省嘉兴市海盐县",
+          "district": "海盐县",
+          "location_gcj": {
+            "lon": 120.94628,
+            "lat": 30.52664
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "海宁",
+      "city": "嘉兴",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "海宁",
+          "formatted_address": "浙江省嘉兴市海宁市",
+          "district": "海宁市",
+          "location_gcj": {
+            "lon": 120.680224,
+            "lat": 30.511536
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "杭州阿里巴巴总部",
+      "city": "杭州",
+      "candidates": [
+        {
+          "poi_id": "B023B1D4BX",
+          "name": "阿里巴巴西溪园区A区",
+          "formatted_address": "浙江省杭州市余杭区文一西路969号",
+          "district": "余杭区",
+          "location_gcj": {
+            "lon": 120.025512,
+            "lat": 30.278915
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "绍兴",
+      "city": "绍兴",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "绍兴",
+          "formatted_address": "浙江省绍兴市",
+          "district": "",
+          "location_gcj": {
+            "lon": 120.582886,
+            "lat": 30.051549
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "新昌",
+      "city": "绍兴",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "新昌",
+          "formatted_address": "浙江省绍兴市新昌县",
+          "district": "新昌县",
+          "location_gcj": {
+            "lon": 120.903918,
+            "lat": 29.500525
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "天台",
+      "city": "台州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "天台",
+          "formatted_address": "浙江省台州市天台县",
+          "district": "天台县",
+          "location_gcj": {
+            "lon": 121.006657,
+            "lat": 29.144594
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "临海",
+      "city": "台州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "临海",
+          "formatted_address": "浙江省台州市临海市",
+          "district": "临海市",
+          "location_gcj": {
+            "lon": 121.144625,
+            "lat": 28.859042
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "温岭",
+      "city": "台州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "温岭",
+          "formatted_address": "浙江省台州市温岭市",
+          "district": "温岭市",
+          "location_gcj": {
+            "lon": 121.385435,
+            "lat": 28.372805
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "乐清",
+      "city": "温州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "乐清",
+          "formatted_address": "浙江省温州市乐清市",
+          "district": "乐清市",
+          "location_gcj": {
+            "lon": 120.986297,
+            "lat": 28.112519
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "温州",
+      "city": "温州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "温州",
+          "formatted_address": "浙江省温州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 120.699279,
+            "lat": 27.993849
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "苍南",
+      "city": "温州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "苍南",
+          "formatted_address": "浙江省温州市苍南县",
+          "district": "苍南县",
+          "location_gcj": {
+            "lon": 120.425957,
+            "lat": 27.518636
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "福鼎",
+      "city": "宁德",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "福鼎",
+          "formatted_address": "福建省宁德市福鼎市",
+          "district": "福鼎市",
+          "location_gcj": {
+            "lon": 120.216559,
+            "lat": 27.324796
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "霞浦",
+      "city": "宁德",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "霞浦",
+          "formatted_address": "福建省宁德市霞浦县",
+          "district": "霞浦县",
+          "location_gcj": {
+            "lon": 120.005267,
+            "lat": 26.885971
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "宁德",
+      "city": "宁德",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "宁德",
+          "formatted_address": "福建省宁德市",
+          "district": "",
+          "location_gcj": {
+            "lon": 119.547729,
+            "lat": 26.666222
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "福州",
+      "city": "福州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "福州",
+          "formatted_address": "福建省福州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 119.296411,
+            "lat": 26.074286
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "莆田",
+      "city": "莆田",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "莆田",
+          "formatted_address": "福建省莆田市",
+          "district": "",
+          "location_gcj": {
+            "lon": 119.007662,
+            "lat": 25.454202
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "惠安",
+      "city": "泉州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "惠安",
+          "formatted_address": "福建省泉州市惠安县",
+          "district": "惠安县",
+          "location_gcj": {
+            "lon": 118.781037,
+            "lat": 25.012449
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "泉州",
+      "city": "泉州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "泉州",
+          "formatted_address": "福建省泉州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 118.675724,
+            "lat": 24.874452
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "厦门",
+      "city": "厦门",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "厦门",
+          "formatted_address": "福建省厦门市",
+          "district": "",
+          "location_gcj": {
+            "lon": 118.08891,
+            "lat": 24.479627
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "漳州",
+      "city": "漳州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "漳州",
+          "formatted_address": "福建省漳州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 117.647298,
+            "lat": 24.515297
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "云霄",
+      "city": "漳州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "云霄",
+          "formatted_address": "福建省漳州市云霄县",
+          "district": "云霄县",
+          "location_gcj": {
+            "lon": 117.334351,
+            "lat": 23.935433
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "诏安",
+      "city": "漳州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "诏安",
+          "formatted_address": "福建省漳州市诏安县",
+          "district": "诏安县",
+          "location_gcj": {
+            "lon": 117.175314,
+            "lat": 23.711674
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "潮州",
+      "city": "潮州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "潮州",
+          "formatted_address": "广东省潮州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 116.621901,
+            "lat": 23.657662
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "汕头",
+      "city": "汕头",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "汕头",
+          "formatted_address": "广东省汕头市",
+          "district": "",
+          "location_gcj": {
+            "lon": 116.681956,
+            "lat": 23.354152
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "惠来",
+      "city": "揭阳",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "惠来",
+          "formatted_address": "广东省揭阳市惠来县",
+          "district": "惠来县",
+          "location_gcj": {
+            "lon": 116.295038,
+            "lat": 23.033889
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "汕尾",
+      "city": "汕尾",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "汕尾",
+          "formatted_address": "广东省汕尾市",
+          "district": "",
+          "location_gcj": {
+            "lon": 115.375557,
+            "lat": 22.787204
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "海丰",
+      "city": "汕尾",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "海丰",
+          "formatted_address": "广东省汕尾市海丰县",
+          "district": "海丰县",
+          "location_gcj": {
+            "lon": 115.322974,
+            "lat": 22.967212
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "惠东",
+      "city": "惠州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "惠东",
+          "formatted_address": "广东省惠州市惠东县",
+          "district": "惠东县",
+          "location_gcj": {
+            "lon": 114.720136,
+            "lat": 22.984831
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "惠州",
+      "city": "惠州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "惠州",
+          "formatted_address": "广东省惠州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 114.415587,
+            "lat": 23.112368
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "博罗",
+      "city": "惠州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "博罗",
+          "formatted_address": "广东省惠州市博罗县",
+          "district": "博罗县",
+          "location_gcj": {
+            "lon": 114.289602,
+            "lat": 23.172587
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "增城",
+      "city": "广州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "增城",
+          "formatted_address": "广东省广州市增城区",
+          "district": "增城区",
+          "location_gcj": {
+            "lon": 113.810734,
+            "lat": 23.261452
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "番禺",
+      "city": "广州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "番禺",
+          "formatted_address": "广东省广州市番禺区",
+          "district": "番禺区",
+          "location_gcj": {
+            "lon": 113.383917,
+            "lat": 22.93756
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "香港科技大学（广州）",
+      "city": "广州",
+      "candidates": [
+        {
+          "poi_id": "B0IGJURJOJ",
+          "name": "香港科技大学(广州)",
+          "formatted_address": "广东省广州市南沙区笃学路1号",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.484507,
+            "lat": 22.889043
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "B0FFLCHK8Q",
+          "name": "香港科技大学霍英东研究院",
+          "formatted_address": "广东省广州市南沙区环市大道南2号资讯科技园科技楼",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.611678,
+            "lat": 22.749314
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LUA7MGXP",
+          "name": "香港科技大学(广州)-2期",
+          "formatted_address": "广东省广州市南沙区东涌镇三沙港路28号",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.483197,
+            "lat": 22.892426
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0M6SY3GD2",
+          "name": "香港科技大学(广州)量子科技中心",
+          "formatted_address": "广东省广州市南沙区中国中铁广州局港科大项目部东侧210米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.482507,
+            "lat": 22.889483
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "BV09037935",
+          "name": "香港科技大学(广州)站(公交站)",
+          "formatted_address": "广东省广州市南沙区南14路;南22路;南57路",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.48363,
+            "lat": 22.884982
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MGCHEOBC",
+          "name": "香港科技大学5B栋",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486861,
+            "lat": 22.88523
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LKBKSK0D",
+          "name": "香港科技大学(广州)地下停车场",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486975,
+            "lat": 22.883525
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0I2YANYUV",
+          "name": "香港科技大学(广州)菜鸟驿站",
+          "formatted_address": "广东省广州市南沙区香港科技大学(广州)6A栋118铺",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486075,
+            "lat": 22.884475
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L2P9QR2C",
+          "name": "香港科技大学(广州)-行政楼",
+          "formatted_address": "广东省广州市南沙区星巴克(广州香港科技大学店)西侧",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.482172,
+            "lat": 22.887553
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LUDR8Z5Z",
+          "name": "香港科技大学(广州)-地下停车场",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.48208,
+            "lat": 22.887618
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0M6N6EDAL",
+          "name": "香港科技大学(广州)地上停车场",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486375,
+            "lat": 22.889375
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MUC72SJY",
+          "name": "香港科技大学(广州)学生宿舍",
+          "formatted_address": "广东省广州市南沙区笃学路与东涌大道交叉口北260米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.485775,
+            "lat": 22.885575
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00140TFUK",
+          "name": "中山大学香港科技大学珠江口海洋环境联合监测中心",
+          "formatted_address": "广东省广州市海珠区新港西路135号中山大学东北区341号楼",
+          "district": "海珠区",
+          "location_gcj": {
+            "lon": 113.299933,
+            "lat": 23.098429
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L3AO09K1",
+          "name": "香港科技大学(广州)图书馆",
+          "formatted_address": "广东省广州市南沙区中国中铁广州局港科大项目部东侧300米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.483411,
+            "lat": 22.889568
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MUF7HH7K",
+          "name": "香港科技大学(广州)-金合欢(打卡点)",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.483315,
+            "lat": 22.890823
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L2FU29O0",
+          "name": "港科大(广州)项目",
+          "formatted_address": "广东省广州市南沙区三沙港路与三沙公路交叉口西北240米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.490775,
+            "lat": 22.886475
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MR1XFWLR",
+          "name": "香港科技大学(广州)北区宿舍6栋",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486625,
+            "lat": 22.890725
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LULXABGF",
+          "name": "香港科技大学(广州)科创成果转移转化基地",
+          "formatted_address": "广东省广州市南沙区东涌立交与S6广龙高速交叉口西北200米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.494625,
+            "lat": 22.872325
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MB35FU2F",
+          "name": "广州湾区建工有限公司香港科技大学(广州)二期项目部",
+          "formatted_address": "广东省广州市南沙区三沙公路85号",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.491074,
+            "lat": 22.887047
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MUF7HVLZ",
+          "name": "香港科技大学(广州)-合欢花(打卡点)",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)(东涌地铁站A口旁)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.478988,
+            "lat": 22.88559
+          },
+          "selected": false
+        }
+      ]
+    }
+  ],
+  "checkin_resolutions": [
+    {
+      "query": "阳曲路住处",
+      "city": "上海",
+      "required": false,
+      "source_queries": [],
+      "candidates": []
+    },
+    {
+      "query": "上海科技小学",
+      "city": "上海",
+      "required": false,
+      "source_queries": [
+        "科技学校 阳曲路350弄1号"
+      ],
+      "candidates": [
+        {
+          "poi_id": "B0J05CXO4Y",
+          "name": "上海市静安区科技学校",
+          "formatted_address": "上海市上海市静安区阳曲路350弄1号",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.460386,
+            "lat": 31.312175
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "B0FFF2OU6H",
+          "name": "上海市静安区第二青少年业余体育学校(临汾路校区)",
+          "formatted_address": "上海市上海市静安区场中路1011弄1-55号",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.465081,
+            "lat": 31.308824
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFHRB7Y6",
+          "name": "上海市静安区星成进修学校",
+          "formatted_address": "上海市上海市静安区保德路与阳曲路交叉口东60米",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.460638,
+            "lat": 31.3175
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0I2PHKLW5",
+          "name": "宝山区少年儿童业余体育学校",
+          "formatted_address": "上海市上海市宝山区共和二村73号",
+          "district": "宝山区",
+          "location_gcj": {
+            "lon": 121.461546,
+            "lat": 31.323215
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFM8IRYL",
+          "name": "上海富华职业技能培训学校",
+          "formatted_address": "上海市上海市虹口区丰镇路858号",
+          "district": "虹口区",
+          "location_gcj": {
+            "lon": 121.467786,
+            "lat": 31.304618
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00155L2J0",
+          "name": "上海市卫生学校(市北校区)",
+          "formatted_address": "上海市上海市虹口区新市北路1481号(丰镇路与新市北路交叉口旁)",
+          "district": "虹口区",
+          "location_gcj": {
+            "lon": 121.482129,
+            "lat": 31.30407
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00155IR06",
+          "name": "华中科技大学上海教育中心",
+          "formatted_address": "上海市上海市虹口区三门路661号",
+          "district": "虹口区",
+          "location_gcj": {
+            "lon": 121.484127,
+            "lat": 31.312561
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B001514B46",
+          "name": "上海市虹口区申燃进修学校",
+          "formatted_address": "上海市上海市虹口区水电路1277号4-5层",
+          "district": "虹口区",
+          "location_gcj": {
+            "lon": 121.476869,
+            "lat": 31.293718
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "上海当代（杨波）中学",
+      "city": "上海",
+      "required": false,
+      "source_queries": [
+        "上海市民办扬波中学"
+      ],
+      "candidates": [
+        {
+          "poi_id": "B00155L2HA",
+          "name": "上海市民办扬波中学",
+          "formatted_address": "上海市上海市静安区大统路991号(中山北路地铁站2号口步行260米)",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.460641,
+            "lat": 31.256243
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "B0LRO6VIO4",
+          "name": "上海市民办扬波中学停车场",
+          "formatted_address": "上海市上海市静安区大统路991号上海市民办扬波中学",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.459888,
+            "lat": 31.256013
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00156OCVK",
+          "name": "上海市民办扬波外国语小学",
+          "formatted_address": "上海市上海市静安区延长中路800弄88号",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.447074,
+            "lat": 31.264423
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MACXY3GQ",
+          "name": "上海市民办扬波外国语小学图书馆",
+          "formatted_address": "上海市上海市静安区沪太路与洛川中路交叉口东北180米",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.447099,
+            "lat": 31.264445
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "上海交大附中",
+      "city": "上海",
+      "required": false,
+      "source_queries": [
+        "上海交通大学附属中学"
+      ],
+      "candidates": [
+        {
+          "poi_id": "B0015283D9",
+          "name": "上海交通大学附属中学(本部)",
+          "formatted_address": "上海市上海市宝山区殷高路42号(殷高西路地铁站2号出口步行490米)",
+          "district": "宝山区",
+          "location_gcj": {
+            "lon": 121.488913,
+            "lat": 31.319008
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00155MQG0",
+          "name": "上海交通大学附属中学浦东实验高中",
+          "formatted_address": "上海市上海市浦东新区浦东大道830号(源深路地铁站1号口步行350米)",
+          "district": "浦东新区",
+          "location_gcj": {
+            "lon": 121.526176,
+            "lat": 31.239874
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B001508542",
+          "name": "上海交通大学附属中学闵行分校",
+          "formatted_address": "上海市上海市闵行区德宏路2188号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.427068,
+            "lat": 31.011149
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B001541D54",
+          "name": "上海交通大学附属黄浦实验中学",
+          "formatted_address": "上海市上海市黄浦区建国东路518号",
+          "district": "黄浦区",
+          "location_gcj": {
+            "lon": 121.472849,
+            "lat": 31.211556
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B001576DHB",
+          "name": "上海交通大学附属中学(嘉定分校)",
+          "formatted_address": "上海市上海市嘉定区嘉定新城云谷路1660号",
+          "district": "嘉定区",
+          "location_gcj": {
+            "lon": 121.244001,
+            "lat": 31.352329
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFGR8UFA",
+          "name": "上海交通大学附属中学本部北院",
+          "formatted_address": "上海市上海市宝山区殷高路与殷高路21弄通道交叉口西100米",
+          "district": "宝山区",
+          "location_gcj": {
+            "lon": 121.489471,
+            "lat": 31.320177
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFGWUZ7F",
+          "name": "上海交通大学附属浦东实验中学",
+          "formatted_address": "上海市上海市浦东新区峨山路638号",
+          "district": "浦东新区",
+          "location_gcj": {
+            "lon": 121.520899,
+            "lat": 31.213102
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L6GZ8URI",
+          "name": "上海交通大学附属中学浦东实验学校",
+          "formatted_address": "上海市上海市浦东新区周祝公路1166号",
+          "district": "浦东新区",
+          "location_gcj": {
+            "lon": 121.636625,
+            "lat": 31.103935
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0H2PHPSAI",
+          "name": "上海交通大学附属第二中学",
+          "formatted_address": "上海市上海市闵行区姚安路159号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.436832,
+            "lat": 31.012796
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MA7L34XF",
+          "name": "上海交通大学附属中学实验中心",
+          "formatted_address": "上海市上海市宝山区殷高路与殷高路21弄通道交叉口西200米",
+          "district": "宝山区",
+          "location_gcj": {
+            "lon": 121.488325,
+            "lat": 31.319875
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LGTBWFOU",
+          "name": "上海交通大学附属中学(嘉定分校)-东区",
+          "formatted_address": "上海市上海市嘉定区云谷路与洪德路交叉口西北140米",
+          "district": "嘉定区",
+          "location_gcj": {
+            "lon": 121.244025,
+            "lat": 31.352325
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LUXAMSL4",
+          "name": "上海交通大学附属中学(嘉定分校)-西区",
+          "formatted_address": "上海市上海市嘉定区云谷路与城固路交叉口南180米",
+          "district": "嘉定区",
+          "location_gcj": {
+            "lon": 121.242979,
+            "lat": 31.35198
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0HR1SB8RB",
+          "name": "上海交通大学附属中学浦东实验高中停车场",
+          "formatted_address": "上海市上海市浦东新区浦东大道与福山路交叉口东220米",
+          "district": "浦东新区",
+          "location_gcj": {
+            "lon": 121.526481,
+            "lat": 31.240287
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0IB17DWW4",
+          "name": "交大附中附属嘉定德富中学",
+          "formatted_address": "上海市上海市嘉定区洪德路618号",
+          "district": "嘉定区",
+          "location_gcj": {
+            "lon": 121.252154,
+            "lat": 31.354776
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFGZ4RHR",
+          "name": "交通大学附属中学闵行分校停车场",
+          "formatted_address": "上海市上海市闵行区德宏路2188号上海交通大学附属中学闵行分校",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.428011,
+            "lat": 31.010987
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0I2L5CZPF",
+          "name": "交大附中附属嘉定洪德中学",
+          "formatted_address": "上海市上海市嘉定区洪德路1599号",
+          "district": "嘉定区",
+          "location_gcj": {
+            "lon": 121.235488,
+            "lat": 31.34656
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L2KZFSWH",
+          "name": "上海交通大学附属嘉定实验学校(初中部)",
+          "formatted_address": "上海市上海市嘉定区封周路800号",
+          "district": "嘉定区",
+          "location_gcj": {
+            "lon": 121.266509,
+            "lat": 31.330362
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MA4CU7VV",
+          "name": "上海交通大学附属中学快递柜",
+          "formatted_address": "上海市上海市宝山区逸仙路辅路与逸仙高架路出口交叉口东240米",
+          "district": "宝山区",
+          "location_gcj": {
+            "lon": 121.488025,
+            "lat": 31.318025
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00150792D",
+          "name": "上海交通大学附属实验小学",
+          "formatted_address": "上海市上海市闵行区德宏路2366号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.434725,
+            "lat": 31.013989
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L0Z6DFON",
+          "name": "上海交通大学附属中学(嘉定分校)东区地上停车场",
+          "formatted_address": "上海市上海市嘉定区洪德路与合作路交叉口西100米",
+          "district": "嘉定区",
+          "location_gcj": {
+            "lon": 121.245975,
+            "lat": 31.351675
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "上海字节办公点",
+      "city": "上海",
+      "required": false,
+      "source_queries": [
+        "字节跳动"
+      ],
+      "candidates": [
+        {
+          "poi_id": "B0JBCDKHIW",
+          "name": "字节跳动",
+          "formatted_address": "上海市上海市杨浦区合生汇",
+          "district": "杨浦区",
+          "location_gcj": {
+            "lon": 121.517856,
+            "lat": 31.299759
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0H0OAXXTW",
+          "name": "字节跳动",
+          "formatted_address": "上海市上海市徐汇区虹梅路街道古美路1520号漕河泾中心B座9楼",
+          "district": "徐汇区",
+          "location_gcj": {
+            "lon": 121.400146,
+            "lat": 31.162998
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0JAGU997Z",
+          "name": "字节跳动",
+          "formatted_address": "上海市上海市杨浦区江湾城路99号凯德尚浦商务中心",
+          "district": "杨浦区",
+          "location_gcj": {
+            "lon": 121.509425,
+            "lat": 31.317421
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L0D6M3RS",
+          "name": "字节跳动B座",
+          "formatted_address": "上海市上海市徐汇区漕宝路1011号漕河泾印象城B座",
+          "district": "徐汇区",
+          "location_gcj": {
+            "lon": 121.399825,
+            "lat": 31.162525
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0J6PAXSY1",
+          "name": "字节跳动小邮局",
+          "formatted_address": "上海市上海市徐汇区漕河泾中心(虹梅路地铁站1号口步行170米)",
+          "district": "徐汇区",
+          "location_gcj": {
+            "lon": 121.400732,
+            "lat": 31.162458
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0KDGXSYRB",
+          "name": "字节跳动小邮局(江湾城路店)",
+          "formatted_address": "上海市上海市杨浦区民府路892号",
+          "district": "杨浦区",
+          "location_gcj": {
+            "lon": 121.508032,
+            "lat": 31.314795
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0JKK466EO",
+          "name": "字节跳动小邮局(政和路)",
+          "formatted_address": "上海市上海市杨浦区政和路新江湾城生活广场4号楼",
+          "district": "杨浦区",
+          "location_gcj": {
+            "lon": 121.517537,
+            "lat": 31.335258
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0K2MLW6MO",
+          "name": "字节跳动小邮局",
+          "formatted_address": "上海市上海市徐汇区桂平路391号新漕河泾国际商务中心C楼",
+          "district": "徐汇区",
+          "location_gcj": {
+            "lon": 121.403316,
+            "lat": 31.164716
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MACOWR52",
+          "name": "字节跳动小邮局",
+          "formatted_address": "上海市上海市闵行区虹梅路2159弄荣信·虹桥世嘉",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.393425,
+            "lat": 31.173475
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFL4ETUX",
+          "name": "字节跳动小邮局",
+          "formatted_address": "上海市上海市闵行区虹桥镇田林路1016号上海科技绿洲24号楼",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.387625,
+            "lat": 31.166875
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0KKSSVA1A",
+          "name": "瑞幸咖啡(字节跳动科技绿洲店)",
+          "formatted_address": "上海市上海市闵行区宜山路1999号科技绿洲B区24号楼字节跳动科技15层",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.383668,
+            "lat": 31.166771
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0G2UL5MTE",
+          "name": "luckin coffee 瑞幸咖啡(上海科技绿洲3期店)",
+          "formatted_address": "上海市上海市闵行区宜山路1999号科技绿洲B区24号楼字节跳动科技15层负一层",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.385307,
+            "lat": 31.166051
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0G2AODJTI",
+          "name": "猪角闽南猪脚饭(字节跳动总部店)",
+          "formatted_address": "上海市上海市闵行区虹桥镇合川路2570号生活二次方B1楼",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.385505,
+            "lat": 31.166145
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "上海阿里中心",
+      "city": "上海",
+      "required": false,
+      "source_queries": [
+        "上海阿里中心"
+      ],
+      "candidates": [
+        {
+          "poi_id": "B0FFHJ6L4H",
+          "name": "阿里中心·上海虹桥",
+          "formatted_address": "上海市上海市闵行区申长路1398弄1-4号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.313936,
+            "lat": 31.205659
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L21RTPR6",
+          "name": "阿里中心·徐汇滨江",
+          "formatted_address": "上海市上海市徐汇区龙耀路8号阿里中心徐汇滨江园区",
+          "district": "徐汇区",
+          "location_gcj": {
+            "lon": 121.462039,
+            "lat": 31.16674
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFJ4J0M5",
+          "name": "阿里中心·上海虹桥T2座",
+          "formatted_address": "上海市上海市闵行区申长路1398弄1-4号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.313753,
+            "lat": 31.205357
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0G0F58OQX",
+          "name": "阿里中心·招商运营中心",
+          "formatted_address": "上海市上海市闵行区申长路1398弄14号阿里中心·上海虹桥T3座",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.313792,
+            "lat": 31.205763
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MUZM6O6O",
+          "name": "阿里中心·徐汇滨江停车场",
+          "formatted_address": "上海市上海市徐汇区龙华机场路8号阿里中心徐汇滨江南侧",
+          "district": "徐汇区",
+          "location_gcj": {
+            "lon": 121.46154,
+            "lat": 31.165943
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFKWQ0E2",
+          "name": "阿里中心上海虹桥商场北区",
+          "formatted_address": "上海市上海市闵行区淮虹路213号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.313908,
+            "lat": 31.206184
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0JUFMGMC6",
+          "name": "阿里中心·上海虹桥商场南区",
+          "formatted_address": "上海市上海市闵行区申长路与润虹路交叉口东北100米",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.314008,
+            "lat": 31.205186
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0HBMULQI0",
+          "name": "阿里中心·上海虹桥地下停车场",
+          "formatted_address": "上海市上海市闵行区申长路1398弄1-4号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.314342,
+            "lat": 31.204775
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MRFLUG8C",
+          "name": "阿里徐汇中心",
+          "formatted_address": "上海市上海市徐汇区龙耀路8号阿里巴巴徐汇滨江园区X区",
+          "district": "徐汇区",
+          "location_gcj": {
+            "lon": 121.462225,
+            "lat": 31.163925
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFJ4IZX6",
+          "name": "阿里中心T1座",
+          "formatted_address": "上海市上海市闵行区申长路1398弄1-4号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.314294,
+            "lat": 31.204947
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0HU1CD7DF",
+          "name": "阿里中心·上海虹桥TOWER3",
+          "formatted_address": "上海市上海市闵行区申长路与润虹路交叉口北60米",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.313598,
+            "lat": 31.205043
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MUZM72ZI",
+          "name": "阿里中心·徐汇滨江停车场(南出入口)",
+          "formatted_address": "上海市上海市徐汇区龙耀路8号阿里中心徐汇滨江南侧",
+          "district": "徐汇区",
+          "location_gcj": {
+            "lon": 121.461545,
+            "lat": 31.165905
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MDSXIM9C",
+          "name": "阿里中心T3座外卖柜",
+          "formatted_address": "上海市上海市闵行区申长路与淮虹路交叉口东南100米",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.313775,
+            "lat": 31.205925
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFJCMXGJ",
+          "name": "阿里云创新中心(上海张江)基地",
+          "formatted_address": "上海市上海市浦东新区张江高科技园区纳贤路800号科海大楼8楼",
+          "district": "浦东新区",
+          "location_gcj": {
+            "lon": 121.60527,
+            "lat": 31.178741
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0HBMULIZH",
+          "name": "阿里中心·上海虹桥地下停车场(出入口)",
+          "formatted_address": "上海市上海市闵行区申长路1398弄1-4号阿里中心·上海虹桥地下停车场",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.314217,
+            "lat": 31.206698
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0HBMUMSEB",
+          "name": "阿里中心·上海虹桥地下停车场(出入口)",
+          "formatted_address": "上海市上海市闵行区申长路1398弄1-4号阿里中心·上海虹桥地下停车场",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.314418,
+            "lat": 31.204652
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LKNLRBMD",
+          "name": "阿里云创新中心",
+          "formatted_address": "上海市上海市浦东新区新金桥路与金豫路交叉口西160米",
+          "district": "浦东新区",
+          "location_gcj": {
+            "lon": 121.614675,
+            "lat": 31.254575
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MRC5RIT7",
+          "name": "阿里中心·徐汇滨江停车场(北出入口)",
+          "formatted_address": "上海市上海市徐汇区龙华机场路8号",
+          "district": "徐汇区",
+          "location_gcj": {
+            "lon": 121.462023,
+            "lat": 31.166756
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFJ4J2KH",
+          "name": "阿里中心·上海虹桥T4座",
+          "formatted_address": "上海市上海市闵行区申长路1398弄1-4号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.314059,
+            "lat": 31.206644
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LRBOO5FL",
+          "name": "贵州茅台(阿里中心·上海虹桥店)",
+          "formatted_address": "上海市上海市闵行区阿里中心·上海虹桥商场南区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.313723,
+            "lat": 31.205095
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "上海交通大学闵行校区",
+      "city": "上海",
+      "required": false,
+      "source_queries": [
+        "上海交通大学闵行校区"
+      ],
+      "candidates": [
+        {
+          "poi_id": "B00155R1D5",
+          "name": "上海交通大学(闵行本部校区)",
+          "formatted_address": "上海市上海市闵行区东川路800号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.436882,
+            "lat": 31.025626
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "B001570LZ0",
+          "name": "上海交通大学闵行校区霞光楼",
+          "formatted_address": "上海市上海市闵行区东川路800号上海交通大学闵行校区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.428239,
+            "lat": 31.022319
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00156YL5J",
+          "name": "上海交通大学闵行校区上院",
+          "formatted_address": "上海市上海市闵行区东川路800号上海交通大学闵行校区内",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.431084,
+            "lat": 31.0195
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00156YKZ4",
+          "name": "上海交通大学闵行校区中院",
+          "formatted_address": "上海市上海市闵行区东川路800上海交通大学闵行校区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.431274,
+            "lat": 31.020412
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFJ2617A",
+          "name": "上海交通大学闵行校区浦江国际学院",
+          "formatted_address": "上海市上海市闵行区东川路800号上海交通大学(闵行本部校区)",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.44864,
+            "lat": 31.026657
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0KALU9DQ6",
+          "name": "上海交通大学闵行校区学生中心大楼",
+          "formatted_address": "上海市上海市闵行区文俊路与思源北路交叉口南100米",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.433762,
+            "lat": 31.024947
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00156YL5M",
+          "name": "上海交通大学闵行校区下院",
+          "formatted_address": "上海市上海市闵行区东川路800上海交通大学闵行校区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.431101,
+            "lat": 31.021138
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0J6P50XII",
+          "name": "上海交通大学闵行校区致远学院",
+          "formatted_address": "上海市上海市闵行区东川路800号上海交通大学(闵行本部校区)",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.434499,
+            "lat": 31.023043
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B001570LGN",
+          "name": "上海交通大学闵行校区药学院",
+          "formatted_address": "上海市上海市闵行区东川路800上海交通大学闵行校区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.442661,
+            "lat": 31.02973
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B001570L1I",
+          "name": "上海交通大学闵行校区人文学院",
+          "formatted_address": "上海市上海市闵行区东川路800上海交通大学闵行校区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.439494,
+            "lat": 31.021925
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFFOGCPO",
+          "name": "上海交通大学学生服务中心",
+          "formatted_address": "上海市上海市闵行区江川路街道东川路800号上海交通大学闵行校区学生服务中心",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.432387,
+            "lat": 31.028563
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00156YALY",
+          "name": "上海交通大学闵行校区大智居",
+          "formatted_address": "上海市上海市闵行区东川路800上海交通大学闵行校区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.434394,
+            "lat": 31.019496
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0J6P51CW5",
+          "name": "上海交通大学闵行校区MCE中心",
+          "formatted_address": "上海市上海市闵行区东川路800号上海交通大学(闵行本部校区)",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.426758,
+            "lat": 31.02372
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFFA21EZ",
+          "name": "上海交通大学闵行校区东中院",
+          "formatted_address": "上海市上海市闵行区东川路800号上海交通大学闵行校区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.437562,
+            "lat": 31.023108
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LAYMYIN6",
+          "name": "上海交通大学闵行校区鹿苑",
+          "formatted_address": "上海市上海市闵行区东川路546号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.442743,
+            "lat": 31.027296
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00156YL8B",
+          "name": "上海交通大学闵行校区南苏园",
+          "formatted_address": "上海市上海市闵行区东川路800上海交通大学闵行校区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.433053,
+            "lat": 31.018424
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFFPM25S",
+          "name": "上海交通大学闵行校区航空航天学院",
+          "formatted_address": "上海市上海市闵行区东川路800上海交通大学闵行校区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.445973,
+            "lat": 31.023686
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFFPM0PH",
+          "name": "上海交通大学闵行校区生命科学技术学院",
+          "formatted_address": "上海市上海市闵行区东川路800号上海交通大学闵行校区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.443627,
+            "lat": 31.029352
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00156YL21",
+          "name": "上海交通大学闵行校区化学楼",
+          "formatted_address": "上海市上海市闵行区东川路800号上海交通大学闵行校区内",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.429057,
+            "lat": 31.023557
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0FFG8UZ70",
+          "name": "上海交通大学闵行校区能源研究院",
+          "formatted_address": "上海市上海市闵行区东川路800号上海交通大学闵行校区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.444896,
+            "lat": 31.029728
+          },
+          "selected": false
+        }
+      ]
+    }
+  ],
+  "unresolved_checkin_queries": [
+    "阳曲路住处",
+    "上海交大附中",
+    "上海字节办公点",
+    "上海阿里中心"
+  ],
   "unresolved_queries": []
 }

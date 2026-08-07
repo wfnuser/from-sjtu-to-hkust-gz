@@ -74,6 +74,22 @@ class ConfigTests(unittest.TestCase):
         with self.assertRaises(TypeError):
             cfg.optional_branches["replacement"] = cfg.optional_branches["宁波"]
 
+    def test_loads_chinese_national_exception_reason(self):
+        payload = _valid_payload()
+        payload["segment_rules"] = {
+            "start-to-end": {
+                "allowed_national_m": 1200,
+                "national_exception_reason": "平行县道在河道处中断，国道桥为唯一连续铺装通道。",
+            }
+        }
+
+        cfg = _load_payload(payload)
+
+        self.assertEqual(
+            cfg.segment_rules["start-to-end"].national_exception_reason,
+            "平行县道在河道处中断，国道桥为唯一连续铺装通道。",
+        )
+
 
 def _valid_payload():
     return {

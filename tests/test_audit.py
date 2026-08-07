@@ -110,6 +110,27 @@ class AuditTests(unittest.TestCase):
         self.assertNotIn("NATIONAL_ROAD_EXCEPTION_UNREVIEWED", [item.code for item in result.items])
         self.assertTrue(result.ok)
 
+    def test_audit_rejects_national_distance_over_measured_allowance_even_without_parallel(self):
+        result = audit(
+            [
+                _segment(
+                    national=True,
+                    allowed_national_m=999,
+                    reviews=(
+                        ReviewItem(
+                            "NATIONAL_ROAD_EXCEPTION_APPROVED",
+                            "main-01-to-main-02",
+                            "info",
+                            "Reviewed.",
+                        ),
+                    ),
+                )
+            ]
+        )
+
+        self.assertFalse(result.ok)
+        self.assertIn("NATIONAL_ROAD_ALLOWANCE_EXCEEDED", [item.code for item in result.items])
+
     def test_secret_scan_rejects_generated_artifact(self):
         """Would fail if generated files could retain a supplied service-key value."""
         with tempfile.TemporaryDirectory() as directory:

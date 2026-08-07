@@ -24,6 +24,13 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("revealReviewBranch", js)
         self.assertIn("elements.ningboCheckbox.checked = true", js)
 
+    def test_map_groups_main_segment_cards_by_assigned_day(self):
+        js = Path("web/app.mjs").read_text(encoding="utf-8")
+
+        self.assertIn("day-heading", js)
+        self.assertIn("第 ${day} 天", js)
+        self.assertIn("entry.day", js)
+
 
 if __name__ == "__main__":
     unittest.main()

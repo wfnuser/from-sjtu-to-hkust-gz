@@ -101,6 +101,10 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(summary["optional_branch_excluded"]["distance_m"], 300)
         self.assertAlmostEqual(summary["main"]["detour_ratio"], 2_000 / 1_500)
         self.assertEqual(summary["max_detour_ratio"], 1.15)
+        self.assertEqual(summary["days"][0]["day"], 2)
+        self.assertEqual(summary["days"][0]["distance_m"], 2_000)
+        self.assertEqual(summary["days"][0]["from_name"], "上海交通大学闵行校区")
+        self.assertEqual(summary["days"][0]["to_name"], "海盐")
 
     def test_review_markdown_lists_manual_review_items_and_segment_details(self):
         """Would fail if the human review artifact lost route safety context."""

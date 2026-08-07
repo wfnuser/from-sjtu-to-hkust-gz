@@ -18,6 +18,32 @@ class CoordinateTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("--config", result.stdout)
 
+    def test_resolution_report_includes_poi_id_provenance(self):
+        from scripts.resolve_pois import _resolution_payload
+
+        candidate = GeocodeCandidate(
+            "香港科技大学(广州)",
+            "广东省广州市南沙区笃学路1号",
+            "南沙区",
+            Coordinate(113.484507, 22.889043),
+            "B0IGJURJOJ",
+        )
+        report = resolve_waypoints(
+            RouteConfig(
+                "test",
+                1.15,
+                (Waypoint("end", "香港科技大学（广州）", "广州", "香港科技大学（广州）"),),
+                (),
+                {},
+                {},
+            ),
+            _GeocodeClient({("香港科技大学（广州）", "广州"): (candidate,)}),
+        )
+
+        payload = _resolution_payload(report)
+
+        self.assertEqual(payload["resolutions"][0]["candidates"][0]["poi_id"], "B0IGJURJOJ")
+
     def test_parse_polyline_preserves_order(self):
         self.assertEqual(
             parse_polyline("121.1,31.1;121.2,31.2"),

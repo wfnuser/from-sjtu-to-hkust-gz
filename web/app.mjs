@@ -87,10 +87,21 @@ export function renderSegmentCards(summary) {
   renderMainTotals(summary);
   elements.cards.innerHTML = "";
   const entries = [...segmentGroups.values()];
+  const daySummaries = new Map((summary.days || []).map((item) => [Number(item.day), item]));
   elements.count.textContent = entries.length ? `${entries.length} 段` : "";
 
+  let currentDay = null;
   entries.forEach((entry, index) => {
     const first = entry.features[0].properties || {};
+    const day = Number(entry.day);
+    if (!entry.optional && Number.isInteger(day) && day !== currentDay) {
+      currentDay = day;
+      const daySummary = daySummaries.get(day) || {};
+      const heading = document.createElement("h3");
+      heading.className = "day-heading";
+      heading.textContent = `第 ${day} 天 · ${formatDistance(daySummary.distance_m)}`;
+      elements.cards.append(heading);
+    }
     const card = document.createElement("button");
     card.type = "button";
     card.className = `segment-card${entry.optional ? " is-optional" : ""}`;
@@ -138,6 +149,7 @@ function addFeatures(geojson) {
         group: L.featureGroup(),
         optional: Boolean(properties.optional_branch),
         branch: properties.branch_id,
+        day: properties.day,
       };
       segmentGroups.set(segmentId, entry);
     }

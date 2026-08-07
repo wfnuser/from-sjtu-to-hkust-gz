@@ -120,6 +120,11 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
         day = item.get("day")
         if day is not None and (not isinstance(day, int) or isinstance(day, bool)):
             raise ValueError(f"Segment rule {segment_id} day must be an integer or null")
+        national_exception_reason = item.get("national_exception_reason", "")
+        if not isinstance(national_exception_reason, str):
+            raise ValueError(
+                f"Segment rule {segment_id} national_exception_reason must be a string"
+            )
         rules[segment_id] = SegmentRule(
             segment_id=_optional_string(item, "segment_id", segment_id, "segment rule"),
             anchor_queries=tuple(anchors),
@@ -128,6 +133,7 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
             ),
             allowed_national_m=allowed_national_m,
             day=day,
+            national_exception_reason=national_exception_reason,
         )
     return rules
 

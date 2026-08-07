@@ -15,7 +15,7 @@ from route_planner.models import (
     SegmentRule,
     Waypoint,
 )
-from route_planner.roads import ReviewRequired, choose_candidate
+from route_planner.roads import ReviewRequired, candidate_metrics, choose_candidate
 
 
 class PlanningClient(Protocol):
@@ -42,7 +42,11 @@ class RoutePlanner:
             raise ReviewRequired(rule.segment_id, ("direct baseline has zero distance",))
 
         anchor_coordinates = tuple(
-            _resolve_anchor(self._client, anchor_query, start.city, rule.segment_id)
+            _resolve_anchor(
+                self._client,
+                *_anchor_locality(anchor_query, start.city),
+                rule.segment_id,
+            )
             for anchor_query in rule.anchor_queries
         )
         if anchor_coordinates:
@@ -63,7 +67,7 @@ class RoutePlanner:
         )
         subleg_distances_m = tuple(subleg.distance_m for subleg in selected_sublegs)
         detour_ratio = selected.distance_m / baseline.distance_m
-        reviews = _reviews(rule.segment_id, detour_ratio, subleg_distances_m)
+        reviews = _reviews(rule, selected, detour_ratio, subleg_distances_m)
         return PlannedSegment(
             segment_id=rule.segment_id,
             from_waypoint=start,
@@ -100,6 +104,15 @@ def _resolve_anchor(
     return candidate.location_gcj
 
 
+def _anchor_locality(value: str, default_city: str) -> tuple[str, str]:
+    if "::" not in value:
+        return value, default_city
+    city, query = value.split("::", 1)
+    if not city or not query:
+        raise ValueError("Anchor locality must be 城市::查询")
+    return query, city
+
+
 def _select_sublegs(
     client: PlanningClient,
     points: tuple[Coordinate, ...],
@@ -123,8 +136,12 @@ def _require_real_polylines(
 
 
 def _reviews(
-    segment_id: str, detour_ratio: float, subleg_distances_m: Sequence[int]
+    rule: SegmentRule,
+    selected: CandidateRoute,
+    detour_ratio: float,
+    subleg_distances_m: Sequence[int],
 ) -> tuple[ReviewItem, ...]:
+    segment_id = rule.segment_id
     reviews: list[ReviewItem] = []
     if detour_ratio > 1.15:
         reviews.append(
@@ -146,4 +163,19 @@ def _reviews(
                     distance_m=distance_m,
                 )
             )
+    national_m = candidate_metrics(selected).national_m
+    if (
+        national_m
+        and national_m <= rule.allowed_national_m
+        and rule.national_exception_reason.strip()
+    ):
+        reviews.append(
+            ReviewItem(
+                "NATIONAL_ROAD_EXCEPTION_APPROVED",
+                segment_id,
+                "info",
+                rule.national_exception_reason.strip(),
+                distance_m=national_m,
+            )
+        )
     return tuple(reviews)
