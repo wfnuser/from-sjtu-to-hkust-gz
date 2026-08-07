@@ -186,6 +186,7 @@ class AuditTests(unittest.TestCase):
                 "--env", environment,
                 "--output-dir", output_dir,
                 "--cache-dir", cache_dir,
+                "--profile", "coastal",
             )
             audited = _run_cli(
                 "scripts/audit_route.py",
@@ -193,6 +194,7 @@ class AuditTests(unittest.TestCase):
                 "--data-dir", output_dir,
                 "--env", environment,
                 "--strict",
+                "--profile", "coastal",
             )
 
             self.assertEqual(generated.returncode, 0, generated.stderr)
@@ -202,6 +204,73 @@ class AuditTests(unittest.TestCase):
                 ["coastal-route.geojson", "review.md", "route-manifest.json", "summary.json"],
             )
             self.assertNotIn("sanitized-test-key", generated.stdout + generated.stderr + audited.stdout + audited.stderr)
+
+    def test_generate_and_strict_audit_cli_share_the_inland_profile(self):
+        """Would fail if either CLI silently selected the coastal artifact names."""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config, resolutions, environment, cache_dir = _write_live_inputs(root)
+            output_dir = root / "web-data"
+
+            generated = _run_cli(
+                "scripts/generate_route.py",
+                "--config", config,
+                "--resolutions", resolutions,
+                "--env", environment,
+                "--output-dir", output_dir,
+                "--cache-dir", cache_dir,
+                "--profile", "inland",
+            )
+            audited = _run_cli(
+                "scripts/audit_route.py",
+                "--config", config,
+                "--data-dir", output_dir,
+                "--env", environment,
+                "--strict",
+                "--profile", "inland",
+            )
+
+            self.assertEqual(generated.returncode, 0, generated.stderr)
+            self.assertEqual(audited.returncode, 0, audited.stderr)
+            self.assertEqual(
+                sorted(path.name for path in output_dir.iterdir()),
+                [
+                    "inland-review.md",
+                    "inland-route-manifest.json",
+                    "inland-route.geojson",
+                    "inland-summary.json",
+                ],
+            )
+            self.assertNotIn("sanitized-test-key", generated.stdout + generated.stderr + audited.stdout + audited.stderr)
+
+    def test_inland_strict_audit_does_not_scan_independent_coastal_artifacts(self):
+        """Would fail if an inland audit traversed legacy coastal profile files."""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config, resolutions, environment, cache_dir = _write_live_inputs(root)
+            output_dir = root / "web-data"
+            generated = _run_cli(
+                "scripts/generate_route.py",
+                "--config", config,
+                "--resolutions", resolutions,
+                "--env", environment,
+                "--output-dir", output_dir,
+                "--cache-dir", cache_dir,
+                "--profile", "inland",
+            )
+            (output_dir / "summary.json").write_text("sanitized-test-key", encoding="utf-8")
+
+            audited = _run_cli(
+                "scripts/audit_route.py",
+                "--config", config,
+                "--data-dir", output_dir,
+                "--env", environment,
+                "--strict",
+                "--profile", "inland",
+            )
+
+            self.assertEqual(generated.returncode, 0, generated.stderr)
+            self.assertEqual(audited.returncode, 0, audited.stdout + audited.stderr)
 
     def test_selective_refresh_keeps_all_thirty_three_published_segments(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -263,6 +332,7 @@ class AuditTests(unittest.TestCase):
                 "--data-dir", output_dir,
                 "--env", environment,
                 "--strict",
+                "--profile", "coastal",
             )
 
             self.assertNotEqual(audited.returncode, 0)
@@ -298,6 +368,7 @@ class AuditTests(unittest.TestCase):
                 "--data-dir", output_dir,
                 "--env", environment,
                 "--strict",
+                "--profile", "coastal",
             )
 
             self.assertNotEqual(audited.returncode, 0)

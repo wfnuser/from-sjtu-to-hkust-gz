@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Plan a resolved coastal route and atomically publish auditable artifacts."""
+"""Plan a resolved route profile and atomically publish auditable artifacts."""
 
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from route_planner.amap import AmapClient, load_amap_key
+from route_planner.artifacts import ArtifactPaths
 from route_planner.config import load_route_config
 from route_planner.export import build_geojson, build_review_markdown, build_summary
 from route_planner.manifest import build_manifest, load_manifest
@@ -38,23 +39,25 @@ def write_artifacts(
     summary: dict[str, object],
     review_markdown: str,
     manifest: dict[str, object] | None = None,
+    *,
+    profile: str = "coastal",
 ) -> None:
     """Validate all JSON before atomically replacing the complete artifact set."""
+    paths = ArtifactPaths.for_profile(output_dir, profile)
     rendered = {
-        "coastal-route.geojson": _validated_json(geojson),
-        "summary.json": _validated_json(summary),
-        "review.md": review_markdown,
+        paths.geojson: _validated_json(geojson),
+        paths.summary: _validated_json(summary),
+        paths.review: review_markdown,
     }
     if manifest is not None:
-        rendered["route-manifest.json"] = _validated_json(manifest)
+        rendered[paths.manifest] = _validated_json(manifest)
     output_dir.mkdir(parents=True, exist_ok=True)
     staged: dict[Path, Path] = {}
     backups: dict[Path, Path] = {}
     published: set[Path] = set()
     try:
-        for name, content in rendered.items():
-            target = output_dir / name
-            temporary = output_dir / f"{name}.tmp"
+        for target, content in rendered.items():
+            temporary = output_dir / f"{target.name}.tmp"
             temporary.write_text(content, encoding="utf-8")
             staged[target] = temporary
         for target, temporary in staged.items():
@@ -78,7 +81,11 @@ def write_artifacts(
 
 
 def generate_from_segments(
-    config: RouteConfig, segments: tuple[PlannedSegment, ...], output_dir: Path
+    config: RouteConfig,
+    segments: tuple[PlannedSegment, ...],
+    output_dir: Path,
+    *,
+    profile: str = "coastal",
 ) -> None:
     """Publish exactly the supplied immutable plans and their lossless audit manifest."""
     write_artifacts(
@@ -91,6 +98,7 @@ def generate_from_segments(
         ),
         build_review_markdown(segments),
         build_manifest(config.route_id, segments),
+        profile=profile,
     )
 
 
@@ -98,9 +106,12 @@ def merge_refreshed_segments(
     config: RouteConfig,
     refreshed: tuple[PlannedSegment, ...],
     output_dir: Path,
+    *,
+    profile: str = "coastal",
 ) -> tuple[PlannedSegment, ...]:
     """Merge selected refreshes into a complete, config-aligned published manifest."""
-    existing = load_manifest(output_dir / "route-manifest.json", config.route_id)
+    paths = ArtifactPaths.for_profile(output_dir, profile)
+    existing = load_manifest(paths.manifest, config.route_id)
     expected = tuple(
         f"{start.id}-to-{end.id}"
         for start, end in zip(config.waypoints, config.waypoints[1:])
@@ -217,13 +228,16 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--cache-dir", type=Path, default=Path("cache"))
     parser.add_argument("--segment", action="append", default=[], help="segment id to generate; repeatable")
+    parser.add_argument("--profile", choices=("coastal", "inland"), required=True)
     args = parser.parse_args(argv)
     try:
         config = load_resolved_config(args.config, args.resolutions)
         segments = plan_live_segments(config, args.env, args.cache_dir, tuple(args.segment))
         if args.segment:
-            segments = merge_refreshed_segments(config, segments, args.output_dir)
-        generate_from_segments(config, segments, args.output_dir)
+            segments = merge_refreshed_segments(
+                config, segments, args.output_dir, profile=args.profile
+            )
+        generate_from_segments(config, segments, args.output_dir, profile=args.profile)
     except Exception:
         print("ERROR: route generation failed", file=sys.stderr)
         return 1

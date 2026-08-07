@@ -21,6 +21,8 @@ from route_planner.models import (
 
 def build_manifest(route_id: str, segments: Sequence[PlannedSegment]) -> dict[str, object]:
     """Return the complete planned values that produced a published artifact set."""
+    if not isinstance(route_id, str) or not route_id:
+        raise ValueError("route_id must be a non-empty string")
     return {
         "schema_version": 1,
         "route_id": route_id,
@@ -31,6 +33,8 @@ def build_manifest(route_id: str, segments: Sequence[PlannedSegment]) -> dict[st
 def load_manifest(path: Path, expected_route_id: str) -> tuple[PlannedSegment, ...]:
     """Load one complete manifest only when it belongs to the supplied route config."""
     try:
+        if not isinstance(expected_route_id, str) or not expected_route_id:
+            raise ValueError
         value = json.loads(path.read_text(encoding="utf-8"))
         manifest = _mapping(value)
         if manifest.get("schema_version") != 1 or manifest.get("route_id") != expected_route_id:

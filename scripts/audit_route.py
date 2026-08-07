@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the exact transactionally published coastal route before publication."""
+"""Audit the exact transactionally published route profile before publication."""
 
 from __future__ import annotations
 
@@ -14,6 +14,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from route_planner.amap import load_amap_key
+from route_planner.artifacts import ArtifactPaths
 from route_planner.config import load_route_config
 from route_planner.manifest import load_manifest
 from route_planner.models import PlannedSegment, ReviewItem, RoadClass, RouteConfig, Waypoint
@@ -44,10 +45,17 @@ def audit(segments: Sequence[PlannedSegment]) -> AuditResult:
 
 def scan_for_secret(root: Path, secret: str) -> AuditResult:
     """Return a hard finding when a supplied secret is present in an artifact tree."""
+    return _scan_paths_for_secret(
+        sorted(candidate for candidate in root.rglob("*") if candidate.is_file()), secret
+    )
+
+
+def _scan_paths_for_secret(paths: Sequence[Path], secret: str) -> AuditResult:
+    """Return hard findings for a fixed published artifact set."""
     if not secret:
         return AuditResult((_item("SECRET_SCAN_NOT_CONFIGURED", "", "Secret scan requires a non-empty value."),))
     items: list[ReviewItem] = []
-    for path in sorted(candidate for candidate in root.rglob("*") if candidate.is_file()):
+    for path in paths:
         try:
             if secret in path.read_text(encoding="utf-8", errors="ignore"):
                 items.append(_item("KEY_LEAKAGE", "", f"Secret found in generated artifact {path.name}."))
@@ -92,12 +100,20 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--data-dir", type=Path, required=True)
     parser.add_argument("--env", type=Path, required=True)
     parser.add_argument("--strict", action="store_true", help="fail on any publication risk")
+    parser.add_argument("--profile", choices=("coastal", "inland"), required=True)
     args = parser.parse_args(argv)
     try:
         config = load_route_config(args.config)
-        segments = load_manifest(args.data_dir / "route-manifest.json", config.route_id)
+        paths = ArtifactPaths.for_profile(args.data_dir, args.profile)
+        segments = load_manifest(paths.manifest, config.route_id)
         _require_config_alignment(config, segments)
-        items = [*audit(segments).items, *scan_for_secret(args.data_dir, load_amap_key(args.env)).items]
+        items = [
+            *audit(segments).items,
+            *_scan_paths_for_secret(
+                (paths.geojson, paths.summary, paths.review, paths.manifest),
+                load_amap_key(args.env),
+            ).items,
+        ]
     except Exception:
         print("HARD MANIFEST_INVALID: cannot audit this published route", file=sys.stdout)
         return 1
