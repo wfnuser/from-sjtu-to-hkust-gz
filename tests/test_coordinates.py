@@ -88,6 +88,69 @@ class CoordinateTests(unittest.TestCase):
             self.assertEqual(payload["checkin_resolutions"], checkins)
             self.assertEqual(payload["unresolved_checkin_queries"], ["阳曲路住处"])
 
+    def test_resolver_rerun_preserves_an_approved_manual_selection(self):
+        from scripts.resolve_pois import _write_report
+
+        report = resolve_waypoints(
+            RouteConfig(
+                "test", 1.15,
+                (Waypoint("poi", "漕泾数字游民国际村", "上海", "漕泾数字游民国际村"),),
+                (), {}, {},
+            ),
+            _GeocodeClient(
+                {
+                    ("漕泾数字游民国际村", "上海"): (
+                        GeocodeCandidate(
+                            "同名错误候选", "上海市青浦区", "青浦区", Coordinate(121.2, 31.1)
+                        ),
+                    )
+                }
+            ),
+        )
+        manual_selection = {
+            "mode": "manual",
+            "selected_poi_id": "B0LB7RFJKN",
+            "authority": "人工复核",
+        }
+        approved_candidate = {
+            "poi_id": "B0LB7RFJKN",
+            "name": "上海漕泾数字游民国际村",
+            "formatted_address": "上海市金山区水建路与水泾中心路交叉口",
+            "district": "金山区",
+            "location_gcj": {"lon": 121.398715, "lat": 30.819709},
+            "selected": True,
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "poi-resolutions.json"
+            path.write_text(
+                json.dumps(
+                    {
+                        "resolutions": [
+                            {
+                                "query": "漕泾数字游民国际村",
+                                "city": "上海",
+                                "candidates": [approved_candidate],
+                                "selection": manual_selection,
+                            }
+                        ],
+                        "unresolved_queries": [],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+
+            _write_report(path, report)
+
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            resolution = payload["resolutions"][0]
+            self.assertEqual(resolution["selection"], manual_selection)
+            self.assertEqual(
+                [candidate for candidate in resolution["candidates"] if candidate["selected"]],
+                [approved_candidate],
+            )
+            self.assertEqual(payload["unresolved_queries"], [])
+
     def test_parse_polyline_preserves_order(self):
         self.assertEqual(
             parse_polyline("121.1,31.1;121.2,31.2"),

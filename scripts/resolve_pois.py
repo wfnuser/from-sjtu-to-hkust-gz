@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from copy import deepcopy
 import json
 import os
 from pathlib import Path
@@ -47,6 +48,7 @@ def _write_report(path: Path, report: ResolutionReport) -> None:
         except (OSError, json.JSONDecodeError):
             existing = {}
         if isinstance(existing, dict):
+            _preserve_manual_selections(payload, existing)
             for key in ("checkin_resolutions", "unresolved_checkin_queries"):
                 if isinstance(existing.get(key), list):
                     payload[key] = existing[key]
@@ -85,6 +87,80 @@ def _resolution_payload(report: ResolutionReport) -> dict[str, object]:
         ],
         "unresolved_queries": list(report.unresolved_queries),
     }
+
+
+def _preserve_manual_selections(
+    payload: dict[str, object], existing: dict[str, object]
+) -> None:
+    approved = _approved_manual_candidates(existing)
+    resolutions = payload["resolutions"]
+    assert isinstance(resolutions, list)
+    for resolution in resolutions:
+        if not isinstance(resolution, dict):
+            continue
+        key = (resolution.get("query"), resolution.get("city"))
+        previous = approved.get(key)
+        if previous is None:
+            continue
+        selection, selected_candidate = previous
+        candidates = resolution.get("candidates")
+        if not isinstance(candidates, list):
+            continue
+        for candidate in candidates:
+            if isinstance(candidate, dict):
+                candidate["selected"] = False
+        matching = [
+            candidate
+            for candidate in candidates
+            if isinstance(candidate, dict)
+            and candidate.get("poi_id") == selection["selected_poi_id"]
+        ]
+        if len(matching) == 1:
+            matching[0]["selected"] = True
+        else:
+            candidates.append(deepcopy(selected_candidate))
+        resolution["selection"] = deepcopy(selection)
+    payload["unresolved_queries"] = [
+        resolution["query"]
+        for resolution in resolutions
+        if isinstance(resolution, dict)
+        and not any(
+            isinstance(candidate, dict) and candidate.get("selected") is True
+            for candidate in resolution.get("candidates", [])
+        )
+    ]
+
+
+def _approved_manual_candidates(
+    existing: dict[str, object],
+) -> dict[tuple[object, object], tuple[dict[str, object], dict[str, object]]]:
+    result: dict[tuple[object, object], tuple[dict[str, object], dict[str, object]]] = {}
+    resolutions = existing.get("resolutions")
+    if not isinstance(resolutions, list):
+        return result
+    for resolution in resolutions:
+        if not isinstance(resolution, dict):
+            continue
+        selection = resolution.get("selection")
+        candidates = resolution.get("candidates")
+        if (
+            not isinstance(selection, dict)
+            or selection.get("mode") != "manual"
+            or not isinstance(selection.get("selected_poi_id"), str)
+            or not selection["selected_poi_id"]
+            or not isinstance(candidates, list)
+        ):
+            continue
+        selected = [
+            candidate
+            for candidate in candidates
+            if isinstance(candidate, dict)
+            and candidate.get("selected") is True
+            and candidate.get("poi_id") == selection["selected_poi_id"]
+        ]
+        if len(selected) == 1:
+            result[(resolution.get("query"), resolution.get("city"))] = (selection, selected[0])
+    return result
 
 
 def _print_review_table(report: ResolutionReport) -> None:
