@@ -1,5 +1,6 @@
 const GEOJSON_URL = "data/coastal-route.geojson";
 const SUMMARY_URL = "data/summary.json";
+const BRANCH_IDS = new Set(["main", "ningbo", "shenzhen"]);
 
 const ROAD_STYLES = {
   cycleway: { color: "#7c3aed", weight: 5, opacity: 0.9 },
@@ -33,6 +34,7 @@ const optionalLayers = {
   shenzhen: L.featureGroup(),
 };
 const segmentGroups = new Map();
+const stepLayers = new Map();
 
 const elements = {
   cards: document.querySelector("#segment-cards"),
@@ -123,8 +125,9 @@ export function setOptionalBranchesVisible(enabled) {
 
 function addFeatures(geojson) {
   const features = Array.isArray(geojson.features) ? geojson.features : [];
-  for (const feature of features) {
-    if (!isRoadLine(feature)) continue;
+  const roadFeatures = features.filter(isRoadLine);
+  for (const feature of roadFeatures) validateBranchFeature(feature.properties || {});
+  for (const feature of roadFeatures) {
     const properties = feature.properties || {};
     const segmentId = String(properties.segment_id || "未命名路段");
     let entry = segmentGroups.get(segmentId);
@@ -134,13 +137,14 @@ function addFeatures(geojson) {
         features: [],
         group: L.featureGroup(),
         optional: Boolean(properties.optional_branch),
-        branch: optionalBranchFor(properties),
+        branch: properties.branch_id,
       };
       segmentGroups.set(segmentId, entry);
     }
 
     const stepLayer = L.geoJSON(feature, { style: roadStyle });
     stepLayer.bindPopup(popupContent(properties));
+    stepLayers.set(feature, stepLayer);
     entry.group.addLayer(stepLayer);
     entry.features.push(feature);
   }
@@ -159,21 +163,23 @@ function renderReviews() {
   const reviews = [];
   for (const entry of segmentGroups.values()) {
     for (const feature of entry.features) {
-      if (isHardReview(feature.properties || {})) reviews.push({ entry, feature });
+      if (isHardReview(feature.properties || {})) {
+        reviews.push({ entry, feature, stepLayer: stepLayers.get(feature) });
+      }
     }
   }
 
   elements.reviewList.innerHTML = "";
   elements.reviewPanel.hidden = reviews.length === 0;
   elements.reviewCount.textContent = reviews.length ? `${reviews.length} 项` : "";
-  for (const { entry, feature } of reviews) {
+  for (const { feature, stepLayer } of reviews) {
     const properties = feature.properties || {};
     const item = document.createElement("li");
     const link = document.createElement("button");
     link.type = "button";
     link.className = "review-link";
     link.innerHTML = `<strong>待复核</strong> · ${escapeHtml(properties.road_name || "未命名道路")}<br>${escapeHtml(properties.from_name || "起点")} → ${escapeHtml(properties.to_name || "终点")}`;
-    link.addEventListener("click", () => fitSegment(entry));
+    link.addEventListener("click", () => fitReviewFeature(stepLayer));
     item.append(link);
     elements.reviewList.append(item);
   }
@@ -182,6 +188,13 @@ function renderReviews() {
 function fitSegment(entry) {
   const bounds = entry.group.getBounds();
   if (bounds.isValid()) map.fitBounds(bounds, { padding: [32, 32] });
+}
+
+function fitReviewFeature(stepLayer) {
+  const bounds = stepLayer?.getBounds();
+  if (!bounds?.isValid()) return;
+  map.fitBounds(bounds, { padding: [32, 32] });
+  stepLayer.openPopup();
 }
 
 function popupContent(properties) {
@@ -206,11 +219,20 @@ function escapeHtml(value) {
   })[character]);
 }
 
-function optionalBranchFor(properties) {
-  const source = `${properties.segment_id || ""} ${properties.from_name || ""} ${properties.to_name || ""}`.toLowerCase();
-  if (source.includes("宁波") || source.includes("ningbo")) return "ningbo";
-  if (source.includes("深圳") || source.includes("shenzhen")) return "shenzhen";
-  return "other";
+function validateBranchFeature(properties) {
+  const branchId = properties.branch_id;
+  if (!BRANCH_IDS.has(branchId)) {
+    throw invalidBranchError();
+  }
+  if (Boolean(properties.optional_branch) !== (branchId !== "main")) {
+    throw invalidBranchError();
+  }
+}
+
+function invalidBranchError() {
+  const error = new Error("Unknown published branch_id");
+  error.name = "InvalidBranchError";
+  return error;
 }
 
 function isRoadLine(feature) {
@@ -246,11 +268,15 @@ function formatDuration(seconds) {
 }
 
 function showEmptyState() {
-  elements.mapMessage.textContent = "路线数据尚未生成";
+  showDataError("路线数据尚未生成", "未生成");
+}
+
+function showDataError(message, status = "数据无效") {
+  elements.mapMessage.textContent = message;
   elements.mapMessage.hidden = false;
-  elements.routeStatus.textContent = "未生成";
+  elements.routeStatus.textContent = status;
   elements.routeStatus.className = "status-badge is-warning";
-  elements.cards.innerHTML = "<p class=\"intro\">路线数据尚未生成</p>";
+  elements.cards.innerHTML = `<p class="intro">${message}</p>`;
 }
 
 function showReadyState() {
@@ -275,7 +301,11 @@ async function loadRoute() {
     if (bounds.isValid()) map.fitBounds(bounds, { padding: [32, 32] });
     showReadyState();
   } catch (error) {
-    showEmptyState();
+    if (error?.name === "InvalidBranchError") {
+      showDataError("路线数据支线标识无效");
+    } else {
+      showEmptyState();
+    }
     console.warn("Unable to load published route artifacts.", error);
   }
 }

@@ -24,16 +24,17 @@ def _segment(
     road_classes=(RoadClass.COUNTY, RoadClass.CYCLEWAY),
     distances=(1_200, 800),
     optional=False,
+    branch_id="ningbo",
     duration_s=700,
 ):
     start = Waypoint(
         "start", "上海交通大学闵行校区", "上海", "上海交通大学闵行校区",
         Coordinate(121.0, 31.0), include_in_main_totals=not optional,
-        branch="支线" if optional else "main",
+        branch=branch_id if optional else "main",
     )
     end = Waypoint(
         "end", "海盐", "嘉兴", "海盐", Coordinate(121.2, 30.9),
-        include_in_main_totals=not optional, branch="支线" if optional else "main",
+        include_in_main_totals=not optional, branch=branch_id if optional else "main",
     )
     steps = tuple(
         RouteStep(
@@ -69,7 +70,16 @@ class ExportTests(unittest.TestCase):
         self.assertIn("risk_tags", feature["properties"])
         self.assertIn("review_status", feature["properties"])
         self.assertFalse(feature["properties"]["optional_branch"])
+        self.assertEqual(feature["properties"]["branch_id"], "main")
         self.assertNotEqual(feature["geometry"]["coordinates"][0], [121.0, 31.0])
+
+    def test_geojson_publishes_only_known_stable_branch_ids(self):
+        """Would fail if the map had to infer branch membership from display text."""
+        ningbo = _segment(optional=True, branch_id="ningbo")
+
+        self.assertEqual(build_geojson([ningbo])["features"][0]["properties"]["branch_id"], "ningbo")
+        with self.assertRaises(ValueError):
+            build_geojson([_segment(optional=True, branch_id="unknown")])
 
     def test_summary_separates_main_and_optional_totals_and_road_classes(self):
         """Would fail if optional branches inflated the main route or class distances."""

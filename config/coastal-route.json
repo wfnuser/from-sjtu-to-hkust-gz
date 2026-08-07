@@ -86,14 +86,14 @@
       "name": "宁波",
       "enabled": false,
       "waypoints": [
-        {"id": "ningbo-01", "name": "宁波", "city": "宁波", "query": "宁波", "coordinate": null, "required": false, "include_in_main_totals": false, "branch": "宁波"}
+        {"id": "ningbo-01", "name": "宁波", "city": "宁波", "query": "宁波", "coordinate": null, "required": false, "include_in_main_totals": false, "branch": "ningbo"}
       ]
     },
     "深圳": {
       "name": "深圳腾讯总部",
       "enabled": false,
       "waypoints": [
-        {"id": "shenzhen-01", "name": "深圳腾讯总部", "city": "深圳", "query": "深圳腾讯总部", "coordinate": null, "required": false, "include_in_main_totals": false, "branch": "深圳"}
+        {"id": "shenzhen-01", "name": "深圳腾讯总部", "city": "深圳", "query": "深圳腾讯总部", "coordinate": null, "required": false, "include_in_main_totals": false, "branch": "shenzhen"}
       ]
     }
   }

@@ -13,6 +13,15 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("深圳支线", html)
         self.assertNotIn("AMAP_WEB_SERVICE_KEY", html + js)
 
+    def test_map_consumes_branch_schema_and_targets_reviewed_step(self):
+        """Would fail if branch labels or review links fell back to segment-wide inference."""
+        js = Path("web/app.mjs").read_text(encoding="utf-8")
+
+        self.assertIn("properties.branch_id", js)
+        self.assertNotIn("optionalBranchFor", js)
+        self.assertIn("fitReviewFeature", js)
+        self.assertIn("路线数据支线标识无效", js)
+
 
 if __name__ == "__main__":
     unittest.main()

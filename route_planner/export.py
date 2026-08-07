@@ -8,6 +8,9 @@ from route_planner.coordinates import gcj02_to_wgs84
 from route_planner.models import Coordinate, PlannedSegment, RoadClass, RouteStep
 
 
+_BRANCH_IDS = frozenset({"main", "ningbo", "shenzhen"})
+
+
 def build_geojson(segments: Sequence[PlannedSegment]) -> dict[str, object]:
     """Return one WGS84 LineString feature for every API road step with geometry."""
     features: list[dict[str, object]] = []
@@ -102,6 +105,7 @@ def _step_properties(segment: PlannedSegment, step: RouteStep) -> dict[str, obje
         "risk_tags": sorted(step.risk_tags),
         "review_status": _review_status(segment),
         "optional_branch": _is_optional(segment),
+        "branch_id": _branch_id(segment),
     }
 
 
@@ -110,6 +114,23 @@ def _is_optional(segment: PlannedSegment) -> bool:
         segment.from_waypoint.include_in_main_totals
         and segment.to_waypoint.include_in_main_totals
     )
+
+
+def _branch_id(segment: PlannedSegment) -> str:
+    """Publish a stable branch enum without relying on display names in the web UI."""
+    waypoint_branch_ids = {
+        segment.from_waypoint.branch,
+        segment.to_waypoint.branch,
+    }
+    if not _is_optional(segment):
+        if waypoint_branch_ids != {"main"}:
+            raise ValueError("Main route segments must use branch_id main")
+        return "main"
+
+    optional_ids = waypoint_branch_ids - {"main"}
+    if len(optional_ids) != 1 or not optional_ids <= _BRANCH_IDS - {"main"}:
+        raise ValueError("Optional route segments require branch_id ningbo or shenzhen")
+    return optional_ids.pop()
 
 
 def _review_status(segment: PlannedSegment) -> str:
