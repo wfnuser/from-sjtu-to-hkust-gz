@@ -31,6 +31,12 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("第 ${day} 天", js)
         self.assertIn("entry.day", js)
 
+    def test_map_deduplicates_segment_level_reviews_but_keeps_hard_steps(self):
+        js = Path("web/app.mjs").read_text(encoding="utf-8")
+
+        self.assertIn("reviewFeaturesForEntry", js)
+        self.assertIn("hardFeatures.length ? hardFeatures : pending.slice(0, 1)", js)
+
 
 if __name__ == "__main__":
     unittest.main()

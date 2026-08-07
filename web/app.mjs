@@ -174,10 +174,8 @@ function addFeatures(geojson) {
 function renderReviews() {
   const reviews = [];
   for (const entry of segmentGroups.values()) {
-    for (const feature of entry.features) {
-      if (isHardReview(feature.properties || {})) {
-        reviews.push({ entry, feature, stepLayer: stepLayers.get(feature) });
-      }
+    for (const feature of reviewFeaturesForEntry(entry)) {
+      reviews.push({ entry, feature, stepLayer: stepLayers.get(feature) });
     }
   }
 
@@ -195,6 +193,14 @@ function renderReviews() {
     item.append(link);
     elements.reviewList.append(item);
   }
+}
+
+function reviewFeaturesForEntry(entry) {
+  const pending = entry.features.filter((feature) => isHardReview(feature.properties || {}));
+  const hardFeatures = pending.filter((feature) => (
+    Array.isArray(feature.properties?.risk_tags) && feature.properties.risk_tags.includes("hard")
+  ));
+  return hardFeatures.length ? hardFeatures : pending.slice(0, 1);
 }
 
 function fitSegment(entry) {
