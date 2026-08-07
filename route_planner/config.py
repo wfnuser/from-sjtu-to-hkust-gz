@@ -1,4 +1,4 @@
-"""Loading and validating the declarative coastal route configuration."""
+"""Loading and validating declarative route configurations."""
 
 import json
 import re
@@ -12,6 +12,36 @@ _CHINESE_CHARACTER = re.compile(r"[\u4e00-\u9fff]")
 _REQUIRED_WAYPOINT_FIELDS = ("id", "name", "city", "query")
 _REQUIRED_MAIN_START = "上海交通大学闵行校区"
 _REQUIRED_MAIN_END = "香港科技大学（广州）"
+_INLAND_ROUTE_ID = "inland-main"
+_INLAND_MAIN_CORRIDOR = (
+    "上海交通大学闵行校区",
+    "漕泾数字游民国际村",
+    "海盐",
+    "海宁",
+    "杭州阿里巴巴总部",
+    "桐庐",
+    "建德之江村",
+    "龙游",
+    "衢州",
+    "玉山",
+    "上饶",
+    "鹰潭",
+    "抚州",
+    "南城",
+    "广昌",
+    "宁都",
+    "于都",
+    "赣州",
+    "信丰",
+    "龙南",
+    "定南",
+    "和平",
+    "河源",
+    "博罗",
+    "增城",
+    "番禺",
+    "香港科技大学（广州）",
+)
 
 
 def load_route_config(path: Path) -> RouteConfig:
@@ -26,6 +56,7 @@ def load_route_config(path: Path) -> RouteConfig:
     if not isinstance(payload, dict):
         raise ValueError("Route configuration must be a JSON object")
 
+    route_id = _required_string(payload, "route_id", "route configuration")
     max_detour_ratio = payload.get("max_detour_ratio")
     if isinstance(max_detour_ratio, bool) or max_detour_ratio != 1.15:
         raise ValueError("max_detour_ratio must be exactly 1.15")
@@ -40,6 +71,8 @@ def load_route_config(path: Path) -> RouteConfig:
         raise ValueError(f"Main route must start at {_REQUIRED_MAIN_START}")
     if main_waypoints[-1].name != _REQUIRED_MAIN_END:
         raise ValueError(f"Main route must end at {_REQUIRED_MAIN_END}")
+    if route_id == _INLAND_ROUTE_ID:
+        _validate_inland_main_corridor(main_waypoints)
 
     checkin_waypoints = _parse_waypoints(
         payload.get("checkin_waypoints", []), "check-in route"
@@ -47,7 +80,6 @@ def load_route_config(path: Path) -> RouteConfig:
     segment_rules = _parse_segment_rules(payload.get("segment_rules", {}))
     optional_branches = _parse_optional_branches(payload.get("optional_branches", {}))
 
-    route_id = _required_string(payload, "route_id", "route configuration")
     return RouteConfig(
         route_id=route_id,
         max_detour_ratio=max_detour_ratio,
@@ -56,6 +88,13 @@ def load_route_config(path: Path) -> RouteConfig:
         segment_rules=segment_rules,
         optional_branches=optional_branches,
     )
+
+
+def _validate_inland_main_corridor(waypoints: tuple[Waypoint, ...]) -> None:
+    if tuple(waypoint.name for waypoint in waypoints) != _INLAND_MAIN_CORRIDOR:
+        raise ValueError("inland-main corridor must match the bound inland waypoint order")
+    if any(waypoint.coordinate is not None for waypoint in waypoints):
+        raise ValueError("inland-main corridor coordinates must be null before resolution")
 
 
 def _parse_waypoints(value: Any, context: str) -> tuple[Waypoint, ...]:

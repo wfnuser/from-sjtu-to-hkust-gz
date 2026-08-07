@@ -1,0 +1,707 @@
+{
+  "resolutions": [
+    {
+      "query": "上海交通大学闵行校区",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "上海交通大学闵行校区",
+          "formatted_address": "上海市上海市闵行区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.440865,
+            "lat": 31.033205
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "漕泾数字游民国际村",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "漕泾数字游民国际村",
+          "formatted_address": "上海市上海市青浦区",
+          "district": "青浦区",
+          "location_gcj": {
+            "lon": 121.283835,
+            "lat": 31.159703
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "",
+          "name": "漕泾数字游民国际村",
+          "formatted_address": "上海市上海市金山区",
+          "district": "金山区",
+          "location_gcj": {
+            "lon": 121.405517,
+            "lat": 30.797412
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LB7RFJKN",
+          "name": "上海漕泾数字游民国际村",
+          "formatted_address": "上海市上海市金山区水建路与水泾中心路交叉口",
+          "district": "金山区",
+          "location_gcj": {
+            "lon": 121.398715,
+            "lat": 30.819709
+          },
+          "selected": true
+        }
+      ],
+      "selection": {
+        "mode": "manual",
+        "selected_poi_id": "B0LB7RFJKN",
+        "authority": "上海市、金山区政府报道确认漕泾数字游民国际村位于金山区漕泾镇水库村、漕泾郊野公园核心区",
+        "source_url": "https://www.shanghai.gov.cn/nw15343/20250702/91e44f5cb2044810af11bad51883fe9e.html"
+      }
+    },
+    {
+      "query": "海盐",
+      "city": "嘉兴",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "海盐",
+          "formatted_address": "浙江省嘉兴市海盐县",
+          "district": "海盐县",
+          "location_gcj": {
+            "lon": 120.94628,
+            "lat": 30.52664
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "海宁",
+      "city": "嘉兴",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "海宁",
+          "formatted_address": "浙江省嘉兴市海宁市",
+          "district": "海宁市",
+          "location_gcj": {
+            "lon": 120.680224,
+            "lat": 30.511536
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "杭州阿里巴巴总部",
+      "city": "杭州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "杭州阿里巴巴总部",
+          "formatted_address": "浙江省杭州市余杭区阿里巴巴",
+          "district": "余杭区",
+          "location_gcj": {
+            "lon": 120.023385,
+            "lat": 30.280437
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "桐庐",
+      "city": "杭州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "桐庐",
+          "formatted_address": "浙江省杭州市桐庐县",
+          "district": "桐庐县",
+          "location_gcj": {
+            "lon": 119.691755,
+            "lat": 29.79418
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "建德之江村",
+      "city": "杭州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "建德之江村",
+          "formatted_address": "浙江省杭州市建德市",
+          "district": "建德市",
+          "location_gcj": {
+            "lon": 119.387573,
+            "lat": 29.507374
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "龙游",
+      "city": "衢州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "龙游",
+          "formatted_address": "浙江省衢州市龙游县",
+          "district": "龙游县",
+          "location_gcj": {
+            "lon": 119.1723,
+            "lat": 29.028214
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "衢州",
+      "city": "衢州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "衢州",
+          "formatted_address": "浙江省衢州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 118.859307,
+            "lat": 28.970229
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "玉山",
+      "city": "上饶",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "玉山",
+          "formatted_address": "江西省上饶市玉山县",
+          "district": "玉山县",
+          "location_gcj": {
+            "lon": 118.244736,
+            "lat": 28.681936
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "上饶",
+      "city": "上饶",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "上饶",
+          "formatted_address": "江西省上饶市",
+          "district": "",
+          "location_gcj": {
+            "lon": 117.943064,
+            "lat": 28.45513
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "鹰潭",
+      "city": "鹰潭",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "鹰潭",
+          "formatted_address": "江西省鹰潭市",
+          "district": "",
+          "location_gcj": {
+            "lon": 117.039532,
+            "lat": 28.272092
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "抚州",
+      "city": "抚州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "抚州",
+          "formatted_address": "江西省抚州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 116.358054,
+            "lat": 27.948979
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "南城",
+      "city": "抚州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "南城",
+          "formatted_address": "江西省抚州市南城县",
+          "district": "南城县",
+          "location_gcj": {
+            "lon": 116.637228,
+            "lat": 27.570031
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "广昌",
+      "city": "抚州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "广昌",
+          "formatted_address": "江西省抚州市广昌县",
+          "district": "广昌县",
+          "location_gcj": {
+            "lon": 116.336556,
+            "lat": 26.843974
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "宁都",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "宁都",
+          "formatted_address": "江西省赣州市宁都县",
+          "district": "宁都县",
+          "location_gcj": {
+            "lon": 116.009171,
+            "lat": 26.470865
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "于都",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "于都",
+          "formatted_address": "江西省赣州市于都县",
+          "district": "于都县",
+          "location_gcj": {
+            "lon": 115.415145,
+            "lat": 25.952564
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "赣州",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "赣州",
+          "formatted_address": "江西省赣州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 114.933494,
+            "lat": 25.831139
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "信丰",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "信丰",
+          "formatted_address": "江西省赣州市信丰县",
+          "district": "信丰县",
+          "location_gcj": {
+            "lon": 114.922485,
+            "lat": 25.38676
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "龙南",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "龙南",
+          "formatted_address": "江西省赣州市龙南市",
+          "district": "龙南市",
+          "location_gcj": {
+            "lon": 114.804474,
+            "lat": 24.901216
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "定南",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "定南",
+          "formatted_address": "江西省赣州市定南县",
+          "district": "定南县",
+          "location_gcj": {
+            "lon": 115.027908,
+            "lat": 24.783372
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "和平",
+      "city": "河源",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "和平",
+          "formatted_address": "广东省河源市和平县",
+          "district": "和平县",
+          "location_gcj": {
+            "lon": 114.935634,
+            "lat": 24.469177
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "河源",
+      "city": "河源",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "河源",
+          "formatted_address": "广东省河源市",
+          "district": "",
+          "location_gcj": {
+            "lon": 114.700215,
+            "lat": 23.744276
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "博罗",
+      "city": "惠州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "博罗",
+          "formatted_address": "广东省惠州市博罗县",
+          "district": "博罗县",
+          "location_gcj": {
+            "lon": 114.289602,
+            "lat": 23.172587
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "增城",
+      "city": "广州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "增城",
+          "formatted_address": "广东省广州市增城区",
+          "district": "增城区",
+          "location_gcj": {
+            "lon": 113.810734,
+            "lat": 23.261452
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "番禺",
+      "city": "广州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "番禺",
+          "formatted_address": "广东省广州市番禺区",
+          "district": "番禺区",
+          "location_gcj": {
+            "lon": 113.383917,
+            "lat": 22.93756
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "香港科技大学（广州）",
+      "city": "广州",
+      "candidates": [
+        {
+          "poi_id": "B0IGJURJOJ",
+          "name": "香港科技大学(广州)",
+          "formatted_address": "广东省广州市南沙区笃学路1号",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.484507,
+            "lat": 22.889043
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "B0FFLCHK8Q",
+          "name": "香港科技大学霍英东研究院",
+          "formatted_address": "广东省广州市南沙区环市大道南2号资讯科技园科技楼",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.611678,
+            "lat": 22.749314
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LUA7MGXP",
+          "name": "香港科技大学(广州)-2期",
+          "formatted_address": "广东省广州市南沙区东涌镇三沙港路28号",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.483197,
+            "lat": 22.892426
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0M6SY3GD2",
+          "name": "香港科技大学(广州)量子科技中心",
+          "formatted_address": "广东省广州市南沙区中国中铁广州局港科大项目部东侧210米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.482507,
+            "lat": 22.889483
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "BV09037935",
+          "name": "香港科技大学(广州)站(公交站)",
+          "formatted_address": "广东省广州市南沙区南14路;南22路;南57路",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.48363,
+            "lat": 22.884982
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MGCHEOBC",
+          "name": "香港科技大学5B栋",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486861,
+            "lat": 22.88523
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LKBKSK0D",
+          "name": "香港科技大学(广州)地下停车场",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486975,
+            "lat": 22.883525
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0I2YANYUV",
+          "name": "香港科技大学(广州)菜鸟驿站",
+          "formatted_address": "广东省广州市南沙区香港科技大学(广州)6A栋118铺",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486075,
+            "lat": 22.884475
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L2P9QR2C",
+          "name": "香港科技大学(广州)-行政楼",
+          "formatted_address": "广东省广州市南沙区星巴克(广州香港科技大学店)西侧",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.482172,
+            "lat": 22.887553
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LUDR8Z5Z",
+          "name": "香港科技大学(广州)-地下停车场",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.48208,
+            "lat": 22.887618
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0M6N6EDAL",
+          "name": "香港科技大学(广州)地上停车场",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486375,
+            "lat": 22.889375
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MUC72SJY",
+          "name": "香港科技大学(广州)学生宿舍",
+          "formatted_address": "广东省广州市南沙区笃学路与东涌大道交叉口北260米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.485775,
+            "lat": 22.885575
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00140TFUK",
+          "name": "中山大学香港科技大学珠江口海洋环境联合监测中心",
+          "formatted_address": "广东省广州市海珠区新港西路135号中山大学东北区341号楼",
+          "district": "海珠区",
+          "location_gcj": {
+            "lon": 113.299933,
+            "lat": 23.098429
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L3AO09K1",
+          "name": "香港科技大学(广州)图书馆",
+          "formatted_address": "广东省广州市南沙区中国中铁广州局港科大项目部东侧300米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.483411,
+            "lat": 22.889568
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MUF7HH7K",
+          "name": "香港科技大学(广州)-金合欢(打卡点)",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.483315,
+            "lat": 22.890823
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L2FU29O0",
+          "name": "港科大(广州)项目",
+          "formatted_address": "广东省广州市南沙区三沙港路与三沙公路交叉口西北240米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.490775,
+            "lat": 22.886475
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MR1XFWLR",
+          "name": "香港科技大学(广州)北区宿舍6栋",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486625,
+            "lat": 22.890725
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LULXABGF",
+          "name": "香港科技大学(广州)科创成果转移转化基地",
+          "formatted_address": "广东省广州市南沙区东涌立交与S6广龙高速交叉口西北200米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.494625,
+            "lat": 22.872325
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MB35FU2F",
+          "name": "广州湾区建工有限公司香港科技大学(广州)二期项目部",
+          "formatted_address": "广东省广州市南沙区三沙公路85号",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.491074,
+            "lat": 22.887047
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MUF7HVLZ",
+          "name": "香港科技大学(广州)-合欢花(打卡点)",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)(东涌地铁站A口旁)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.478988,
+            "lat": 22.88559
+          },
+          "selected": false
+        }
+      ],
+      "selection": {
+        "mode": "manual",
+        "selected_poi_id": "B0IGJURJOJ",
+        "authority": "香港科技大学（广州）官方联系方式确认地址为广州市南沙区笃学路1号",
+        "source_url": "https://www.hkust-gz.edu.cn/zh/contact-us/?variant=zh-cn"
+      }
+    }
+  ],
+  "unresolved_queries": []
+}

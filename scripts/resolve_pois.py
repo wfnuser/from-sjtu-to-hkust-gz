@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Resolve main-route POIs while preserving all AMap candidates for review."""
+"""Resolve a route configuration's main POIs while preserving AMap provenance."""
 
 from __future__ import annotations
 
@@ -31,7 +31,7 @@ def main() -> int:
 
 
 def _arguments() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="解析沿海主线 POI，并输出待复核候选项")
+    parser = argparse.ArgumentParser(description="解析主线 POI，并输出待复核候选项")
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--env", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
