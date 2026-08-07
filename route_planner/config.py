@@ -10,6 +10,8 @@ from .models import Coordinate, OptionalBranch, RouteConfig, SegmentRule, Waypoi
 
 _CHINESE_CHARACTER = re.compile(r"[\u4e00-\u9fff]")
 _REQUIRED_WAYPOINT_FIELDS = ("id", "name", "city", "query")
+_REQUIRED_MAIN_START = "上海交通大学闵行校区"
+_REQUIRED_MAIN_END = "香港科技大学（广州）"
 
 
 def load_route_config(path: Path) -> RouteConfig:
@@ -34,6 +36,10 @@ def load_route_config(path: Path) -> RouteConfig:
     for waypoint in main_waypoints:
         if not _CHINESE_CHARACTER.search(waypoint.name):
             raise ValueError("Main waypoint display names must contain Chinese characters")
+    if main_waypoints[0].name != _REQUIRED_MAIN_START:
+        raise ValueError(f"Main route must start at {_REQUIRED_MAIN_START}")
+    if main_waypoints[-1].name != _REQUIRED_MAIN_END:
+        raise ValueError(f"Main route must end at {_REQUIRED_MAIN_END}")
 
     checkin_waypoints = _parse_waypoints(
         payload.get("checkin_waypoints", []), "check-in route"

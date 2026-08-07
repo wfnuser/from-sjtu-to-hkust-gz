@@ -41,12 +41,38 @@ class ConfigTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "endpoints"):
             _load_payload(payload)
 
+    def test_rejects_a_main_route_with_a_replaced_start_endpoint(self):
+        payload = _valid_payload()
+        payload["waypoints"][0].update(
+            name="上海虹桥站", city="上海", query="上海虹桥站"
+        )
+
+        with self.assertRaisesRegex(ValueError, "上海交通大学闵行校区"):
+            _load_payload(payload)
+
+    def test_rejects_a_main_route_with_a_replaced_end_endpoint(self):
+        payload = _valid_payload()
+        payload["waypoints"][-1].update(
+            name="广州南站", city="广州", query="广州南站"
+        )
+
+        with self.assertRaisesRegex(ValueError, "香港科技大学（广州）"):
+            _load_payload(payload)
+
     def test_rejects_detour_ratio_other_than_fifteen_percent(self):
         payload = _valid_payload()
         payload["max_detour_ratio"] = 1.2
 
         with self.assertRaisesRegex(ValueError, "1.15"):
             _load_payload(payload)
+
+    def test_loaded_route_mappings_cannot_be_mutated(self):
+        cfg = load_route_config(Path("config/coastal-route.json"))
+
+        with self.assertRaises(TypeError):
+            cfg.segment_rules["replacement"] = cfg.segment_rules["main-01-to-main-02"]
+        with self.assertRaises(TypeError):
+            cfg.optional_branches["replacement"] = cfg.optional_branches["宁波"]
 
 
 def _valid_payload():

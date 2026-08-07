@@ -1,5 +1,7 @@
+from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import Enum
+from types import MappingProxyType
 
 
 class RoadClass(str, Enum):
@@ -51,8 +53,14 @@ class RouteConfig:
     max_detour_ratio: float
     waypoints: tuple[Waypoint, ...]
     checkin_waypoints: tuple[Waypoint, ...]
-    segment_rules: dict[str, SegmentRule]
-    optional_branches: dict[str, OptionalBranch]
+    segment_rules: Mapping[str, SegmentRule]
+    optional_branches: Mapping[str, OptionalBranch]
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "segment_rules", MappingProxyType(dict(self.segment_rules)))
+        object.__setattr__(
+            self, "optional_branches", MappingProxyType(dict(self.optional_branches))
+        )
 
 
 @dataclass(frozen=True)
