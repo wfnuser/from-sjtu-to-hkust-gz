@@ -1,7 +1,14 @@
+import json
+from dataclasses import replace
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 
+from route_planner.amap import AmapClient
+from route_planner.export import build_geojson, build_review_markdown, build_summary
+from route_planner.manifest import build_manifest
 from route_planner.models import (
     CandidateRoute,
     Coordinate,
@@ -13,6 +20,7 @@ from route_planner.models import (
     Waypoint,
 )
 from scripts.audit_route import audit, scan_for_secret
+from scripts.generate_route import write_artifacts
 
 
 def _segment(
@@ -109,6 +117,166 @@ class AuditTests(unittest.TestCase):
             leaked.write_text("secret-123", encoding="utf-8")
 
             self.assertFalse(scan_for_secret(Path(directory), "secret-123").ok)
+
+    def test_generate_cli_task7_contract_publishes_the_manifest_strict_audit_reads(self):
+        """Would fail if either CLI ignored its Task 7 inputs or audited a fixture instead."""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config, resolutions, environment, cache_dir = _write_live_inputs(root)
+            output_dir = root / "web-data"
+
+            generated = _run_cli(
+                "scripts/generate_route.py",
+                "--config", config,
+                "--resolutions", resolutions,
+                "--env", environment,
+                "--output-dir", output_dir,
+                "--cache-dir", cache_dir,
+            )
+            audited = _run_cli(
+                "scripts/audit_route.py",
+                "--config", config,
+                "--data-dir", output_dir,
+                "--env", environment,
+                "--strict",
+            )
+
+            self.assertEqual(generated.returncode, 0, generated.stderr)
+            self.assertEqual(audited.returncode, 0, audited.stderr)
+            self.assertEqual(
+                sorted(path.name for path in output_dir.iterdir()),
+                ["coastal-route.geojson", "review.md", "route-manifest.json", "summary.json"],
+            )
+            self.assertNotIn("sanitized-test-key", generated.stdout + generated.stderr + audited.stdout + audited.stderr)
+
+    def test_strict_audit_rejects_unsafe_manifest_that_was_published_with_route_artifacts(self):
+        """Would fail if strict audit certified its safe fixture instead of the manifest route."""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config, _, environment, _ = _write_live_inputs(root)
+            output_dir = root / "web-data"
+            unsafe = _config_aligned_segment(risk_tags=frozenset({"hard"}))
+            write_artifacts(
+                output_dir,
+                build_geojson([unsafe]),
+                build_summary([unsafe], 1.15),
+                build_review_markdown([unsafe]),
+                build_manifest("cli-test", [unsafe]),
+            )
+
+            audited = _run_cli(
+                "scripts/audit_route.py",
+                "--config", config,
+                "--data-dir", output_dir,
+                "--env", environment,
+                "--strict",
+            )
+
+            self.assertNotEqual(audited.returncode, 0)
+            self.assertIn("HARD_RISK", audited.stdout)
+            self.assertNotIn("sanitized-test-key", audited.stdout + audited.stderr)
+
+    def test_strict_audit_rejects_manifest_with_a_rule_that_disagrees_with_config(self):
+        """Would fail if a manifest could weaken the configured national-road policy."""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config, _, environment, _ = _write_live_inputs(root)
+            output_dir = root / "web-data"
+            configured_start = Waypoint("main-01", "上海交通大学闵行校区", "上海", "上海交通大学闵行校区", Coordinate(121.0, 31.0))
+            configured_end = Waypoint("main-02", "香港科技大学（广州）", "广州", "香港科技大学（广州）", Coordinate(113.0, 23.0))
+            mismatched = replace(
+                _segment(),
+                from_waypoint=configured_start,
+                to_waypoint=configured_end,
+                rule=SegmentRule("main-01-to-main-02", allowed_national_m=1),
+            )
+            write_artifacts(
+                output_dir,
+                build_geojson([mismatched]),
+                build_summary([mismatched], 1.15),
+                build_review_markdown([mismatched]),
+                build_manifest("cli-test", [mismatched]),
+            )
+
+            audited = _run_cli(
+                "scripts/audit_route.py",
+                "--config", config,
+                "--data-dir", output_dir,
+                "--env", environment,
+                "--strict",
+            )
+
+            self.assertNotEqual(audited.returncode, 0)
+            self.assertIn("MANIFEST_INVALID", audited.stdout)
+
+
+def _write_live_inputs(root):
+    config = root / "route.json"
+    config.write_text(
+        json.dumps(
+            {
+                "route_id": "cli-test",
+                "max_detour_ratio": 1.15,
+                "waypoints": [
+                    {"id": "main-01", "name": "上海交通大学闵行校区", "city": "上海", "query": "上海交通大学闵行校区", "coordinate": None},
+                    {"id": "main-02", "name": "香港科技大学（广州）", "city": "广州", "query": "香港科技大学（广州）", "coordinate": None},
+                ],
+                "checkin_waypoints": [],
+                "segment_rules": {"main-01-to-main-02": {"segment_id": "main-01-to-main-02"}},
+                "optional_branches": {},
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    resolutions = root / "resolutions.json"
+    resolutions.write_text(
+        json.dumps(
+            {
+                "resolutions": [
+                    {"query": "上海交通大学闵行校区", "city": "上海", "candidates": [{"location_gcj": {"lon": 121.0, "lat": 31.0}, "selected": True}]},
+                    {"query": "香港科技大学（广州）", "city": "广州", "candidates": [{"location_gcj": {"lon": 113.0, "lat": 23.0}, "selected": True}]},
+                ],
+                "unresolved_queries": [],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    environment = root / ".env"
+    environment.write_text("AMAP_WEB_SERVICE_KEY=sanitized-test-key\n", encoding="utf-8")
+    cache_dir = root / "cache"
+    client = AmapClient("sanitized-test-key", cache_dir, min_interval_s=0)
+    cache_key = client.cache_key(
+        "/v5/direction/electrobike",
+        {"origin": "121.0,31.0", "destination": "113.0,23.0", "show_fields": "polyline", "alternative_route": "3"},
+    )
+    (cache_dir / f"{cache_key}.json").write_text(
+        json.dumps(
+            {"status": "1", "route": {"paths": [{"distance": "1000", "duration": "300", "steps": [{"instruction": "沿X101县道骑行", "road_name": "X101县道", "step_distance": "1000", "polyline": "121.0,31.0;113.0,23.0"}]}]}},
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    return config, resolutions, environment, cache_dir
+
+
+def _config_aligned_segment(**kwargs):
+    return replace(
+        _segment(**kwargs),
+        from_waypoint=Waypoint("main-01", "上海交通大学闵行校区", "上海", "上海交通大学闵行校区", Coordinate(121.0, 31.0)),
+        to_waypoint=Waypoint("main-02", "香港科技大学（广州）", "广州", "香港科技大学（广州）", Coordinate(113.0, 23.0)),
+    )
+
+
+def _run_cli(script, *arguments):
+    return subprocess.run(
+        [sys.executable, script, *(str(argument) for argument in arguments)],
+        cwd=Path(__file__).resolve().parents[1],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
 
 
 if __name__ == "__main__":

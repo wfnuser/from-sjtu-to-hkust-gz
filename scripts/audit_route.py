@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
-"""Audit planned routes and generated artifacts before publication."""
+"""Audit the exact transactionally published coastal route before publication."""
 
 from __future__ import annotations
 
 import argparse
+from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
 import sys
-from collections.abc import Sequence
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from route_planner.models import PlannedSegment, ReviewItem
+from route_planner.amap import load_amap_key
+from route_planner.config import load_route_config
+from route_planner.manifest import load_manifest
+from route_planner.models import PlannedSegment, ReviewItem, RoadClass, RouteConfig, Waypoint
 from route_planner.roads import classify_risks
-from scripts.generate_route import deterministic_segments
 
 
 NATIONAL_EXCEPTION_APPROVAL = "NATIONAL_ROAD_EXCEPTION_APPROVED"
@@ -56,68 +58,87 @@ def scan_for_secret(root: Path, secret: str) -> AuditResult:
 
 def _audit_segment(segment: PlannedSegment) -> list[ReviewItem]:
     items: list[ReviewItem] = []
-    if not segment.selected.steps or any(
-        not step.polyline_gcj for step in segment.selected.steps
-    ):
+    if not segment.selected.steps or any(not step.polyline_gcj for step in segment.selected.steps):
         items.append(_item("UNRESOLVED_POLYLINE", segment.segment_id, "Route has no real API polyline."))
     for distance_m in segment.subleg_distances_m:
         if distance_m > 80_000:
-            items.append(
-                _item("SUBLEG_OVER_80_KM", segment.segment_id, "API subleg exceeds 80 km.", distance_m)
-            )
+            items.append(_item("SUBLEG_OVER_80_KM", segment.segment_id, "API subleg exceeds 80 km.", distance_m))
     national_distance_m = 0
     for step in segment.selected.steps:
         risk_tags = step.risk_tags | classify_risks(step.road_name, step.instruction)
         if "hard" in risk_tags:
             items.append(_item("HARD_RISK", segment.segment_id, "Hard-risk road step is selected.", step.distance_m, step.road_name))
-        if step.road_class.value == "national":
+        if step.road_class is RoadClass.NATIONAL:
             national_distance_m += step.distance_m
     if national_distance_m:
-        if (
-            segment.rule.parallel_road_available
-            and national_distance_m > segment.rule.allowed_national_m
-        ):
-            items.append(
-                _item(
-                    "PARALLEL_ROAD_RULE_VIOLATION", segment.segment_id,
-                    "National road selected despite an available parallel road.", national_distance_m,
-                )
-            )
+        if segment.rule.parallel_road_available and national_distance_m > segment.rule.allowed_national_m:
+            items.append(_item("PARALLEL_ROAD_RULE_VIOLATION", segment.segment_id, "National road selected despite an available parallel road.", national_distance_m))
         elif not any(item.code == NATIONAL_EXCEPTION_APPROVAL for item in segment.reviews):
-            items.append(
-                _item(
-                    "NATIONAL_ROAD_EXCEPTION_UNREVIEWED", segment.segment_id,
-                    "National-road use lacks an explicit recorded review approval.", national_distance_m,
-                )
-            )
+            items.append(_item("NATIONAL_ROAD_EXCEPTION_UNREVIEWED", segment.segment_id, "National-road use lacks an explicit recorded review approval.", national_distance_m))
     return items
 
 
-def _item(
-    code: str, segment_id: str, message: str, distance_m: int = 0, road_name: str = ""
-) -> ReviewItem:
+def _item(code: str, segment_id: str, message: str, distance_m: int = 0, road_name: str = "") -> ReviewItem:
     return ReviewItem(code, segment_id, "hard", message, road_name, distance_m)
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--strict", action="store_true", help="require an explicit secret scan")
-    parser.add_argument("--data-dir", type=Path, default=PROJECT_ROOT / "web" / "data")
-    parser.add_argument("--secret", help="secret value to scan for; never echoed")
+    parser.add_argument("--config", type=Path, required=True)
+    parser.add_argument("--data-dir", type=Path, required=True)
+    parser.add_argument("--env", type=Path, required=True)
+    parser.add_argument("--strict", action="store_true", help="fail on any publication risk")
     args = parser.parse_args(argv)
-
-    result = audit(deterministic_segments())
-    secret_result = (
-        scan_for_secret(args.data_dir, args.secret)
-        if args.secret is not None
-        else AuditResult(())
-    )
-    items = [*result.items, *secret_result.items]
-    if args.strict and args.secret is None:
-        items.append(_item("SECRET_SCAN_NOT_CONFIGURED", "", "Strict audit requires --secret."))
+    try:
+        config = load_route_config(args.config)
+        segments = load_manifest(args.data_dir / "route-manifest.json", config.route_id)
+        _require_config_alignment(config, segments)
+        items = [*audit(segments).items, *scan_for_secret(args.data_dir, load_amap_key(args.env)).items]
+    except Exception:
+        print("HARD MANIFEST_INVALID: cannot audit this published route", file=sys.stdout)
+        return 1
     for item in items:
         print(f"{item.severity.upper()} {item.code}: {item.message}")
     return 0 if not any(item.severity == "hard" for item in items) else 1
+
+
+def _require_config_alignment(config: RouteConfig, segments: Sequence[PlannedSegment]) -> None:
+    expected = {
+        f"{start.id}-to-{end.id}": (start, end)
+        for start, end in zip(config.waypoints, config.waypoints[1:])
+    }
+    seen: set[str] = set()
+    for segment in segments:
+        if segment.segment_id in seen or segment.segment_id not in expected:
+            raise ValueError
+        start, end = expected[segment.segment_id]
+        if (
+            segment.rule != config.segment_rules.get(segment.segment_id)
+            or not _waypoint_matches_config(segment.from_waypoint, start)
+            or not _waypoint_matches_config(segment.to_waypoint, end)
+        ):
+            raise ValueError
+        seen.add(segment.segment_id)
+
+
+def _waypoint_matches_config(actual: Waypoint, configured: Waypoint) -> bool:
+    return (
+        actual.id,
+        actual.name,
+        actual.city,
+        actual.query,
+        actual.required,
+        actual.include_in_main_totals,
+        actual.branch,
+    ) == (
+        configured.id,
+        configured.name,
+        configured.city,
+        configured.query,
+        configured.required,
+        configured.include_in_main_totals,
+        configured.branch,
+    )
 
 
 if __name__ == "__main__":

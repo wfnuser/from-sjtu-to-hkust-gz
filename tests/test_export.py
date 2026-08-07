@@ -1,4 +1,5 @@
 import json
+from dataclasses import replace
 from pathlib import Path
 import tempfile
 import unittest
@@ -8,6 +9,7 @@ from route_planner.models import (
     CandidateRoute,
     Coordinate,
     PlannedSegment,
+    ReviewItem,
     RoadClass,
     RouteStep,
     SegmentRule,
@@ -117,10 +119,26 @@ class ExportTests(unittest.TestCase):
 
             self.assertEqual(
                 sorted(path.name for path in output_dir.iterdir()),
-                ["review.md", "route.geojson", "summary.json"],
+                ["coastal-route.geojson", "review.md", "summary.json"],
             )
-            self.assertEqual(json.loads((output_dir / "route.geojson").read_text())["type"], "FeatureCollection")
+            self.assertEqual(json.loads((output_dir / "coastal-route.geojson").read_text())["type"], "FeatureCollection")
             self.assertEqual(json.loads((output_dir / "summary.json").read_text())["main"]["distance_m"], 2_000)
+
+    def test_approved_national_exception_is_not_an_unresolved_review(self):
+        """Would fail if an informational approval still blocked the route summary."""
+        approved = replace(
+            _segment(),
+            reviews=(ReviewItem("NATIONAL_ROAD_EXCEPTION_APPROVED", "main-01-to-main-02", "info", "Reviewed."),),
+        )
+        pending = replace(
+            _segment(),
+            reviews=(ReviewItem("MANUAL_CHECK", "main-01-to-main-02", "warning", "Review this."),),
+        )
+
+        self.assertEqual(build_geojson([approved])["features"][0]["properties"]["review_status"], "approved")
+        self.assertEqual(build_summary([approved], 1.15)["main"]["unresolved_count"], 0)
+        self.assertEqual(build_geojson([pending])["features"][0]["properties"]["review_status"], "review_required")
+        self.assertEqual(build_summary([pending], 1.15)["main"]["unresolved_count"], 1)
 
 
 if __name__ == "__main__":

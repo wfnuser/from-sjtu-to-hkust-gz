@@ -115,7 +115,7 @@ def _is_optional(segment: PlannedSegment) -> bool:
 def _review_status(segment: PlannedSegment) -> str:
     if any(not step.polyline_gcj for step in segment.selected.steps):
         return "unresolved"
-    if segment.reviews:
+    if _has_pending_review(segment):
         return "review_required"
     return "approved"
 
@@ -131,7 +131,7 @@ def _totals(segments: Iterable[PlannedSegment]) -> dict[str, object]:
     unresolved_count = sum(
         1
         for segment in materialized
-        if segment.reviews
+        if _has_pending_review(segment)
         or not segment.selected.steps
         or any(not step.polyline_gcj for step in segment.selected.steps)
     )
@@ -149,3 +149,7 @@ def _totals(segments: Iterable[PlannedSegment]) -> dict[str, object]:
         "unknown_distance_m": distances[RoadClass.UNKNOWN.value],
         "city_distance_m": distances[RoadClass.CITY.value],
     }
+
+
+def _has_pending_review(segment: PlannedSegment) -> bool:
+    return any(item.severity in {"warning", "hard"} for item in segment.reviews)
