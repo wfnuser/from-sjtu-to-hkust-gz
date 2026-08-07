@@ -1,0 +1,42 @@
+{
+  "status": "1",
+  "info": "OK",
+  "infocode": "10000",
+  "route": {
+    "paths": [
+      {
+        "distance": "2432",
+        "duration": "876",
+        "steps": [
+          {
+            "instruction": "沿滨江绿道向南骑行",
+            "orientation": "南",
+            "polyline": "121.430000,31.020000;121.435000,31.015000",
+            "road_name": "滨江绿道",
+            "step_distance": "1200"
+          },
+          {
+            "instruction": "沿X101县道骑行",
+            "orientation": "南",
+            "polyline": "121.435000,31.015000;121.440000,31.010000",
+            "road_name": "X101县道",
+            "step_distance": "1232"
+          }
+        ]
+      },
+      {
+        "distance": "2600",
+        "duration": "920",
+        "steps": [
+          {
+            "instruction": "沿海滨自行车道骑行",
+            "orientation": "南",
+            "polyline": "121.430000,31.020000;121.440000,31.010000",
+            "road_name": "海滨自行车道",
+            "step_distance": "2600"
+          }
+        ]
+      }
+    ]
+  }
+}
