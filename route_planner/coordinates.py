@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+import re
 from collections.abc import Sequence
 from typing import Protocol
 
@@ -86,7 +87,11 @@ def _matches_city(candidate: GeocodeCandidate, city: str) -> bool:
     expected = city.strip()
     if not expected:
         return False
-    return expected in candidate.formatted_address or expected in candidate.district
+    if candidate.district.strip() == expected:
+        return True
+    province = r"(?:[^省市区县]+(?:省|自治区|特别行政区))?"
+    locality = re.escape(expected) + r"(?:市|地区|自治州|盟|特别行政区)"
+    return re.match(rf"^{province}{locality}", candidate.formatted_address) is not None
 
 
 def _parse_coordinate(value: str) -> Coordinate:

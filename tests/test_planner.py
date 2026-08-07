@@ -31,12 +31,26 @@ class RoutePlannerTests(unittest.TestCase):
 
         self.assertIn("DETOUR_OVER_15_PERCENT", [review.code for review in planned.reviews])
 
+    def test_detour_at_exactly_fifteen_percent_does_not_create_review_item(self):
+        planned = RoutePlanner(
+            _FakeAmapClient(direct_distance_m=100_000, subleg_distances_m=(57_500, 57_500))
+        ).plan_segment(START, END, RULE)
+
+        self.assertNotIn("DETOUR_OVER_15_PERCENT", [review.code for review in planned.reviews])
+
     def test_subleg_over_eighty_kilometres_creates_review_item(self):
         planned = RoutePlanner(
             _FakeAmapClient(direct_distance_m=100_000, subleg_distances_m=(81_000, 1_000))
         ).plan_segment(START, END, RULE)
 
         self.assertIn("SUBLEG_OVER_80_KM", [review.code for review in planned.reviews])
+
+    def test_subleg_at_exactly_eighty_kilometres_does_not_create_review_item(self):
+        planned = RoutePlanner(
+            _FakeAmapClient(direct_distance_m=100_000, subleg_distances_m=(80_000, 1_000))
+        ).plan_segment(START, END, RULE)
+
+        self.assertNotIn("SUBLEG_OVER_80_KM", [review.code for review in planned.reviews])
 
     def test_refuses_a_selected_subleg_without_an_api_polyline(self):
         with self.assertRaisesRegex(ReviewRequired, "real API polyline"):

@@ -77,6 +77,33 @@ class CoordinateTests(unittest.TestCase):
         self.assertIsNone(report.resolutions[1].selected)
         self.assertEqual(report.unresolved_queries, ("香港科技大学（广州）",))
 
+    def test_resolve_waypoints_rejects_city_text_inside_an_out_of_city_address(self):
+        config = RouteConfig(
+            "test",
+            1.15,
+            (Waypoint("poi", "上海地点", "上海", "上海地点"),),
+            (),
+            {},
+            {},
+        )
+        client = _GeocodeClient(
+            {
+                ("上海地点", "上海"): (
+                    GeocodeCandidate(
+                        "上海地点",
+                        "江苏省苏州市上海市路",
+                        "姑苏区",
+                        Coordinate(120.6, 31.3),
+                    ),
+                ),
+            }
+        )
+
+        report = resolve_waypoints(config, client)
+
+        self.assertIsNone(report.resolutions[0].selected)
+        self.assertEqual(report.unresolved_queries, ("上海地点",))
+
 
 class _GeocodeClient:
     def __init__(self, candidates):
