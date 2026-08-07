@@ -2,12 +2,19 @@
   "status": "1",
   "info": "OK",
   "infocode": "10000",
+  "count": "1",
   "geocodes": [
     {
-      "name": "上海交通大学闵行校区",
-      "formatted_address": "上海市闵行区东川路800号",
-      "district": "闵行区",
-      "location": "121.436015,31.025787"
+      "country": "中国",
+      "province": "上海市",
+      "city": [],
+      "citycode": "021",
+      "district": [],
+      "street": "东川路",
+      "number": [],
+      "adcode": "310112",
+      "location": "121.436015,31.025787",
+      "level": "道路"
     }
   ]
 }

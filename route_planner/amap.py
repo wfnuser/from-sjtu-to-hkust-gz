@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
+import ssl
 import time
 from typing import Any
 from urllib.parse import urlencode
@@ -16,6 +18,7 @@ from route_planner.roads import classify_risks, classify_road
 
 _BASE_URL = "https://restapi.amap.com"
 _KEY_NAMES = ("AMAP_WEB_SERVICE_KEY", "AMAP_KEY")
+_FALLBACK_CA_FILES = (Path("/etc/ssl/cert.pem"),)
 
 
 class AmapError(RuntimeError):
@@ -60,6 +63,7 @@ class AmapClient:
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.min_interval_s = min_interval_s
         self._last_start_monotonic: float | None = None
+        self._ssl_context = _verified_ssl_context()
         self._urlopen = urlopen
 
     def cache_key(self, endpoint: str, params: dict[str, str]) -> str:
@@ -97,7 +101,7 @@ class AmapClient:
             raise ValueError("city must be a non-empty string")
         payload = self._fetch("/v3/geocode/geo", {"address": query, "city": city})
         geocodes = _expect_list(payload.get("geocodes"), "geocodes")
-        return tuple(_parse_geocode(item) for item in geocodes)
+        return tuple(_parse_geocode(item, query) for item in geocodes)
 
     def _fetch(self, endpoint: str, params: dict[str, str]) -> dict[str, Any]:
         cache_path = self.cache_dir / f"{self.cache_key(endpoint, params)}.json"
@@ -110,15 +114,21 @@ class AmapClient:
                 return self._validate_status(payload, endpoint)
 
         self._throttle()
+        transport_failed = False
         try:
             # Key injection occurs only while constructing the request handed to urlopen.
-            request = Request(f"{_BASE_URL}{endpoint}?{urlencode({**params, 'key': self._key})}")
-            with self._urlopen(request, timeout=30) as response:
+            with self._urlopen(
+                Request(f"{_BASE_URL}{endpoint}?{urlencode({**params, 'key': self._key})}"),
+                timeout=30,
+                context=self._ssl_context,
+            ) as response:
                 payload = json.loads(response.read().decode("utf-8"))
-        except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
-            raise AmapError(
-                f"AMap request failed at {endpoint}: {self._redact(str(error))}"
-            ) from error
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+            transport_failed = True
+
+        if transport_failed:
+            # Raise outside the handler so no URL-bearing exception remains chained.
+            raise AmapError(f"AMap transport request failed at {endpoint}")
 
         payload = self._validate_status(payload, endpoint)
         try:
@@ -154,6 +164,16 @@ def _coordinate_text(coordinate: Coordinate) -> str:
     return f"{coordinate.lon},{coordinate.lat}"
 
 
+def _verified_ssl_context() -> ssl.SSLContext:
+    """Create a certificate-verifying context with a usable local CA fallback."""
+    configured = os.environ.get("SSL_CERT_FILE")
+    candidates = ((Path(configured),) if configured else ()) + _FALLBACK_CA_FILES
+    for candidate in candidates:
+        if candidate.is_file():
+            return ssl.create_default_context(cafile=str(candidate))
+    return ssl.create_default_context()
+
+
 def _parse_route(index: int, value: Any) -> CandidateRoute:
     path = _expect_object(value, "route path")
     steps = _expect_list(path.get("steps"), "route path steps")
@@ -179,12 +199,17 @@ def _parse_step(value: Any) -> RouteStep:
     )
 
 
-def _parse_geocode(value: Any) -> GeocodeCandidate:
+def _parse_geocode(value: Any, query: str) -> GeocodeCandidate:
     geocode = _expect_object(value, "geocode")
+    district = _optional_text(geocode.get("district"))
+    formatted_address = "".join(
+        _optional_text(geocode.get(field))
+        for field in ("province", "city", "district", "street", "number")
+    )
     return GeocodeCandidate(
-        name=_expect_string(geocode.get("name"), "geocode name"),
-        formatted_address=_expect_string(geocode.get("formatted_address"), "geocode formatted_address"),
-        district=_expect_string(geocode.get("district"), "geocode district"),
+        name=query,
+        formatted_address=formatted_address or query,
+        district=district,
         location_gcj=_parse_location(geocode.get("location")),
     )
 
@@ -223,6 +248,11 @@ def _expect_string(value: Any, context: str) -> str:
     if not isinstance(value, str):
         raise AmapError(f"Invalid AMap {context}")
     return value
+
+
+def _optional_text(value: Any) -> str:
+    """Normalize AMap's documented string-or-array optional response fields."""
+    return value.strip() if isinstance(value, str) else ""
 
 
 def _parse_int(value: Any, context: str) -> int:
