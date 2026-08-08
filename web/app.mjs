@@ -105,8 +105,19 @@ function renderLimitations(summary) {
 
 function renderDailySchedule(summary) {
   const days = Array.isArray(summary.days) ? summary.days : [];
-  elements.scheduleCount.textContent = `${days.length} 天`;
+  const schedule = summary.schedule || {};
+  const dayCount = Number(schedule.day_count || days.length);
+  const maxDays = Number(schedule.max_riding_days || dayCount);
+  const deadlineFeasible = schedule.deadline_feasible === true;
+  elements.scheduleCount.textContent = `需要 ${dayCount} 天 · 上限 ${maxDays} 天`;
   elements.dailySchedule.innerHTML = "";
+  if (!deadlineFeasible) {
+    const warning = document.createElement("p");
+    warning.className = "schedule-day is-warning";
+    warning.textContent = `当前路线需要 ${dayCount} 个骑行日，超过 ${maxDays} 天上限 ${dayCount - maxDays} 天；不作为执行方案。`;
+    elements.dailySchedule.append(warning);
+    return;
+  }
   for (const day of days) {
     const item = document.createElement("p");
     item.className = `schedule-day${day.duration_limit_met ? "" : " is-warning"}`;
@@ -123,13 +134,14 @@ export function renderSegmentCards(summary) {
   elements.cards.innerHTML = "";
   const entries = [...segmentGroups.values()];
   const daySummaries = new Map((summary.days || []).map((item) => [Number(item.day), item]));
+  const deadlineFeasible = summary.schedule?.deadline_feasible === true;
   elements.count.textContent = entries.length ? `${entries.length} 段` : "";
 
   let currentDay = null;
   entries.forEach((entry, index) => {
     const first = entry.features[0].properties || {};
     const day = Number((summary.segment_days?.[entry.id] || [])[0]);
-    if (!entry.optional && Number.isInteger(day) && day !== currentDay) {
+    if (deadlineFeasible && !entry.optional && Number.isInteger(day) && day !== currentDay) {
       currentDay = day;
       const daySummary = daySummaries.get(day) || {};
       const heading = document.createElement("h3");

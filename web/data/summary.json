@@ -863,13 +863,18 @@
   },
   "publication_status": "provisional_road_level_review_required",
   "schedule": {
+    "buffer_days": 3,
+    "daily_time_constraints_met": true,
     "day_count": 32,
     "deadline_available_days": 18,
     "deadline_end": "2026-08-30",
     "deadline_feasible": false,
-    "deadline_note": "沿海安全优先路线无法在8月13日至8月30日内完成并同时保留每日4小时工作。",
+    "deadline_note": "沿海安全优先路线需32个骑行日，超过最多15个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留3天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。",
     "deadline_start": "2026-08-13",
     "max_duration_s": 21600,
+    "max_riding_days": 15,
+    "max_riding_hours_per_day": 6,
+    "required_work_hours_per_day": 4,
     "target_distance_m": [
       80000,
       120000

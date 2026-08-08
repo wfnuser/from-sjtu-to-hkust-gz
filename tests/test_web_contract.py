@@ -82,6 +82,24 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("第 ${day} 天", js)
         self.assertIn("summary.segment_days", js)
 
+    def test_map_renders_an_infeasible_schedule_as_a_decision_warning(self):
+        """Would fail if an over-limit schedule were presented as a daily itinerary."""
+        js = Path("web/app.mjs").read_text(encoding="utf-8")
+
+        self.assertIn("需要 ${dayCount} 天 · 上限 ${maxDays} 天", js)
+        self.assertIn(
+            "当前路线需要 ${dayCount} 个骑行日，超过 ${maxDays} 天上限 ${dayCount - maxDays} 天；不作为执行方案。",
+            js,
+        )
+        self.assertIn("if (!deadlineFeasible)", js)
+
+    def test_map_omits_day_headings_when_the_schedule_is_infeasible(self):
+        """Would fail if road cards were grouped into a non-executable day plan."""
+        js = Path("web/app.mjs").read_text(encoding="utf-8")
+
+        self.assertIn("const deadlineFeasible = summary.schedule?.deadline_feasible === true", js)
+        self.assertIn("if (deadlineFeasible && !entry.optional", js)
+
     def test_map_publishes_provisional_limits_and_practical_day_duration(self):
         html = Path("web/index.html").read_text(encoding="utf-8")
         js = Path("web/app.mjs").read_text(encoding="utf-8")
