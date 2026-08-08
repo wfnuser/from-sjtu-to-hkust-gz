@@ -1,5 +1,8 @@
-const GEOJSON_URL = "data/coastal-route.geojson";
-const SUMMARY_URL = "data/summary.json";
+import { selectRouteProfile } from "./route-profile.mjs";
+
+const routeProfile = selectRouteProfile(window.location.search);
+const GEOJSON_URL = routeProfile.geojsonUrl;
+const SUMMARY_URL = routeProfile.summaryUrl;
 const BRANCH_IDS = new Set(["main", "ningbo", "shenzhen"]);
 
 const ROAD_STYLES = {
@@ -50,7 +53,21 @@ const elements = {
   routeStatus: document.querySelector("#route-status"),
   ningboCheckbox: document.querySelector("#ningbo-branch"),
   shenzhenCheckbox: document.querySelector("#shenzhen-branch"),
+  routeTitle: document.querySelector("#route-title"),
+  mainHeading: document.querySelector("#main-totals-heading"),
+  summaryNote: document.querySelector("#route-summary-note"),
+  branchPanel: document.querySelector("#branch-panel"),
+  schedulePanel: document.querySelector("#schedule-panel"),
 };
+
+function applyRouteProfile() {
+  document.title = routeProfile.title;
+  elements.routeTitle.textContent = routeProfile.title;
+  elements.mainHeading.textContent = routeProfile.mainLabel;
+  elements.summaryNote.textContent = routeProfile.summaryNote;
+  elements.branchPanel.hidden = !routeProfile.hasOptionalBranches;
+  elements.schedulePanel.hidden = !routeProfile.showSchedule;
+}
 
 /** Return the Leaflet path style for one published road-step feature. */
 export function roadStyle(feature) {
@@ -387,5 +404,6 @@ async function loadRoute() {
 
 elements.ningboCheckbox.addEventListener("change", () => setOptionalBranchesVisible(true));
 elements.shenzhenCheckbox.addEventListener("change", () => setOptionalBranchesVisible(true));
+applyRouteProfile();
 setOptionalBranchesVisible(false);
 loadRoute();

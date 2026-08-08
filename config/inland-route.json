@@ -37,26 +37,91 @@
     "main-03-to-main-04": {},
     "main-04-to-main-05": {},
     "main-05-to-main-06": {},
-    "main-06-to-main-07": {},
-    "main-07-to-main-08": {},
-    "main-08-to-main-09": {},
-    "main-09-to-main-10": {},
-    "main-10-to-main-11": {},
-    "main-11-to-main-12": {},
-    "main-12-to-main-13": {},
-    "main-13-to-main-14": {},
-    "main-14-to-main-15": {},
-    "main-15-to-main-16": {},
-    "main-16-to-main-17": {},
-    "main-17-to-main-18": {},
-    "main-18-to-main-19": {},
-    "main-19-to-main-20": {},
-    "main-20-to-main-21": {},
-    "main-21-to-main-22": {},
-    "main-22-to-main-23": {},
-    "main-23-to-main-24": {},
-    "main-24-to-main-25": {},
-    "main-25-to-main-26": {},
+    "main-06-to-main-07": {
+      "anchor_queries": ["桐庐县富春江镇", "建德市下涯镇"],
+      "allowed_national_m": 11048,
+      "national_exception_reason": "富春江镇、下涯镇锚点将桐庐至建德之江村的实测国道从21991米降至11048米，整体绕行8.5%；剩余为富春江河谷连续连接段，保留并要求道路级复核。"
+    },
+    "main-07-to-main-08": {
+      "anchor_queries": ["建德市寿昌镇"],
+      "allowed_national_m": 8359,
+      "national_exception_reason": "寿昌锚点避开新安江互通硬风险，并将实测国道从13126米降至8359米；该局部绕行18.4%但对全程增加不足1%，按安全优先保留。"
+    },
+    "main-08-to-main-09": {
+      "anchor_queries": ["龙游县詹家镇", "衢江区高家镇"],
+      "allowed_national_m": 3194,
+      "national_exception_reason": "詹家镇、高家镇锚点将龙游至衢州的实测国道从15758米降至3194米；局部绕行21.7%但全程增量很小，剩余短连接段保留复核。"
+    },
+    "main-09-to-main-10": {
+      "anchor_queries": ["江山市"]
+    },
+    "main-10-to-main-11": {
+      "allowed_national_m": 4141,
+      "national_exception_reason": "玉山至上饶三条骑行候选中已选择国道暴露最低的路线，仍需借用实测4141米G320连接省县道路，保留道路级复核。"
+    },
+    "main-11-to-main-12": {
+      "anchor_queries": ["横峰县", "弋阳县"],
+      "allowed_national_m": 25873,
+      "national_exception_reason": "横峰、弋阳锚点将上饶至鹰潭实测国道从30952米降至25873米且总里程略短；继续经罗河绕行21.2%仍未减少国道，故保留当前最低实测量。"
+    },
+    "main-12-to-main-13": {
+      "anchor_queries": ["抚州::抚州市东乡区王桥镇"]
+    },
+    "main-13-to-main-14": {
+      "allowed_national_m": 81,
+      "national_exception_reason": "抚州至南城仅有81米G206路口连接，未形成连续国道骑行，保留并在导航时复核交叉口。"
+    },
+    "main-14-to-main-15": {
+      "anchor_queries": ["南丰县白舍镇", "广昌县甘竹镇"],
+      "allowed_national_m": 39167,
+      "national_exception_reason": "白舍、甘竹锚点将南城至广昌实测国道从44773米降至39167米，绕行11.2%；经黎川可清零国道但增加约69公里并进入更偏山路，按路况与补给优先拒绝。"
+    },
+    "main-15-to-main-16": {
+      "allowed_national_m": 2031,
+      "national_exception_reason": "广昌至宁都已主要使用省县道路，仅保留实测2031米G206连接段，继续列为道路级复核。"
+    },
+    "main-16-to-main-17": {
+      "anchor_queries": ["宁都县黄石镇", "于都县银坑镇"],
+      "allowed_national_m": 8174,
+      "national_exception_reason": "黄石、银坑锚点将宁都至于都实测国道从27610米降至8174米，并把子段控制在80公里内；局部绕行24.3%但全程增量不足1%，按安全优先保留。"
+    },
+    "main-17-to-main-18": {
+      "allowed_national_m": 19712,
+      "national_exception_reason": "于都至赣州的罗坳、江口组合反而把国道增至34494米，经王母渡绕行86.9%仍保留15674米；当前直达候选以实测19712米G238为较合理连续走廊。"
+    },
+    "main-18-to-main-19": {
+      "anchor_queries": ["赣州市章贡区沙石镇", "赣州市赣县区王母渡镇"],
+      "allowed_national_m": 1343,
+      "national_exception_reason": "沙石、王母渡锚点避开赣南高架路及高速入口，并将赣州至信丰实测国道从12518米降至1343米；仅保留短连接段复核。"
+    },
+    "main-19-to-main-20": {
+      "allowed_national_m": 43240,
+      "national_exception_reason": "信丰经小河、里仁仅将国道降至38868米但绕行23.6%；经全南里程翻倍且国道不减。G105为该南北走廊当前连续铺装骨架，保留实测43240米并列为重点人工复核。"
+    },
+    "main-20-to-main-21": {
+      "allowed_national_m": 40,
+      "national_exception_reason": "龙南至定南仅有40米G105路口连接，未形成连续国道骑行，保留交叉口复核。"
+    },
+    "main-21-to-main-22": {
+      "allowed_national_m": 25681,
+      "national_exception_reason": "定南经鹅公、和平彭寨的替代组合接近三倍绕行且国道仅小幅下降；粤赣山谷连续道路选择有限，保留实测25681米G358并要求全段白天复核。"
+    },
+    "main-22-to-main-23": {
+      "anchor_queries": ["东源县船塘镇"],
+      "allowed_national_m": 34274,
+      "national_exception_reason": "船塘锚点将和平至河源实测国道从44469米降至34274米，绕行12.6%；继续经顺天、涧头绕行32.7%且仅再减约1公里国道，故保留当前方案重点复核。"
+    },
+    "main-23-to-main-24": {
+      "anchor_queries": ["河源市源城区埔前镇", "惠州::博罗县杨村镇"],
+      "allowed_national_m": 3813,
+      "national_exception_reason": "埔前、杨村锚点将河源至博罗实测国道从13503米降至3813米，绕行4.3%；剩余为城镇间短连接段，保留复核。"
+    },
+    "main-24-to-main-25": {
+      "anchor_queries": ["博罗县园洲镇"]
+    },
+    "main-25-to-main-26": {
+      "anchor_queries": ["广州市增城区新塘镇"]
+    },
     "main-26-to-main-27": {}
   },
   "optional_branches": {}

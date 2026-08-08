@@ -59,7 +59,7 @@ class WebMapContractTests(unittest.TestCase):
         html = Path("web/index.html").read_text(encoding="utf-8")
         js = Path("web/app.mjs").read_text(encoding="utf-8")
 
-        self.assertIn("沿海主线", html)
+        self.assertIn("内陆主线", html)
         self.assertIn("宁波支线", html)
         self.assertIn("深圳支线", html)
         self.assertNotIn("AMAP_WEB_SERVICE_KEY", html + js)
