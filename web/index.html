@@ -60,18 +60,6 @@
           </label>
         </section>
 
-        <section class="panel legend" aria-labelledby="legend-heading">
-          <h2 id="legend-heading">道路图例</h2>
-          <ul>
-            <li><span class="swatch cycleway"></span>骑行道</li>
-            <li><span class="swatch county"></span>县道／旅游道路</li>
-            <li><span class="swatch provincial"></span>省道</li>
-            <li><span class="swatch national"></span>国道</li>
-            <li><span class="swatch review"></span>需人工复核</li>
-            <li><span class="swatch optional"></span>可选支线</li>
-          </ul>
-        </section>
-
         <section class="panel" aria-labelledby="segments-heading">
           <div class="section-heading">
             <h2 id="segments-heading">分段路线</h2>
@@ -91,6 +79,16 @@
 
       <section class="map-pane" aria-label="实际道路地图">
         <div id="map" aria-label="沿海实际道路地图"></div>
+        <section class="map-legend" aria-label="道路图例">
+          <ul>
+            <li><span class="swatch cycleway"></span>骑行道</li>
+            <li><span class="swatch county"></span>县道／旅游道路</li>
+            <li><span class="swatch provincial"></span>省道</li>
+            <li><span class="swatch national"></span>国道</li>
+            <li><span class="swatch review"></span>需人工复核</li>
+            <li><span class="swatch optional"></span>可选支线</li>
+          </ul>
+        </section>
         <div class="map-message" id="map-message" role="status" aria-live="polite">正在载入路线数据…</div>
       </section>
     </main>
