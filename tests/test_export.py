@@ -138,6 +138,9 @@ class ExportTests(unittest.TestCase):
         )
 
         self.assertEqual(summary["schedule"]["day_count"], 23)
+        self.assertEqual(summary["schedule"]["deadline_available_days"], 18)
+        self.assertEqual(summary["schedule"]["max_riding_days"], 15)
+        self.assertEqual(summary["schedule"]["buffer_days"], 3)
         self.assertFalse(summary["schedule"]["deadline_feasible"])
         self.assertTrue(all(day["duration_limit_met"] for day in summary["days"]))
         self.assertTrue(all(day["distance_target_met"] for day in summary["days"]))

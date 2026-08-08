@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterable, Sequence
+from datetime import date
 
 from route_planner.coordinates import gcj02_to_wgs84
 from route_planner.models import Coordinate, PlannedSegment, RoadClass, RouteStep
@@ -10,6 +11,11 @@ from route_planner.roads import classify_risks
 
 
 _BRANCH_IDS = frozenset({"main", "ningbo", "shenzhen"})
+_DEADLINE_START = date(2026, 8, 13)
+_DEADLINE_END = date(2026, 8, 30)
+_REQUIRED_WORK_HOURS_PER_DAY = 4
+_MAX_RIDING_HOURS_PER_DAY = 6
+_MAX_RIDING_DAYS = 15
 
 
 def build_geojson(segments: Sequence[PlannedSegment]) -> dict[str, object]:
@@ -43,12 +49,15 @@ def build_summary(
     segments: Sequence[PlannedSegment],
     max_detour_ratio: float,
     quota_limited_probes: Sequence[str] = (),
+    *,
+    profile: str = "coastal",
 ) -> dict[str, object]:
     """Summarize main-route totals separately from optional branches."""
     main = tuple(segment for segment in segments if not _is_optional(segment))
     optional = tuple(segment for segment in segments if _is_optional(segment))
     main_totals = _totals(main)
     days, segment_days = _practical_day_summaries(main)
+    schedule = _schedule_contract(days, profile)
     distance_m = int(main_totals["distance_m"])
     unknown_m = int(main_totals["unknown_distance_m"])
     blank_name_m = sum(
@@ -68,11 +77,7 @@ def build_summary(
             "target_distance_m": [80_000, 120_000],
             "target_duration_s": [14_400, 21_600],
             "max_duration_s": 21_600,
-            "deadline_start": "2026-08-13",
-            "deadline_end": "2026-08-30",
-            "deadline_available_days": 18,
-            "deadline_feasible": len(days) <= 18,
-            "deadline_note": "沿海安全优先路线无法在8月13日至8月30日内完成并同时保留每日4小时工作。",
+            **schedule,
         },
         "limitations": {
             "road_level_status": "provisional",
@@ -220,11 +225,14 @@ def _proportional_durations(
     return tuple(values)
 
 
-def build_review_markdown(segments: Sequence[PlannedSegment]) -> str:
+def build_review_markdown(
+    segments: Sequence[PlannedSegment], *, profile: str = "coastal"
+) -> str:
     """Render the route and its unresolved review work for a human reviewer."""
     main = tuple(segment for segment in segments if not _is_optional(segment))
     totals = _totals(main)
     days, _ = _practical_day_summaries(main)
+    schedule = _schedule_contract(days, profile)
     distance_m = int(totals["distance_m"])
     unknown_m = int(totals["unknown_distance_m"])
     blank_name_m = sum(
@@ -241,7 +249,7 @@ def build_review_markdown(segments: Sequence[PlannedSegment]) -> str:
         f"- UNKNOWN：{unknown_m} m（{unknown_m * 100 / distance_m:.2f}%）；其中未命名道路 {blank_name_m} m。" if distance_m else "- UNKNOWN：0 m。",
         "- AMap 配额受限的补充探路清单见 `summary.json`；未完成的并行道路探测保持 provisional。",
         "- 国道例外须以 `NATIONAL_ROAD_EXCEPTION_APPROVED` 明确记录，且仍需道路级复核。",
-        "- 8月13日至8月30日的18天窗口无法兼顾本路线和每日4小时工作。",
+        f"- {schedule['deadline_note']}",
         "",
         "## 每日计划",
         "",
@@ -286,6 +294,60 @@ def build_review_markdown(segments: Sequence[PlannedSegment]) -> str:
             lines.append("- 无自动生成的复核项。")
         lines.append("")
     return "\n".join(lines)
+
+
+def _schedule_contract(
+    days: Sequence[dict[str, object]], profile: str
+) -> dict[str, object]:
+    route_labels = {
+        "coastal": "沿海安全优先路线",
+        "inland": "内陆路线",
+    }
+    try:
+        route_label = route_labels[profile]
+    except KeyError as error:
+        raise ValueError(f"unsupported route profile: {profile}") from error
+
+    available_days = (_DEADLINE_END - _DEADLINE_START).days + 1
+    buffer_days = available_days - _MAX_RIDING_DAYS
+    work_duration_s = _REQUIRED_WORK_HOURS_PER_DAY * 3_600
+    riding_duration_s = _MAX_RIDING_HOURS_PER_DAY * 3_600
+    combined_duration_s = work_duration_s + riding_duration_s
+    daily_time_constraints_met = all(
+        int(day["duration_s"]) <= riding_duration_s
+        and int(day["duration_s"]) + work_duration_s <= combined_duration_s
+        for day in days
+    )
+    deadline_feasible = (
+        len(days) <= _MAX_RIDING_DAYS and daily_time_constraints_met
+    )
+    if deadline_feasible:
+        deadline_note = (
+            f"{route_label}可在8月13日至8月30日的{available_days}天自然日窗口内以"
+            f"{len(days)}个骑行日完成（保留{buffer_days}天缓冲），"
+            f"并保留每日{_REQUIRED_WORK_HOURS_PER_DAY}小时工作且每日骑行不超过"
+            f"{_MAX_RIDING_HOURS_PER_DAY}小时。"
+        )
+    else:
+        deadline_note = (
+            f"{route_label}需{len(days)}个骑行日，超过最多{_MAX_RIDING_DAYS}个骑行日"
+            f"的硬约束；8月13日至8月30日的{available_days}天自然日窗口仅保留"
+            f"{buffer_days}天缓冲，"
+            f"同时保留每日{_REQUIRED_WORK_HOURS_PER_DAY}小时工作且每日骑行不超过"
+            f"{_MAX_RIDING_HOURS_PER_DAY}小时。"
+        )
+    return {
+        "deadline_start": _DEADLINE_START.isoformat(),
+        "deadline_end": _DEADLINE_END.isoformat(),
+        "deadline_available_days": available_days,
+        "max_riding_days": _MAX_RIDING_DAYS,
+        "buffer_days": buffer_days,
+        "required_work_hours_per_day": _REQUIRED_WORK_HOURS_PER_DAY,
+        "max_riding_hours_per_day": _MAX_RIDING_HOURS_PER_DAY,
+        "daily_time_constraints_met": daily_time_constraints_met,
+        "deadline_feasible": deadline_feasible,
+        "deadline_note": deadline_note,
+    }
 
 
 def _review_status_label(status: str) -> str:

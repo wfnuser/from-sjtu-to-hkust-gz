@@ -95,8 +95,9 @@ def generate_from_segments(
             segments,
             config.max_detour_ratio,
             quota_limited_probes=QUOTA_LIMITED_PROBES,
+            profile=profile,
         ),
-        build_review_markdown(segments),
+        build_review_markdown(segments, profile=profile),
         build_manifest(config.route_id, segments),
         profile=profile,
     )
