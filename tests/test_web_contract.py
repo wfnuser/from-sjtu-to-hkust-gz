@@ -3,6 +3,17 @@ import unittest
 
 
 class WebMapContractTests(unittest.TestCase):
+    def test_map_uses_compact_overlay_legend_and_nested_scrolling(self):
+        html = Path("web/index.html").read_text(encoding="utf-8")
+        css = Path("web/styles.css").read_text(encoding="utf-8")
+
+        self.assertIn('<section class="map-legend"', html)
+        self.assertNotIn('<section class="panel legend"', html)
+        self.assertIn("height: 100dvh", css)
+        self.assertIn("overflow: hidden", css)
+        self.assertIn("overflow-y: auto", css)
+        self.assertIn("grid-template-columns: repeat(2, max-content)", css)
+
     def test_map_has_chinese_controls_and_no_embedded_amap_key(self):
         """Would fail if the public map lost branch controls or exposed a map key."""
         html = Path("web/index.html").read_text(encoding="utf-8")
