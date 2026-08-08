@@ -1,18 +1,58 @@
 from pathlib import Path
+import re
 import unittest
 
 
 class WebMapContractTests(unittest.TestCase):
+    @staticmethod
+    def css_block(css, selector):
+        match = re.search(rf"{re.escape(selector)}\s*\{{(?P<body>.*?)\}}", css, re.DOTALL)
+        if match is None:
+            raise AssertionError(f"Missing CSS block for {selector}")
+        return match.group("body")
+
+    @staticmethod
+    def media_block(css, max_width):
+        start = css.index(f"@media (max-width: {max_width}px)")
+        opening_brace = css.index("{", start)
+        depth = 0
+        for index in range(opening_brace, len(css)):
+            if css[index] == "{":
+                depth += 1
+            elif css[index] == "}":
+                depth -= 1
+                if depth == 0:
+                    return css[opening_brace + 1:index]
+        raise AssertionError(f"Unclosed media block for {max_width}px")
+
     def test_map_uses_compact_overlay_legend_and_nested_scrolling(self):
         html = Path("web/index.html").read_text(encoding="utf-8")
         css = Path("web/styles.css").read_text(encoding="utf-8")
+        map_pane = re.search(
+            r'<section class="map-pane"[^>]*>(?P<contents>.*?)</section>',
+            html,
+            re.DOTALL,
+        )
 
         self.assertIn('<section class="map-legend"', html)
         self.assertNotIn('<section class="panel legend"', html)
+        self.assertIsNotNone(map_pane)
+        self.assertIn('<section class="map-legend"', map_pane.group("contents"))
         self.assertIn("height: 100dvh", css)
         self.assertIn("overflow: hidden", css)
         self.assertIn("overflow-y: auto", css)
         self.assertIn("grid-template-columns: repeat(2, max-content)", css)
+        self.assertIn("pointer-events: none", self.css_block(css, ".map-legend"))
+
+        narrow_css = self.media_block(css, 860)
+        self.assertIn("grid-template-rows: 42dvh 58dvh", self.css_block(narrow_css, ".route-app"))
+        self.assertIn("height: 58dvh", self.css_block(narrow_css, ".map-pane"))
+        narrow_message = self.css_block(narrow_css, ".map-message")
+        self.assertIn("top: auto", narrow_message)
+        self.assertIn("bottom: 28px", narrow_message)
+
+        compact_css = self.media_block(css, 420)
+        self.assertIn("grid-template-columns: 1fr", self.css_block(compact_css, ".map-legend ul"))
 
     def test_map_has_chinese_controls_and_no_embedded_amap_key(self):
         """Would fail if the public map lost branch controls or exposed a map key."""
