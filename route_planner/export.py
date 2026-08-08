@@ -251,21 +251,41 @@ def build_review_markdown(
         "- 国道例外须以 `NATIONAL_ROAD_EXCEPTION_APPROVED` 明确记录，且仍需道路级复核。",
         f"- {schedule['deadline_note']}",
         "",
-        "## 每日计划",
-        "",
-        "| 天 | 起点 | 住宿/网络终点 | 距离 | 预计骑行时长 | 可行性 |",
-        "| ---: | --- | --- | ---: | ---: | --- |",
-        *(
-            f"| {day['day']} | {day['from_name']} | {day['to_name']} | {int(day['distance_m']) / 1000:.1f} km | {int(day['duration_s']) / 3600:.2f} h | "
-            f"{'≤6h' if day['duration_limit_met'] else '>6h'}；住宿/网络待确认 |"
-            for day in days
-        ),
-        "",
+    ]
+    if schedule["deadline_feasible"]:
+        lines.extend(
+            [
+                "## 每日计划",
+                "",
+                "| 天 | 起点 | 住宿/网络终点 | 距离 | 预计骑行时长 | 可行性 |",
+                "| ---: | --- | --- | ---: | ---: | --- |",
+                *(
+                    f"| {day['day']} | {day['from_name']} | {day['to_name']} | {int(day['distance_m']) / 1000:.1f} km | {int(day['duration_s']) / 3600:.2f} h | "
+                    f"{'≤6h' if day['duration_limit_met'] else '>6h'}；住宿/网络待确认 |"
+                    for day in days
+                ),
+                "",
+            ]
+        )
+    else:
+        riding_day_excess = max(0, len(days) - int(schedule["max_riding_days"]))
+        lines.extend(
+            [
+                "## 非执行排程诊断",
+                "",
+                f"- 需要{len(days)}个骑行日；最多{schedule['max_riding_days']}个骑行日，超出{riding_day_excess}天。",
+                "- 该路线不满足硬性排程约束，未渲染每日计划、住宿或网络安排。",
+                "",
+            ]
+        )
+    lines.extend(
+        [
         "## 路段状态",
         "",
         "| 路段 | 起点 | 终点 | 距离 (m) | 时长 (s) | 复核状态 |",
         "| --- | --- | --- | ---: | ---: | --- |",
-    ]
+        ]
+    )
     for segment in segments:
         lines.append(
             "| {segment_id} | {from_name} | {to_name} | {distance} | {duration} | {status} |".format(

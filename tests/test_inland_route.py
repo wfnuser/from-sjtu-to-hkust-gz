@@ -111,6 +111,15 @@ class InlandRouteAcceptanceTests(unittest.TestCase):
         self.assertFalse(summary["schedule"]["deadline_feasible"])
         self.assertIn("需16个骑行日", summary["schedule"]["deadline_note"])
         self.assertIn("最多15个骑行日", summary["schedule"]["deadline_note"])
+        review = build_review_markdown(
+            tuple(_schedule_segment(index) for index in range(1, 17)),
+            profile="inland",
+        )
+        self.assertIn("## 非执行排程诊断", review)
+        self.assertIn("需16个骑行日", review)
+        self.assertIn("最多15个骑行日", review)
+        self.assertIn("超出1天", review)
+        self.assertNotIn("## 每日计划", review)
 
     def test_default_profile_retains_the_coastal_infeasible_note(self):
         """Protects the existing coastal output contract while inland diverges."""
