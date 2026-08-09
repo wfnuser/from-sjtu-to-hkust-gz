@@ -24,7 +24,7 @@ from route_planner.reroutes import (
     compare_candidate,
     load_probe_definitions,
 )
-from route_planner.roads import candidate_metrics
+from route_planner.roads import ReviewRequired, candidate_metrics
 from scripts.generate_route import load_resolved_config
 
 
@@ -123,6 +123,45 @@ def plan_probe(
     )
 
 
+def run_probe_candidates(
+    planner: RoutePlanner,
+    definition: ProbeDefinition,
+    current: PlannedSegment,
+    published_segments: tuple[PlannedSegment, ...],
+    max_detour_ratio: float,
+    report: dict[str, object],
+    report_path: Path,
+) -> dict[str, object]:
+    """Persist every candidate outcome and continue past review-only failures."""
+    completed = {
+        _result_key(item)
+        for item in _list_of_mappings(report.get("results"), "report results")
+    }
+    for candidate in definition.candidates:
+        key = (definition.segment_id, candidate.candidate_id)
+        if key in completed:
+            continue
+        try:
+            result = plan_probe(
+                planner,
+                definition,
+                candidate,
+                current,
+                published_segments,
+                max_detour_ratio,
+            )
+        except ReviewRequired as error:
+            result = _failed_probe_report(definition, candidate, current, error)
+        report = merge_result(report, result)
+        write_report(report_path, report)
+        completed.add(key)
+        print(
+            f"{definition.segment_id} {candidate.candidate_id}: "
+            f"{result['decision']} national_delta={result['national_reduction_m']}m"
+        )
+    return report
+
+
 def merge_result(
     report: dict[str, object], result: dict[str, object]
 ) -> dict[str, object]:
@@ -188,6 +227,31 @@ def _segment_report(
     }
 
 
+def _failed_probe_report(
+    definition: ProbeDefinition,
+    candidate: ProbeCandidate,
+    current: PlannedSegment,
+    error: ReviewRequired,
+) -> dict[str, object]:
+    return {
+        "segment_id": definition.segment_id,
+        "priority": definition.priority,
+        "scenic": definition.scenic,
+        "candidate_id": candidate.candidate_id,
+        "road_hint": candidate.road_hint,
+        "evidence_urls": list(definition.evidence_urls),
+        "from_name": current.from_waypoint.name,
+        "to_name": current.to_waypoint.name,
+        "decision": "probe_failed",
+        "reasons": list(error.reasons),
+        "national_reduction_m": 0,
+        "distance_delta_m": 0,
+        "projected_route_detour_ratio": None,
+        "current": _segment_report(current, current.rule.anchor_queries),
+        "proposed": None,
+    }
+
+
 def _result_key(value: dict[str, object]) -> tuple[str, str]:
     segment_id = value.get("segment_id")
     candidate_id = value.get("candidate_id")
@@ -225,32 +289,18 @@ def main(argv: list[str] | None = None) -> int:
         definitions = load_probe_definitions(args.probes, set(current_by_id))
         selected = ordered_probes(definitions, current_by_id, args.priority)
         report = load_report(args.report, config.route_id)
-        completed = {
-            _result_key(item)
-            for item in _list_of_mappings(report.get("results"), "report results")
-        }
         planner = RoutePlanner(AmapClient(load_amap_key(args.env), args.cache_dir))
         for definition in selected:
             current = current_by_id[definition.segment_id]
-            for candidate in definition.candidates:
-                key = (definition.segment_id, candidate.candidate_id)
-                if key in completed:
-                    continue
-                result = plan_probe(
-                    planner,
-                    definition,
-                    candidate,
-                    current,
-                    published,
-                    config.max_detour_ratio,
-                )
-                report = merge_result(report, result)
-                write_report(args.report, report)
-                completed.add(key)
-                print(
-                    f"{definition.segment_id} {candidate.candidate_id}: "
-                    f"{result['decision']} national_delta={result['national_reduction_m']}m"
-                )
+            report = run_probe_candidates(
+                planner,
+                definition,
+                current,
+                published,
+                config.max_detour_ratio,
+                report,
+                args.report,
+            )
     except Exception as error:
         print(f"ERROR: reroute probing stopped: {error}", file=sys.stderr)
         return 1

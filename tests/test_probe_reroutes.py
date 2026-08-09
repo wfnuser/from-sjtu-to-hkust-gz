@@ -8,8 +8,10 @@ from scripts.probe_reroutes import (
     evaluate_proposed_candidate,
     merge_result,
     ordered_probes,
+    run_probe_candidates,
     write_report,
 )
+from route_planner.roads import ReviewRequired
 from tests.test_reroutes import segment
 
 
@@ -134,6 +136,50 @@ class DurableReportTests(unittest.TestCase):
 
             self.assertEqual(json.loads(path.read_text(encoding="utf-8")), report)
             self.assertFalse(path.with_suffix(".json.tmp").exists())
+
+
+class ProbeCandidateRunnerTests(unittest.TestCase):
+    def test_records_review_failure_and_continues_to_the_next_candidate(self):
+        definition = ProbeDefinition(
+            segment_id="target",
+            priority="P0",
+            evidence_urls=("https://example.gov.cn/road",),
+            candidates=(
+                ProbeCandidate("ambiguous", ("歧义镇",), "歧义道路"),
+                ProbeCandidate("usable", ("可用镇",), "县道"),
+            ),
+        )
+        current = segment(segment_id="target", national_m=20_000)
+
+        class Planner:
+            calls = 0
+
+            def plan_segment(self, start, end, rule):
+                self.calls += 1
+                if self.calls == 1:
+                    raise ReviewRequired(rule.segment_id, ("unresolved anchor",))
+                return segment(segment_id="target", national_m=1_000)
+
+        report = {"schema_version": 1, "route_id": "inland-main", "results": []}
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "report.json"
+
+            updated = run_probe_candidates(
+                Planner(),
+                definition,
+                current,
+                (current,),
+                1.15,
+                report,
+                path,
+            )
+
+            persisted = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            [item["decision"] for item in updated["results"]],
+            ["probe_failed", "candidate"],
+        )
+        self.assertEqual(persisted, updated)
 
 
 if __name__ == "__main__":
