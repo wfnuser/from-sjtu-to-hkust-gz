@@ -7,6 +7,7 @@
 - 内陆审查基线已经发布并作为网页默认路线，数据位于 `web/data/inland-*`，配置位于 `config/inland-route.json`。当前约 1816.6 km，相对逐段直达基线增加约 7.9%，自动分类出约 230.2 km 国道；国道例外均记录了实测保留量与已试替代方案，但整条路线仍需道路级复核。
 - 地图用深灰点线和青色虚线成对展示原路线与 6 条避国道备选：桐庐→建德之江村、上饶→鹰潭、南城→广昌、信丰→龙南、定南→和平、和平→河源。每张卡片同时列出两线总里程、国道里程和绕行时间；和平→河源已通过自动候选门槛并标为“推荐候选”，其余仍需道路级复核；备选线不计入主线总里程。
 - 若 6 条备选全部采用，预计总里程增加约 99.0 km，国道减少约 129.8 km；网页在备选面板顶部直接显示这一组合影响。
+- `web/data/inland-reroute-decisions.json` 已覆盖 5 个 P0 与 4 个 P1 路段：5 条候选保留为“需人工复核”，4 条候选被拒绝并明确“保留原线”。G105 信丰—龙南的过境货车风险、G206 广昌新建二级公路、G238 和平绿美公路与货车检测、S229 船塘—骆湖规划走廊均已写入证据结论；目前没有仅凭道路编号就自动替换主线。
 - 沿海线仍保留在 `web/data/coastal-route.geojson` 与 `web/data/summary.json`，可通过 `?route=coastal` 查看；它明确不能在 15 个骑行日内执行，只可作为参考路线。
 - 内陆排程暂不在网页展示。高德电助力时长不是本项目最终采用的长途移动速度口径，逐日 15 天方案将在路径复核后独立锁定，避免把当前诊断误作执行日程。
 - 宁波和深圳支线默认关闭，不计入沿海主线总计。
@@ -38,6 +39,7 @@ python3 -m unittest \
   tests.test_export \
   tests.test_inland_config \
   tests.test_inland_route \
+  tests.test_inland_reroute_decisions \
   tests.test_manifest \
   tests.test_planner \
   tests.test_probe_reroutes \
@@ -64,6 +66,19 @@ python3 scripts/export_reroute_options.py \
   --env .env.local \
   --cache-dir cache \
   --output web/data/inland-reroute-options.geojson
+```
+
+审核结论和实测探路报告分开维护；更新 `config/inland-reroute-reviews.json` 后，用下面的确定性导出命令重建公开决策清单，不会调用高德 API：
+
+```bash
+python3 scripts/export_reroute_decisions.py \
+  --config config/inland-route.json \
+  --resolutions config/inland-poi-resolutions.json \
+  --manifest web/data/inland-route-manifest.json \
+  --probes config/inland-reroute-probes.json \
+  --report cache/reports/inland-reroute-probes.json \
+  --reviews config/inland-reroute-reviews.json \
+  --output web/data/inland-reroute-decisions.json
 ```
 
 ## 可选：高德实时烟雾测试

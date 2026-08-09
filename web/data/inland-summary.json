@@ -10,6 +10,7 @@
     "national_distance_m": 230171,
     "provincial_distance_m": 111348,
     "segment_count": 26,
+    "tourism_distance_m": 0,
     "unknown_distance_m": 1258107,
     "unresolved_count": 4
   },
@@ -633,6 +634,7 @@
     "national_distance_m": 230171,
     "provincial_distance_m": 111348,
     "segment_count": 26,
+    "tourism_distance_m": 0,
     "unknown_distance_m": 1258107,
     "unresolved_count": 4
   },
@@ -648,6 +650,7 @@
     "national_distance_m": 0,
     "provincial_distance_m": 0,
     "segment_count": 0,
+    "tourism_distance_m": 0,
     "unknown_distance_m": 0,
     "unresolved_count": 0
   },

@@ -1,0 +1,973 @@
+{
+  "decisions": [
+    {
+      "candidate_result": "manual_review",
+      "current": {
+        "anchor_queries": [
+          "横峰县",
+          "弋阳县"
+        ],
+        "baseline_distance_m": 96358,
+        "distance_m": 104938,
+        "duration_s": 21227,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 25873,
+        "road_names": [
+          "未命名道路",
+          "阳光一路",
+          "吉阳中路",
+          "上饶大道",
+          "旭日北大道",
+          "三清山西大道",
+          "627县道",
+          "628县道",
+          "320国道",
+          "迎宾大道",
+          "人民大道",
+          "端章大道",
+          "广场东路",
+          "广场西路",
+          "文华街",
+          "岑阳大道",
+          "东兴大道",
+          "学府路",
+          "方志敏大道",
+          "建安路",
+          "凤凰大道",
+          "式平大道",
+          "象山大道",
+          "城西大道",
+          "三花路",
+          "鹰雄大道",
+          "鹰东大道",
+          "麒麟东大道",
+          "和平路"
+        ],
+        "segment_detour_ratio": 1.0890429440212541,
+        "subleg_distances_m": [
+          38707,
+          18124,
+          48107
+        ],
+        "unknown_m": 61853
+      },
+      "decision_reason": "原线 104.938 km、国道 25.873 km；葛溪候选 119.499 km、国道 0 km，多骑 14.561 km、少走国道 25.873 km，UNKNOWN 增加 6.117 km，且无自动识别的硬风险或货运道路。收益明显但证据不足，保留两线供人工复核后选择。",
+      "distance_delta_m": 14561,
+      "evidence_conclusion": "候选使用弋阳葛溪一带省县乡道路并消除自动分类出的国道，但尚未找到覆盖整条候选走廊的近期官方路况、施工和连续铺装资料。",
+      "evidence_urls": [
+        "https://www.eco.gov.cn/news_info/40343.html"
+      ],
+      "from_name": "上饶",
+      "national_reduction_m": 25873,
+      "priority": "P0",
+      "projected_route_detour_ratio": 1.0877942926254647,
+      "proposed": {
+        "anchor_queries": [
+          "弋阳县葛溪乡"
+        ],
+        "baseline_distance_m": 96358,
+        "distance_m": 119499,
+        "duration_s": 24945,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 0,
+        "road_names": [
+          "未命名道路",
+          "阳光一路",
+          "吉阳中路",
+          "上饶大道",
+          "旭日北大道",
+          "三清山西大道",
+          "627县道",
+          "635县道",
+          "675县道",
+          "205省道",
+          "674县道",
+          "204省道",
+          "漆工大道",
+          "东兴大道",
+          "东站大道",
+          "方志敏大道",
+          "广场路",
+          "式平大道",
+          "高新大道",
+          "628县道",
+          "172乡道",
+          "河兴东路",
+          "和兴南路",
+          "贵河段",
+          "324县道",
+          "铜都大道",
+          "贵溪大道",
+          "高石路",
+          "冶金大道",
+          "万亩山路",
+          "四安路",
+          "天华山路",
+          "石林路",
+          "鹰雄大道",
+          "鹰东大道",
+          "麒麟东大道",
+          "和平路"
+        ],
+        "segment_detour_ratio": 1.240156499719795,
+        "subleg_distances_m": [
+          59711,
+          59788
+        ],
+        "unknown_m": 67970
+      },
+      "segment_id": "main-11-to-main-12",
+      "selected_candidate_id": "yiyang-gexi-shortcut",
+      "status": "manual_review",
+      "to_name": "鹰潭"
+    },
+    {
+      "candidate_result": "manual_review",
+      "current": {
+        "anchor_queries": [
+          "南丰县白舍镇",
+          "广昌县甘竹镇"
+        ],
+        "baseline_distance_m": 91388,
+        "distance_m": 101586,
+        "duration_s": 23728,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 39167,
+        "road_names": [
+          "未命名道路",
+          "迎宾路",
+          "建昌大道",
+          "登高路",
+          "盱江北大道",
+          "黎滩河大道",
+          "张升路",
+          "南上段",
+          "886县道",
+          "上洽段",
+          "洽桥段",
+          "南建线",
+          "子固北路",
+          "琴湖中路",
+          "206国道",
+          "906县道",
+          "红军大道",
+          "莲乡大道",
+          "府二路"
+        ],
+        "segment_detour_ratio": 1.1115901431260122,
+        "subleg_distances_m": [
+          73271,
+          14513,
+          13802
+        ],
+        "unknown_m": 50712
+      },
+      "decision_reason": "原线 101.586 km、国道 39.167 km；候选 129.520 km、国道 5.982 km，虽少走国道 33.185 km，但多骑 27.934 km，UNKNOWN 从 50.712 km 增至 88.189 km。新建二级公路的工程状态有官方证据，而长距离县乡替代线缺少路况证据，默认保留原线，候选仅作为地图对照。",
+      "distance_delta_m": 27934,
+      "evidence_conclusion": "抚州市政府确认 G206 广昌白沙坪至田西村南岭脑段 28.472 km 已于 2026 年 6 月建成通车，按二级公路标准建设、设计速度 60 km/h；没有资料证明候选县乡道路具有更连续的铺装和骑行空间。",
+      "evidence_urls": [
+        "https://www.jxfz.gov.cn/art/2026/6/30/art_14_4458067.html"
+      ],
+      "from_name": "南城",
+      "national_reduction_m": 33185,
+      "priority": "P0",
+      "projected_route_detour_ratio": 1.0957383297265477,
+      "proposed": {
+        "anchor_queries": [
+          "南丰县琴城镇",
+          "南丰县太和镇",
+          "广昌县甘竹镇"
+        ],
+        "baseline_distance_m": 91388,
+        "distance_m": 129520,
+        "duration_s": 30345,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 5982,
+        "road_names": [
+          "未命名道路",
+          "迎宾路",
+          "建昌大道",
+          "登高路",
+          "盱江北大道",
+          "黎滩河大道",
+          "张升路",
+          "南上段",
+          "886县道",
+          "上洽段",
+          "洽桥段",
+          "南建线",
+          "学府路",
+          "竹马路",
+          "嘉禾商业街",
+          "大桥路",
+          "906县道",
+          "206国道",
+          "红军大道",
+          "莲乡大道",
+          "府二路"
+        ],
+        "segment_detour_ratio": 1.4172539064209744,
+        "subleg_distances_m": [
+          49929,
+          23134,
+          42655,
+          13802
+        ],
+        "unknown_m": 88189
+      },
+      "segment_id": "main-14-to-main-15",
+      "selected_candidate_id": "fuhe-towns",
+      "status": "rejected",
+      "to_name": "广昌"
+    },
+    {
+      "candidate_result": "manual_review",
+      "current": {
+        "anchor_queries": [],
+        "baseline_distance_m": 70478,
+        "distance_m": 73348,
+        "duration_s": 17685,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 43240,
+        "road_names": [
+          "未命名道路",
+          "市政大道",
+          "迎宾大道",
+          "南山西路",
+          "信雄大道",
+          "北江源大道",
+          "105国道",
+          "877县道",
+          "878县道",
+          "民主街",
+          "解放街",
+          "红旗大道",
+          "明珠街",
+          "龙翔大道辅路",
+          "龙翔大道",
+          "翼龙路"
+        ],
+        "segment_detour_ratio": 1.040721927409972,
+        "subleg_distances_m": [
+          73348
+        ],
+        "unknown_m": 12902
+      },
+      "decision_reason": "原线 73.348 km、国道 43.240 km；西侧候选 97.126 km、国道 17.307 km，多骑 23.778 km、少走国道 25.933 km，且无自动识别的硬风险或货运道路，但 UNKNOWN 从 12.902 km 增至 44.975 km。保留两线供出发时按施工进度、天气和现场车流选择，不自动替换。",
+      "distance_delta_m": 23778,
+      "evidence_conclusion": "赣州市政府确认 G105 车流量大、过境货车密集，龙南段安全提升工程包含拓宽非机动车道并预计 2026 年 8 月完成；西侧县乡道候选的连续铺装、补给与夜间照明尚无可靠资料。",
+      "evidence_urls": [
+        "https://www.ganzhou.gov.cn/gzszf/c100022/202606/f2db2e4d22544ec9bba7cb01c7403dfd.shtml",
+        "https://glj.ganzhou.gov.cn/c101280/202203/67b9f0a9ad914e2bb99ae0d4b2bae965.shtml",
+        "https://www.quannan.gov.cn/qnxxxgk/hjbh/202411/28f09c88c88742cf8ce3c667570f0f55/files/faad1fb7c1214b8a8394299531ab10a8.pdf"
+      ],
+      "from_name": "信丰",
+      "national_reduction_m": 25933,
+      "priority": "P0",
+      "projected_route_detour_ratio": 1.0932695180767982,
+      "proposed": {
+        "anchor_queries": [
+          "信丰县小河镇",
+          "信丰县小江镇",
+          "龙南市东坑镇",
+          "龙南市里仁镇"
+        ],
+        "baseline_distance_m": 70478,
+        "distance_m": 97126,
+        "duration_s": 22094,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 17307,
+        "road_names": [
+          "未命名道路",
+          "市政大道",
+          "迎宾大道",
+          "南山西路",
+          "信雄大道",
+          "317省道",
+          "454省道",
+          "正万段",
+          "信隆路",
+          "106乡道",
+          "064县道",
+          "长远大桥",
+          "105国道",
+          "102乡道",
+          "崇小段",
+          "303乡道",
+          "站前路",
+          "龙南大道",
+          "龙南大道辅路",
+          "龙翔大道",
+          "龙翔大道辅路",
+          "翼龙路"
+        ],
+        "segment_detour_ratio": 1.3781038054428332,
+        "subleg_distances_m": [
+          23132,
+          26213,
+          26519,
+          12466,
+          8796
+        ],
+        "unknown_m": 44975
+      },
+      "segment_id": "main-19-to-main-20",
+      "selected_candidate_id": "xinfeng-west-county-chain",
+      "status": "manual_review",
+      "to_name": "龙南"
+    },
+    {
+      "candidate_result": "manual_review",
+      "current": {
+        "anchor_queries": [],
+        "baseline_distance_m": 48999,
+        "distance_m": 50156,
+        "duration_s": 12045,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 25681,
+        "road_names": [
+          "未命名道路",
+          "仙岭大道",
+          "龙亭路",
+          "胜利北路",
+          "太湖路",
+          "清华大道",
+          "广州大道",
+          "358国道",
+          "511省道",
+          "167县道",
+          "308乡道",
+          "147乡道",
+          "144乡道",
+          "和平大道"
+        ],
+        "segment_detour_ratio": 1.0236127267903428,
+        "subleg_distances_m": [
+          50156
+        ],
+        "unknown_m": 11219
+      },
+      "decision_reason": "原线 50.156 km、国道 25.681 km；下车候选 62.784 km、国道 8.572 km，多骑 12.628 km、少走国道 17.109 km，UNKNOWN 增加 8.383 km，且无自动识别的硬风险或货运道路。原线工程条件较明确但可能有货车，候选车流可能更低但路况未知，保留两线并要求白天现场决策。",
+      "distance_delta_m": 12628,
+      "evidence_conclusion": "和平县政府确认 G238 上陵段 57.2 km 已按二级公路标准完成绿美公路升级；同时当地在 G238 上陵设置货车超限检测并称其为咽喉要道。下车镇县乡道候选的路面与补给尚无同等级证据。",
+      "evidence_urls": [
+        "https://www.heping.gov.cn/xwzx/bmdt/content/post_702159.html?jump=false",
+        "https://www.heping.gov.cn/zwgk/zdlyxxgk/zdjsxmxxgk/content/post_599721.html"
+      ],
+      "from_name": "定南",
+      "national_reduction_m": 17109,
+      "priority": "P0",
+      "projected_route_detour_ratio": 1.086646021951989,
+      "proposed": {
+        "anchor_queries": [
+          "河源::和平县下车镇"
+        ],
+        "baseline_distance_m": 48999,
+        "distance_m": 62784,
+        "duration_s": 15150,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 8572,
+        "road_names": [
+          "未命名道路",
+          "仙岭大道",
+          "龙亭路",
+          "胜利北路",
+          "太湖路",
+          "清华大道",
+          "广州大道",
+          "161乡道",
+          "229省道",
+          "下车街",
+          "358国道",
+          "511省道",
+          "167县道",
+          "308乡道",
+          "147乡道",
+          "144乡道",
+          "和平大道"
+        ],
+        "segment_detour_ratio": 1.2813322720871854,
+        "subleg_distances_m": [
+          20533,
+          42251
+        ],
+        "unknown_m": 19602
+      },
+      "segment_id": "main-21-to-main-22",
+      "selected_candidate_id": "xiache-shortcut",
+      "status": "manual_review",
+      "to_name": "和平"
+    },
+    {
+      "candidate_result": "candidate",
+      "current": {
+        "anchor_queries": [
+          "东源县船塘镇"
+        ],
+        "baseline_distance_m": 101378,
+        "distance_m": 114172,
+        "duration_s": 27505,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 34274,
+        "road_names": [
+          "未命名道路",
+          "和平大道",
+          "工业大道",
+          "358国道",
+          "163县道",
+          "164县道",
+          "166县道",
+          "船顺路",
+          "341省道",
+          "镇北路",
+          "镇东路",
+          "镇南路",
+          "205国道",
+          "仙塘大道",
+          "行政大道",
+          "东源大道辅路",
+          "永源路",
+          "越王大道",
+          "越王大道辅路",
+          "永盛路",
+          "永康大道",
+          "永祥路",
+          "永和东路",
+          "建设大道辅路",
+          "文昌路",
+          "中山大道",
+          "中山大道辅路",
+          "红星东路",
+          "沿江路"
+        ],
+        "segment_detour_ratio": 1.1262009508966442,
+        "subleg_distances_m": [
+          44030,
+          70142
+        ],
+        "unknown_m": 27647
+      },
+      "decision_reason": "原线 114.172 km、国道 34.274 km；曾田候选 132.214 km、国道 10.234 km，多骑 18.042 km、少走国道 24.040 km，UNKNOWN 反而减少 3.111 km，且无自动识别的硬风险或货运道路。数据指标较好，但县乡道路铺装、边坡与补给尚未逐路核实，因此保留为优先人工复核候选。",
+      "distance_delta_m": 18042,
+      "evidence_conclusion": "河源市交通运输局资料证明 S229 船塘至骆湖段规划为连续一级公路走廊，但当前最优候选实际经过曾田及多条县乡道路，并不等同于已有官方资料覆盖的 S229 走廊。",
+      "evidence_urls": [
+        "https://www.heyuan.gov.cn/zwgk/zdlyxx/zdjsxm/content/post_453605.html"
+      ],
+      "from_name": "和平",
+      "national_reduction_m": 24040,
+      "priority": "P0",
+      "projected_route_detour_ratio": 1.0898621302945644,
+      "proposed": {
+        "anchor_queries": [
+          "东源县曾田镇"
+        ],
+        "baseline_distance_m": 101378,
+        "distance_m": 132214,
+        "duration_s": 31720,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 10234,
+        "road_names": [
+          "未命名道路",
+          "和平大道",
+          "工业大道",
+          "358国道",
+          "163县道",
+          "北直街",
+          "280乡道",
+          "205国道",
+          "281乡道",
+          "468乡道",
+          "323乡道",
+          "106乡道",
+          "阮啸仙纪念大桥",
+          "154县道",
+          "118乡道",
+          "仙塘大道",
+          "广场东路",
+          "府前环路",
+          "新河大道",
+          "新河大道辅路",
+          "东江西路",
+          "深业路",
+          "东江路",
+          "永盛路",
+          "永丰路",
+          "永祥路",
+          "永和路",
+          "沿江东路",
+          "群丰路"
+        ],
+        "segment_detour_ratio": 1.3041685572806723,
+        "subleg_distances_m": [
+          74458,
+          57756
+        ],
+        "unknown_m": 24536
+      },
+      "segment_id": "main-22-to-main-23",
+      "selected_candidate_id": "zengtian-county-bypass",
+      "status": "manual_review",
+      "to_name": "河源"
+    },
+    {
+      "candidate_result": "manual_review",
+      "current": {
+        "anchor_queries": [
+          "桐庐县富春江镇",
+          "建德市下涯镇"
+        ],
+        "baseline_distance_m": 48423,
+        "distance_m": 52537,
+        "duration_s": 11570,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 11048,
+        "road_names": [
+          "未命名道路",
+          "金堂山路",
+          "大奇山路",
+          "瑶琳路",
+          "富春绿道南线湾里段",
+          "湾茆线",
+          "钓台路",
+          "水电路",
+          "七里泷大街",
+          "徐七线",
+          "孝荻线",
+          "320国道",
+          "胥溪路",
+          "麻蒋线",
+          "沪瑞线",
+          "站前大道",
+          "之江路",
+          "和美路",
+          "黄饶线"
+        ],
+        "segment_detour_ratio": 1.0849596266237118,
+        "subleg_distances_m": [
+          12722,
+          35267,
+          4548
+        ],
+        "unknown_m": 33930
+      },
+      "decision_reason": "原线 52.537 km、国道 11.048 km；候选 54.643 km、国道 7.339 km，多骑 2.106 km、少走国道 3.709 km，UNKNOWN 增加 5.815 km，且无自动识别的硬风险或货运道路。候选效率较高，列为优先人工复核，不自动替换。",
+      "distance_delta_m": 2106,
+      "evidence_conclusion": "候选沿富春江、乾潭、下涯城镇走廊，绕行很小，但 UNKNOWN 增量中的道路级铺装和施工状态尚未由近期权威资料覆盖。",
+      "evidence_urls": [],
+      "from_name": "桐庐",
+      "national_reduction_m": 3709,
+      "priority": "P1",
+      "projected_route_detour_ratio": 1.0803955801380658,
+      "proposed": {
+        "anchor_queries": [
+          "桐庐县富春江镇",
+          "建德市乾潭镇",
+          "建德市下涯镇"
+        ],
+        "baseline_distance_m": 48423,
+        "distance_m": 54643,
+        "duration_s": 12166,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 7339,
+        "road_names": [
+          "未命名道路",
+          "金堂山路",
+          "大奇山路",
+          "瑶琳路",
+          "富春绿道南线湾里段",
+          "湾茆线",
+          "钓台路",
+          "水电路",
+          "七里泷大街",
+          "徐七线",
+          "孝荻线",
+          "320国道",
+          "幸福线",
+          "大幸线",
+          "子胥路",
+          "胥溪路",
+          "麻蒋线",
+          "沪瑞线",
+          "站前大道",
+          "之江路",
+          "和美路",
+          "黄饶线"
+        ],
+        "segment_detour_ratio": 1.1284513557606923,
+        "subleg_distances_m": [
+          12722,
+          18071,
+          19302,
+          4548
+        ],
+        "unknown_m": 39745
+      },
+      "segment_id": "main-06-to-main-07",
+      "selected_candidate_id": "fuchunjiang-qiantan-xiaya",
+      "status": "manual_review",
+      "to_name": "建德之江村"
+    },
+    {
+      "candidate_result": "probe_failed",
+      "current": {
+        "anchor_queries": [
+          "建德市寿昌镇"
+        ],
+        "baseline_distance_m": 74020,
+        "distance_m": 87651,
+        "duration_s": 19563,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 8359,
+        "road_names": [
+          "黄饶线",
+          "滨江景观路",
+          "钟谭路",
+          "马目路",
+          "未命名道路",
+          "五星线",
+          "胡家畈线",
+          "白章线",
+          "新安东路辅路",
+          "白沙路",
+          "沪瑞线",
+          "东昌路",
+          "311省道",
+          "320国道",
+          "701乡道",
+          "702县道",
+          "环城东路",
+          "龙翔东路",
+          "学士路",
+          "东阁桥"
+        ],
+        "segment_detour_ratio": 1.1841529316400972,
+        "subleg_distances_m": [
+          40605,
+          47046
+        ],
+        "unknown_m": 72391
+      },
+      "decision_reason": "候选无法生成可发布的安全路线，且没有可用的完整 proposed 指标。保留原线 87.651 km、国道 8.359 km；不为机械避开国道而接受高速互通连接。",
+      "distance_delta_m": 0,
+      "evidence_conclusion": "建德之江村至大同的所有缓存候选均需经过 60 m 新安江互通，触发高速互通硬风险规则，探路在第一子段即停止。",
+      "evidence_urls": [],
+      "from_name": "建德之江村",
+      "national_reduction_m": 0,
+      "priority": "P1",
+      "projected_route_detour_ratio": null,
+      "proposed": null,
+      "segment_id": "main-07-to-main-08",
+      "selected_candidate_id": "datong-xikou",
+      "status": "rejected",
+      "to_name": "龙游"
+    },
+    {
+      "candidate_result": "rejected",
+      "current": {
+        "anchor_queries": [
+          "宁都县黄石镇",
+          "于都县银坑镇"
+        ],
+        "baseline_distance_m": 94275,
+        "distance_m": 117172,
+        "duration_s": 26234,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 8174,
+        "road_names": [
+          "未命名道路",
+          "郑屋路",
+          "516乡道",
+          "外环路",
+          "319国道",
+          "504乡道",
+          "505乡道",
+          "387县道",
+          "428县道",
+          "433县道",
+          "451省道",
+          "862乡道",
+          "545乡道",
+          "543省道",
+          "219省道",
+          "长征北路",
+          "站前南路",
+          "于阳路",
+          "红旗大道",
+          "渡江大道辅路"
+        ],
+        "segment_detour_ratio": 1.2428745690798197,
+        "subleg_distances_m": [
+          29436,
+          47015,
+          40721
+        ],
+        "unknown_m": 36168
+      },
+      "decision_reason": "原线 117.172 km、国道 8.174 km；候选 94.306 km、国道 45.376 km，虽少骑 22.866 km，但国道反增 37.202 km。明确拒绝候选并保留原线。",
+      "distance_delta_m": -22866,
+      "evidence_conclusion": "赖村、银坑城镇链虽然缩短总里程，但高德道路步骤显示其把路线导向更长国道走廊，没有达到降低国道风险的目标。",
+      "evidence_urls": [],
+      "from_name": "宁都",
+      "national_reduction_m": -37202,
+      "priority": "P1",
+      "projected_route_detour_ratio": 1.0655613249606006,
+      "proposed": {
+        "anchor_queries": [
+          "宁都县赖村镇",
+          "于都县银坑镇"
+        ],
+        "baseline_distance_m": 94275,
+        "distance_m": 94306,
+        "duration_s": 20408,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 45376,
+        "road_names": [
+          "未命名道路",
+          "郑屋路",
+          "516乡道",
+          "外环路",
+          "319国道",
+          "219省道",
+          "长征北路",
+          "站前南路",
+          "于阳路",
+          "红旗大道",
+          "渡江大道辅路"
+        ],
+        "segment_detour_ratio": 1.000328825245293,
+        "subleg_distances_m": [
+          25735,
+          27850,
+          40721
+        ],
+        "unknown_m": 12571
+      },
+      "segment_id": "main-16-to-main-17",
+      "selected_candidate_id": "laicun-yinkeng",
+      "status": "rejected",
+      "to_name": "于都"
+    },
+    {
+      "candidate_result": "rejected",
+      "current": {
+        "anchor_queries": [],
+        "baseline_distance_m": 60584,
+        "distance_m": 60584,
+        "duration_s": 11032,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 19712,
+        "road_names": [
+          "未命名道路",
+          "渡江大道",
+          "阳明路",
+          "长征大道",
+          "金竹路",
+          "红军大道",
+          "广场西路",
+          "瑞临线",
+          "238国道",
+          "华能大道",
+          "科创九路",
+          "科创三路",
+          "科创二路",
+          "稀金五路",
+          "汶潭大道",
+          "义源大桥",
+          "赣新大道",
+          "状元桥路",
+          "宝福院路",
+          "栎木坑路",
+          "拜将台路",
+          "五龙路",
+          "康定路",
+          "关刀坪路",
+          "张家围路",
+          "赞贤路",
+          "长征大道辅路"
+        ],
+        "segment_detour_ratio": 1.0,
+        "subleg_distances_m": [
+          60584
+        ],
+        "unknown_m": 40872
+      },
+      "decision_reason": "原线 60.584 km、国道 19.712 km；罗坳、江口候选 63.006 km、国道 34.494 km，国道反增 14.782 km。现有候选没有实现风险降低，保留原线并在白天复核 G238 连续段。",
+      "distance_delta_m": 2422,
+      "evidence_conclusion": "缓存比较显示罗坳、江口组合增加国道；王母渡方向仅少约 4 km 国道却增加约 53 km，总体代价过高；梓山北侧候选起步还经过于都东互通硬风险点。",
+      "evidence_urls": [],
+      "from_name": "于都",
+      "national_reduction_m": -14782,
+      "priority": "P1",
+      "projected_route_detour_ratio": 1.0805832953645627,
+      "proposed": {
+        "anchor_queries": [
+          "于都县罗坳镇",
+          "赣县区江口镇"
+        ],
+        "baseline_distance_m": 60584,
+        "distance_m": 63006,
+        "duration_s": 10764,
+        "freight_risk_m": 0,
+        "hard_risk_m": 0,
+        "national_m": 34494,
+        "road_names": [
+          "未命名道路",
+          "渡江大道",
+          "阳明路",
+          "长征大道",
+          "金竹路",
+          "红军大道",
+          "广场西路",
+          "瑞临线",
+          "323国道",
+          "238国道",
+          "赣新大道",
+          "状元桥路",
+          "宝福院路",
+          "栎木坑路",
+          "拜将台路",
+          "五龙路",
+          "康定路",
+          "关刀坪路",
+          "张家围路",
+          "赞贤路",
+          "长征大道辅路"
+        ],
+        "segment_detour_ratio": 1.0399775518288656,
+        "subleg_distances_m": [
+          15182,
+          22040,
+          25784
+        ],
+        "unknown_m": 28512
+      },
+      "segment_id": "main-17-to-main-18",
+      "selected_candidate_id": "yudu-luokao-jiangkou",
+      "status": "rejected",
+      "to_name": "赣州"
+    }
+  ],
+  "remaining_national_segments": [
+    {
+      "from_name": "信丰",
+      "national_m": 43240,
+      "segment_id": "main-19-to-main-20",
+      "to_name": "龙南"
+    },
+    {
+      "from_name": "南城",
+      "national_m": 39167,
+      "segment_id": "main-14-to-main-15",
+      "to_name": "广昌"
+    },
+    {
+      "from_name": "和平",
+      "national_m": 34274,
+      "segment_id": "main-22-to-main-23",
+      "to_name": "河源"
+    },
+    {
+      "from_name": "上饶",
+      "national_m": 25873,
+      "segment_id": "main-11-to-main-12",
+      "to_name": "鹰潭"
+    },
+    {
+      "from_name": "定南",
+      "national_m": 25681,
+      "segment_id": "main-21-to-main-22",
+      "to_name": "和平"
+    },
+    {
+      "from_name": "于都",
+      "national_m": 19712,
+      "segment_id": "main-17-to-main-18",
+      "to_name": "赣州"
+    },
+    {
+      "from_name": "桐庐",
+      "national_m": 11048,
+      "segment_id": "main-06-to-main-07",
+      "to_name": "建德之江村"
+    },
+    {
+      "from_name": "建德之江村",
+      "national_m": 8359,
+      "segment_id": "main-07-to-main-08",
+      "to_name": "龙游"
+    },
+    {
+      "from_name": "宁都",
+      "national_m": 8174,
+      "segment_id": "main-16-to-main-17",
+      "to_name": "于都"
+    },
+    {
+      "from_name": "玉山",
+      "national_m": 4141,
+      "segment_id": "main-10-to-main-11",
+      "to_name": "上饶"
+    },
+    {
+      "from_name": "河源",
+      "national_m": 3813,
+      "segment_id": "main-23-to-main-24",
+      "to_name": "博罗"
+    },
+    {
+      "from_name": "龙游",
+      "national_m": 3194,
+      "segment_id": "main-08-to-main-09",
+      "to_name": "衢州"
+    },
+    {
+      "from_name": "广昌",
+      "national_m": 2031,
+      "segment_id": "main-15-to-main-16",
+      "to_name": "宁都"
+    },
+    {
+      "from_name": "赣州",
+      "national_m": 1343,
+      "segment_id": "main-18-to-main-19",
+      "to_name": "信丰"
+    },
+    {
+      "from_name": "抚州",
+      "national_m": 81,
+      "segment_id": "main-13-to-main-14",
+      "to_name": "南城"
+    },
+    {
+      "from_name": "龙南",
+      "national_m": 40,
+      "segment_id": "main-20-to-main-21",
+      "to_name": "定南"
+    }
+  ],
+  "route_id": "inland-main",
+  "schema_version": 1,
+  "summary": {
+    "adopted_count": 0,
+    "decision_count": 9,
+    "manual_review_count": 5,
+    "rejected_count": 4,
+    "remaining_national_m": 230171
+  }
+}
