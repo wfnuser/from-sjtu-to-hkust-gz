@@ -63,6 +63,7 @@ const elements = {
   schedulePanel: document.querySelector("#schedule-panel"),
   reroutePanel: document.querySelector("#reroute-panel"),
   rerouteOptions: document.querySelector("#reroute-options"),
+  rerouteSummary: document.querySelector("#reroute-summary"),
 };
 
 function applyRouteProfile() {
@@ -94,8 +95,12 @@ function alternativeStyle() {
 export function addRerouteOptions(payload) {
   const options = Array.isArray(payload?.options) ? payload.options : [];
   const features = Array.isArray(payload?.features) ? payload.features : [];
+  const summary = payload?.selection_summary || {};
   elements.rerouteOptions.innerHTML = "";
   elements.reroutePanel.hidden = options.length === 0;
+  elements.rerouteSummary.textContent = options.length
+    ? `若全部采用：多骑 ${formatDistance(summary.distance_delta_m)}，少走国道 ${formatDistance(summary.national_reduction_m)}；原路线均保留。`
+    : "当前没有可展示的避国道备选。";
   for (const option of options) {
     const candidateId = String(option.candidate_id || "");
     if (!candidateId) continue;

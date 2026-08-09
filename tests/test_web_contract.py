@@ -128,6 +128,7 @@ class WebMapContractTests(unittest.TestCase):
         profiles = Path("web/route-profile.mjs").read_text(encoding="utf-8")
 
         self.assertIn('id="reroute-options"', html)
+        self.assertIn('id="reroute-summary"', html)
         self.assertIn("避国道备选", html)
         self.assertIn("原路线保留", html)
         self.assertIn("inland-reroute-options.geojson", profiles)
@@ -135,6 +136,7 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("national_reduction_m", js)
         self.assertIn("distance_delta_m", js)
         self.assertIn("duration_delta_s", js)
+        self.assertIn("selection_summary", js)
         self.assertIn("推荐候选", js)
         self.assertIn("需复核候选", js)
         self.assertIn("alternative", css)

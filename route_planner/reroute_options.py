@@ -75,7 +75,21 @@ def build_reroute_options(options: Sequence[RerouteOption]) -> dict[str, object]
                     },
                 }
             )
-    return {"type": "FeatureCollection", "options": summaries, "features": features}
+    return {
+        "type": "FeatureCollection",
+        "selection_summary": {
+            "option_count": len(summaries),
+            "recommended_count": sum(
+                item["review_status"] == "recommended" for item in summaries
+            ),
+            "distance_delta_m": sum(int(item["distance_delta_m"]) for item in summaries),
+            "national_reduction_m": sum(
+                int(item["national_reduction_m"]) for item in summaries
+            ),
+        },
+        "options": summaries,
+        "features": features,
+    }
 
 
 def _position(point: Coordinate) -> list[float]:

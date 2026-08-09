@@ -77955,5 +77955,11 @@
       "to_name": "和平"
     }
   ],
+  "selection_summary": {
+    "distance_delta_m": 99049,
+    "national_reduction_m": 129849,
+    "option_count": 6,
+    "recommended_count": 1
+  },
   "type": "FeatureCollection"
 }

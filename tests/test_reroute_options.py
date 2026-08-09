@@ -52,6 +52,15 @@ class RerouteOptionExportTests(unittest.TestCase):
         )
 
         self.assertEqual(payload["type"], "FeatureCollection")
+        self.assertEqual(
+            payload["selection_summary"],
+            {
+                "option_count": 1,
+                "recommended_count": 1,
+                "distance_delta_m": 20_000,
+                "national_reduction_m": 25_000,
+            },
+        )
         self.assertEqual(len(payload["options"]), 1)
         option = payload["options"][0]
         self.assertEqual(option["segment_id"], "target")
