@@ -80,6 +80,25 @@ def segment(
 
 
 class ProbeDefinitionTests(unittest.TestCase):
+    def test_high_exposure_segments_have_second_pass_town_chains(self):
+        payload = json.loads(
+            Path("config/inland-reroute-probes.json").read_text(encoding="utf-8")
+        )
+        candidates = {
+            item["segment_id"]: {
+                candidate["candidate_id"] for candidate in item["candidates"]
+            }
+            for item in payload["probes"]
+        }
+
+        self.assertIn("s229-yihe-bypass", candidates["main-22-to-main-23"])
+        self.assertIn("zengtian-county-bypass", candidates["main-22-to-main-23"])
+        self.assertIn("xinjiang-south-bank-towns", candidates["main-11-to-main-12"])
+        self.assertIn("yiyang-gexi-shortcut", candidates["main-11-to-main-12"])
+        self.assertIn("egong-xiache-beidun", candidates["main-21-to-main-22"])
+        self.assertIn("xiache-shortcut", candidates["main-21-to-main-22"])
+        self.assertIn("zishan-huanglin-shadi", candidates["main-17-to-main-18"])
+
     def test_loads_evidence_and_named_anchor_sets_for_a_known_segment(self):
         payload = {
             "route_id": "inland-main",

@@ -111,7 +111,8 @@ export function addRerouteOptions(payload) {
     group.addTo(map);
 
     const wrapper = document.createElement("div");
-    wrapper.className = "reroute-option";
+    const statusText = option.review_status === "recommended" ? "推荐候选" : "需复核候选";
+    wrapper.className = `reroute-option${option.review_status === "recommended" ? " is-recommended" : ""}`;
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = true;
@@ -127,7 +128,7 @@ export function addRerouteOptions(payload) {
     route.textContent = `${option.from_name} → ${option.to_name}`;
     const meta = document.createElement("span");
     meta.className = "reroute-option__meta";
-    meta.textContent = `原路线 ${formatDistance(option.current_distance_m)} · 绕行多 ${formatDistance(option.distance_delta_m)} / ${formatDuration(option.duration_delta_s)} · 少走国道 ${formatDistance(option.national_reduction_m)}`;
+    meta.textContent = `${statusText} · 原路线 ${formatDistance(option.current_distance_m)} · 绕行多 ${formatDistance(option.distance_delta_m)} / ${formatDuration(option.duration_delta_s)} · 少走国道 ${formatDistance(option.national_reduction_m)}`;
     button.append(route, meta);
     button.addEventListener("click", () => {
       const bounds = group.getBounds();
@@ -359,12 +360,13 @@ function popupContent(properties) {
 }
 
 function reroutePopupContent(properties) {
+  const status = properties.review_status === "recommended" ? "推荐候选" : "需复核候选";
   return `
     <h3 class="popup-title">${escapeHtml(properties.from_name || "起点")} → ${escapeHtml(properties.to_name || "终点")} · 避国道备选</h3>
     <p class="popup-detail"><strong>当前道路：</strong>${escapeHtml(properties.road_name || "未命名道路")}</p>
     <p class="popup-detail"><strong>整段代价：</strong>多 ${formatDistance(properties.distance_delta_m)} / ${formatDuration(properties.duration_delta_s)}</p>
     <p class="popup-detail"><strong>整段收益：</strong>少走国道 ${formatDistance(properties.national_reduction_m)}</p>
-    <p class="popup-detail"><strong>状态：</strong>未知道路较多，需人工复核</p>
+    <p class="popup-detail"><strong>状态：</strong>${status}；出发前仍需道路级核验</p>
   `;
 }
 

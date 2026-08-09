@@ -42,12 +42,49 @@ def select_map_option_results(
             and 0 <= distance_delta <= reduction
         )
         if (
-            value.get("decision") == "manual_review"
+            value.get("decision") in {"candidate", "manual_review"}
             and isinstance(reduction, int)
             and (reduction >= min_national_reduction_m or efficient_small_detour)
         ):
             selected.append(dict(value))
-    return selected
+    return [
+        candidate
+        for candidate in selected
+        if not any(
+            _dominates(other, candidate)
+            for other in selected
+            if other is not candidate
+        )
+    ]
+
+
+def _dominates(
+    challenger: dict[str, object], candidate: dict[str, object]
+) -> bool:
+    if challenger.get("segment_id") != candidate.get("segment_id"):
+        return False
+    challenger_reduction = challenger.get("national_reduction_m")
+    candidate_reduction = candidate.get("national_reduction_m")
+    challenger_delta = challenger.get("distance_delta_m")
+    candidate_delta = candidate.get("distance_delta_m")
+    if not all(
+        isinstance(value, int)
+        for value in (
+            challenger_reduction,
+            candidate_reduction,
+            challenger_delta,
+            candidate_delta,
+        )
+    ):
+        return False
+    return (
+        challenger_reduction >= candidate_reduction
+        and challenger_delta <= candidate_delta
+        and (
+            challenger_reduction > candidate_reduction
+            or challenger_delta < candidate_delta
+        )
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -103,6 +140,7 @@ def main(argv: list[str] | None = None) -> int:
                     label="避国道绕行线",
                     current=current,
                     proposed=proposed,
+                    decision=_required_string(result, "decision"),
                 )
             )
         _write_json(args.output, build_reroute_options(options))

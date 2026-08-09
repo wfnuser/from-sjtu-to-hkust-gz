@@ -16,6 +16,7 @@ class RerouteOption:
     label: str
     current: PlannedSegment
     proposed: PlannedSegment
+    decision: str = "manual_review"
 
 
 def build_reroute_options(options: Sequence[RerouteOption]) -> dict[str, object]:
@@ -48,7 +49,9 @@ def build_reroute_options(options: Sequence[RerouteOption]) -> dict[str, object]
             "distance_delta_m": distance_delta_m,
             "duration_delta_s": duration_delta_s,
             "national_reduction_m": national_reduction_m,
-            "review_status": "manual_review",
+            "review_status": (
+                "recommended" if option.decision == "candidate" else "manual_review"
+            ),
         }
         summaries.append(summary)
         for step_index, step in enumerate(option.proposed.selected.steps):

@@ -47,6 +47,16 @@
           "candidate_id": "s229-tourism-corridor",
           "anchor_queries": ["和平县礼士镇", "东源县船塘镇", "东源县漳溪畲族乡", "东源县骆湖镇"],
           "road_hint": "S229 旅游与城镇走廊"
+        },
+        {
+          "candidate_id": "s229-yihe-bypass",
+          "anchor_queries": ["和平县礼士镇", "东源县船塘镇", "东源县漳溪畲族乡", "东源县骆湖镇", "东源县义合镇"],
+          "road_hint": "S229 后继续经义合镇，尝试绕开骆湖至河源的 G205"
+        },
+        {
+          "candidate_id": "zengtian-county-bypass",
+          "anchor_queries": ["东源县曾田镇"],
+          "road_hint": "经曾田镇接乡道链与 X154，绕开大部分 G205，保留约 10 km G358 连接段"
         }
       ]
     },
@@ -61,6 +71,16 @@
           "candidate_id": "yiyang-guifeng",
           "anchor_queries": ["横峰县", "弋阳县龟峰景区公交站", "鹰潭::贵溪市罗河镇"],
           "road_hint": "弋阳龟峰旅游道路与城镇道路"
+        },
+        {
+          "candidate_id": "xinjiang-south-bank-towns",
+          "anchor_queries": ["上饶市广信区董团乡", "铅山县汪二镇", "横峰县莲荷乡", "弋阳县葛溪乡", "鹰潭::贵溪市罗河镇"],
+          "road_hint": "信江南侧城镇道路与县乡道链；重点核验连续铺装和补给"
+        },
+        {
+          "candidate_id": "yiyang-gexi-shortcut",
+          "anchor_queries": ["弋阳县葛溪乡"],
+          "road_hint": "经葛溪乡的最短零国道候选；主要使用城市道路、省道与县乡道"
         }
       ]
     },
@@ -76,6 +96,16 @@
           "candidate_id": "heping-green-corridor",
           "anchor_queries": ["河源::和平县上陵镇", "河源::和平县合水镇"],
           "road_hint": "G238 绿美公路；用于比较实际风险而非机械避号"
+        },
+        {
+          "candidate_id": "egong-xiache-beidun",
+          "anchor_queries": ["赣州::定南县鹅公镇", "河源::和平县下车镇", "河源::和平县贝墩镇"],
+          "road_hint": "鹅公—下车—贝墩县乡道路；仅在铺装、补给和非偏僻条件可核验时保留"
+        },
+        {
+          "candidate_id": "xiache-shortcut",
+          "anchor_queries": ["河源::和平县下车镇"],
+          "road_hint": "经下车镇的最短低国道候选；保留原直达线供当天选择"
         }
       ]
     },
@@ -118,6 +148,11 @@
           "candidate_id": "yudu-luokao-jiangkou",
           "anchor_queries": ["于都县罗坳镇", "赣县区江口镇"],
           "road_hint": "沿镇区道路复核 G238 平行选择"
+        },
+        {
+          "candidate_id": "zishan-huanglin-shadi",
+          "anchor_queries": ["于都县梓山镇", "于都县黄麟乡", "赣县区沙地镇", "赣县区茅店镇"],
+          "road_hint": "贡江北侧城镇链，尝试减少 G323/G238 暴露并保持补给"
         }
       ]
     },

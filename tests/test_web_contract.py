@@ -135,6 +135,8 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("national_reduction_m", js)
         self.assertIn("distance_delta_m", js)
         self.assertIn("duration_delta_s", js)
+        self.assertIn("推荐候选", js)
+        self.assertIn("需复核候选", js)
         self.assertIn("alternative", css)
         self.assertIn("border-top-style: dashed", css)
 

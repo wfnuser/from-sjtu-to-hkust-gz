@@ -9,10 +9,12 @@ class RerouteOptionExportTests(unittest.TestCase):
     def test_selects_only_material_national_road_reductions_for_the_map(self):
         report = {
             "results": [
-                {"candidate_id": "strong", "decision": "manual_review", "national_reduction_m": 25_000, "distance_delta_m": 20_000},
-                {"candidate_id": "efficient", "decision": "manual_review", "national_reduction_m": 3_700, "distance_delta_m": 2_100},
-                {"candidate_id": "weak", "decision": "manual_review", "national_reduction_m": 4_000, "distance_delta_m": 9_000},
-                {"candidate_id": "rejected", "decision": "rejected", "national_reduction_m": 30_000, "distance_delta_m": 1_000},
+                {"segment_id": "one", "candidate_id": "strong", "decision": "manual_review", "national_reduction_m": 25_000, "distance_delta_m": 20_000},
+                {"segment_id": "two", "candidate_id": "efficient", "decision": "manual_review", "national_reduction_m": 3_700, "distance_delta_m": 2_100},
+                {"segment_id": "three", "candidate_id": "weak", "decision": "manual_review", "national_reduction_m": 4_000, "distance_delta_m": 9_000},
+                {"segment_id": "four", "candidate_id": "rejected", "decision": "rejected", "national_reduction_m": 30_000, "distance_delta_m": 1_000},
+                {"segment_id": "one", "candidate_id": "dominated", "decision": "manual_review", "national_reduction_m": 25_000, "distance_delta_m": 30_000},
+                {"segment_id": "five", "candidate_id": "recommended", "decision": "candidate", "national_reduction_m": 24_000, "distance_delta_m": 18_000},
             ]
         }
 
@@ -20,7 +22,7 @@ class RerouteOptionExportTests(unittest.TestCase):
 
         self.assertEqual(
             [item["candidate_id"] for item in selected],
-            ["strong", "efficient"],
+            ["strong", "efficient", "recommended"],
         )
 
     def test_exports_alternative_geometry_and_original_comparison(self):
@@ -44,6 +46,7 @@ class RerouteOptionExportTests(unittest.TestCase):
                     label="避国道绕行线",
                     current=current,
                     proposed=proposed,
+                    decision="candidate",
                 ),
             )
         )
@@ -57,6 +60,7 @@ class RerouteOptionExportTests(unittest.TestCase):
         self.assertEqual(option["distance_delta_m"], 20_000)
         self.assertEqual(option["national_reduction_m"], 25_000)
         self.assertEqual(option["duration_delta_s"], 0)
+        self.assertEqual(option["review_status"], "recommended")
         self.assertTrue(payload["features"])
         feature = payload["features"][0]
         self.assertEqual(feature["properties"]["candidate_id"], "county-detour")
