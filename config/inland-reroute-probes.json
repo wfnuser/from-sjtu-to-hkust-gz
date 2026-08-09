@@ -1,0 +1,155 @@
+{
+  "route_id": "inland-main",
+  "probes": [
+    {
+      "segment_id": "main-19-to-main-20",
+      "priority": "P0",
+      "evidence_urls": [
+        "https://www.ganzhou.gov.cn/gzszf/c100022/202606/f2db2e4d22544ec9bba7cb01c7403dfd.shtml",
+        "https://glj.ganzhou.gov.cn/c101280/202203/67b9f0a9ad914e2bb99ae0d4b2bae965.shtml"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "xinfeng-local-east",
+          "anchor_queries": ["信丰县大塘埠镇", "信丰县小江镇", "龙南市里仁镇"],
+          "road_hint": "S316/S317 与城镇道路组合"
+        }
+      ]
+    },
+    {
+      "segment_id": "main-14-to-main-15",
+      "priority": "P0",
+      "evidence_urls": [
+        "https://www.jxfz.gov.cn/art/2026/6/30/art_14_4458067.html"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "fuhe-towns",
+          "anchor_queries": ["南丰县琴城镇", "南丰县太和镇", "广昌县甘竹镇"],
+          "road_hint": "抚河沿线城镇及县乡道路"
+        }
+      ]
+    },
+    {
+      "segment_id": "main-22-to-main-23",
+      "priority": "P0",
+      "evidence_urls": [
+        "https://www.heyuan.gov.cn/zwgk/zdlyxx/zdjsxm/content/post_453605.html"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "s229-tourism-corridor",
+          "anchor_queries": ["和平县礼士镇", "东源县船塘镇", "东源县漳溪畲族乡", "东源县骆湖镇"],
+          "road_hint": "S229 旅游与城镇走廊"
+        }
+      ]
+    },
+    {
+      "segment_id": "main-11-to-main-12",
+      "priority": "P0",
+      "evidence_urls": [
+        "https://www.eco.gov.cn/news_info/40343.html"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "yiyang-guifeng",
+          "anchor_queries": ["横峰县", "弋阳县龟峰景区", "鹰潭::贵溪市罗河镇"],
+          "road_hint": "弋阳龟峰旅游道路与城镇道路"
+        }
+      ]
+    },
+    {
+      "segment_id": "main-21-to-main-22",
+      "priority": "P0",
+      "evidence_urls": [
+        "https://www.heping.gov.cn/xwzx/bmdt/content/post_702159.html?jump=false",
+        "https://www.heping.gov.cn/zwgk/zdlyxxgk/zdjsxmxxgk/content/post_599721.html"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "heping-green-corridor",
+          "anchor_queries": ["河源::和平县上陵镇", "河源::和平县合水镇"],
+          "road_hint": "G238 绿美公路；用于比较实际风险而非机械避号"
+        }
+      ]
+    },
+    {
+      "segment_id": "main-02-to-main-03",
+      "priority": "SCENIC",
+      "scenic": true,
+      "evidence_urls": [
+        "https://www.haining.gov.cn/art/2024/7/7/art_1229519873_59045333.html"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "wengjin-ganpu",
+          "anchor_queries": ["嘉兴::海盐县澉浦镇"],
+          "road_hint": "翁金线澉浦绿道"
+        }
+      ]
+    },
+    {
+      "segment_id": "main-03-to-main-04",
+      "priority": "SCENIC",
+      "scenic": true,
+      "evidence_urls": [
+        "https://www.haining.gov.cn/art/2024/7/7/art_1229519873_59045333.html"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "wengjin-yanguan",
+          "anchor_queries": ["海宁市盐官旅游度假区"],
+          "road_hint": "翁金线盐官段"
+        }
+      ]
+    },
+    {
+      "segment_id": "main-17-to-main-18",
+      "priority": "P1",
+      "evidence_urls": [],
+      "candidates": [
+        {
+          "candidate_id": "yudu-luokao-jiangkou",
+          "anchor_queries": ["于都县罗坳镇", "赣县区江口镇"],
+          "road_hint": "沿镇区道路复核 G238 平行选择"
+        }
+      ]
+    },
+    {
+      "segment_id": "main-06-to-main-07",
+      "priority": "P1",
+      "evidence_urls": [],
+      "candidates": [
+        {
+          "candidate_id": "fuchunjiang-qiantan-xiaya",
+          "anchor_queries": ["桐庐县富春江镇", "建德市乾潭镇", "建德市下涯镇"],
+          "road_hint": "富春江沿线城镇道路复核"
+        }
+      ]
+    },
+    {
+      "segment_id": "main-07-to-main-08",
+      "priority": "P1",
+      "evidence_urls": [],
+      "candidates": [
+        {
+          "candidate_id": "datong-xikou",
+          "anchor_queries": ["建德市大同镇", "衢州::龙游县溪口镇"],
+          "road_hint": "县乡道路候选；重点排除偏僻山路"
+        }
+      ]
+    },
+    {
+      "segment_id": "main-16-to-main-17",
+      "priority": "P1",
+      "evidence_urls": [],
+      "candidates": [
+        {
+          "candidate_id": "laicun-yinkeng",
+          "anchor_queries": ["宁都县赖村镇", "于都县银坑镇"],
+          "road_hint": "城镇补给走廊候选"
+        }
+      ]
+    }
+  ]
+}
