@@ -34,10 +34,17 @@ def select_map_option_results(
         if not isinstance(value, dict):
             raise ValueError("Reroute report results must be objects")
         reduction = value.get("national_reduction_m")
+        distance_delta = value.get("distance_delta_m")
+        efficient_small_detour = (
+            isinstance(reduction, int)
+            and isinstance(distance_delta, int)
+            and reduction >= 3_000
+            and 0 <= distance_delta <= reduction
+        )
         if (
             value.get("decision") == "manual_review"
             and isinstance(reduction, int)
-            and reduction >= min_national_reduction_m
+            and (reduction >= min_national_reduction_m or efficient_small_detour)
         ):
             selected.append(dict(value))
     return selected

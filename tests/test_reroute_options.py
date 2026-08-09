@@ -9,15 +9,19 @@ class RerouteOptionExportTests(unittest.TestCase):
     def test_selects_only_material_national_road_reductions_for_the_map(self):
         report = {
             "results": [
-                {"candidate_id": "strong", "decision": "manual_review", "national_reduction_m": 25_000},
-                {"candidate_id": "weak", "decision": "manual_review", "national_reduction_m": 4_000},
-                {"candidate_id": "rejected", "decision": "rejected", "national_reduction_m": 30_000},
+                {"candidate_id": "strong", "decision": "manual_review", "national_reduction_m": 25_000, "distance_delta_m": 20_000},
+                {"candidate_id": "efficient", "decision": "manual_review", "national_reduction_m": 3_700, "distance_delta_m": 2_100},
+                {"candidate_id": "weak", "decision": "manual_review", "national_reduction_m": 4_000, "distance_delta_m": 9_000},
+                {"candidate_id": "rejected", "decision": "rejected", "national_reduction_m": 30_000, "distance_delta_m": 1_000},
             ]
         }
 
         selected = select_map_option_results(report, min_national_reduction_m=10_000)
 
-        self.assertEqual([item["candidate_id"] for item in selected], ["strong"])
+        self.assertEqual(
+            [item["candidate_id"] for item in selected],
+            ["strong", "efficient"],
+        )
 
     def test_exports_alternative_geometry_and_original_comparison(self):
         current = segment(
