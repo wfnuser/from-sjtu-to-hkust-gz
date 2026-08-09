@@ -7,7 +7,8 @@
       "evidence_urls": [
         "https://www.ganzhou.gov.cn/gzszf/c100022/202606/f2db2e4d22544ec9bba7cb01c7403dfd.shtml",
         "https://glj.ganzhou.gov.cn/c101280/202203/67b9f0a9ad914e2bb99ae0d4b2bae965.shtml",
-        "https://www.quannan.gov.cn/qnxxxgk/hjbh/202411/28f09c88c88742cf8ce3c667570f0f55/files/faad1fb7c1214b8a8394299531ab10a8.pdf"
+        "https://www.quannan.gov.cn/qnxxxgk/hjbh/202411/28f09c88c88742cf8ce3c667570f0f55/files/faad1fb7c1214b8a8394299531ab10a8.pdf",
+        "https://www.ganzhou.gov.cn/gzszf/2025num5m/202601/d88bae4d11bf4c4fb776882bf847416e/files/8d364258a91a4432abb4d2dda184f5f3.pdf"
       ],
       "candidates": [
         {
@@ -40,7 +41,9 @@
       "segment_id": "main-22-to-main-23",
       "priority": "P0",
       "evidence_urls": [
-        "https://www.heyuan.gov.cn/zwgk/zdlyxx/zdjsxm/content/post_453605.html"
+        "https://www.heyuan.gov.cn/zwgk/zdlyxx/zdjsxm/content/post_453605.html",
+        "https://www.heyuan.gov.cn/attachment/0/73/73520/576069.pdf",
+        "https://www.heyuan.gov.cn/zwgk/zfgb/2020/17/xqzfbgswj/content/post_401721.html"
       ],
       "candidates": [
         {
@@ -89,7 +92,8 @@
       "priority": "P0",
       "evidence_urls": [
         "https://www.heping.gov.cn/xwzx/bmdt/content/post_702159.html?jump=false",
-        "https://www.heping.gov.cn/zwgk/zdlyxxgk/zdjsxmxxgk/content/post_599721.html"
+        "https://www.heping.gov.cn/zwgk/zdlyxxgk/zdjsxmxxgk/content/post_599721.html",
+        "https://www.heping.gov.cn/hyhpgaj/gkmlpt/content/0/679/post_679981.html"
       ],
       "candidates": [
         {
@@ -159,7 +163,10 @@
     {
       "segment_id": "main-06-to-main-07",
       "priority": "P1",
-      "evidence_urls": [],
+      "evidence_urls": [
+        "https://www.jiande.gov.cn/art/2025/2/28/art_1229535708_4334840.html",
+        "https://tb.hangzhou.gov.cn/art/2025/1/13/art_1229783239_58930083.html"
+      ],
       "candidates": [
         {
           "candidate_id": "fuchunjiang-qiantan-xiaya",

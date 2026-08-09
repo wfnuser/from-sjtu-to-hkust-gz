@@ -260,11 +260,12 @@
       },
       "decision_reason": "原线 73.348 km、国道 43.240 km；西侧候选 97.126 km、国道 17.307 km，多骑 23.778 km、少走国道 25.933 km，且无自动识别的硬风险或货运道路，但 UNKNOWN 从 12.902 km 增至 44.975 km。保留两线供出发时按施工进度、天气和现场车流选择，不自动替换。",
       "distance_delta_m": 23778,
-      "evidence_conclusion": "赣州市政府确认 G105 车流量大、过境货车密集，龙南段安全提升工程包含拓宽非机动车道并预计 2026 年 8 月完成；西侧县乡道候选的连续铺装、补给与夜间照明尚无可靠资料。",
+      "evidence_conclusion": "赣州市政府确认 G105 车流量大、过境货车密集，龙南段安全提升工程包含拓宽非机动车道并预计 2026 年 8 月完成；候选经过的 S317 信丰马路坑至正平段改建计划工期延续至 2026 年，西侧其余县乡道的连续铺装、补给与夜间照明尚无可靠资料。",
       "evidence_urls": [
         "https://www.ganzhou.gov.cn/gzszf/c100022/202606/f2db2e4d22544ec9bba7cb01c7403dfd.shtml",
         "https://glj.ganzhou.gov.cn/c101280/202203/67b9f0a9ad914e2bb99ae0d4b2bae965.shtml",
-        "https://www.quannan.gov.cn/qnxxxgk/hjbh/202411/28f09c88c88742cf8ce3c667570f0f55/files/faad1fb7c1214b8a8394299531ab10a8.pdf"
+        "https://www.quannan.gov.cn/qnxxxgk/hjbh/202411/28f09c88c88742cf8ce3c667570f0f55/files/faad1fb7c1214b8a8394299531ab10a8.pdf",
+        "https://www.ganzhou.gov.cn/gzszf/2025num5m/202601/d88bae4d11bf4c4fb776882bf847416e/files/8d364258a91a4432abb4d2dda184f5f3.pdf"
       ],
       "from_name": "信丰",
       "national_reduction_m": 25933,
@@ -356,10 +357,11 @@
       },
       "decision_reason": "原线 50.156 km、国道 25.681 km；下车候选 62.784 km、国道 8.572 km，多骑 12.628 km、少走国道 17.109 km，UNKNOWN 增加 8.383 km，且无自动识别的硬风险或货运道路。原线工程条件较明确但可能有货车，候选车流可能更低但路况未知，保留两线并要求白天现场决策。",
       "distance_delta_m": 12628,
-      "evidence_conclusion": "和平县政府确认 G238 上陵段 57.2 km 已按二级公路标准完成绿美公路升级；同时当地在 G238 上陵设置货车超限检测并称其为咽喉要道。下车镇县乡道候选的路面与补给尚无同等级证据。",
+      "evidence_conclusion": "和平县政府确认 G238 上陵段 57.2 km 已按二级公路标准完成绿美公路升级；同时当地在 G238 上陵设置货车超限检测并称其为咽喉要道。候选经过的 S229 下车段曾发生大型客车与行人死亡事故，且 S229 等国省道实施过灾毁恢复；下车镇后续县乡道的路面与补给仍无同等级证据。",
       "evidence_urls": [
         "https://www.heping.gov.cn/xwzx/bmdt/content/post_702159.html?jump=false",
-        "https://www.heping.gov.cn/zwgk/zdlyxxgk/zdjsxmxxgk/content/post_599721.html"
+        "https://www.heping.gov.cn/zwgk/zdlyxxgk/zdjsxmxxgk/content/post_599721.html",
+        "https://www.heping.gov.cn/hyhpgaj/gkmlpt/content/0/679/post_679981.html"
       ],
       "from_name": "定南",
       "national_reduction_m": 17109,
@@ -458,9 +460,11 @@
       },
       "decision_reason": "原线 114.172 km、国道 34.274 km；曾田候选 132.214 km、国道 10.234 km，多骑 18.042 km、少走国道 24.040 km，UNKNOWN 反而减少 3.111 km，且无自动识别的硬风险或货运道路。数据指标较好，但县乡道路铺装、边坡与补给尚未逐路核实，因此保留为优先人工复核候选。",
       "distance_delta_m": 18042,
-      "evidence_conclusion": "河源市交通运输局资料证明 S229 船塘至骆湖段规划为连续一级公路走廊，但当前最优候选实际经过曾田及多条县乡道路，并不等同于已有官方资料覆盖的 S229 走廊。",
+      "evidence_conclusion": "河源市交通运输局资料证明 S229 船塘至骆湖段规划为连续一级公路走廊；曾田镇存在区域农村客运，东源县也建立了四好农村路建设与管养体系，说明候选走廊具备基本通行与公共交通条件，但资料仍未逐条覆盖 X163、X154 及乡道链的路宽、边坡和骑行空间。",
       "evidence_urls": [
-        "https://www.heyuan.gov.cn/zwgk/zdlyxx/zdjsxm/content/post_453605.html"
+        "https://www.heyuan.gov.cn/zwgk/zdlyxx/zdjsxm/content/post_453605.html",
+        "https://www.heyuan.gov.cn/attachment/0/73/73520/576069.pdf",
+        "https://www.heyuan.gov.cn/zwgk/zfgb/2020/17/xqzfbgswj/content/post_401721.html"
       ],
       "from_name": "和平",
       "national_reduction_m": 24040,
@@ -563,8 +567,11 @@
       },
       "decision_reason": "原线 52.537 km、国道 11.048 km；候选 54.643 km、国道 7.339 km，多骑 2.106 km、少走国道 3.709 km，UNKNOWN 增加 5.815 km，且无自动识别的硬风险或货运道路。候选效率较高，列为优先人工复核，不自动替换。",
       "distance_delta_m": 2106,
-      "evidence_conclusion": "候选沿富春江、乾潭、下涯城镇走廊，绕行很小，但 UNKNOWN 增量中的道路级铺装和施工状态尚未由近期权威资料覆盖。",
-      "evidence_urls": [],
+      "evidence_conclusion": "候选沿富春江、乾潭、下涯城镇走廊，绕行很小；下涯镇 2024 年新增四好农村路 6 km、修复道路桥梁和水毁设施 28 处，建德也持续建设旅游与产业型农村公路，但这些资料仍未逐条覆盖湾茆线、徐七线、孝荻线、幸福线和麻蒋线的当前骑行空间。",
+      "evidence_urls": [
+        "https://www.jiande.gov.cn/art/2025/2/28/art_1229535708_4334840.html",
+        "https://tb.hangzhou.gov.cn/art/2025/1/13/art_1229783239_58930083.html"
+      ],
       "from_name": "桐庐",
       "national_reduction_m": 3709,
       "priority": "P1",
