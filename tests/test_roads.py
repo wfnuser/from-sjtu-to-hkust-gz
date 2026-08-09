@@ -94,7 +94,7 @@ class RoadClassificationTests(unittest.TestCase):
         self.assertEqual(classify_road(""), RoadClass.UNKNOWN)
 
     def test_classifies_tourism_roads_separately_from_unknown_roads(self):
-        for road_name in ("南湖旅游公路", "浰江风景道", "龟峰景区道路"):
+        for road_name in ("南湖旅游公路", "浰江风景道", "龟峰景区道路", "翁金线"):
             with self.subTest(road_name=road_name):
                 self.assertEqual(classify_road(road_name), RoadClass.TOURISM)
 

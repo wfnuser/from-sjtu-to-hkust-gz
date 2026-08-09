@@ -25,6 +25,7 @@ _NATIONAL_ROAD = re.compile(r"^\s*G\d{3,4}(?!\d)", re.IGNORECASE)
 _PROVINCIAL_ROAD = re.compile(r"^\s*S\d{3}(?!\d)", re.IGNORECASE)
 _COUNTY_ROAD = re.compile(r"^\s*[XY]\d{3,4}(?!\d)", re.IGNORECASE)
 _NATIONAL_ALIASES = ("京福线",)
+_TOURISM_ALIASES = ("翁金线",)
 _EXPRESSWAY_ACCESS = re.compile(r"(?:支线.*(?:入口|出口)|互通|收费站|匝道)")
 
 
@@ -60,7 +61,12 @@ def classify_road(road_name: str, instruction: str = "") -> RoadClass:
             return RoadClass.COUNTY
         if "绿道" in text or "自行车道" in text or "骑行道" in text or "非机动车道" in text:
             return RoadClass.CYCLEWAY
-        if "旅游公路" in text or "风景道" in text or "景区道路" in text:
+        if (
+            "旅游公路" in text
+            or "风景道" in text
+            or "景区道路" in text
+            or any(alias in text for alias in _TOURISM_ALIASES)
+        ):
             return RoadClass.TOURISM
         if "市道" in text or "城市道路" in text or "城市快速路" in text:
             return RoadClass.CITY
