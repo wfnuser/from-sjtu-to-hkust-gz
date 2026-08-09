@@ -93,6 +93,7 @@ h2 { margin-bottom: 12px; font-size: .94rem; }
 .swatch.national { border-color: var(--national); }
 .swatch.review { border-color: var(--review); }
 .swatch.optional { border-color: var(--optional); border-top-style: dashed; }
+.swatch.original-comparison { border-color: #334155; border-top-style: dotted; }
 .swatch.alternative { border-color: var(--alternative); border-top-style: dashed; }
 
 .segment-cards { display: grid; gap: 8px; }

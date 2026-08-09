@@ -1,4 +1,9 @@
 import { selectRouteProfile } from "./route-profile.mjs";
+import {
+  rerouteComparisonText,
+  rerouteFeaturesForOption,
+  rerouteLineStyle,
+} from "./reroute-options.mjs";
 import { rerouteLabel } from "./reroute-status.mjs";
 
 const routeProfile = selectRouteProfile(window.location.search);
@@ -87,10 +92,6 @@ export function roadStyle(feature) {
   return ROAD_STYLES[properties.road_class] || ROAD_STYLES.unknown;
 }
 
-function alternativeStyle() {
-  return { color: "#0891b2", weight: 5, opacity: 0.9, dashArray: "10 7" };
-}
-
 /** Add optional safety detours while keeping the published original route visible. */
 export function addRerouteOptions(payload) {
   const options = Array.isArray(payload?.options) ? payload.options : [];
@@ -105,9 +106,10 @@ export function addRerouteOptions(payload) {
     const candidateId = String(option.candidate_id || "");
     if (!candidateId) continue;
     const group = L.featureGroup();
-    for (const feature of features.filter((item) => item.properties?.candidate_id === candidateId)) {
+    const originalFeatures = segmentGroups.get(String(option.segment_id || ""))?.features || [];
+    for (const feature of rerouteFeaturesForOption(option, features, originalFeatures)) {
       if (!isRoadLine(feature)) continue;
-      const layer = L.geoJSON(feature, { style: alternativeStyle });
+      const layer = L.geoJSON(feature, { style: rerouteLineStyle });
       layer.bindPopup(reroutePopupContent(feature.properties || {}));
       group.addLayer(layer);
     }
@@ -121,7 +123,7 @@ export function addRerouteOptions(payload) {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = true;
-    checkbox.setAttribute("aria-label", `显示${option.from_name}至${option.to_name}避国道备选`);
+    checkbox.setAttribute("aria-label", `显示${option.from_name}至${option.to_name}原线与避国道路线对照`);
     checkbox.addEventListener("change", () => {
       if (checkbox.checked) group.addTo(map);
       else map.removeLayer(group);
@@ -133,7 +135,7 @@ export function addRerouteOptions(payload) {
     route.textContent = `${option.from_name} → ${option.to_name}`;
     const meta = document.createElement("span");
     meta.className = "reroute-option__meta";
-    meta.textContent = `${statusText} · 原路线 ${formatDistance(option.current_distance_m)} · 绕行多 ${formatDistance(option.distance_delta_m)} / ${formatDuration(option.duration_delta_s)} · 少走国道 ${formatDistance(option.national_reduction_m)}`;
+    meta.textContent = `${statusText} · ${rerouteComparisonText(option)}`;
     button.append(route, meta);
     button.addEventListener("click", () => {
       const bounds = group.getBounds();
@@ -366,8 +368,9 @@ function popupContent(properties) {
 
 function reroutePopupContent(properties) {
   const status = properties.review_status === "recommended" ? "推荐候选" : "需复核候选";
+  const role = properties.route_role === "original" ? "原路线对照" : "避国道备选";
   return `
-    <h3 class="popup-title">${escapeHtml(properties.from_name || "起点")} → ${escapeHtml(properties.to_name || "终点")} · 避国道备选</h3>
+    <h3 class="popup-title">${escapeHtml(properties.from_name || "起点")} → ${escapeHtml(properties.to_name || "终点")} · ${role}</h3>
     <p class="popup-detail"><strong>当前道路：</strong>${escapeHtml(properties.road_name || "未命名道路")}</p>
     <p class="popup-detail"><strong>整段代价：</strong>多 ${formatDistance(properties.distance_delta_m)} / ${formatDuration(properties.duration_delta_s)}</p>
     <p class="popup-detail"><strong>整段收益：</strong>少走国道 ${formatDistance(properties.national_reduction_m)}</p>
