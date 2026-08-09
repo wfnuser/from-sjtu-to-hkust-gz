@@ -6,6 +6,7 @@ from types import MappingProxyType
 
 class RoadClass(str, Enum):
     CYCLEWAY = "cycleway"
+    TOURISM = "tourism"
     COUNTY = "county"
     PROVINCIAL = "provincial"
     CITY = "city"

@@ -141,6 +141,16 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(summary["days"][0]["from_name"], "上海交通大学闵行校区")
         self.assertEqual(summary["days"][0]["to_name"], "海盐")
 
+    def test_summary_counts_tourism_roads_as_a_known_road_class(self):
+        tourism = _segment(
+            road_classes=(RoadClass.TOURISM,), distances=(12_000,), duration_s=3_600
+        )
+
+        summary = build_summary([tourism], 1.15)
+
+        self.assertEqual(summary["main"]["tourism_distance_m"], 12_000)
+        self.assertEqual(summary["main"]["unknown_distance_m"], 0)
+
     def test_summary_builds_practical_subleg_schedule_and_publishes_limits(self):
         segments = tuple(
             replace(

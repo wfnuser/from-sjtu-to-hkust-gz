@@ -93,6 +93,11 @@ class RoadClassificationTests(unittest.TestCase):
         self.assertEqual(classify_road("环岛绿道"), RoadClass.CYCLEWAY)
         self.assertEqual(classify_road(""), RoadClass.UNKNOWN)
 
+    def test_classifies_tourism_roads_separately_from_unknown_roads(self):
+        for road_name in ("南湖旅游公路", "浰江风景道", "龟峰景区道路"):
+            with self.subTest(road_name=road_name):
+                self.assertEqual(classify_road(road_name), RoadClass.TOURISM)
+
     def test_classifies_authoritative_g104_alias_and_auxiliary_as_national(self):
         self.assertEqual(classify_road("京福线"), RoadClass.NATIONAL)
         self.assertEqual(classify_road("京福线辅路"), RoadClass.NATIONAL)

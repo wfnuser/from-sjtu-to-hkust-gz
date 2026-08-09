@@ -470,6 +470,7 @@ def _totals(segments: Iterable[PlannedSegment]) -> dict[str, object]:
         "provincial_distance_m": distances[RoadClass.PROVINCIAL.value],
         "county_distance_m": distances[RoadClass.COUNTY.value],
         "cycleway_distance_m": distances[RoadClass.CYCLEWAY.value],
+        "tourism_distance_m": distances[RoadClass.TOURISM.value],
         "unknown_distance_m": distances[RoadClass.UNKNOWN.value],
         "city_distance_m": distances[RoadClass.CITY.value],
     }

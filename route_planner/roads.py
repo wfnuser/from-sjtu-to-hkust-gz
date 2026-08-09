@@ -60,6 +60,8 @@ def classify_road(road_name: str, instruction: str = "") -> RoadClass:
             return RoadClass.COUNTY
         if "绿道" in text or "自行车道" in text or "骑行道" in text or "非机动车道" in text:
             return RoadClass.CYCLEWAY
+        if "旅游公路" in text or "风景道" in text or "景区道路" in text:
+            return RoadClass.TOURISM
         if "市道" in text or "城市道路" in text or "城市快速路" in text:
             return RoadClass.CITY
     return RoadClass.UNKNOWN
