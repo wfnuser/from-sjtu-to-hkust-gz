@@ -6,13 +6,19 @@
       "priority": "P0",
       "evidence_urls": [
         "https://www.ganzhou.gov.cn/gzszf/c100022/202606/f2db2e4d22544ec9bba7cb01c7403dfd.shtml",
-        "https://glj.ganzhou.gov.cn/c101280/202203/67b9f0a9ad914e2bb99ae0d4b2bae965.shtml"
+        "https://glj.ganzhou.gov.cn/c101280/202203/67b9f0a9ad914e2bb99ae0d4b2bae965.shtml",
+        "https://www.quannan.gov.cn/qnxxxgk/hjbh/202411/28f09c88c88742cf8ce3c667570f0f55/files/faad1fb7c1214b8a8394299531ab10a8.pdf"
       ],
       "candidates": [
         {
           "candidate_id": "xinfeng-local-east",
           "anchor_queries": ["信丰县大塘埠镇", "信丰县小江镇", "龙南市里仁镇"],
           "road_hint": "S316/S317 与城镇道路组合"
+        },
+        {
+          "candidate_id": "xinfeng-west-county-chain",
+          "anchor_queries": ["信丰县小河镇", "信丰县小江镇", "龙南市东坑镇", "龙南市里仁镇"],
+          "road_hint": "X364/X421 及乡村道路组合；重点核验铺装、偏僻程度和补给"
         }
       ]
     },
