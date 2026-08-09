@@ -121,6 +121,23 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("reviewFeaturesForEntry", js)
         self.assertIn("hardFeatures.length ? hardFeatures : pending.slice(0, 1)", js)
 
+    def test_map_keeps_original_routes_and_exposes_safety_detour_overlays(self):
+        html = Path("web/index.html").read_text(encoding="utf-8")
+        js = Path("web/app.mjs").read_text(encoding="utf-8")
+        css = Path("web/styles.css").read_text(encoding="utf-8")
+        profiles = Path("web/route-profile.mjs").read_text(encoding="utf-8")
+
+        self.assertIn('id="reroute-options"', html)
+        self.assertIn("避国道备选", html)
+        self.assertIn("原路线保留", html)
+        self.assertIn("inland-reroute-options.geojson", profiles)
+        self.assertIn("addRerouteOptions", js)
+        self.assertIn("national_reduction_m", js)
+        self.assertIn("distance_delta_m", js)
+        self.assertIn("duration_delta_s", js)
+        self.assertIn("alternative", css)
+        self.assertIn("border-top-style: dashed", css)
+
 
 if __name__ == "__main__":
     unittest.main()

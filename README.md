@@ -5,6 +5,7 @@
 ## 当前状态
 
 - 内陆审查基线已经发布并作为网页默认路线，数据位于 `web/data/inland-*`，配置位于 `config/inland-route.json`。当前约 1816.6 km，相对逐段直达基线增加约 7.9%，自动分类出约 230.2 km 国道；国道例外均记录了实测保留量与已试替代方案，但整条路线仍需道路级复核。
+- 地图保留当前原路线，并用可关闭的青色虚线展示两条避国道备选：信丰→龙南、南城→广昌。备选线只用于比较，不计入主线总里程。
 - 沿海线仍保留在 `web/data/coastal-route.geojson` 与 `web/data/summary.json`，可通过 `?route=coastal` 查看；它明确不能在 15 个骑行日内执行，只可作为参考路线。
 - 内陆排程暂不在网页展示。高德电助力时长不是本项目最终采用的长途移动速度口径，逐日 15 天方案将在路径复核后独立锁定，避免把当前诊断误作执行日程。
 - 宁波和深圳支线默认关闭，不计入沿海主线总计。
@@ -36,9 +37,31 @@ python3 -m unittest \
   tests.test_export \
   tests.test_inland_config \
   tests.test_inland_route \
+  tests.test_manifest \
   tests.test_planner \
+  tests.test_probe_reroutes \
+  tests.test_reroute_options \
+  tests.test_reroutes \
   tests.test_roads \
+  tests.test_route_profile \
+  tests.test_web_reroute_status \
   tests.test_web_contract -v
+```
+
+## 重新生成避国道备选线
+
+探路报告保存在被 Git 忽略的 `cache/`，发布用几何保存在 `web/data/inland-reroute-options.geojson`。下面的导出只选择“至少减少 10 km 国道、但因未知道路增加而需复核”的候选；原路线始终保留：
+
+```bash
+python3 scripts/export_reroute_options.py \
+  --config config/inland-route.json \
+  --probes config/inland-reroute-probes.json \
+  --resolutions config/inland-poi-resolutions.json \
+  --manifest web/data/inland-route-manifest.json \
+  --report cache/reports/inland-reroute-probes.json \
+  --env .env.local \
+  --cache-dir cache \
+  --output web/data/inland-reroute-options.geojson
 ```
 
 ## 可选：高德实时烟雾测试

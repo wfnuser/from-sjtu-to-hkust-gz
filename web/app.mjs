@@ -4,6 +4,7 @@ import { rerouteLabel } from "./reroute-status.mjs";
 const routeProfile = selectRouteProfile(window.location.search);
 const GEOJSON_URL = routeProfile.geojsonUrl;
 const SUMMARY_URL = routeProfile.summaryUrl;
+const REROUTE_OPTIONS_URL = routeProfile.rerouteOptionsUrl;
 const BRANCH_IDS = new Set(["main", "ningbo", "shenzhen"]);
 
 const ROAD_STYLES = {
@@ -39,6 +40,7 @@ const optionalLayers = {
 };
 const segmentGroups = new Map();
 const stepLayers = new Map();
+const rerouteOptionLayers = new Map();
 
 const elements = {
   cards: document.querySelector("#segment-cards"),
@@ -59,6 +61,8 @@ const elements = {
   summaryNote: document.querySelector("#route-summary-note"),
   branchPanel: document.querySelector("#branch-panel"),
   schedulePanel: document.querySelector("#schedule-panel"),
+  reroutePanel: document.querySelector("#reroute-panel"),
+  rerouteOptions: document.querySelector("#reroute-options"),
 };
 
 function applyRouteProfile() {
@@ -80,6 +84,58 @@ export function roadStyle(feature) {
     return { color: "#dc2626", weight: 5, opacity: 0.95 };
   }
   return ROAD_STYLES[properties.road_class] || ROAD_STYLES.unknown;
+}
+
+function alternativeStyle() {
+  return { color: "#0891b2", weight: 5, opacity: 0.9, dashArray: "10 7" };
+}
+
+/** Add optional safety detours while keeping the published original route visible. */
+export function addRerouteOptions(payload) {
+  const options = Array.isArray(payload?.options) ? payload.options : [];
+  const features = Array.isArray(payload?.features) ? payload.features : [];
+  elements.rerouteOptions.innerHTML = "";
+  elements.reroutePanel.hidden = options.length === 0;
+  for (const option of options) {
+    const candidateId = String(option.candidate_id || "");
+    if (!candidateId) continue;
+    const group = L.featureGroup();
+    for (const feature of features.filter((item) => item.properties?.candidate_id === candidateId)) {
+      if (!isRoadLine(feature)) continue;
+      const layer = L.geoJSON(feature, { style: alternativeStyle });
+      layer.bindPopup(reroutePopupContent(feature.properties || {}));
+      group.addLayer(layer);
+    }
+    if (!group.getLayers().length) continue;
+    rerouteOptionLayers.set(candidateId, group);
+    group.addTo(map);
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "reroute-option";
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = true;
+    checkbox.setAttribute("aria-label", `显示${option.from_name}至${option.to_name}避国道备选`);
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) group.addTo(map);
+      else map.removeLayer(group);
+    });
+    const button = document.createElement("button");
+    button.type = "button";
+    const route = document.createElement("span");
+    route.className = "reroute-option__route";
+    route.textContent = `${option.from_name} → ${option.to_name}`;
+    const meta = document.createElement("span");
+    meta.className = "reroute-option__meta";
+    meta.textContent = `原路线 ${formatDistance(option.current_distance_m)} · 绕行多 ${formatDistance(option.distance_delta_m)} / ${formatDuration(option.duration_delta_s)} · 少走国道 ${formatDistance(option.national_reduction_m)}`;
+    button.append(route, meta);
+    button.addEventListener("click", () => {
+      const bounds = group.getBounds();
+      if (bounds.isValid()) map.fitBounds(bounds, { padding: [32, 32] });
+    });
+    wrapper.append(checkbox, button);
+    elements.rerouteOptions.append(wrapper);
+  }
 }
 
 /** Render the published main-route totals; optional totals deliberately stay separate. */
@@ -302,6 +358,16 @@ function popupContent(properties) {
   `;
 }
 
+function reroutePopupContent(properties) {
+  return `
+    <h3 class="popup-title">${escapeHtml(properties.from_name || "起点")} → ${escapeHtml(properties.to_name || "终点")} · 避国道备选</h3>
+    <p class="popup-detail"><strong>当前道路：</strong>${escapeHtml(properties.road_name || "未命名道路")}</p>
+    <p class="popup-detail"><strong>整段代价：</strong>多 ${formatDistance(properties.distance_delta_m)} / ${formatDuration(properties.duration_delta_s)}</p>
+    <p class="popup-detail"><strong>整段收益：</strong>少走国道 ${formatDistance(properties.national_reduction_m)}</p>
+    <p class="popup-detail"><strong>状态：</strong>未知道路较多，需人工复核</p>
+  `;
+}
+
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (character) => ({
     "&": "&amp;",
@@ -381,13 +447,18 @@ function showReadyState() {
 
 async function loadRoute() {
   try {
-    const [geojsonResponse, summaryResponse] = await Promise.all([
+    const optionsPromise = REROUTE_OPTIONS_URL
+      ? fetch(REROUTE_OPTIONS_URL).then((response) => (response.ok ? response.json() : null)).catch(() => null)
+      : Promise.resolve(null);
+    const [geojsonResponse, summaryResponse, rerouteOptions] = await Promise.all([
       fetch(GEOJSON_URL),
       fetch(SUMMARY_URL),
+      optionsPromise,
     ]);
     if (!geojsonResponse.ok || !summaryResponse.ok) throw new Error("Route artifacts are unavailable");
     const [geojson, summary] = await Promise.all([geojsonResponse.json(), summaryResponse.json()]);
     addFeatures(geojson);
+    if (rerouteOptions) addRerouteOptions(rerouteOptions);
     if (!segmentGroups.size) throw new Error("No published road steps");
     renderSegmentCards(summary);
     renderReviews();

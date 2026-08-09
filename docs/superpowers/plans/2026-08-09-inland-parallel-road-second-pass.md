@@ -623,7 +623,7 @@ python3 -m unittest \
 python3 scripts/audit_route.py \
   --config config/inland-route.json \
   --env .env.local \
-  --output-dir web/data \
+  --data-dir web/data \
   --profile inland \
   --strict
 git diff --check

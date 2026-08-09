@@ -40,6 +40,15 @@
           <ul id="route-limitations"></ul>
         </section>
 
+        <section class="panel reroute-panel" id="reroute-panel" aria-labelledby="reroute-heading" hidden>
+          <div class="section-heading">
+            <h2 id="reroute-heading">避国道备选</h2>
+            <span>原路线保留</span>
+          </div>
+          <p class="panel-note">虚线为更少国道但更长的候选；出发时自行选择。</p>
+          <div id="reroute-options"></div>
+        </section>
+
         <section class="panel" id="schedule-panel" aria-labelledby="schedule-heading" hidden>
           <div class="section-heading">
             <h2 id="schedule-heading">每日计划</h2>
@@ -87,6 +96,7 @@
             <li><span class="swatch national"></span>国道</li>
             <li><span class="swatch review"></span>需人工复核</li>
             <li><span class="swatch optional"></span>可选支线</li>
+            <li><span class="swatch alternative"></span>避国道备选</li>
           </ul>
         </section>
         <div class="map-message" id="map-message" role="status" aria-live="polite">正在载入路线数据…</div>

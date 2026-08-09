@@ -11,6 +11,7 @@
   --national: #f97316;
   --review: #dc2626;
   --optional: #64748b;
+  --alternative: #0891b2;
 }
 
 * { box-sizing: border-box; }
@@ -92,6 +93,7 @@ h2 { margin-bottom: 12px; font-size: .94rem; }
 .swatch.national { border-color: var(--national); }
 .swatch.review { border-color: var(--review); }
 .swatch.optional { border-color: var(--optional); border-top-style: dashed; }
+.swatch.alternative { border-color: var(--alternative); border-top-style: dashed; }
 
 .segment-cards { display: grid; gap: 8px; }
 .segment-card, .review-link {
@@ -114,6 +116,13 @@ h2 { margin-bottom: 12px; font-size: .94rem; }
 .segment-card.is-optional { border-left: 3px dashed var(--optional); }
 .review-link { font-size: .8rem; line-height: 1.4; }
 .review-link strong { color: var(--review); }
+.panel-note { margin: -4px 0 10px; color: var(--muted); font-size: .76rem; line-height: 1.45; }
+#reroute-options { display: grid; gap: 8px; }
+.reroute-option { display: grid; grid-template-columns: auto 1fr; gap: 8px; padding: 10px; border: 1px solid #bae6fd; border-radius: 7px; background: #f0f9ff; }
+.reroute-option input { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--alternative); }
+.reroute-option button { padding: 0; color: inherit; text-align: left; background: transparent; border: 0; cursor: pointer; }
+.reroute-option__route { display: block; margin-bottom: 4px; font-size: .84rem; font-weight: 700; }
+.reroute-option__meta { display: block; color: #155e75; font-size: .75rem; line-height: 1.5; }
 
 .map-pane, #map { height: 100dvh; min-height: 0; }
 .map-pane { position: relative; }
