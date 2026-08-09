@@ -89,6 +89,8 @@ def compare_candidate(
     )
     if risk_reasons:
         decision, reasons = "rejected", risk_reasons
+    elif any(distance_m > 80_000 for distance_m in proposed.subleg_distances_m):
+        decision, reasons = "rejected", ("subleg_over_80_km",)
     elif projected > max_detour_ratio:
         decision, reasons = "rejected", ("route_detour_over_15_percent",)
     elif national_reduction_m <= 0:

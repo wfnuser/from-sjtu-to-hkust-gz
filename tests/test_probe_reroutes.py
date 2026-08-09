@@ -61,7 +61,11 @@ class ProposedCandidateReportTests(unittest.TestCase):
             segment_id="target", distance_m=80_000, baseline_m=80_000, national_m=30_000
         )
         proposed = segment(
-            segment_id="target", distance_m=90_000, baseline_m=80_000, national_m=0
+            segment_id="target",
+            distance_m=90_000,
+            baseline_m=80_000,
+            national_m=0,
+            subleg_distances_m=(45_000, 45_000),
         )
         other = segment(
             segment_id="other", distance_m=1_600_000, baseline_m=1_600_000

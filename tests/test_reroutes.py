@@ -24,6 +24,7 @@ def segment(
     hard_m=0,
     distance_m=80_000,
     baseline_m=80_000,
+    subleg_distances_m=None,
 ):
     start = Waypoint(
         "start", "起点", "测试市", "起点", Coordinate(120.0, 30.0)
@@ -62,6 +63,7 @@ def segment(
             )
         )
     selected = CandidateRoute(0, distance_m, 18_000, tuple(steps))
+    sublegs = tuple(subleg_distances_m or (distance_m,))
     return PlannedSegment(
         segment_id,
         start,
@@ -70,8 +72,10 @@ def segment(
         baseline_m,
         selected,
         distance_m / baseline_m,
-        (distance_m,),
-        subleg_durations_s=(18_000,),
+        sublegs,
+        subleg_durations_s=tuple(
+            round(18_000 * value / distance_m) for value in sublegs
+        ),
     )
 
 
@@ -193,7 +197,12 @@ class CandidateComparisonTests(unittest.TestCase):
     def test_rejects_a_route_wide_detour_over_fifteen_percent(self):
         result = compare_candidate(
             segment(national_m=40_000),
-            segment(national_m=0, distance_m=220_000, baseline_m=80_000),
+            segment(
+                national_m=0,
+                distance_m=220_000,
+                baseline_m=80_000,
+                subleg_distances_m=(55_000, 55_000, 55_000, 55_000),
+            ),
             full_baseline_m=1_680_000,
             other_selected_m=1_720_000,
             max_detour_ratio=1.15,
@@ -202,10 +211,26 @@ class CandidateComparisonTests(unittest.TestCase):
         self.assertEqual(result.decision, "rejected")
         self.assertIn("route_detour_over_15_percent", result.reasons)
 
+    def test_rejects_candidate_with_a_subleg_over_eighty_kilometres(self):
+        result = compare_candidate(
+            segment(national_m=40_000),
+            segment(national_m=0, distance_m=100_000),
+            full_baseline_m=1_680_000,
+            other_selected_m=1_720_000,
+            max_detour_ratio=1.15,
+        )
+
+        self.assertEqual(result.decision, "rejected")
+        self.assertIn("subleg_over_80_km", result.reasons)
+
     def test_accepts_a_large_national_reduction_within_route_budget(self):
         result = compare_candidate(
             segment(national_m=40_000, distance_m=90_000),
-            segment(national_m=4_000, distance_m=105_000),
+            segment(
+                national_m=4_000,
+                distance_m=105_000,
+                subleg_distances_m=(52_000, 53_000),
+            ),
             full_baseline_m=1_680_000,
             other_selected_m=1_720_000,
             max_detour_ratio=1.15,
@@ -218,7 +243,12 @@ class CandidateComparisonTests(unittest.TestCase):
     def test_marks_large_unknown_substitution_for_manual_review(self):
         result = compare_candidate(
             segment(national_m=30_000, unknown_m=1_000),
-            segment(national_m=2_000, unknown_m=20_000, distance_m=90_000),
+            segment(
+                national_m=2_000,
+                unknown_m=20_000,
+                distance_m=90_000,
+                subleg_distances_m=(45_000, 45_000),
+            ),
             full_baseline_m=1_680_000,
             other_selected_m=1_720_000,
             max_detour_ratio=1.15,
