@@ -90,6 +90,32 @@ class ConfigTests(unittest.TestCase):
             "平行县道在河道处中断，国道桥为唯一连续铺装通道。",
         )
 
+    def test_loads_reviewed_reroute_decision_metadata(self):
+        payload = _valid_payload()
+        payload["segment_rules"] = {
+            "start-to-end": {
+                "reroute_status": "adopted",
+                "reroute_reason": "国道由40公里降至4公里。",
+            }
+        }
+
+        cfg = _load_payload(payload)
+
+        rule = cfg.segment_rules["start-to-end"]
+        self.assertEqual(rule.reroute_status, "adopted")
+        self.assertEqual(rule.reroute_reason, "国道由40公里降至4公里。")
+
+    def test_rejects_unknown_reroute_status_and_reason_without_decision(self):
+        for rule, message in (
+            ({"reroute_status": "maybe", "reroute_reason": "已检查"}, "reroute_status"),
+            ({"reroute_reason": "只有原因，没有状态"}, "reroute_reason"),
+        ):
+            with self.subTest(message=message):
+                payload = _valid_payload()
+                payload["segment_rules"] = {"start-to-end": rule}
+                with self.assertRaisesRegex(ValueError, message):
+                    _load_payload(payload)
+
 
 def _valid_payload():
     return {

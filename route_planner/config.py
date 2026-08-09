@@ -13,6 +13,7 @@ _REQUIRED_WAYPOINT_FIELDS = ("id", "name", "city", "query")
 _REQUIRED_MAIN_START = "上海交通大学闵行校区"
 _REQUIRED_MAIN_END = "香港科技大学（广州）"
 _INLAND_ROUTE_ID = "inland-main"
+_REROUTE_STATUSES = frozenset({"unreviewed", "adopted", "rejected", "manual_review"})
 _INLAND_MAIN_CORRIDOR = (
     "上海交通大学闵行校区",
     "漕泾数字游民国际村",
@@ -164,6 +165,22 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
             raise ValueError(
                 f"Segment rule {segment_id} national_exception_reason must be a string"
             )
+        reroute_status = item.get("reroute_status", "unreviewed")
+        if reroute_status not in _REROUTE_STATUSES:
+            raise ValueError(
+                f"Segment rule {segment_id} reroute_status must be a reviewed status"
+            )
+        reroute_reason = item.get("reroute_reason", "")
+        if not isinstance(reroute_reason, str):
+            raise ValueError(f"Segment rule {segment_id} reroute_reason must be a string")
+        if reroute_status == "unreviewed" and reroute_reason.strip():
+            raise ValueError(
+                f"Segment rule {segment_id} reroute_reason requires a reviewed status"
+            )
+        if reroute_status != "unreviewed" and not reroute_reason.strip():
+            raise ValueError(
+                f"Segment rule {segment_id} reroute_reason is required for a reviewed status"
+            )
         rules[segment_id] = SegmentRule(
             segment_id=_optional_string(item, "segment_id", segment_id, "segment rule"),
             anchor_queries=tuple(anchors),
@@ -173,6 +190,8 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
             allowed_national_m=allowed_national_m,
             day=day,
             national_exception_reason=national_exception_reason,
+            reroute_status=reroute_status,
+            reroute_reason=reroute_reason,
         )
     return rules
 

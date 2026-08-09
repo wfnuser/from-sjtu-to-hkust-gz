@@ -84,6 +84,30 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(feature["properties"]["branch_id"], "main")
         self.assertNotEqual(feature["geometry"]["coordinates"][0], [121.0, 31.0])
 
+    def test_geojson_exposes_reviewed_reroute_decision_on_every_step(self):
+        original = _segment()
+        segment = replace(
+            original,
+            rule=replace(
+                original.rule,
+                reroute_status="adopted",
+                reroute_reason="国道由40公里降至4公里。",
+            ),
+        )
+
+        features = build_geojson([segment])["features"]
+
+        self.assertTrue(features)
+        self.assertTrue(
+            all(item["properties"]["reroute_status"] == "adopted" for item in features)
+        )
+        self.assertTrue(
+            all(
+                item["properties"]["reroute_reason"] == "国道由40公里降至4公里。"
+                for item in features
+            )
+        )
+
     def test_geojson_publishes_only_known_stable_branch_ids(self):
         """Would fail if the map had to infer branch membership from display text."""
         ningbo = _segment(optional=True, branch_id="ningbo")

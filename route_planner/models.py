@@ -27,6 +27,8 @@ class SegmentRule:
     allowed_national_m: int = 0
     day: int | None = None
     national_exception_reason: str = ""
+    reroute_status: str = "unreviewed"
+    reroute_reason: str = ""
 
 
 @dataclass(frozen=True)

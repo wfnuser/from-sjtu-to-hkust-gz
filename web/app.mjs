@@ -1,4 +1,5 @@
 import { selectRouteProfile } from "./route-profile.mjs";
+import { rerouteLabel } from "./reroute-status.mjs";
 
 const routeProfile = selectRouteProfile(window.location.search);
 const GEOJSON_URL = routeProfile.geojsonUrl;
@@ -176,7 +177,8 @@ export function renderSegmentCards(summary) {
     route.textContent = `${first.from_name || "起点"} → ${first.to_name || "终点"}`;
     const meta = document.createElement("span");
     meta.className = "segment-card__meta";
-    meta.textContent = `${entry.optional ? "可选支线 · " : ""}${formatDistance(sumDistance(entry.features))} · ${entry.features.length} 个道路步骤`;
+    const reroute = rerouteLabel(first.reroute_status);
+    meta.textContent = `${entry.optional ? "可选支线 · " : ""}${formatDistance(sumDistance(entry.features))} · ${entry.features.length} 个道路步骤${reroute ? ` · ${reroute}` : ""}`;
     card.append(route, meta);
     card.addEventListener("click", () => fitSegment(entry));
     elements.cards.append(card);

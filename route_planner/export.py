@@ -399,6 +399,8 @@ def _step_properties(
         "segment_duration_s": segment.selected.duration_s,
         "risk_tags": sorted(step.risk_tags),
         "review_status": _review_status(segment),
+        "reroute_status": segment.rule.reroute_status,
+        "reroute_reason": segment.rule.reroute_reason,
         "optional_branch": _is_optional(segment),
         "branch_id": _branch_id(segment),
     }
