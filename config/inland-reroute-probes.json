@@ -59,7 +59,7 @@
       "candidates": [
         {
           "candidate_id": "yiyang-guifeng",
-          "anchor_queries": ["横峰县", "弋阳县龟峰景区", "鹰潭::贵溪市罗河镇"],
+          "anchor_queries": ["横峰县", "弋阳县龟峰景区公交站", "鹰潭::贵溪市罗河镇"],
           "road_hint": "弋阳龟峰旅游道路与城镇道路"
         }
       ]

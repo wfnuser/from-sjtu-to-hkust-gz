@@ -136,6 +136,7 @@ def run_probe_candidates(
     completed = {
         _result_key(item)
         for item in _list_of_mappings(report.get("results"), "report results")
+        if item.get("decision") != "probe_failed"
     }
     for candidate in definition.candidates:
         key = (definition.segment_id, candidate.candidate_id)

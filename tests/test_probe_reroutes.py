@@ -139,6 +139,45 @@ class DurableReportTests(unittest.TestCase):
 
 
 class ProbeCandidateRunnerTests(unittest.TestCase):
+    def test_retries_a_previously_failed_probe(self):
+        definition = probe("target", "P0", "retry-me")
+        current = segment(segment_id="target", national_m=20_000)
+
+        class Planner:
+            calls = 0
+
+            def plan_segment(self, start, end, rule):
+                self.calls += 1
+                return segment(segment_id="target", national_m=1_000)
+
+        planner = Planner()
+        report = {
+            "schema_version": 1,
+            "route_id": "inland-main",
+            "results": [
+                {
+                    "segment_id": "target",
+                    "candidate_id": "retry-me",
+                    "decision": "probe_failed",
+                }
+            ],
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "report.json"
+
+            updated = run_probe_candidates(
+                planner,
+                definition,
+                current,
+                (current,),
+                1.15,
+                report,
+                path,
+            )
+
+        self.assertEqual(planner.calls, 1)
+        self.assertEqual(updated["results"][0]["decision"], "candidate")
+
     def test_records_review_failure_and_continues_to_the_next_candidate(self):
         definition = ProbeDefinition(
             segment_id="target",
