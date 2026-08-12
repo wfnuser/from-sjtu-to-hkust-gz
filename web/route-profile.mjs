@@ -4,7 +4,7 @@ const PROFILES = {
     geojsonUrl: "data/inland-route.geojson",
     summaryUrl: "data/inland-summary.json",
     rerouteOptionsUrl: "data/inland-reroute-options.geojson",
-    title: "内陆电助力骑行路线",
+    title: "宇宙 eBike 骑行路线（江西线）",
     mainLabel: "内陆主线",
     hasOptionalBranches: false,
     showSchedule: false,

@@ -26,7 +26,7 @@ class RouteProfileTests(unittest.TestCase):
         self.assertEqual(profile["id"], "inland")
         self.assertEqual(profile["geojsonUrl"], "data/inland-route.geojson")
         self.assertEqual(profile["summaryUrl"], "data/inland-summary.json")
-        self.assertEqual(profile["title"], "内陆电助力骑行路线")
+        self.assertEqual(profile["title"], "宇宙 eBike 骑行路线（江西线）")
         self.assertFalse(profile["hasOptionalBranches"])
         self.assertIs(profile.get("showSchedule"), False)
 
