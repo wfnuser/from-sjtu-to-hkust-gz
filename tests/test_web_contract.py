@@ -71,7 +71,7 @@ class WebMapContractTests(unittest.TestCase):
 
         self.assertIn("内陆主线", html)
         self.assertIn("宇宙 eBike 骑行路线（江西线）", html)
-        self.assertIn("阳曲路 → 香港科技大学（广州）", html)
+        self.assertIn("上海交通大学 → 香港科技大学（广州）", html)
         self.assertIn("宁波支线", html)
         self.assertIn("深圳支线", html)
         self.assertNotIn("AMAP_WEB_SERVICE_KEY", html + js)
