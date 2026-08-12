@@ -176,10 +176,25 @@ h2 { margin-bottom: 12px; font-size: .94rem; }
 .popup-detail strong { color: #4b5563; }
 
 @media (max-width: 860px) {
-  .route-app { grid-template-columns: 1fr; grid-template-rows: 42dvh 58dvh; }
-  .sidebar { height: 42dvh; overflow-y: auto; padding: 18px; border-right: 0; border-bottom: 1px solid var(--line); }
-  .map-pane { height: 58dvh; }
+  .route-app {
+    grid-template-columns: 1fr;
+    grid-template-rows: 52dvh 48dvh;
+    grid-template-areas:
+      "map"
+      "sidebar";
+  }
+  .sidebar {
+    grid-area: sidebar;
+    height: 48dvh;
+    overflow-y: auto;
+    padding: 18px;
+    padding-bottom: calc(18px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+    border-right: 0;
+  }
+  .map-pane { grid-area: map; height: 52dvh; }
   #map { height: 100%; min-height: 0; }
+  .segment-card, .review-link { min-height: 44px; }
   .map-message { top: auto; bottom: 28px; }
 }
 
@@ -187,6 +202,8 @@ h2 { margin-bottom: 12px; font-size: .94rem; }
   .sidebar { padding: 14px; }
   .totals { gap: 5px; }
   .totals dd { font-size: .87rem; }
-  .map-legend { padding: 8px 9px; }
-  .map-legend ul { grid-template-columns: 1fr; gap: 6px; }
+  .map-legend { top: 10px; right: 10px; padding: 7px 8px; }
+  .map-legend ul { grid-template-columns: repeat(2, max-content); gap: 5px 10px; }
+  .map-legend li { gap: 5px; font-size: .65rem; }
+  .map-legend .swatch { width: 14px; }
 }

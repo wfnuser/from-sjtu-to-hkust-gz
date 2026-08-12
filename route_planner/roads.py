@@ -125,6 +125,15 @@ def choose_candidate(
     if not eligible:
         raise ReviewRequired(rule.segment_id, ("no eligible safe candidate",))
 
+    if rule.preferred_candidate_index is not None:
+        for candidate, _metrics in eligible:
+            if candidate.source_index == rule.preferred_candidate_index:
+                return candidate
+        raise ReviewRequired(
+            rule.segment_id,
+            ("preferred candidate is unavailable or unsafe",),
+        )
+
     return min(
         eligible,
         key=lambda item: (

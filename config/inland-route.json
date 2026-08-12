@@ -2,6 +2,13 @@
   "route_id": "inland-main",
   "max_detour_ratio": 1.15,
   "waypoints": [
+    {"id": "pre-01", "name": "阳曲路", "city": "上海", "query": "阳曲路", "coordinate": null},
+    {"id": "pre-02", "name": "上海交通大学附属中学本部", "city": "上海", "query": "上海交通大学附属中学(本部)", "coordinate": null},
+    {"id": "pre-03", "name": "bilibili 国正中心", "city": "上海", "query": "哔哩哔哩公司 国正中心", "coordinate": null},
+    {"id": "pre-04", "name": "大连路地铁站", "city": "上海", "query": "大连路地铁站", "coordinate": null},
+    {"id": "pre-05", "name": "昌化路649号", "city": "上海", "query": "静安区昌化路649号", "coordinate": null},
+    {"id": "pre-06", "name": "京东上海（中海中心）职场", "city": "上海", "query": "京东上海(中海中心)职场", "coordinate": null},
+    {"id": "pre-07", "name": "阿里中心（虹桥）", "city": "上海", "query": "阿里中心·上海虹桥", "coordinate": null},
     {"id": "main-01", "name": "上海交通大学闵行校区", "city": "上海", "query": "上海交通大学闵行校区", "coordinate": null},
     {"id": "main-02", "name": "漕泾数字游民国际村", "city": "上海", "query": "漕泾数字游民国际村", "coordinate": null},
     {"id": "main-03", "name": "海盐", "city": "嘉兴", "query": "海盐", "coordinate": null},
@@ -32,6 +39,17 @@
   ],
   "checkin_waypoints": [],
   "segment_rules": {
+    "pre-01-to-pre-02": {},
+    "pre-02-to-pre-03": {},
+    "pre-03-to-pre-04": {},
+    "pre-04-to-pre-05": {},
+    "pre-05-to-pre-06": {},
+    "pre-06-to-pre-07": {
+      "preferred_candidate_index": 2
+    },
+    "pre-07-to-main-01": {
+      "preferred_candidate_index": 1
+    },
     "main-01-to-main-02": {},
     "main-02-to-main-03": {},
     "main-03-to-main-04": {},

@@ -58,6 +58,7 @@ def _segment_data(segment: PlannedSegment) -> dict[str, object]:
             "national_exception_reason": segment.rule.national_exception_reason,
             "reroute_status": segment.rule.reroute_status,
             "reroute_reason": segment.rule.reroute_reason,
+            "preferred_candidate_index": segment.rule.preferred_candidate_index,
         },
         "baseline_distance_m": segment.baseline_distance_m,
         "selected": {
@@ -172,6 +173,7 @@ def _waypoint_from_data(value: dict[str, Any]) -> Waypoint:
 
 def _rule_from_data(value: dict[str, Any]) -> SegmentRule:
     day = value.get("day")
+    preferred_candidate_index = value.get("preferred_candidate_index")
     return SegmentRule(
         segment_id=_string(value["segment_id"]),
         anchor_queries=tuple(_string(item) for item in _list(value["anchor_queries"])),
@@ -181,6 +183,11 @@ def _rule_from_data(value: dict[str, Any]) -> SegmentRule:
         national_exception_reason=_string(value.get("national_exception_reason", "")),
         reroute_status=_string(value.get("reroute_status", "unreviewed")),
         reroute_reason=_string(value.get("reroute_reason", "")),
+        preferred_candidate_index=(
+            _integer(preferred_candidate_index)
+            if preferred_candidate_index is not None
+            else None
+        ),
     )
 
 

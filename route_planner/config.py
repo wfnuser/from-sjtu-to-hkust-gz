@@ -15,6 +15,13 @@ _REQUIRED_MAIN_END = "香港科技大学（广州）"
 _INLAND_ROUTE_ID = "inland-main"
 _REROUTE_STATUSES = frozenset({"unreviewed", "adopted", "rejected", "manual_review"})
 _INLAND_MAIN_CORRIDOR = (
+    "阳曲路",
+    "上海交通大学附属中学本部",
+    "bilibili 国正中心",
+    "大连路地铁站",
+    "昌化路649号",
+    "京东上海（中海中心）职场",
+    "阿里中心（虹桥）",
     "上海交通大学闵行校区",
     "漕泾数字游民国际村",
     "海盐",
@@ -68,8 +75,13 @@ def load_route_config(path: Path) -> RouteConfig:
     for waypoint in main_waypoints:
         if not _CHINESE_CHARACTER.search(waypoint.name):
             raise ValueError("Main waypoint display names must contain Chinese characters")
-    if main_waypoints[0].name != _REQUIRED_MAIN_START:
-        raise ValueError(f"Main route must start at {_REQUIRED_MAIN_START}")
+    required_start = (
+        _INLAND_MAIN_CORRIDOR[0]
+        if route_id == _INLAND_ROUTE_ID
+        else _REQUIRED_MAIN_START
+    )
+    if main_waypoints[0].name != required_start:
+        raise ValueError(f"Main route must start at {required_start}")
     if main_waypoints[-1].name != _REQUIRED_MAIN_END:
         raise ValueError(f"Main route must end at {_REQUIRED_MAIN_END}")
     if route_id == _INLAND_ROUTE_ID:
@@ -181,6 +193,15 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
             raise ValueError(
                 f"Segment rule {segment_id} reroute_reason is required for a reviewed status"
             )
+        preferred_candidate_index = item.get("preferred_candidate_index")
+        if preferred_candidate_index is not None and (
+            not isinstance(preferred_candidate_index, int)
+            or isinstance(preferred_candidate_index, bool)
+            or not 0 <= preferred_candidate_index <= 2
+        ):
+            raise ValueError(
+                f"Segment rule {segment_id} preferred_candidate_index must be 0, 1, 2, or null"
+            )
         rules[segment_id] = SegmentRule(
             segment_id=_optional_string(item, "segment_id", segment_id, "segment rule"),
             anchor_queries=tuple(anchors),
@@ -192,6 +213,7 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
             national_exception_reason=national_exception_reason,
             reroute_status=reroute_status,
             reroute_reason=reroute_reason,
+            preferred_candidate_index=preferred_candidate_index,
         )
     return rules
 

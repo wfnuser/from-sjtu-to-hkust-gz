@@ -45,14 +45,24 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("pointer-events: none", self.css_block(css, ".map-legend"))
 
         narrow_css = self.media_block(css, 860)
-        self.assertIn("grid-template-rows: 42dvh 58dvh", self.css_block(narrow_css, ".route-app"))
-        self.assertIn("height: 58dvh", self.css_block(narrow_css, ".map-pane"))
+        narrow_app = self.css_block(narrow_css, ".route-app")
+        self.assertIn("grid-template-rows: 52dvh 48dvh", narrow_app)
+        self.assertIn("grid-template-areas", narrow_app)
+        self.assertIn('"map"', narrow_app)
+        self.assertIn('"sidebar"', narrow_app)
+        narrow_sidebar = self.css_block(narrow_css, ".sidebar")
+        self.assertIn("grid-area: sidebar", narrow_sidebar)
+        self.assertIn("padding-bottom: calc(18px + env(safe-area-inset-bottom))", narrow_sidebar)
+        self.assertIn("height: 48dvh", narrow_sidebar)
+        self.assertIn("grid-area: map", self.css_block(narrow_css, ".map-pane"))
+        self.assertIn("height: 52dvh", self.css_block(narrow_css, ".map-pane"))
+        self.assertIn("min-height: 44px", self.css_block(narrow_css, ".segment-card, .review-link"))
         narrow_message = self.css_block(narrow_css, ".map-message")
         self.assertIn("top: auto", narrow_message)
         self.assertIn("bottom: 28px", narrow_message)
 
         compact_css = self.media_block(css, 420)
-        self.assertIn("grid-template-columns: 1fr", self.css_block(compact_css, ".map-legend ul"))
+        self.assertIn("grid-template-columns: repeat(2, max-content)", self.css_block(compact_css, ".map-legend ul"))
 
     def test_map_has_chinese_controls_and_no_embedded_amap_key(self):
         """Would fail if the public map lost branch controls or exposed a map key."""
@@ -60,6 +70,7 @@ class WebMapContractTests(unittest.TestCase):
         js = Path("web/app.mjs").read_text(encoding="utf-8")
 
         self.assertIn("内陆主线", html)
+        self.assertIn("阳曲路 → 香港科技大学（广州）", html)
         self.assertIn("宁波支线", html)
         self.assertIn("深圳支线", html)
         self.assertNotIn("AMAP_WEB_SERVICE_KEY", html + js)

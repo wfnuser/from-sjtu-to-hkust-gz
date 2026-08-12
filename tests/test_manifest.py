@@ -9,6 +9,23 @@ from tests.test_export import _segment
 
 
 class ManifestRerouteMetadataTests(unittest.TestCase):
+    def test_round_trip_preserves_preferred_candidate_index(self):
+        original = _segment()
+        segment = replace(
+            original,
+            rule=replace(original.rule, preferred_candidate_index=2),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "manifest.json"
+            path.write_text(
+                json.dumps(build_manifest("route-test", [segment]), ensure_ascii=False),
+                encoding="utf-8",
+            )
+
+            loaded = load_manifest(path, "route-test")[0]
+
+        self.assertEqual(loaded.rule.preferred_candidate_index, 2)
+
     def test_round_trip_preserves_reviewed_reroute_decision(self):
         original = _segment()
         segment = replace(

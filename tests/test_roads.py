@@ -135,6 +135,26 @@ class CandidateSelectionTests(unittest.TestCase):
 
         self.assertIs(choose_candidate([national, provincial], rule), provincial)
 
+    def test_reviewed_preferred_candidate_wins_over_shorter_safe_candidate(self):
+        shorter = candidate(0, distance_m=13_000)
+        reviewed = candidate(2, distance_m=14_500)
+        rule = SegmentRule("a-b", preferred_candidate_index=2)
+
+        self.assertIs(choose_candidate([shorter, reviewed], rule), reviewed)
+
+    def test_raises_review_when_preferred_candidate_is_not_eligible(self):
+        safe = candidate(0, distance_m=13_000)
+        unsafe_reviewed = candidate(2, hard_risk_m=100, distance_m=14_500)
+        rule = SegmentRule("a-b", preferred_candidate_index=2)
+
+        with self.assertRaises(ReviewRequired) as caught:
+            choose_candidate([safe, unsafe_reviewed], rule)
+
+        self.assertEqual(
+            caught.exception.reasons,
+            ("preferred candidate is unavailable or unsafe",),
+        )
+
     def test_hard_risk_never_wins_even_if_shorter(self):
         expressway = candidate(0, hard_risk_m=1000, distance_m=30_000)
         county = candidate(1, hard_risk_m=0, distance_m=34_000)

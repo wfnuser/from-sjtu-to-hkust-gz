@@ -1,60 +1,113 @@
 {
   "all_branches": {
-    "baseline_distance_m": 1683401,
+    "baseline_distance_m": 1747614,
     "city_distance_m": 0,
     "county_distance_m": 209355,
     "cycleway_distance_m": 7626,
-    "detour_ratio": 1.0791445413184382,
-    "distance_m": 1816633,
-    "duration_s": 381411,
+    "detour_ratio": 1.076982674663856,
+    "distance_m": 1882150,
+    "duration_s": 396650,
     "national_distance_m": 230171,
     "provincial_distance_m": 111348,
-    "segment_count": 26,
+    "segment_count": 33,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 1258107,
+    "unknown_distance_m": 1323624,
     "unresolved_count": 4
   },
   "days": [
     {
       "day": 1,
-      "distance_m": 107371,
+      "distance_m": 98611,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 19849,
+      "duration_s": 21598,
       "duration_target_met": true,
-      "from_name": "上海交通大学闵行校区",
+      "from_name": "阳曲路",
       "legs": [
+        {
+          "segment_id": "pre-01-to-pre-02",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "pre-02-to-pre-03",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "pre-03-to-pre-04",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "pre-04-to-pre-05",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "pre-05-to-pre-06",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "pre-06-to-pre-07",
+          "subleg_index": 0
+        },
+        {
+          "segment_id": "pre-07-to-main-01",
+          "subleg_index": 0
+        },
         {
           "segment_id": "main-01-to-main-02",
           "subleg_index": 0
-        },
-        {
-          "segment_id": "main-02-to-main-03",
-          "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "海盐",
+      "lodging_network_endpoint": "漕泾数字游民国际村",
       "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
+      "segment_count": 8,
       "segments": [
-        "main-01-to-main-02",
-        "main-02-to-main-03"
+        "pre-01-to-pre-02",
+        "pre-02-to-pre-03",
+        "pre-03-to-pre-04",
+        "pre-04-to-pre-05",
+        "pre-05-to-pre-06",
+        "pre-06-to-pre-07",
+        "pre-07-to-main-01",
+        "main-01-to-main-02"
       ],
-      "to_name": "海盐"
+      "to_name": "漕泾数字游民国际村"
     },
     {
       "day": 2,
-      "distance_m": 103315,
+      "distance_m": 104060,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 20325,
+      "duration_s": 19404,
       "duration_target_met": true,
-      "from_name": "海盐",
+      "from_name": "漕泾数字游民国际村",
       "legs": [
+        {
+          "segment_id": "main-02-to-main-03",
+          "subleg_index": 0
+        },
         {
           "segment_id": "main-03-to-main-04",
           "subleg_index": 0
-        },
+        }
+      ],
+      "lodging_network_endpoint": "海宁",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 2,
+      "segments": [
+        "main-02-to-main-03",
+        "main-03-to-main-04"
+      ],
+      "to_name": "海宁"
+    },
+    {
+      "day": 3,
+      "distance_m": 73532,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 14411,
+      "duration_target_met": true,
+      "from_name": "海宁",
+      "legs": [
         {
           "segment_id": "main-04-to-main-05",
           "subleg_index": 0
@@ -62,15 +115,14 @@
       ],
       "lodging_network_endpoint": "杭州阿里巴巴总部",
       "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
+      "segment_count": 1,
       "segments": [
-        "main-03-to-main-04",
         "main-04-to-main-05"
       ],
       "to_name": "杭州阿里巴巴总部"
     },
     {
-      "day": 3,
+      "day": 4,
       "distance_m": 88037,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -97,7 +149,7 @@
       "to_name": "桐庐县富春江镇"
     },
     {
-      "day": 4,
+      "day": 5,
       "distance_m": 80420,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -128,7 +180,7 @@
       "to_name": "建德市寿昌镇"
     },
     {
-      "day": 5,
+      "day": 6,
       "distance_m": 88903,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -163,7 +215,7 @@
       "to_name": "衢州"
     },
     {
-      "day": 6,
+      "day": 7,
       "distance_m": 87083,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -189,7 +241,7 @@
       "to_name": "玉山"
     },
     {
-      "day": 7,
+      "day": 8,
       "distance_m": 82019,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -216,7 +268,7 @@
       "to_name": "横峰县"
     },
     {
-      "day": 8,
+      "day": 9,
       "distance_m": 66231,
       "distance_target_met": false,
       "duration_limit_met": true,
@@ -242,7 +294,7 @@
       "to_name": "鹰潭"
     },
     {
-      "day": 9,
+      "day": 10,
       "distance_m": 97244,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -268,7 +320,7 @@
       "to_name": "抚州"
     },
     {
-      "day": 10,
+      "day": 11,
       "distance_m": 61857,
       "distance_target_met": false,
       "duration_limit_met": true,
@@ -290,7 +342,7 @@
       "to_name": "南城"
     },
     {
-      "day": 11,
+      "day": 12,
       "distance_m": 87784,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -316,7 +368,7 @@
       "to_name": "广昌县甘竹镇"
     },
     {
-      "day": 12,
+      "day": 13,
       "distance_m": 75732,
       "distance_target_met": false,
       "duration_limit_met": true,
@@ -343,7 +395,7 @@
       "to_name": "宁都"
     },
     {
-      "day": 13,
+      "day": 14,
       "distance_m": 76451,
       "distance_target_met": false,
       "duration_limit_met": true,
@@ -369,7 +421,7 @@
       "to_name": "于都县银坑镇"
     },
     {
-      "day": 14,
+      "day": 15,
       "distance_m": 101305,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -396,7 +448,7 @@
       "to_name": "赣州"
     },
     {
-      "day": 15,
+      "day": 16,
       "distance_m": 66832,
       "distance_target_met": false,
       "duration_limit_met": true,
@@ -426,7 +478,7 @@
       "to_name": "信丰"
     },
     {
-      "day": 16,
+      "day": 17,
       "distance_m": 73348,
       "distance_target_met": false,
       "duration_limit_met": true,
@@ -448,7 +500,7 @@
       "to_name": "龙南"
     },
     {
-      "day": 17,
+      "day": 18,
       "distance_m": 87614,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -475,7 +527,7 @@
       "to_name": "和平"
     },
     {
-      "day": 18,
+      "day": 19,
       "distance_m": 44030,
       "distance_target_met": false,
       "duration_limit_met": true,
@@ -497,7 +549,7 @@
       "to_name": "东源县船塘镇"
     },
     {
-      "day": 19,
+      "day": 20,
       "distance_m": 93174,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -524,7 +576,7 @@
       "to_name": "河源市源城区埔前镇"
     },
     {
-      "day": 20,
+      "day": 21,
       "distance_m": 72188,
       "distance_target_met": false,
       "duration_limit_met": true,
@@ -550,7 +602,7 @@
       "to_name": "博罗"
     },
     {
-      "day": 21,
+      "day": 22,
       "distance_m": 94461,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -581,7 +633,7 @@
       "to_name": "广州市增城区新塘镇"
     },
     {
-      "day": 22,
+      "day": 23,
       "distance_m": 81234,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -610,7 +662,7 @@
   ],
   "limitations": {
     "automatic_checks_are_not_road_level_verification": true,
-    "blank_name_distance_m": 322598,
+    "blank_name_distance_m": 359760,
     "quota_limited_probes": [
       "main-06-to-main-07",
       "main-07-to-main-08",
@@ -620,22 +672,22 @@
       "main-17-to-main-18"
     ],
     "road_level_status": "provisional",
-    "unknown_distance_m": 1258107,
-    "unknown_percent": 69.25
+    "unknown_distance_m": 1323624,
+    "unknown_percent": 70.33
   },
   "main": {
-    "baseline_distance_m": 1683401,
+    "baseline_distance_m": 1747614,
     "city_distance_m": 0,
     "county_distance_m": 209355,
     "cycleway_distance_m": 7626,
-    "detour_ratio": 1.0791445413184382,
-    "distance_m": 1816633,
-    "duration_s": 381411,
+    "detour_ratio": 1.076982674663856,
+    "distance_m": 1882150,
+    "duration_s": 396650,
     "national_distance_m": 230171,
     "provincial_distance_m": 111348,
-    "segment_count": 26,
+    "segment_count": 33,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 1258107,
+    "unknown_distance_m": 1323624,
     "unresolved_count": 4
   },
   "max_detour_ratio": 1.15,
@@ -658,11 +710,11 @@
   "schedule": {
     "buffer_days": 3,
     "daily_time_constraints_met": true,
-    "day_count": 22,
+    "day_count": 23,
     "deadline_available_days": 18,
     "deadline_end": "2026-08-30",
     "deadline_feasible": false,
-    "deadline_note": "内陆路线需22个骑行日，超过最多15个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留3天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。",
+    "deadline_note": "内陆路线需23个骑行日，超过最多15个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留3天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。",
     "deadline_start": "2026-08-13",
     "max_duration_s": 21600,
     "max_riding_days": 15,
@@ -682,87 +734,108 @@
       1
     ],
     "main-02-to-main-03": [
-      1
+      2
     ],
     "main-03-to-main-04": [
       2
     ],
     "main-04-to-main-05": [
-      2
-    ],
-    "main-05-to-main-06": [
       3
     ],
-    "main-06-to-main-07": [
-      3,
+    "main-05-to-main-06": [
       4
     ],
-    "main-07-to-main-08": [
+    "main-06-to-main-07": [
       4,
       5
     ],
-    "main-08-to-main-09": [
-      5
-    ],
-    "main-09-to-main-10": [
+    "main-07-to-main-08": [
+      5,
       6
     ],
-    "main-10-to-main-11": [
+    "main-08-to-main-09": [
+      6
+    ],
+    "main-09-to-main-10": [
       7
     ],
-    "main-11-to-main-12": [
-      7,
+    "main-10-to-main-11": [
       8
     ],
-    "main-12-to-main-13": [
+    "main-11-to-main-12": [
+      8,
       9
     ],
-    "main-13-to-main-14": [
+    "main-12-to-main-13": [
       10
     ],
+    "main-13-to-main-14": [
+      11
+    ],
     "main-14-to-main-15": [
-      11,
-      12
+      12,
+      13
     ],
     "main-15-to-main-16": [
-      12
+      13
     ],
     "main-16-to-main-17": [
-      13,
-      14
-    ],
-    "main-17-to-main-18": [
-      14
-    ],
-    "main-18-to-main-19": [
+      14,
       15
     ],
-    "main-19-to-main-20": [
+    "main-17-to-main-18": [
+      15
+    ],
+    "main-18-to-main-19": [
       16
     ],
-    "main-20-to-main-21": [
+    "main-19-to-main-20": [
       17
+    ],
+    "main-20-to-main-21": [
+      18
     ],
     "main-21-to-main-22": [
-      17
+      18
     ],
     "main-22-to-main-23": [
-      18,
-      19
-    ],
-    "main-23-to-main-24": [
       19,
       20
     ],
-    "main-24-to-main-25": [
+    "main-23-to-main-24": [
+      20,
       21
     ],
-    "main-25-to-main-26": [
-      21,
+    "main-24-to-main-25": [
       22
     ],
+    "main-25-to-main-26": [
+      22,
+      23
+    ],
     "main-26-to-main-27": [
-      22
+      23
+    ],
+    "pre-01-to-pre-02": [
+      1
+    ],
+    "pre-02-to-pre-03": [
+      1
+    ],
+    "pre-03-to-pre-04": [
+      1
+    ],
+    "pre-04-to-pre-05": [
+      1
+    ],
+    "pre-05-to-pre-06": [
+      1
+    ],
+    "pre-06-to-pre-07": [
+      1
+    ],
+    "pre-07-to-main-01": [
+      1
     ]
   }
 }

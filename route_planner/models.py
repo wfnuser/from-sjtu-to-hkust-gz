@@ -30,6 +30,7 @@ class SegmentRule:
     national_exception_reason: str = ""
     reroute_status: str = "unreviewed"
     reroute_reason: str = ""
+    preferred_candidate_index: int | None = None
 
 
 @dataclass(frozen=True)

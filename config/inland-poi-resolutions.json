@@ -1,6 +1,116 @@
 {
   "resolutions": [
     {
+      "query": "阳曲路",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "B0IA3SUY8T",
+          "name": "阳曲路",
+          "formatted_address": "上海市上海市静安区静安区",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.459955,
+            "lat": 31.316384
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "上海交通大学附属中学(本部)",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "B0015283D9",
+          "name": "上海交通大学附属中学(本部)",
+          "formatted_address": "上海市上海市宝山区殷高路42号(殷高西路地铁站2号出口步行490米)",
+          "district": "宝山区",
+          "location_gcj": {"lon": 121.488913, "lat": 31.319008},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "哔哩哔哩公司 国正中心",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "B0G04S6ZUR",
+          "name": "哔哩哔哩公司",
+          "formatted_address": "上海市上海市杨浦区政立路485号国正中心3号楼11楼",
+          "district": "杨浦区",
+          "location_gcj": {"lon": 121.506414, "lat": 31.309352},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "大连路地铁站",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "BV10039931",
+          "name": "大连路(地铁站)",
+          "formatted_address": "上海市上海市虹口区12号线;4号线",
+          "district": "虹口区",
+          "location_gcj": {"lon": 121.513088, "lat": 31.257938},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "静安区昌化路649号",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "B0FFG4JZ3J",
+          "name": "上海三菱电梯有限公司安装维修分公司",
+          "formatted_address": "上海市上海市静安区昌化路649号",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.447715,
+            "lat": 31.240932
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "京东上海(中海中心)职场",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "B0LU27TF5F",
+          "name": "京东上海(中海中心)职场",
+          "formatted_address": "上海市上海市普陀区铜川路699弄2号中海中心A座1楼",
+          "district": "普陀区",
+          "location_gcj": {
+            "lon": 121.408447,
+            "lat": 31.250074
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "阿里中心·上海虹桥",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "B0FFHJ6L4H",
+          "name": "阿里中心·上海虹桥",
+          "formatted_address": "上海市上海市闵行区申长路1398弄1-4号",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.313936,
+            "lat": 31.205659
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
       "query": "上海交通大学闵行校区",
       "city": "上海",
       "candidates": [
