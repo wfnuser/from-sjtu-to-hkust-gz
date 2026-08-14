@@ -32,4 +32,11 @@ class ArtifactPaths:
                 output_dir / "inland-review.md",
                 output_dir / "inland-route-manifest.json",
             )
+        if profile == "execution":
+            return cls(
+                output_dir / "inland-execution-route.geojson",
+                output_dir / "inland-execution-summary.json",
+                output_dir / "inland-execution-review.md",
+                output_dir / "inland-execution-route-manifest.json",
+            )
         raise ValueError(f"unsupported route profile: {profile}")

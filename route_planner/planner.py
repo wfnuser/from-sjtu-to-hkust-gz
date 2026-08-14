@@ -180,4 +180,19 @@ def _reviews(
                 distance_m=national_m,
             )
         )
+    hard_risk_m = candidate_metrics(selected).hard_risk_m
+    if (
+        hard_risk_m
+        and hard_risk_m <= rule.allowed_hard_risk_m
+        and rule.hard_risk_exception_reason.strip()
+    ):
+        reviews.append(
+            ReviewItem(
+                "HARD_RISK_EXCEPTION_APPROVED",
+                segment_id,
+                "warning",
+                rule.hard_risk_exception_reason.strip(),
+                distance_m=hard_risk_m,
+            )
+        )
     return tuple(reviews)

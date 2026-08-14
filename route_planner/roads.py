@@ -113,7 +113,9 @@ def choose_candidate(
     eligible = []
     for candidate in candidates:
         metrics = candidate_metrics(candidate)
-        if metrics.hard_risk_m or metrics.freight_risk_m:
+        if metrics.freight_risk_m:
+            continue
+        if metrics.hard_risk_m > rule.allowed_hard_risk_m:
             continue
         if (
             rule.parallel_road_available
@@ -140,6 +142,7 @@ def choose_candidate(
             item[1].national_m,
             item[1].unknown_m,
             item[1].freight_risk_m,
+            item[1].hard_risk_m,
             item[0].distance_m,
             item[0].duration_s,
             item[0].source_index,

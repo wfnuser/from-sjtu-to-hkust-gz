@@ -76,8 +76,6 @@ _INLAND_EXECUTION_CORRIDOR = (
     "维也纳酒店（上饶横峰古窑路店）",
     "鹰潭",
     "维也纳国际酒店（抚州东站店）",
-    "抚州",
-    "南城",
     "维也纳国际酒店（南丰桔都大道店）",
     "广昌",
     "汉庭酒店（赣州宁都州城文化街店）",
@@ -221,6 +219,15 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
             allowed_national_m, bool
         ):
             raise ValueError(f"Segment rule {segment_id} allowed_national_m must be an integer")
+        allowed_hard_risk_m = item.get("allowed_hard_risk_m", 0)
+        if (
+            not isinstance(allowed_hard_risk_m, int)
+            or isinstance(allowed_hard_risk_m, bool)
+            or allowed_hard_risk_m < 0
+        ):
+            raise ValueError(
+                f"Segment rule {segment_id} allowed_hard_risk_m must be a non-negative integer"
+            )
         day = item.get("day")
         if day is not None and (not isinstance(day, int) or isinstance(day, bool)):
             raise ValueError(f"Segment rule {segment_id} day must be an integer or null")
@@ -228,6 +235,19 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
         if not isinstance(national_exception_reason, str):
             raise ValueError(
                 f"Segment rule {segment_id} national_exception_reason must be a string"
+            )
+        hard_risk_exception_reason = item.get("hard_risk_exception_reason", "")
+        if not isinstance(hard_risk_exception_reason, str):
+            raise ValueError(
+                f"Segment rule {segment_id} hard_risk_exception_reason must be a string"
+            )
+        if allowed_hard_risk_m and not hard_risk_exception_reason.strip():
+            raise ValueError(
+                f"Segment rule {segment_id} hard_risk_exception_reason is required"
+            )
+        if not allowed_hard_risk_m and hard_risk_exception_reason.strip():
+            raise ValueError(
+                f"Segment rule {segment_id} hard_risk_exception_reason requires an allowance"
             )
         reroute_status = item.get("reroute_status", "unreviewed")
         if reroute_status not in _REROUTE_STATUSES:
@@ -261,8 +281,10 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
                 item, "parallel_road_available", False, "segment rule"
             ),
             allowed_national_m=allowed_national_m,
+            allowed_hard_risk_m=allowed_hard_risk_m,
             day=day,
             national_exception_reason=national_exception_reason,
+            hard_risk_exception_reason=hard_risk_exception_reason,
             reroute_status=reroute_status,
             reroute_reason=reroute_reason,
             preferred_candidate_index=preferred_candidate_index,

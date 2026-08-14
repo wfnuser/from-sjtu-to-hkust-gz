@@ -22,6 +22,7 @@ from route_planner.roads import classify_risks, classify_road
 
 
 NATIONAL_EXCEPTION_APPROVAL = "NATIONAL_ROAD_EXCEPTION_APPROVED"
+HARD_RISK_EXCEPTION_APPROVAL = "HARD_RISK_EXCEPTION_APPROVED"
 
 
 @dataclass(frozen=True)
@@ -72,14 +73,36 @@ def _audit_segment(segment: PlannedSegment) -> list[ReviewItem]:
         if distance_m > 80_000:
             items.append(_item("SUBLEG_OVER_80_KM", segment.segment_id, "API subleg exceeds 80 km.", distance_m))
     national_distance_m = 0
+    hard_risk_distance_m = 0
+    hard_risk_road = ""
     for step in segment.selected.steps:
         risk_tags = step.risk_tags | classify_risks(step.road_name, step.instruction)
         if "hard" in risk_tags:
-            items.append(_item("HARD_RISK", segment.segment_id, "Hard-risk road step is selected.", step.distance_m, step.road_name))
+            hard_risk_distance_m += step.distance_m
+            hard_risk_road = hard_risk_road or step.road_name
         if "freight" in risk_tags:
             items.append(_item("FREIGHT_RISK", segment.segment_id, "Freight-risk road step is selected.", step.distance_m, step.road_name))
         if classify_road(step.road_name, step.instruction) is RoadClass.NATIONAL:
             national_distance_m += step.distance_m
+    hard_risk_approved = any(
+        item.code == HARD_RISK_EXCEPTION_APPROVAL
+        and item.distance_m == hard_risk_distance_m
+        for item in segment.reviews
+    )
+    if hard_risk_distance_m and (
+        hard_risk_distance_m > segment.rule.allowed_hard_risk_m
+        or not segment.rule.hard_risk_exception_reason.strip()
+        or not hard_risk_approved
+    ):
+        items.append(
+            _item(
+                "HARD_RISK",
+                segment.segment_id,
+                "Hard-risk road step is selected without a bounded explicit exception.",
+                hard_risk_distance_m,
+                hard_risk_road,
+            )
+        )
     if national_distance_m:
         if segment.rule.parallel_road_available and national_distance_m > segment.rule.allowed_national_m:
             items.append(_item("PARALLEL_ROAD_RULE_VIOLATION", segment.segment_id, "National road selected despite an available parallel road.", national_distance_m))
@@ -100,7 +123,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--data-dir", type=Path, required=True)
     parser.add_argument("--env", type=Path, required=True)
     parser.add_argument("--strict", action="store_true", help="fail on any publication risk")
-    parser.add_argument("--profile", choices=("coastal", "inland"), required=True)
+    parser.add_argument(
+        "--profile", choices=("coastal", "inland", "execution"), required=True
+    )
     args = parser.parse_args(argv)
     try:
         config = load_route_config(args.config)

@@ -1,14 +1,16 @@
-import { selectRouteProfile } from "./route-profile.mjs";
+import { selectRouteProfile } from "./route-profile.mjs?v=20260815-4";
 import {
   rerouteComparisonText,
   rerouteFeaturesForOption,
   rerouteLineStyle,
 } from "./reroute-options.mjs";
 import { rerouteLabel } from "./reroute-status.mjs";
+import { dayCardModel } from "./day-card-model.mjs?v=20260815-4";
 
 const routeProfile = selectRouteProfile(window.location.search);
 const GEOJSON_URL = routeProfile.geojsonUrl;
 const SUMMARY_URL = routeProfile.summaryUrl;
+const ITINERARY_URL = routeProfile.itineraryUrl;
 const REROUTE_OPTIONS_URL = routeProfile.rerouteOptionsUrl;
 const BRANCH_IDS = new Set(["main", "ningbo", "shenzhen"]);
 
@@ -44,6 +46,7 @@ const optionalLayers = {
   shenzhen: L.featureGroup(),
 };
 const segmentGroups = new Map();
+const dayGroups = new Map();
 const stepLayers = new Map();
 const rerouteOptionLayers = new Map();
 
@@ -168,15 +171,43 @@ function renderMainTotals(summary) {
   }
 }
 
-function renderLimitations(summary) {
+function renderItineraryTotals(itinerary, summary) {
+  const reviewCount = Number(summary?.main?.unresolved_count || 0);
+  const formatKilometres = (meters) => `${(Number(meters || 0) / 1000).toFixed(1)} km`;
+  const values = [
+    ["全程", formatKilometres(itinerary.total_distance_m)],
+    ["Day 3–15 剩余", formatKilometres(itinerary.remaining_distance_m)],
+    ["剩余日均", formatKilometres(itinerary.average_riding_distance_m)],
+    ["待复核", reviewCount ? `${reviewCount} 段` : "无"],
+  ];
+  elements.mainTotals.innerHTML = "";
+  for (const [label, value] of values) {
+    const wrapper = document.createElement("div");
+    const term = document.createElement("dt");
+    const detail = document.createElement("dd");
+    term.textContent = label;
+    detail.textContent = value;
+    wrapper.append(term, detail);
+    elements.mainTotals.append(wrapper);
+  }
+}
+
+function renderLimitations(summary, itinerary = null) {
   const limitations = summary.limitations || {};
   const probes = Array.isArray(limitations.quota_limited_probes) ? limitations.quota_limited_probes : [];
-  const items = [
-    `道路级状态：临时；自动检查通过仍需道路级复核。`,
-    `UNKNOWN ${Number(limitations.unknown_percent || 0).toFixed(2)}%，其中未命名 ${formatDistance(limitations.blank_name_distance_m)}。`,
-    `配额受限探路：${probes.length ? probes.join("、") : "无记录"}。`,
-    summary.schedule?.deadline_note || "18天期限可行性未评估。",
-  ];
+  const items = itinerary
+    ? [
+        `道路级状态：临时；自动检查通过仍需道路级复核。`,
+        `UNKNOWN ${Number(limitations.unknown_percent || 0).toFixed(2)}%，其中未命名 ${formatDistance(limitations.blank_name_distance_m)}。`,
+        `Day 2 为桐乡休整日；Day 12 为 160.9 km 最长日。`,
+        `高德时长不含停留；部分日超过 6 小时，需早出发并压缩当天工作安排。`,
+      ]
+    : [
+        `道路级状态：临时；自动检查通过仍需道路级复核。`,
+        `UNKNOWN ${Number(limitations.unknown_percent || 0).toFixed(2)}%，其中未命名 ${formatDistance(limitations.blank_name_distance_m)}。`,
+        `配额受限探路：${probes.length ? probes.join("、") : "无记录"}。`,
+        summary.schedule?.deadline_note || "18天期限可行性未评估。",
+      ];
   elements.limitations.innerHTML = "";
   for (const value of items) {
     const item = document.createElement("li");
@@ -249,6 +280,64 @@ export function renderSegmentCards(summary) {
   });
 }
 
+/** Render one scan-friendly card per actual riding day. */
+export function renderDayCards(itinerary) {
+  const days = Array.isArray(itinerary?.days) ? itinerary.days : [];
+  elements.cards.innerHTML = "";
+  elements.count.textContent = days.length ? `${days.length} 天` : "";
+
+  for (const day of days) {
+    const model = dayCardModel(day);
+    const card = document.createElement("article");
+    card.className = `day-card is-${model.status}${model.longDay ? " is-long" : ""}`;
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "day-card__button";
+    button.setAttribute("aria-label", `查看 ${model.label}：${model.route}`);
+
+    const header = document.createElement("span");
+    header.className = "day-card__header";
+    const label = document.createElement("strong");
+    label.className = "day-card__label";
+    label.textContent = model.label;
+    const distance = document.createElement("strong");
+    distance.className = "day-card__distance";
+    distance.textContent = model.distance;
+    header.append(label, distance);
+
+    const route = document.createElement("span");
+    route.className = "day-card__route";
+    route.textContent = model.route;
+    const duration = document.createElement("span");
+    duration.className = "day-card__meta";
+    duration.textContent = model.status === "stay" ? "休整 / 工作日" : `高德预计 ${model.duration}`;
+    button.append(header, route, duration);
+    button.addEventListener("click", () => fitDay(model.day));
+    card.append(button);
+
+    if (model.waypoints.length) {
+      const waypoints = document.createElement("p");
+      waypoints.className = "day-card__detail";
+      waypoints.textContent = `途经 · ${model.waypoints.join(" · ")}`;
+      card.append(waypoints);
+    }
+    if (model.lodging) {
+      const lodging = document.createElement("p");
+      lodging.className = "day-card__detail is-lodging";
+      lodging.textContent = `${model.laundryConfirmed ? "可洗衣" : "洗衣待确认"} · ${model.lodging}`;
+      card.append(lodging);
+    }
+    if (model.riskNote) {
+      const risk = document.createElement("p");
+      risk.className = "day-card__risk";
+      risk.textContent = `复核 · ${model.riskNote}`;
+      card.append(risk);
+    }
+    elements.cards.append(card);
+  }
+}
+
 /** Show or hide optional branches without changing the published main totals. */
 export function setOptionalBranchesVisible(enabled) {
   const visibleBranches = new Set();
@@ -289,6 +378,16 @@ function addFeatures(geojson) {
     stepLayers.set(feature, stepLayer);
     entry.group.addLayer(stepLayer);
     entry.features.push(feature);
+
+    const dayId = Number(properties.day_id);
+    if (Number.isInteger(dayId)) {
+      let bounds = dayGroups.get(dayId);
+      if (!bounds) {
+        bounds = L.latLngBounds();
+        dayGroups.set(dayId, bounds);
+      }
+      bounds.extend(stepLayer.getBounds());
+    }
   }
 
   for (const entry of segmentGroups.values()) {
@@ -337,6 +436,11 @@ function reviewFeaturesForEntry(entry) {
 function fitSegment(entry) {
   const bounds = entry.group.getBounds();
   if (bounds.isValid()) map.fitBounds(bounds, { padding: [32, 32] });
+}
+
+function fitDay(dayId) {
+  const bounds = dayGroups.get(Number(dayId));
+  if (bounds?.isValid()) map.fitBounds(bounds, { padding: [32, 32] });
 }
 
 function fitReviewFeature(entry, stepLayer) {
@@ -460,9 +564,16 @@ async function loadRoute() {
     const optionsPromise = REROUTE_OPTIONS_URL
       ? fetch(REROUTE_OPTIONS_URL).then((response) => (response.ok ? response.json() : null)).catch(() => null)
       : Promise.resolve(null);
-    const [geojsonResponse, summaryResponse, rerouteOptions] = await Promise.all([
+    const itineraryPromise = ITINERARY_URL
+      ? fetch(ITINERARY_URL).then((response) => {
+          if (!response.ok) throw new Error("Itinerary artifact is unavailable");
+          return response.json();
+        })
+      : Promise.resolve(null);
+    const [geojsonResponse, summaryResponse, itinerary, rerouteOptions] = await Promise.all([
       fetch(GEOJSON_URL),
       fetch(SUMMARY_URL),
+      itineraryPromise,
       optionsPromise,
     ]);
     if (!geojsonResponse.ok || !summaryResponse.ok) throw new Error("Route artifacts are unavailable");
@@ -470,7 +581,14 @@ async function loadRoute() {
     addFeatures(geojson);
     if (rerouteOptions) addRerouteOptions(rerouteOptions);
     if (!segmentGroups.size) throw new Error("No published road steps");
-    renderSegmentCards(summary);
+    if (itinerary) {
+      renderItineraryTotals(itinerary, summary);
+      renderLimitations(summary, itinerary);
+      renderDailySchedule(summary);
+      renderDayCards(itinerary);
+    } else {
+      renderSegmentCards(summary);
+    }
     renderReviews();
     const bounds = mainLayer.getBounds();
     if (bounds.isValid()) map.fitBounds(bounds, { padding: [32, 32] });

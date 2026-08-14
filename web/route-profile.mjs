@@ -1,4 +1,16 @@
 const PROFILES = {
+  execution: {
+    id: "execution",
+    geojsonUrl: "data/inland-execution-route.geojson",
+    summaryUrl: "data/inland-execution-summary.json",
+    itineraryUrl: "data/inland-itinerary.json",
+    rerouteOptionsUrl: null,
+    title: "宇宙 eBike 骑行路线（江西线）",
+    mainLabel: "Day 0–15 执行路线",
+    hasOptionalBranches: false,
+    showSchedule: false,
+    summaryNote: "西溪版本 · 每晚落在可洗衣酒店；点击 Day 卡片聚焦当天路线。",
+  },
   inland: {
     id: "inland",
     geojsonUrl: "data/inland-route.geojson",
@@ -25,5 +37,7 @@ const PROFILES = {
 
 export function selectRouteProfile(search = "") {
   const requested = new URLSearchParams(search).get("route");
-  return { ...(requested === "coastal" ? PROFILES.coastal : PROFILES.inland) };
+  if (requested === "coastal") return { ...PROFILES.coastal };
+  if (requested === "inland") return { ...PROFILES.inland };
+  return { ...PROFILES.execution };
 }

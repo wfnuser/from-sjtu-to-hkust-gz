@@ -41,6 +41,7 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("height: 100dvh", css)
         self.assertIn("overflow: hidden", css)
         self.assertIn("overflow-y: auto", css)
+        self.assertIn("[hidden] { display: none !important; }", css)
         self.assertIn("grid-template-columns: repeat(2, max-content)", css)
         self.assertIn("pointer-events: none", self.css_block(css, ".map-legend"))
 
@@ -76,6 +77,15 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("深圳支线", html)
         self.assertNotIn("AMAP_WEB_SERVICE_KEY", html + js)
 
+    def test_execution_ui_static_assets_have_a_fresh_cache_version(self):
+        html = Path("web/index.html").read_text(encoding="utf-8")
+        js = Path("web/app.mjs").read_text(encoding="utf-8")
+
+        self.assertIn("styles.css?v=20260815-4", html)
+        self.assertIn("app.mjs?v=20260815-4", html)
+        self.assertIn('route-profile.mjs?v=20260815-4', js)
+        self.assertIn('day-card-model.mjs?v=20260815-4', js)
+
     def test_map_consumes_branch_schema_and_targets_reviewed_step(self):
         """Would fail if branch labels or review links fell back to segment-wide inference."""
         js = Path("web/app.mjs").read_text(encoding="utf-8")
@@ -87,12 +97,20 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("revealReviewBranch", js)
         self.assertIn("elements.ningboCheckbox.checked = true", js)
 
-    def test_map_groups_main_segment_cards_by_assigned_day(self):
+    def test_map_renders_day_cards_from_the_execution_itinerary(self):
         js = Path("web/app.mjs").read_text(encoding="utf-8")
+        html = Path("web/index.html").read_text(encoding="utf-8")
 
-        self.assertIn("day-heading", js)
-        self.assertIn("第 ${day} 天", js)
-        self.assertIn("summary.segment_days", js)
+        self.assertIn("ITINERARY_URL", js)
+        self.assertIn("renderDayCards", js)
+        self.assertIn("fitDay", js)
+        self.assertIn("properties.day_id", js)
+        self.assertIn("renderItineraryTotals", js)
+        self.assertIn("remaining_distance_m", js)
+        self.assertIn("average_riding_distance_m", js)
+        self.assertIn("Day 2 为桐乡休整日", js)
+        self.assertIn("部分日超过 6 小时", js)
+        self.assertIn("每日行程", html)
 
     def test_map_renders_an_infeasible_schedule_as_a_decision_warning(self):
         """Would fail if an over-limit schedule were presented as a daily itinerary."""

@@ -26,8 +26,10 @@ class SegmentRule:
     anchor_queries: tuple[str, ...] = ()
     parallel_road_available: bool = False
     allowed_national_m: int = 0
+    allowed_hard_risk_m: int = 0
     day: int | None = None
     national_exception_reason: str = ""
+    hard_risk_exception_reason: str = ""
     reroute_status: str = "unreviewed"
     reroute_reason: str = ""
     preferred_candidate_index: int | None = None

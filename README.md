@@ -4,14 +4,14 @@
 
 ## 当前状态
 
-- 内陆审查基线已经发布并作为网页默认路线，数据位于 `web/data/inland-*`，配置位于 `config/inland-route.json`。主线从阳曲路出发，依次经过交大附中本部、bilibili 国正中心、大连路地铁站、昌化路649号、京东上海中海中心、阿里中心虹桥和上海交通大学闵行校区，再接续原有上海至广州路线；国道例外均记录了实测保留量与已试替代方案，但整条路线仍需道路级复核。
-- 手机竖屏采用上方地图、下方独立滚动路线面板；桌面继续使用左侧路线面板和右侧地图。
-- 地图用深灰点线和青色虚线成对展示原路线与 6 条避国道备选：桐庐→建德之江村、上饶→鹰潭、南城→广昌、信丰→龙南、定南→和平、和平→河源。每张卡片同时列出两线总里程、国道里程和绕行时间；和平→河源已通过自动候选门槛并标为“推荐候选”，其余仍需道路级复核；备选线不计入主线总里程。
-- 若 6 条备选全部采用，预计总里程增加约 99.0 km，国道减少约 129.8 km；网页在备选面板顶部直接显示这一组合影响。
-- `web/data/inland-reroute-decisions.json` 已覆盖 5 个 P0 与 4 个 P1 路段：5 条候选保留为“需人工复核”，4 条候选被拒绝并明确“保留原线”。G105 信丰—龙南的过境货车风险、G206 广昌新建二级公路、G238 和平绿美公路与货车检测、S229 船塘—骆湖规划走廊均已写入证据结论；目前没有仅凭道路编号就自动替换主线。
+- 默认网页现为 Day 0–15 江西执行线，产物位于 `web/data/inland-execution-*`，路线与每日住宿配置分别位于 `config/inland-execution-route.json` 和 `config/inland-itinerary.json`。
+- 全程计划 1796.3 km；Day 3–15 剩余 1619.0 km，骑行日均 124.5 km。Day 3 固定经过阿里巴巴西溪园区并住附近亚朵 S；Day 4–15 的自然落点均配置了可洗衣酒店候选。
+- Day 8 已删除抚州、南城市中心折返，改走浒湾镇、万坊镇补给锚点，约 144.2 km。Day 12 为最长日，约 160.9 km，必须白天骑行并根据现场大车流决定是否改线或提前结束。
+- 左栏只展示 Day 0–15 日卡；点击日卡缩放到当天道路。手机竖屏采用上方地图、下方独立滚动日程面板；桌面使用左侧日程、右侧地图。
+- Day 1 已按实际路线修正为交大闵行 → 叶新公路 → 桐乡酒店，约 111.6 km；通用 GPX 与 Markdown 路书导出到仓库外的 `Exports/SJTU-HKUSTGZ-Day1/`。
+- 所有实际国道距离、短互通例外和现场处置说明均写入配置并通过严格审计；自动检查通过仍不替代出发当天的道路、施工、禁行与车流复核。
+- 旧内陆审查基线仍可通过 `?route=inland` 查看，其避国道备选线和决策证据继续保留，供临时改线参考。
 - 沿海线仍保留在 `web/data/coastal-route.geojson` 与 `web/data/summary.json`，可通过 `?route=coastal` 查看；它明确不能在 15 个骑行日内执行，只可作为参考路线。
-- 内陆排程暂不在网页展示。高德电助力时长不是本项目最终采用的长途移动速度口径，逐日 15 天方案将在路径复核后独立锁定，避免把当前诊断误作执行日程。
-- 宁波和深圳支线默认关闭，不计入沿海主线总计。
 
 ## 本地预览
 
@@ -23,8 +23,46 @@ python3 -m http.server 8765 --bind 127.0.0.1 --directory web
 
 然后在浏览器打开 <http://127.0.0.1:8765/>。
 
-- 默认内陆线：<http://127.0.0.1:8765/>
+- 默认 Day 0–15 江西执行线：<http://127.0.0.1:8765/>
+- 旧内陆审查基线：<http://127.0.0.1:8765/?route=inland>
 - 沿海参考线：<http://127.0.0.1:8765/?route=coastal>
+
+## 重新生成执行路线与 Day 1 路书
+
+实时路线生成会使用本机 `.env.local` 的高德 Web 服务 Key；后续每日汇总和 GPX 导出不再访问 API：
+
+```bash
+python3 scripts/generate_route.py \
+  --config config/inland-execution-route.json \
+  --resolutions config/inland-execution-poi-resolutions.json \
+  --env .env.local \
+  --cache-dir .cache/amap \
+  --output-dir web/data \
+  --profile execution
+
+python3 scripts/export_itinerary.py \
+  --config config/inland-itinerary.json \
+  --manifest web/data/inland-execution-route-manifest.json \
+  --geojson web/data/inland-execution-route.geojson \
+  --output web/data/inland-itinerary.json
+
+python3 scripts/export_day_roadbook.py \
+  --geojson web/data/inland-execution-route.geojson \
+  --itinerary web/data/inland-itinerary.json \
+  --day 1 \
+  --output-dir ../../Exports/SJTU-HKUSTGZ-Day1
+```
+
+严格审计执行产物：
+
+```bash
+python3 scripts/audit_route.py \
+  --config config/inland-execution-route.json \
+  --data-dir web/data \
+  --env .env.local \
+  --profile execution \
+  --strict
+```
 
 ## 可重复验证（不访问实时 API）
 
@@ -37,6 +75,9 @@ python3 -m unittest \
   tests.test_audit \
   tests.test_config \
   tests.test_coordinates \
+  tests.test_day_card_model \
+  tests.test_day_roadbook \
+  tests.test_execution_itinerary \
   tests.test_export \
   tests.test_inland_config \
   tests.test_inland_route \

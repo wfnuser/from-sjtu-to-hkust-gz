@@ -90,6 +90,21 @@ class ConfigTests(unittest.TestCase):
             "平行县道在河道处中断，国道桥为唯一连续铺装通道。",
         )
 
+    def test_loads_explicit_short_hard_risk_exception(self):
+        payload = _valid_payload()
+        payload["segment_rules"] = {
+            "start-to-end": {
+                "allowed_hard_risk_m": 70,
+                "hard_risk_exception_reason": "互通连接段现场观察，必要时下车推行。",
+            }
+        }
+
+        cfg = _load_payload(payload)
+        rule = cfg.segment_rules["start-to-end"]
+
+        self.assertEqual(rule.allowed_hard_risk_m, 70)
+        self.assertIn("下车推行", rule.hard_risk_exception_reason)
+
     def test_loads_reviewed_reroute_decision_metadata(self):
         payload = _valid_payload()
         payload["segment_rules"] = {

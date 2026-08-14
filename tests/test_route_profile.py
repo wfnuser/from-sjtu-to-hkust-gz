@@ -20,12 +20,13 @@ class RouteProfileTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         return json.loads(result.stdout)
 
-    def test_empty_query_opens_the_inland_route_under_review(self):
+    def test_empty_query_opens_the_execution_itinerary(self):
         profile = self.select_profile("")
 
-        self.assertEqual(profile["id"], "inland")
-        self.assertEqual(profile["geojsonUrl"], "data/inland-route.geojson")
-        self.assertEqual(profile["summaryUrl"], "data/inland-summary.json")
+        self.assertEqual(profile["id"], "execution")
+        self.assertEqual(profile["geojsonUrl"], "data/inland-execution-route.geojson")
+        self.assertEqual(profile["summaryUrl"], "data/inland-execution-summary.json")
+        self.assertEqual(profile["itineraryUrl"], "data/inland-itinerary.json")
         self.assertEqual(profile["title"], "宇宙 eBike 骑行路线（江西线）")
         self.assertFalse(profile["hasOptionalBranches"])
         self.assertIs(profile.get("showSchedule"), False)
@@ -41,7 +42,7 @@ class RouteProfileTests(unittest.TestCase):
         self.assertIs(profile.get("showSchedule"), True)
 
     def test_unknown_profile_falls_back_to_inland(self):
-        self.assertEqual(self.select_profile("?route=unknown")["id"], "inland")
+        self.assertEqual(self.select_profile("?route=unknown")["id"], "execution")
 
 
 if __name__ == "__main__":

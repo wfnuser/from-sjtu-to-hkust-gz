@@ -9,6 +9,28 @@ from tests.test_export import _segment
 
 
 class ManifestRerouteMetadataTests(unittest.TestCase):
+    def test_round_trip_preserves_hard_risk_exception(self):
+        original = _segment()
+        segment = replace(
+            original,
+            rule=replace(
+                original.rule,
+                allowed_hard_risk_m=70,
+                hard_risk_exception_reason="现场观察，必要时下车推行。",
+            ),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "manifest.json"
+            path.write_text(
+                json.dumps(build_manifest("route-test", [segment]), ensure_ascii=False),
+                encoding="utf-8",
+            )
+
+            loaded = load_manifest(path, "route-test")[0]
+
+        self.assertEqual(loaded.rule.allowed_hard_risk_m, 70)
+        self.assertIn("下车推行", loaded.rule.hard_risk_exception_reason)
+
     def test_round_trip_preserves_preferred_candidate_index(self):
         original = _segment()
         segment = replace(

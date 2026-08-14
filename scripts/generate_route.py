@@ -229,7 +229,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--cache-dir", type=Path, default=Path("cache"))
     parser.add_argument("--segment", action="append", default=[], help="segment id to generate; repeatable")
-    parser.add_argument("--profile", choices=("coastal", "inland"), required=True)
+    parser.add_argument("--profile", choices=("coastal", "inland", "execution"), required=True)
     args = parser.parse_args(argv)
     try:
         config = load_resolved_config(args.config, args.resolutions)

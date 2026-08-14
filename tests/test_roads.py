@@ -161,6 +161,20 @@ class CandidateSelectionTests(unittest.TestCase):
 
         self.assertIs(choose_candidate([expressway, county], SegmentRule("a-b")), county)
 
+    def test_explicit_short_hard_risk_allowance_is_segment_scoped(self):
+        reviewed_crossing = candidate(0, hard_risk_m=70, distance_m=10_000)
+        over_limit = candidate(1, hard_risk_m=71, distance_m=9_000)
+        rule = SegmentRule(
+            "a-b",
+            allowed_hard_risk_m=70,
+            hard_risk_exception_reason="互通连接段现场观察，必要时下车推行。",
+        )
+
+        self.assertIs(
+            choose_candidate([over_limit, reviewed_crossing], rule),
+            reviewed_crossing,
+        )
+
     def test_freight_risk_is_ineligible_even_if_shorter(self):
         freight = candidate(0, freight_risk_m=100, distance_m=30_000)
         county = candidate(1, distance_m=34_000)

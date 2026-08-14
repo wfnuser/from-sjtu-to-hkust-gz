@@ -54,8 +54,10 @@ def _segment_data(segment: PlannedSegment) -> dict[str, object]:
             "anchor_queries": list(segment.rule.anchor_queries),
             "parallel_road_available": segment.rule.parallel_road_available,
             "allowed_national_m": segment.rule.allowed_national_m,
+            "allowed_hard_risk_m": segment.rule.allowed_hard_risk_m,
             "day": segment.rule.day,
             "national_exception_reason": segment.rule.national_exception_reason,
+            "hard_risk_exception_reason": segment.rule.hard_risk_exception_reason,
             "reroute_status": segment.rule.reroute_status,
             "reroute_reason": segment.rule.reroute_reason,
             "preferred_candidate_index": segment.rule.preferred_candidate_index,
@@ -179,8 +181,12 @@ def _rule_from_data(value: dict[str, Any]) -> SegmentRule:
         anchor_queries=tuple(_string(item) for item in _list(value["anchor_queries"])),
         parallel_road_available=_bool(value["parallel_road_available"]),
         allowed_national_m=_integer(value["allowed_national_m"]),
+        allowed_hard_risk_m=_integer(value.get("allowed_hard_risk_m", 0)),
         day=_integer(day) if day is not None else None,
         national_exception_reason=_string(value.get("national_exception_reason", "")),
+        hard_risk_exception_reason=_string(
+            value.get("hard_risk_exception_reason", "")
+        ),
         reroute_status=_string(value.get("reroute_status", "unreviewed")),
         reroute_reason=_string(value.get("reroute_reason", "")),
         preferred_candidate_index=(

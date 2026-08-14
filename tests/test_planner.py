@@ -80,6 +80,22 @@ class RoutePlannerTests(unittest.TestCase):
         self.assertEqual(approvals[0].distance_m, 1_000)
         self.assertIn("连续铺装", approvals[0].message)
 
+    def test_short_hard_risk_exception_creates_audit_approval(self):
+        rule = SegmentRule(
+            "a-b",
+            allowed_hard_risk_m=100,
+            hard_risk_exception_reason="现场观察，必要时下车推行。",
+        )
+
+        planned = RoutePlanner(_HardRiskAmapClient()).plan_segment(START, END, rule)
+
+        approvals = [
+            item for item in planned.reviews
+            if item.code == "HARD_RISK_EXCEPTION_APPROVED"
+        ]
+        self.assertEqual(len(approvals), 1)
+        self.assertEqual(approvals[0].distance_m, 70)
+
 
 class _FakeAmapClient:
     def __init__(self, *, direct_distance_m, subleg_distances_m):
@@ -128,6 +144,34 @@ class _NationalAmapClient:
                         1_000,
                         (origin, destination),
                         RoadClass.NATIONAL,
+                    ),
+                ),
+            ),
+        )
+
+
+class _HardRiskAmapClient:
+    def electrobike(self, origin, destination):
+        return (
+            CandidateRoute(
+                0,
+                1_000,
+                200,
+                (
+                    RouteStep(
+                        "沿新安江互通骑行70米",
+                        "新安江互通",
+                        70,
+                        (origin, destination),
+                        RoadClass.UNKNOWN,
+                        frozenset({"hard"}),
+                    ),
+                    RouteStep(
+                        "沿城市道路骑行",
+                        "新安东路",
+                        930,
+                        (origin, destination),
+                        RoadClass.CITY,
                     ),
                 ),
             ),

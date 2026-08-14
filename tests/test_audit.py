@@ -29,6 +29,8 @@ def _segment(
     national=False,
     parallel_road_available=False,
     allowed_national_m=0,
+    allowed_hard_risk_m=0,
+    hard_risk_exception_reason="",
     risk_tags=frozenset(),
     polyline=True,
     subleg_distances=(1_000,),
@@ -46,7 +48,9 @@ def _segment(
     return PlannedSegment(
         segment_id, start, end,
         SegmentRule(segment_id, parallel_road_available=parallel_road_available,
-                    allowed_national_m=allowed_national_m),
+                    allowed_national_m=allowed_national_m,
+                    allowed_hard_risk_m=allowed_hard_risk_m,
+                    hard_risk_exception_reason=hard_risk_exception_reason),
         1_000, CandidateRoute(0, 1_000, 300, (step,)), 1.0,
         subleg_distances, reviews,
     )
@@ -77,6 +81,27 @@ class AuditTests(unittest.TestCase):
         result = audit([_segment(risk_tags=frozenset({"hard"}))])
 
         self.assertIn("HARD_RISK", [item.code for item in result.items])
+
+    def test_audit_accepts_bounded_explicit_hard_risk_exception(self):
+        result = audit([
+            _segment(
+                risk_tags=frozenset({"hard"}),
+                allowed_hard_risk_m=1_000,
+                hard_risk_exception_reason="现场观察，必要时下车推行。",
+                reviews=(
+                    ReviewItem(
+                        "HARD_RISK_EXCEPTION_APPROVED",
+                        "main-01-to-main-02",
+                        "warning",
+                        "现场观察，必要时下车推行。",
+                        distance_m=1_000,
+                    ),
+                ),
+            )
+        ])
+
+        self.assertNotIn("HARD_RISK", [item.code for item in result.items])
+        self.assertTrue(result.ok)
 
     def test_audit_rejects_freight_risk_steps(self):
         result = audit([_segment(risk_tags=frozenset({"freight"}))])

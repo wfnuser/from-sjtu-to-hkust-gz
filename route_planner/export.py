@@ -322,6 +322,7 @@ def _schedule_contract(
     route_labels = {
         "coastal": "沿海安全优先路线",
         "inland": "内陆路线",
+        "execution": "江西线执行路线",
     }
     try:
         route_label = route_labels[profile]
