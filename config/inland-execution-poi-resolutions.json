@@ -1,0 +1,1053 @@
+{
+  "resolutions": [
+    {
+      "query": "阳曲路",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "阳曲路",
+          "formatted_address": "上海市上海市静安区阳曲路",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.459957,
+            "lat": 31.31457
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "",
+          "name": "阳曲路",
+          "formatted_address": "上海市上海市静安区阳曲路",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.459957,
+            "lat": 31.31457
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "",
+          "name": "阳曲路",
+          "formatted_address": "上海市上海市静安区阳曲路",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.459957,
+            "lat": 31.31457
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "上海交通大学附属中学(本部)",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "上海交通大学附属中学(本部)",
+          "formatted_address": "上海市上海市宝山区",
+          "district": "宝山区",
+          "location_gcj": {
+            "lon": 121.488913,
+            "lat": 31.319008
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "",
+          "name": "上海交通大学附属中学(本部)",
+          "formatted_address": "上海市上海市嘉定区",
+          "district": "嘉定区",
+          "location_gcj": {
+            "lon": 121.244001,
+            "lat": 31.352329
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "哔哩哔哩公司 国正中心",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "B0G04S6ZUR",
+          "name": "哔哩哔哩公司",
+          "formatted_address": "上海市上海市杨浦区政立路485号国正中心3号楼11楼",
+          "district": "杨浦区",
+          "location_gcj": {
+            "lon": 121.506414,
+            "lat": 31.309352
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "B0K3M7L5XC",
+          "name": "上海幻电信息科技有限公司",
+          "formatted_address": "上海市上海市杨浦区政立路485号国正中心3号楼16层",
+          "district": "杨浦区",
+          "location_gcj": {
+            "lon": 121.506414,
+            "lat": 31.309352
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0G07S38D4",
+          "name": "bbj小邮局(凯德·国正中心店)",
+          "formatted_address": "上海市上海市杨浦区政立路489号国正中心1号楼",
+          "district": "杨浦区",
+          "location_gcj": {
+            "lon": 121.506575,
+            "lat": 31.309425
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "大连路地铁站",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "大连路地铁站",
+          "formatted_address": "上海市上海市虹口区",
+          "district": "虹口区",
+          "location_gcj": {
+            "lon": 121.513088,
+            "lat": 31.257938
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "",
+          "name": "大连路地铁站",
+          "formatted_address": "上海市上海市杨浦区大连路",
+          "district": "杨浦区",
+          "location_gcj": {
+            "lon": 121.509073,
+            "lat": 31.262258
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "",
+          "name": "大连路地铁站",
+          "formatted_address": "上海市上海市杨浦区大连路",
+          "district": "杨浦区",
+          "location_gcj": {
+            "lon": 121.509073,
+            "lat": 31.262258
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "静安区昌化路649号",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "静安区昌化路649号",
+          "formatted_address": "上海市上海市静安区昌化路649号",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.447888,
+            "lat": 31.241166
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "",
+          "name": "静安区昌化路649号",
+          "formatted_address": "上海市上海市静安区昌化路",
+          "district": "静安区",
+          "location_gcj": {
+            "lon": 121.447661,
+            "lat": 31.241363
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "京东上海(中海中心)职场",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "京东上海(中海中心)职场",
+          "formatted_address": "上海市上海市普陀区",
+          "district": "普陀区",
+          "location_gcj": {
+            "lon": 121.408447,
+            "lat": 31.250074
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "阿里中心·上海虹桥",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "阿里中心·上海虹桥",
+          "formatted_address": "上海市上海市闵行区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.313936,
+            "lat": 31.205659
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "上海交通大学闵行校区",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "上海交通大学闵行校区",
+          "formatted_address": "上海市上海市闵行区",
+          "district": "闵行区",
+          "location_gcj": {
+            "lon": 121.440865,
+            "lat": 31.033205
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "叶新公路与车亭公路交叉口",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "叶新公路与车亭公路交叉口",
+          "formatted_address": "上海市上海市松江区",
+          "district": "松江区",
+          "location_gcj": {
+            "lon": 121.322418,
+            "lat": 30.948133
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "叶新公路与朱枫公路交叉口",
+      "city": "上海",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "叶新公路与朱枫公路交叉口",
+          "formatted_address": "上海市上海市金山区",
+          "district": "金山区",
+          "location_gcj": {
+            "lon": 121.023114,
+            "lat": 30.935152
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "桐乡万象汇振兴西路亚朵酒店",
+      "city": "桐乡",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "桐乡万象汇振兴西路亚朵酒店",
+          "formatted_address": "浙江省嘉兴市桐乡市",
+          "district": "桐乡市",
+          "location_gcj": {
+            "lon": 120.544804,
+            "lat": 30.627068
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "阿里巴巴西溪园区",
+      "city": "杭州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "阿里巴巴西溪园区",
+          "formatted_address": "浙江省杭州市余杭区",
+          "district": "余杭区",
+          "location_gcj": {
+            "lon": 120.024993,
+            "lat": 30.280062
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "杭州阿里巴巴西溪园区爱橙街亚朵S酒店",
+      "city": "杭州",
+      "candidates": [
+        {
+          "poi_id": "B0MATHW7W6",
+          "name": "杭州阿里巴巴西溪园区爱橙街亚朵S酒店",
+          "formatted_address": "浙江省杭州市余杭区五常街道高教路970-1号联合科技广场5幢",
+          "district": "余杭区",
+          "location_gcj": {
+            "lon": 120.023918,
+            "lat": 30.275941
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "",
+          "name": "杭州阿里巴巴西溪园区爱橙街亚朵S酒店",
+          "formatted_address": "浙江省杭州市余杭区爱橙街",
+          "district": "余杭区",
+          "location_gcj": {
+            "lon": 120.015913,
+            "lat": 30.274114
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "",
+          "name": "杭州阿里巴巴西溪园区爱橙街亚朵S酒店",
+          "formatted_address": "浙江省杭州市余杭区爱橙街",
+          "district": "余杭区",
+          "location_gcj": {
+            "lon": 120.013984,
+            "lat": 30.273598
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "桐庐",
+      "city": "杭州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "桐庐",
+          "formatted_address": "浙江省杭州市桐庐县",
+          "district": "桐庐县",
+          "location_gcj": {
+            "lon": 119.691755,
+            "lat": 29.79418
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "杭州建德新安江风景区新安东路亚朵酒店",
+      "city": "建德",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "杭州建德新安江风景区新安东路亚朵酒店",
+          "formatted_address": "浙江省杭州市建德市",
+          "district": "建德市",
+          "location_gcj": {
+            "lon": 119.296242,
+            "lat": 29.486494
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "龙游",
+      "city": "衢州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "龙游",
+          "formatted_address": "浙江省衢州市龙游县",
+          "district": "龙游县",
+          "location_gcj": {
+            "lon": 119.1723,
+            "lat": 29.028214
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "衢州",
+      "city": "衢州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "衢州",
+          "formatted_address": "浙江省衢州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 118.859307,
+            "lat": 28.970229
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "常山东方广场酒店",
+      "city": "衢州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "常山东方广场酒店",
+          "formatted_address": "浙江省衢州市常山县",
+          "district": "常山县",
+          "location_gcj": {
+            "lon": 118.528502,
+            "lat": 28.906197
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "玉山",
+      "city": "上饶",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "玉山",
+          "formatted_address": "江西省上饶市玉山县",
+          "district": "玉山县",
+          "location_gcj": {
+            "lon": 118.244736,
+            "lat": 28.681936
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "上饶",
+      "city": "上饶",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "上饶",
+          "formatted_address": "江西省上饶市",
+          "district": "",
+          "location_gcj": {
+            "lon": 117.943064,
+            "lat": 28.45513
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "维也纳酒店上饶横峰古窑路店",
+      "city": "上饶",
+      "candidates": [
+        {
+          "poi_id": "B0J1T7H6IU",
+          "name": "维也纳酒店(上饶横峰古窑路店)",
+          "formatted_address": "江西省上饶市横峰县解放中路133号",
+          "district": "横峰县",
+          "location_gcj": {
+            "lon": 117.610315,
+            "lat": 28.415987
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "",
+          "name": "维也纳酒店上饶横峰古窑路店",
+          "formatted_address": "江西省上饶市横峰县古窑路",
+          "district": "横峰县",
+          "location_gcj": {
+            "lon": 117.607816,
+            "lat": 28.417665
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "",
+          "name": "维也纳酒店上饶横峰古窑路店",
+          "formatted_address": "江西省上饶市横峰县古窑路",
+          "district": "横峰县",
+          "location_gcj": {
+            "lon": 117.608443,
+            "lat": 28.417368
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "鹰潭",
+      "city": "鹰潭",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "鹰潭",
+          "formatted_address": "江西省鹰潭市",
+          "district": "",
+          "location_gcj": {
+            "lon": 117.039532,
+            "lat": 28.272092
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "维也纳国际酒店抚州东站店",
+      "city": "抚州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "维也纳国际酒店抚州东站店",
+          "formatted_address": "江西省抚州市东乡区",
+          "district": "东乡区",
+          "location_gcj": {
+            "lon": 116.61697,
+            "lat": 28.256501
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "抚州",
+      "city": "抚州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "抚州",
+          "formatted_address": "江西省抚州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 116.358054,
+            "lat": 27.948979
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "南城",
+      "city": "抚州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "南城",
+          "formatted_address": "江西省抚州市南城县",
+          "district": "南城县",
+          "location_gcj": {
+            "lon": 116.637228,
+            "lat": 27.570031
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "维也纳国际酒店南丰桔都大道店",
+      "city": "抚州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "维也纳国际酒店南丰桔都大道店",
+          "formatted_address": "江西省抚州市南丰县",
+          "district": "南丰县",
+          "location_gcj": {
+            "lon": 116.521501,
+            "lat": 27.223742
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "广昌",
+      "city": "抚州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "广昌",
+          "formatted_address": "江西省抚州市广昌县",
+          "district": "广昌县",
+          "location_gcj": {
+            "lon": 116.336556,
+            "lat": 26.843974
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "汉庭酒店赣州宁都州城文化街店",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "汉庭酒店赣州宁都州城文化街店",
+          "formatted_address": "江西省赣州市宁都县",
+          "district": "宁都县",
+          "location_gcj": {
+            "lon": 116.020702,
+            "lat": 26.474207
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "",
+          "name": "汉庭酒店赣州宁都州城文化街店",
+          "formatted_address": "江西省赣州市龙南市",
+          "district": "龙南市",
+          "location_gcj": {
+            "lon": 114.789986,
+            "lat": 24.908063
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "维也纳酒店于都高铁站店",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "维也纳酒店于都高铁站店",
+          "formatted_address": "江西省赣州市于都县",
+          "district": "于都县",
+          "location_gcj": {
+            "lon": 115.421361,
+            "lat": 25.970031
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "赣州",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "赣州",
+          "formatted_address": "江西省赣州市",
+          "district": "",
+          "location_gcj": {
+            "lon": 114.933494,
+            "lat": 25.831139
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "维也纳酒店赣州信丰高铁西站店",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "维也纳酒店赣州信丰高铁西站店",
+          "formatted_address": "江西省赣州市信丰县",
+          "district": "信丰县",
+          "location_gcj": {
+            "lon": 114.900879,
+            "lat": 25.349284
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "龙南",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "龙南",
+          "formatted_address": "江西省赣州市龙南市",
+          "district": "龙南市",
+          "location_gcj": {
+            "lon": 114.804474,
+            "lat": 24.901216
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "定南",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "定南",
+          "formatted_address": "江西省赣州市定南县",
+          "district": "定南县",
+          "location_gcj": {
+            "lon": 115.027908,
+            "lat": 24.783372
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "维也纳酒店河源和平店",
+      "city": "河源",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "维也纳酒店河源和平店",
+          "formatted_address": "广东省河源市和平县",
+          "district": "和平县",
+          "location_gcj": {
+            "lon": 114.926397,
+            "lat": 24.448472
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "亚朵酒店河源越王大道店",
+      "city": "河源",
+      "candidates": [
+        {
+          "poi_id": "B0JD27OHMD",
+          "name": "亚朵酒店(越王大道店)",
+          "formatted_address": "广东省河源市源城区都市100",
+          "district": "源城区",
+          "location_gcj": {
+            "lon": 114.712544,
+            "lat": 23.757113
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "",
+          "name": "亚朵酒店河源越王大道店",
+          "formatted_address": "广东省河源市东源县越王大道",
+          "district": "东源县",
+          "location_gcj": {
+            "lon": 114.722224,
+            "lat": 23.771096
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "",
+          "name": "亚朵酒店河源越王大道店",
+          "formatted_address": "广东省河源市东源县越王大道",
+          "district": "东源县",
+          "location_gcj": {
+            "lon": 114.722224,
+            "lat": 23.771096
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "",
+          "name": "亚朵酒店河源越王大道店",
+          "formatted_address": "广东省河源市东源县越王大道",
+          "district": "东源县",
+          "location_gcj": {
+            "lon": 114.722443,
+            "lat": 23.77141
+          },
+          "selected": false
+        }
+      ]
+    },
+    {
+      "query": "维也纳酒店惠州博罗福田店",
+      "city": "惠州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "维也纳酒店惠州博罗福田店",
+          "formatted_address": "广东省惠州市博罗县",
+          "district": "博罗县",
+          "location_gcj": {
+            "lon": 113.975197,
+            "lat": 23.210048
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "增城",
+      "city": "广州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "增城",
+          "formatted_address": "广东省广州市增城区",
+          "district": "增城区",
+          "location_gcj": {
+            "lon": 113.810734,
+            "lat": 23.261452
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "番禺",
+      "city": "广州",
+      "candidates": [
+        {
+          "poi_id": "",
+          "name": "番禺",
+          "formatted_address": "广东省广州市番禺区",
+          "district": "番禺区",
+          "location_gcj": {
+            "lon": 113.383917,
+            "lat": 22.93756
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "香港科技大学（广州）",
+      "city": "广州",
+      "candidates": [
+        {
+          "poi_id": "B0IGJURJOJ",
+          "name": "香港科技大学(广州)",
+          "formatted_address": "广东省广州市南沙区笃学路1号",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.484507,
+            "lat": 22.889043
+          },
+          "selected": true
+        },
+        {
+          "poi_id": "B0FFLCHK8Q",
+          "name": "香港科技大学霍英东研究院",
+          "formatted_address": "广东省广州市南沙区环市大道南2号资讯科技园科技楼",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.611678,
+            "lat": 22.749314
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LUA7MGXP",
+          "name": "香港科技大学(广州)-2期",
+          "formatted_address": "广东省广州市南沙区东涌镇三沙港路28号",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.483197,
+            "lat": 22.892426
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0M6SY3GD2",
+          "name": "香港科技大学(广州)量子科技中心",
+          "formatted_address": "广东省广州市南沙区中国中铁广州局港科大项目部东侧210米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.482507,
+            "lat": 22.889483
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "BV09037935",
+          "name": "香港科技大学(广州)站(公交站)",
+          "formatted_address": "广东省广州市南沙区南14路;南22路;南57路",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.48363,
+            "lat": 22.884982
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MGCHEOBC",
+          "name": "香港科技大学5B栋",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486861,
+            "lat": 22.88523
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LKBKSK0D",
+          "name": "香港科技大学(广州)地下停车场",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486975,
+            "lat": 22.883525
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0I2YANYUV",
+          "name": "香港科技大学(广州)菜鸟驿站",
+          "formatted_address": "广东省广州市南沙区香港科技大学(广州)6A栋118铺",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486075,
+            "lat": 22.884475
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L2P9QR2C",
+          "name": "香港科技大学(广州)-行政楼",
+          "formatted_address": "广东省广州市南沙区星巴克(广州香港科技大学店)西侧",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.482172,
+            "lat": 22.887553
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LUDR8Z5Z",
+          "name": "香港科技大学(广州)-地下停车场",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.48208,
+            "lat": 22.887618
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0M6N6EDAL",
+          "name": "香港科技大学(广州)地上停车场",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486375,
+            "lat": 22.889375
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MUC72SJY",
+          "name": "香港科技大学(广州)学生宿舍",
+          "formatted_address": "广东省广州市南沙区笃学路与东涌大道交叉口北260米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.485775,
+            "lat": 22.885575
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B00140TFUK",
+          "name": "中山大学香港科技大学珠江口海洋环境联合监测中心",
+          "formatted_address": "广东省广州市海珠区新港西路135号中山大学东北区341号楼",
+          "district": "海珠区",
+          "location_gcj": {
+            "lon": 113.299933,
+            "lat": 23.098429
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L3AO09K1",
+          "name": "香港科技大学(广州)图书馆",
+          "formatted_address": "广东省广州市南沙区中国中铁广州局港科大项目部东侧300米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.483411,
+            "lat": 22.889568
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MUF7HH7K",
+          "name": "香港科技大学(广州)-金合欢(打卡点)",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.483315,
+            "lat": 22.890823
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0L2FU29O0",
+          "name": "港科大(广州)项目",
+          "formatted_address": "广东省广州市南沙区三沙港路与三沙公路交叉口西北240米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.490775,
+            "lat": 22.886475
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MR1XFWLR",
+          "name": "香港科技大学(广州)北区宿舍6栋",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.486625,
+            "lat": 22.890725
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0LULXABGF",
+          "name": "香港科技大学(广州)科创成果转移转化基地",
+          "formatted_address": "广东省广州市南沙区东涌立交与S6广龙高速交叉口西北200米",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.494625,
+            "lat": 22.872325
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MB35FU2F",
+          "name": "广州湾区建工有限公司香港科技大学(广州)二期项目部",
+          "formatted_address": "广东省广州市南沙区三沙公路85号",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.491074,
+            "lat": 22.887047
+          },
+          "selected": false
+        },
+        {
+          "poi_id": "B0MUF7HVLZ",
+          "name": "香港科技大学(广州)-合欢花(打卡点)",
+          "formatted_address": "广东省广州市南沙区笃学路1号香港科技大学(广州)(东涌地铁站A口旁)",
+          "district": "南沙区",
+          "location_gcj": {
+            "lon": 113.478988,
+            "lat": 22.88559
+          },
+          "selected": false
+        }
+      ]
+    }
+  ],
+  "unresolved_queries": []
+}

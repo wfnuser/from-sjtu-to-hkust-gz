@@ -13,6 +13,7 @@ _REQUIRED_WAYPOINT_FIELDS = ("id", "name", "city", "query")
 _REQUIRED_MAIN_START = "上海交通大学闵行校区"
 _REQUIRED_MAIN_END = "香港科技大学（广州）"
 _INLAND_ROUTE_ID = "inland-main"
+_EXECUTION_ROUTE_ID = "inland-execution"
 _REROUTE_STATUSES = frozenset({"unreviewed", "adopted", "rejected", "manual_review"})
 _INLAND_MAIN_CORRIDOR = (
     "阳曲路",
@@ -51,6 +52,48 @@ _INLAND_MAIN_CORRIDOR = (
     "香港科技大学（广州）",
 )
 
+_INLAND_EXECUTION_CORRIDOR = (
+    "阳曲路",
+    "上海交通大学附属中学本部",
+    "bilibili 国正中心",
+    "大连路地铁站",
+    "昌化路649号",
+    "京东上海（中海中心）职场",
+    "阿里中心（虹桥）",
+    "上海交通大学闵行校区",
+    "叶新公路东段",
+    "叶新公路西段",
+    "桐乡万象汇振兴西路亚朵酒店",
+    "阿里巴巴西溪园区",
+    "杭州阿里巴巴西溪园区爱橙街亚朵S酒店",
+    "桐庐",
+    "杭州建德新安江风景区新安东路亚朵酒店",
+    "龙游",
+    "衢州",
+    "常山东方广场酒店",
+    "玉山",
+    "上饶",
+    "维也纳酒店（上饶横峰古窑路店）",
+    "鹰潭",
+    "维也纳国际酒店（抚州东站店）",
+    "抚州",
+    "南城",
+    "维也纳国际酒店（南丰桔都大道店）",
+    "广昌",
+    "汉庭酒店（赣州宁都州城文化街店）",
+    "维也纳酒店（于都高铁站店）",
+    "赣州",
+    "维也纳酒店（赣州信丰高铁西站店）",
+    "龙南",
+    "定南",
+    "维也纳酒店（河源和平店）",
+    "亚朵酒店（河源越王大道店）",
+    "维也纳酒店（惠州博罗福田店）",
+    "增城",
+    "番禺",
+    "香港科技大学（广州）",
+)
+
 
 def load_route_config(path: Path) -> RouteConfig:
     """Load a route configuration while enforcing planning safety invariants."""
@@ -77,7 +120,7 @@ def load_route_config(path: Path) -> RouteConfig:
             raise ValueError("Main waypoint display names must contain Chinese characters")
     required_start = (
         _INLAND_MAIN_CORRIDOR[0]
-        if route_id == _INLAND_ROUTE_ID
+        if route_id in {_INLAND_ROUTE_ID, _EXECUTION_ROUTE_ID}
         else _REQUIRED_MAIN_START
     )
     if main_waypoints[0].name != required_start:
@@ -86,6 +129,8 @@ def load_route_config(path: Path) -> RouteConfig:
         raise ValueError(f"Main route must end at {_REQUIRED_MAIN_END}")
     if route_id == _INLAND_ROUTE_ID:
         _validate_inland_main_corridor(main_waypoints)
+    elif route_id == _EXECUTION_ROUTE_ID:
+        _validate_execution_corridor(main_waypoints)
 
     checkin_waypoints = _parse_waypoints(
         payload.get("checkin_waypoints", []), "check-in route"
@@ -108,6 +153,13 @@ def _validate_inland_main_corridor(waypoints: tuple[Waypoint, ...]) -> None:
         raise ValueError("inland-main corridor must match the bound inland waypoint order")
     if any(waypoint.coordinate is not None for waypoint in waypoints):
         raise ValueError("inland-main corridor coordinates must be null before resolution")
+
+
+def _validate_execution_corridor(waypoints: tuple[Waypoint, ...]) -> None:
+    if tuple(waypoint.name for waypoint in waypoints) != _INLAND_EXECUTION_CORRIDOR:
+        raise ValueError("inland-execution corridor must match the bound execution order")
+    if any(waypoint.coordinate is not None for waypoint in waypoints):
+        raise ValueError("inland-execution coordinates must be null before resolution")
 
 
 def _parse_waypoints(value: Any, context: str) -> tuple[Waypoint, ...]:
