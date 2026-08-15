@@ -31,9 +31,10 @@ class DayCardModelTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 0, result.stderr)
         model = json.loads(result.stdout)
-        self.assertEqual(model["label"], "Day 3")
+        self.assertEqual(model["label"], "day3")
         self.assertEqual(model["distance"], "70.4 km")
         self.assertEqual(model["route"], "桐乡酒店 → 西溪亚朵S")
+        self.assertEqual(model["title"], "day3 桐乡酒店 → 西溪亚朵S")
         self.assertEqual(model["waypoints"], ["阿里巴巴西溪园区"])
         self.assertEqual(model["lodging"], "西溪亚朵S")
         self.assertTrue(model["laundryConfirmed"])

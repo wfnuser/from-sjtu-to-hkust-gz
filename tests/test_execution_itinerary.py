@@ -19,10 +19,13 @@ class ExecutionItineraryContractTests(unittest.TestCase):
 
     def test_fixed_actual_and_planned_days_are_not_reassigned(self):
         days = self.itinerary["days"]
-
         self.assertEqual([day["day"] for day in days], list(range(16)))
         self.assertEqual(days[0]["from_name"], "阳曲路")
         self.assertEqual(days[0]["to_name"], "上海交通大学闵行校区")
+        self.assertEqual(
+            days[0]["key_waypoints"],
+            ["大连路地铁站", "昌化路649号", "京东上海（中海中心）职场"],
+        )
         self.assertEqual(days[1]["to_name"], "桐乡万象汇振兴西路亚朵酒店")
         self.assertTrue(any("叶新公路" in name for name in days[1]["key_waypoints"]))
         self.assertEqual(days[2]["status"], "stay")

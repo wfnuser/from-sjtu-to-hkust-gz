@@ -15,11 +15,14 @@ function formatDuration(seconds) {
 /** Convert one published itinerary day into the decision fields shown in the sidebar. */
 export function dayCardModel(day) {
   const lodging = day?.lodging || {};
+  const label = `day${Number(day?.day)}`;
+  const route = `${day?.from_name || "起点"} → ${day?.to_name || "终点"}`;
   return {
     day: Number(day?.day),
-    label: `Day ${Number(day?.day)}`,
+    label,
     status: String(day?.status || "planned"),
-    route: `${day?.from_name || "起点"} → ${day?.to_name || "终点"}`,
+    route,
+    title: `${label} ${route}`,
     distance: formatDistance(day?.distance_m),
     duration: formatDuration(day?.duration_s),
     waypoints: Array.isArray(day?.key_waypoints) ? day.key_waypoints.map(String) : [],

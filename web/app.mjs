@@ -1,11 +1,11 @@
-import { selectRouteProfile } from "./route-profile.mjs?v=20260815-4";
+import { selectRouteProfile } from "./route-profile.mjs?v=20260815-5";
 import {
   rerouteComparisonText,
   rerouteFeaturesForOption,
   rerouteLineStyle,
 } from "./reroute-options.mjs";
 import { rerouteLabel } from "./reroute-status.mjs";
-import { dayCardModel } from "./day-card-model.mjs?v=20260815-4";
+import { dayCardModel } from "./day-card-model.mjs?v=20260815-5";
 
 const routeProfile = selectRouteProfile(window.location.search);
 const GEOJSON_URL = routeProfile.geojsonUrl;
@@ -294,25 +294,27 @@ export function renderDayCards(itinerary) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "day-card__button";
-    button.setAttribute("aria-label", `查看 ${model.label}：${model.route}`);
+    button.setAttribute("aria-label", `查看 ${model.title}`);
 
     const header = document.createElement("span");
     header.className = "day-card__header";
+    const title = document.createElement("span");
+    title.className = "day-card__title";
     const label = document.createElement("strong");
     label.className = "day-card__label";
     label.textContent = model.label;
-    const distance = document.createElement("strong");
-    distance.className = "day-card__distance";
-    distance.textContent = model.distance;
-    header.append(label, distance);
-
     const route = document.createElement("span");
     route.className = "day-card__route";
     route.textContent = model.route;
+    title.append(label, route);
+    const distance = document.createElement("strong");
+    distance.className = "day-card__distance";
+    distance.textContent = model.distance;
+    header.append(title, distance);
     const duration = document.createElement("span");
     duration.className = "day-card__meta";
     duration.textContent = model.status === "stay" ? "休整 / 工作日" : `高德预计 ${model.duration}`;
-    button.append(header, route, duration);
+    button.append(header, duration);
     button.addEventListener("click", () => fitDay(model.day));
     card.append(button);
 

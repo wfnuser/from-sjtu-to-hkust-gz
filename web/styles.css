@@ -123,10 +123,11 @@ h2 { margin-bottom: 12px; font-size: .94rem; }
   outline: 2px solid #bfdbfe;
   outline-offset: -2px;
 }
-.day-card__header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
-.day-card__label { color: #365a8d; font-size: .76rem; letter-spacing: .04em; text-transform: uppercase; }
-.day-card__distance { font-variant-numeric: tabular-nums; font-size: 1rem; }
-.day-card__route { display: block; font-size: .86rem; font-weight: 700; line-height: 1.45; }
+.day-card__header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+.day-card__title { display: flex; min-width: 0; align-items: baseline; gap: 7px; }
+.day-card__label { flex: 0 0 auto; color: #365a8d; font-size: .76rem; letter-spacing: .02em; }
+.day-card__distance { flex: 0 0 auto; font-variant-numeric: tabular-nums; font-size: 1rem; }
+.day-card__route { min-width: 0; font-size: .86rem; font-weight: 700; line-height: 1.45; }
 .day-card__meta { display: block; margin-top: 4px; color: var(--muted); font-size: .74rem; }
 .day-card__detail, .day-card__risk { margin: 0; padding: 0 12px 9px; font-size: .74rem; line-height: 1.5; }
 .day-card__detail { color: #526174; }
