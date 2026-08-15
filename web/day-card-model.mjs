@@ -12,6 +12,12 @@ function formatDuration(seconds) {
   return hours ? `${hours} 小时 ${minutes} 分` : `${minutes} 分`;
 }
 
+/** Keep completed prelude data available while starting the public itinerary at Day 1. */
+export function visibleItineraryDays(itinerary) {
+  const days = Array.isArray(itinerary?.days) ? itinerary.days : [];
+  return days.filter((day) => Number(day?.day) >= 1);
+}
+
 /** Convert one published itinerary day into the decision fields shown in the sidebar. */
 export function dayCardModel(day) {
   const lodging = day?.lodging || {};

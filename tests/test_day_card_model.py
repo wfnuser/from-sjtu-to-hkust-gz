@@ -5,6 +5,26 @@ import unittest
 
 
 class DayCardModelTests(unittest.TestCase):
+    def test_visible_itinerary_starts_at_day_one(self):
+        days = [{"day": 0}, {"day": 1}, {"day": 2}]
+        script = """
+          import { visibleItineraryDays } from './web/day-card-model.mjs';
+          console.log(JSON.stringify(visibleItineraryDays({ days: JSON.parse(process.argv[1]) })));
+        """
+        result = subprocess.run(
+            ["node", "--input-type=module", "--eval", script, json.dumps(days)],
+            cwd=Path.cwd(),
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(
+            [day["day"] for day in json.loads(result.stdout)],
+            [1, 2],
+        )
+
     def test_day_card_keeps_decision_fields_visible(self):
         day = {
             "day": 3,

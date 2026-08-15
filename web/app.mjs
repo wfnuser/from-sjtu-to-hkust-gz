@@ -1,11 +1,11 @@
-import { selectRouteProfile } from "./route-profile.mjs?v=20260815-5";
+import { selectRouteProfile } from "./route-profile.mjs?v=20260815-6";
 import {
   rerouteComparisonText,
   rerouteFeaturesForOption,
   rerouteLineStyle,
 } from "./reroute-options.mjs";
 import { rerouteLabel } from "./reroute-status.mjs";
-import { dayCardModel } from "./day-card-model.mjs?v=20260815-5";
+import { dayCardModel, visibleItineraryDays } from "./day-card-model.mjs?v=20260815-6";
 
 const routeProfile = selectRouteProfile(window.location.search);
 const GEOJSON_URL = routeProfile.geojsonUrl;
@@ -282,7 +282,7 @@ export function renderSegmentCards(summary) {
 
 /** Render one scan-friendly card per actual riding day. */
 export function renderDayCards(itinerary) {
-  const days = Array.isArray(itinerary?.days) ? itinerary.days : [];
+  const days = visibleItineraryDays(itinerary);
   elements.cards.innerHTML = "";
   elements.count.textContent = days.length ? `${days.length} 天` : "";
 

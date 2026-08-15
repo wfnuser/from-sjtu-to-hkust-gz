@@ -6,7 +6,7 @@ const PROFILES = {
     itineraryUrl: "data/inland-itinerary.json",
     rerouteOptionsUrl: null,
     title: "宇宙 eBike 骑行路线（江西线）",
-    mainLabel: "Day 0–15 执行路线",
+    mainLabel: "Day 1–15 执行路线",
     hasOptionalBranches: false,
     showSchedule: false,
     summaryNote: "西溪版本 · 每晚落在可洗衣酒店；点击 Day 卡片聚焦当天路线。",
