@@ -48,15 +48,25 @@ def build_itinerary(
         for segment_id in ids:
             segment_days[segment_id] = day_id
 
+    display_start_day = _optional_integer(day_config, "display_start_day", 0)
+    remaining_start_day = _optional_integer(day_config, "remaining_start_day", 3)
+    public_days = [
+        day for day in days if _integer(day, "day") >= display_start_day
+    ]
     remaining_days = [
-        day for day in days if _integer(day, "day") >= 3 and _string_list(day, "segments")
+        day
+        for day in days
+        if _integer(day, "day") >= remaining_start_day and _string_list(day, "segments")
     ]
     remaining_distance_m = sum(_integer(day, "distance_m") for day in remaining_days)
     itinerary = {
         "route_id": route_id,
         "days": days,
         "segment_days": segment_days,
+        "display_start_day": display_start_day,
+        "remaining_start_day": remaining_start_day,
         "total_distance_m": sum(_integer(day, "distance_m") for day in days),
+        "public_total_distance_m": sum(_integer(day, "distance_m") for day in public_days),
         "remaining_distance_m": remaining_distance_m,
         "average_riding_distance_m": round(remaining_distance_m / len(remaining_days))
         if remaining_days
@@ -97,6 +107,13 @@ def _string(value: dict[str, Any], key: str) -> str:
 
 def _integer(value: dict[str, Any], key: str) -> int:
     item = value.get(key)
+    if not isinstance(item, int) or isinstance(item, bool):
+        raise ValueError(f"{key} must be an integer")
+    return item
+
+
+def _optional_integer(value: dict[str, Any], key: str, default: int) -> int:
+    item = value.get(key, default)
     if not isinstance(item, int) or isinstance(item, bool):
         raise ValueError(f"{key} must be an integer")
     return item

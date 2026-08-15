@@ -9,7 +9,10 @@ class DayCardModelTests(unittest.TestCase):
         days = [{"day": 0}, {"day": 1}, {"day": 2}]
         script = """
           import { visibleItineraryDays } from './web/day-card-model.mjs';
-          console.log(JSON.stringify(visibleItineraryDays({ days: JSON.parse(process.argv[1]) })));
+          console.log(JSON.stringify(visibleItineraryDays({
+            display_start_day: 1,
+            days: JSON.parse(process.argv[1]),
+          })));
         """
         result = subprocess.run(
             ["node", "--input-type=module", "--eval", script, json.dumps(days)],
@@ -23,6 +26,35 @@ class DayCardModelTests(unittest.TestCase):
         self.assertEqual(
             [day["day"] for day in json.loads(result.stdout)],
             [1, 2],
+        )
+
+    def test_visible_route_features_exclude_days_before_public_start(self):
+        geojson = {
+            "type": "FeatureCollection",
+            "features": [
+                {"properties": {"day_id": 0, "segment_id": "history"}},
+                {"properties": {"day_id": 1, "segment_id": "public"}},
+            ],
+        }
+        script = """
+          import { visibleRouteFeatures } from './web/day-card-model.mjs';
+          const geojson = JSON.parse(process.argv[1]);
+          const itinerary = { display_start_day: 1 };
+          console.log(JSON.stringify(visibleRouteFeatures(geojson, itinerary)));
+        """
+        result = subprocess.run(
+            ["node", "--input-type=module", "--eval", script, json.dumps(geojson)],
+            cwd=Path.cwd(),
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertEqual(
+            [feature["properties"]["segment_id"] for feature in payload["features"]],
+            ["public"],
         )
 
     def test_day_card_keeps_decision_fields_visible(self):

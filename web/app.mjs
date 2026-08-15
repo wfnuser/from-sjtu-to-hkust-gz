@@ -1,11 +1,15 @@
-import { selectRouteProfile } from "./route-profile.mjs?v=20260815-6";
+import { selectRouteProfile } from "./route-profile.mjs?v=20260815-7";
 import {
   rerouteComparisonText,
   rerouteFeaturesForOption,
   rerouteLineStyle,
 } from "./reroute-options.mjs";
 import { rerouteLabel } from "./reroute-status.mjs";
-import { dayCardModel, visibleItineraryDays } from "./day-card-model.mjs?v=20260815-6";
+import {
+  dayCardModel,
+  visibleItineraryDays,
+  visibleRouteFeatures,
+} from "./day-card-model.mjs?v=20260815-7";
 
 const routeProfile = selectRouteProfile(window.location.search);
 const GEOJSON_URL = routeProfile.geojsonUrl;
@@ -172,11 +176,21 @@ function renderMainTotals(summary) {
 }
 
 function renderItineraryTotals(itinerary, summary) {
-  const reviewCount = Number(summary?.main?.unresolved_count || 0);
+  const reviewCount = [...segmentGroups.values()].reduce(
+    (total, entry) => total + reviewFeaturesForEntry(entry).length,
+    0,
+  );
   const formatKilometres = (meters) => `${(Number(meters || 0) / 1000).toFixed(1)} km`;
+  const publicTotal = itinerary.public_total_distance_m ?? itinerary.total_distance_m;
+  const displayStartDay = Number(itinerary.display_start_day || 1);
+  const remainingStartDay = Number(itinerary.remaining_start_day || 2);
+  const publicDays = visibleItineraryDays(itinerary);
+  const lastDay = publicDays.length
+    ? Math.max(...publicDays.map((day) => Number(day.day)))
+    : displayStartDay;
   const values = [
-    ["全程", formatKilometres(itinerary.total_distance_m)],
-    ["Day 3–15 剩余", formatKilometres(itinerary.remaining_distance_m)],
+    [`Day ${displayStartDay}–${lastDay} 全程`, formatKilometres(publicTotal)],
+    [`Day ${remainingStartDay}–${lastDay} 剩余`, formatKilometres(itinerary.remaining_distance_m)],
     ["剩余日均", formatKilometres(itinerary.average_riding_distance_m)],
     ["待复核", reviewCount ? `${reviewCount} 段` : "无"],
   ];
@@ -580,7 +594,7 @@ async function loadRoute() {
     ]);
     if (!geojsonResponse.ok || !summaryResponse.ok) throw new Error("Route artifacts are unavailable");
     const [geojson, summary] = await Promise.all([geojsonResponse.json(), summaryResponse.json()]);
-    addFeatures(geojson);
+    addFeatures(itinerary ? visibleRouteFeatures(geojson, itinerary) : geojson);
     if (rerouteOptions) addRerouteOptions(rerouteOptions);
     if (!segmentGroups.size) throw new Error("No published road steps");
     if (itinerary) {

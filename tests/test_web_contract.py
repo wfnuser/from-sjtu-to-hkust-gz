@@ -81,10 +81,10 @@ class WebMapContractTests(unittest.TestCase):
         html = Path("web/index.html").read_text(encoding="utf-8")
         js = Path("web/app.mjs").read_text(encoding="utf-8")
 
-        self.assertIn("styles.css?v=20260815-6", html)
-        self.assertIn("app.mjs?v=20260815-6", html)
-        self.assertIn('route-profile.mjs?v=20260815-6', js)
-        self.assertIn('day-card-model.mjs?v=20260815-6', js)
+        self.assertIn("styles.css?v=20260815-7", html)
+        self.assertIn("app.mjs?v=20260815-7", html)
+        self.assertIn('route-profile.mjs?v=20260815-7', js)
+        self.assertIn('day-card-model.mjs?v=20260815-7', js)
 
     def test_map_consumes_branch_schema_and_targets_reviewed_step(self):
         """Would fail if branch labels or review links fell back to segment-wide inference."""
@@ -105,6 +105,8 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("renderDayCards", js)
         self.assertIn("fitDay", js)
         self.assertIn("properties.day_id", js)
+        self.assertIn("visibleRouteFeatures(geojson, itinerary)", js)
+        self.assertIn("public_total_distance_m", js)
         self.assertIn("renderItineraryTotals", js)
         self.assertIn("remaining_distance_m", js)
         self.assertIn("average_riding_distance_m", js)

@@ -364,7 +364,10 @@
       "to_name": "香港科技大学（广州）"
     }
   ],
+  "display_start_day": 1,
+  "public_total_distance_m": 1730622,
   "remaining_distance_m": 1619043,
+  "remaining_start_day": 2,
   "route_id": "inland-execution",
   "segment_days": {
     "day1-tongxiang-hotel-to-day3-xixi-campus": 3,

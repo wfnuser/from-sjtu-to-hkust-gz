@@ -105,6 +105,8 @@ class ExecutionItineraryBuildTests(unittest.TestCase):
 
         config = {
             "route_id": "inland-execution",
+            "display_start_day": 1,
+            "remaining_start_day": 3,
             "days": [
                 {"day": 0, "segments": ["a-to-b"], "distance_m": None},
                 {"day": 1, "segments": [], "distance_m": 0},
@@ -133,6 +135,9 @@ class ExecutionItineraryBuildTests(unittest.TestCase):
         self.assertEqual([day["duration_s"] for day in itinerary["days"]], [2_400, 0, 0, 3_600])
         self.assertEqual(itinerary["remaining_distance_m"], 18_000)
         self.assertEqual(itinerary["average_riding_distance_m"], 18_000)
+        self.assertEqual(itinerary["public_total_distance_m"], 18_000)
+        self.assertEqual(itinerary["display_start_day"], 1)
+        self.assertEqual(itinerary["remaining_start_day"], 3)
         self.assertEqual(itinerary["segment_days"], {"a-to-b": 0, "b-to-c": 3})
         self.assertEqual([feature["properties"]["day_id"] for feature in tagged["features"]], [0, 3])
 

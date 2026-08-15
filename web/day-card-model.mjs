@@ -15,7 +15,25 @@ function formatDuration(seconds) {
 /** Keep completed prelude data available while starting the public itinerary at Day 1. */
 export function visibleItineraryDays(itinerary) {
   const days = Array.isArray(itinerary?.days) ? itinerary.days : [];
-  return days.filter((day) => Number(day?.day) >= 1);
+  const startDay = Number.isInteger(Number(itinerary?.display_start_day))
+    ? Number(itinerary.display_start_day)
+    : 1;
+  return days.filter((day) => Number(day?.day) >= startDay);
+}
+
+/** Keep historical route geometry in artifacts while excluding it from the public map. */
+export function visibleRouteFeatures(geojson, itinerary) {
+  const startDay = Number.isInteger(Number(itinerary?.display_start_day))
+    ? Number(itinerary.display_start_day)
+    : 1;
+  const features = Array.isArray(geojson?.features) ? geojson.features : [];
+  return {
+    ...geojson,
+    features: features.filter((feature) => {
+      const dayId = Number(feature?.properties?.day_id);
+      return !Number.isInteger(dayId) || dayId >= startDay;
+    }),
+  };
 }
 
 /** Convert one published itinerary day into the decision fields shown in the sidebar. */
