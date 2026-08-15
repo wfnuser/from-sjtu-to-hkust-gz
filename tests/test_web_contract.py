@@ -71,7 +71,7 @@ class WebMapContractTests(unittest.TestCase):
         js = Path("web/app.mjs").read_text(encoding="utf-8")
 
         self.assertIn("内陆主线", html)
-        self.assertIn("宇宙 eBike 骑行路线（江西线）", html)
+        self.assertIn("宇宙骑行路线（江西线）", html)
         self.assertIn("上海交通大学 → 香港科技大学（广州）", html)
         self.assertIn("宁波支线", html)
         self.assertIn("深圳支线", html)
@@ -81,10 +81,10 @@ class WebMapContractTests(unittest.TestCase):
         html = Path("web/index.html").read_text(encoding="utf-8")
         js = Path("web/app.mjs").read_text(encoding="utf-8")
 
-        self.assertIn("styles.css?v=20260815-7", html)
-        self.assertIn("app.mjs?v=20260815-7", html)
-        self.assertIn('route-profile.mjs?v=20260815-7', js)
-        self.assertIn('day-card-model.mjs?v=20260815-7', js)
+        self.assertIn("styles.css?v=20260815-8", html)
+        self.assertIn("app.mjs?v=20260815-8", html)
+        self.assertIn('route-profile.mjs?v=20260815-8', js)
+        self.assertIn('day-card-model.mjs?v=20260815-8', js)
 
     def test_map_consumes_branch_schema_and_targets_reviewed_step(self):
         """Would fail if branch labels or review links fell back to segment-wide inference."""

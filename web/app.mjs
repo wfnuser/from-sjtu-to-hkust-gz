@@ -1,4 +1,4 @@
-import { selectRouteProfile } from "./route-profile.mjs?v=20260815-7";
+import { selectRouteProfile } from "./route-profile.mjs?v=20260815-8";
 import {
   rerouteComparisonText,
   rerouteFeaturesForOption,
@@ -9,7 +9,7 @@ import {
   dayCardModel,
   visibleItineraryDays,
   visibleRouteFeatures,
-} from "./day-card-model.mjs?v=20260815-7";
+} from "./day-card-model.mjs?v=20260815-8";
 
 const routeProfile = selectRouteProfile(window.location.search);
 const GEOJSON_URL = routeProfile.geojsonUrl;
