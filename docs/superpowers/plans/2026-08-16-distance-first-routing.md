@@ -173,6 +173,6 @@ Run: `python3 scripts/audit_route.py --config config/inland-execution-route.json
 
 Run: `git diff --check`, `node --check web/app.mjs`, verify `.env.local` is untracked, and inspect Day 3 distance, anchors, reviews, and selected route indices.
 
-- [ ] **Step 4: Commit and push**
+- [x] **Step 4: Commit and push**
 
 Commit implementation and generated artifacts with `feat: switch route planning to distance first`, push `main`, and verify `HEAD` equals `origin/main` with a clean worktree.
