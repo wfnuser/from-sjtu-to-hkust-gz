@@ -21,10 +21,20 @@ class Coordinate:
 
 
 @dataclass(frozen=True)
+class VerifiedSafeStep:
+    road_name: str
+    max_distance_m: int
+    evidence_url: str
+    evidence_note: str
+
+
+@dataclass(frozen=True)
 class SegmentRule:
     segment_id: str
     anchor_queries: tuple[str, ...] = ()
     parallel_road_available: bool = False
+    parallel_road_max_extra_m: int = 0
+    verified_safe_steps: tuple[VerifiedSafeStep, ...] = ()
     allowed_national_m: int = 0
     allowed_hard_risk_m: int = 0
     day: int | None = None

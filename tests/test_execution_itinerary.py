@@ -34,7 +34,10 @@ class ExecutionItineraryContractTests(unittest.TestCase):
         self.assertEqual(days[2]["key_waypoints"], ["阿里巴巴西溪园区"])
         self.assertEqual(days[3]["from_name"], "杭州未来科技城海创园地铁站亚朵酒店")
         self.assertEqual(days[3]["to_name"], "麗枫酒店（杭州建德新安江店）")
-        self.assertEqual(days[3]["key_waypoints"], ["捷安特自行车（桐庐店）", "富春江镇"])
+        self.assertEqual(
+            days[3]["key_waypoints"],
+            ["捷安特自行车（桐庐店）", "富春江镇", "新安绿道洋溪段"],
+        )
         self.assertEqual(days[14]["to_name"], "香港科技大学（广州）")
 
         names = [waypoint.name for waypoint in self.route.waypoints]
@@ -49,7 +52,51 @@ class ExecutionItineraryContractTests(unittest.TestCase):
         self.assertEqual(self.route.waypoints[13].city, "杭州")
         self.assertEqual(
             self.route.segment_rules["main-06-to-main-07"].anchor_queries,
-            ("桐庐县富春江镇",),
+            ("桐庐县富春江镇", "杭州::建德市新安绿道洋溪段"),
+        )
+
+    def test_published_day3_is_about_135_km_without_unresolved_hard_risk(self):
+        itinerary = json.loads(
+            Path("web/data/inland-itinerary.json").read_text(encoding="utf-8")
+        )
+        manifest = json.loads(
+            Path("web/data/inland-execution-route-manifest.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        geojson = json.loads(
+            Path("web/data/inland-execution-route.geojson").read_text(encoding="utf-8")
+        )
+
+        day3 = next(day for day in itinerary["days"] if day["day"] == 3)
+        self.assertGreaterEqual(day3["distance_m"], 134_000)
+        self.assertLessEqual(day3["distance_m"], 136_000)
+        day3_segments = [
+            segment
+            for segment in manifest["segments"]
+            if segment["rule"]["day"] == 3
+        ]
+        self.assertFalse(
+            any(
+                review["code"].startswith("HARD_RISK")
+                for segment in day3_segments
+                for review in segment["reviews"]
+            )
+        )
+        verified_step_features = [
+            feature
+            for feature in geojson["features"]
+            if feature["properties"]["segment_id"] == "main-06-to-main-07"
+            and feature["properties"]["road_name"] == "新安江互通"
+        ]
+        self.assertTrue(verified_step_features)
+        self.assertTrue(
+            all(
+                feature["properties"]["review_status"]
+                == "automatic_checks_passed"
+                and "hard" not in feature["properties"]["risk_tags"]
+                for feature in verified_step_features
+            )
         )
 
     def test_every_execution_segment_is_assigned_to_exactly_one_riding_day(self):

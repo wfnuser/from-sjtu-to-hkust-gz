@@ -2,14 +2,14 @@
 
 > **临时路线：仍需道路级复核。** 自动分类/审核不等于现场或权威道路核验；不得据此宣称已完全避开国道、高速或货运道路。
 
-- UNKNOWN：1094542 m（60.68%）；其中未命名道路 310738 m。
+- UNKNOWN：1079925 m（61.56%）；其中未命名道路 283918 m。
 - AMap 配额受限的补充探路清单见 `summary.json`；未完成的并行道路探测保持 provisional。
-- 国道例外须以 `NATIONAL_ROAD_EXCEPTION_APPROVED` 明确记录，且仍需道路级复核。
-- 江西线执行路线需24个骑行日，超过最多15个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留3天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。
+- 国道本身不阻断发布；仅在距离接近且有更安全平行道路时切换，硬风险和货运风险仍阻断。
+- 江西线执行路线需23个骑行日，超过最多15个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留3天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。
 
 ## 非执行排程诊断
 
-- 需要24个骑行日；最多15个骑行日，超出9天。
+- 需要23个骑行日；最多15个骑行日，超出8天。
 - 该路线不满足硬性排程约束，未渲染每日计划、住宿或网络安排。
 
 ## 路段状态
@@ -28,28 +28,28 @@
 | day1-yexin-west-to-day1-tongxiang-hotel | 叶新公路西段 | 桐乡万象汇振兴西路亚朵酒店 | 63487 | 12153 | 自动检查通过（仍需道路级复核） |
 | day1-tongxiang-hotel-to-day3-xixi-campus | 桐乡万象汇振兴西路亚朵酒店 | 阿里巴巴西溪园区 | 69336 | 13457 | 自动检查通过（仍需道路级复核） |
 | day3-xixi-campus-to-main-05 | 阿里巴巴西溪园区 | 杭州未来科技城海创园地铁站亚朵酒店 | 880 | 220 | 自动检查通过（仍需道路级复核） |
-| main-05-to-main-06 | 杭州未来科技城海创园地铁站亚朵酒店 | 捷安特自行车（桐庐店） | 79939 | 14878 | 自动检查通过（仍需道路级复核） |
-| main-06-to-main-07 | 捷安特自行车（桐庐店） | 麗枫酒店（杭州建德新安江店） | 61294 | 13264 | 阻断：不得作为可骑行路线发布 |
-| main-07-to-main-08 | 麗枫酒店（杭州建德新安江店） | 龙游 | 63900 | 14242 | 自动检查通过（仍需道路级复核） |
-| main-08-to-main-09 | 龙游 | 衢州 | 41857 | 8080 | 需人工复核 |
-| main-09-to-day5-changshan-hotel | 衢州 | 常山东方广场酒店 | 36799 | 7334 | 自动检查通过（仍需道路级复核） |
-| day5-changshan-hotel-to-main-10 | 常山东方广场酒店 | 玉山 | 44536 | 9795 | 自动检查通过（仍需道路级复核） |
+| main-05-to-main-06 | 杭州未来科技城海创园地铁站亚朵酒店 | 捷安特自行车（桐庐店） | 72638 | 14175 | 自动检查通过（仍需道路级复核） |
+| main-06-to-main-07 | 捷安特自行车（桐庐店） | 麗枫酒店（杭州建德新安江店） | 62077 | 13436 | 自动检查通过（仍需道路级复核） |
+| main-07-to-main-08 | 麗枫酒店（杭州建德新安江店） | 龙游 | 59360 | 13448 | 自动检查通过（仍需道路级复核） |
+| main-08-to-main-09 | 龙游 | 衢州 | 38834 | 7201 | 自动检查通过（仍需道路级复核） |
+| main-09-to-day5-changshan-hotel | 衢州 | 常山东方广场酒店 | 36775 | 6954 | 自动检查通过（仍需道路级复核） |
+| day5-changshan-hotel-to-main-10 | 常山东方广场酒店 | 玉山 | 39855 | 8830 | 自动检查通过（仍需道路级复核） |
 | main-10-to-main-11 | 玉山 | 上饶 | 43312 | 7845 | 自动检查通过（仍需道路级复核） |
-| main-11-to-day6-hengfeng-hotel | 上饶 | 维也纳酒店（上饶横峰古窑路店） | 37544 | 7967 | 自动检查通过（仍需道路级复核） |
-| day6-hengfeng-hotel-to-main-12 | 维也纳酒店（上饶横峰古窑路店） | 鹰潭 | 69471 | 14426 | 自动检查通过（仍需道路级复核） |
-| main-12-to-day7-dongxiang-hotel | 鹰潭 | 维也纳国际酒店（抚州东站店） | 59026 | 12236 | 需人工复核 |
-| day7-dongxiang-hotel-to-day8-nanfeng-hotel | 维也纳国际酒店（抚州东站店） | 维也纳国际酒店（南丰桔都大道店） | 144160 | 32597 | 自动检查通过（仍需道路级复核） |
-| day8-nanfeng-hotel-to-main-15 | 维也纳国际酒店（南丰桔都大道店） | 广昌 | 51380 | 12155 | 自动检查通过（仍需道路级复核） |
+| main-11-to-day6-hengfeng-hotel | 上饶 | 维也纳酒店（上饶横峰古窑路店） | 36175 | 7060 | 自动检查通过（仍需道路级复核） |
+| day6-hengfeng-hotel-to-main-12 | 维也纳酒店（上饶横峰古窑路店） | 鹰潭 | 61975 | 12298 | 自动检查通过（仍需道路级复核） |
+| main-12-to-day7-dongxiang-hotel | 鹰潭 | 维也纳国际酒店（抚州东站店） | 50728 | 10131 | 自动检查通过（仍需道路级复核） |
+| day7-dongxiang-hotel-to-day8-nanfeng-hotel | 维也纳国际酒店（抚州东站店） | 维也纳国际酒店（南丰桔都大道店） | 141290 | 32352 | 自动检查通过（仍需道路级复核） |
+| day8-nanfeng-hotel-to-main-15 | 维也纳国际酒店（南丰桔都大道店） | 广昌 | 50454 | 11976 | 自动检查通过（仍需道路级复核） |
 | main-15-to-main-16 | 广昌 | 汉庭酒店（赣州宁都州城文化街店） | 60255 | 14128 | 自动检查通过（仍需道路级复核） |
-| main-16-to-main-17 | 汉庭酒店（赣州宁都州城文化街店） | 维也纳酒店（于都高铁站店） | 113275 | 25204 | 需人工复核 |
+| main-16-to-main-17 | 汉庭酒店（赣州宁都州城文化街店） | 维也纳酒店（于都高铁站店） | 110434 | 24331 | 需人工复核 |
 | main-17-to-main-18 | 维也纳酒店（于都高铁站店） | 赣州 | 61050 | 11069 | 自动检查通过（仍需道路级复核） |
 | main-18-to-main-19 | 赣州 | 维也纳酒店（赣州信丰高铁西站店） | 72483 | 13978 | 自动检查通过（仍需道路级复核） |
-| main-19-to-main-20 | 维也纳酒店（赣州信丰高铁西站店） | 龙南 | 72000 | 17104 | 自动检查通过（仍需道路级复核） |
+| main-19-to-main-20 | 维也纳酒店（赣州信丰高铁西站店） | 龙南 | 69130 | 14908 | 自动检查通过（仍需道路级复核） |
 | main-20-to-main-21 | 龙南 | 定南 | 37038 | 8543 | 阻断：不得作为可骑行路线发布 |
 | main-21-to-main-22 | 定南 | 维也纳酒店（河源和平店） | 51881 | 12397 | 自动检查通过（仍需道路级复核） |
 | main-22-to-main-23 | 维也纳酒店（河源和平店） | 亚朵酒店（河源越王大道店） | 102824 | 24788 | 自动检查通过（仍需道路级复核） |
-| main-23-to-main-24 | 亚朵酒店（河源越王大道店） | 维也纳酒店（惠州博罗福田店） | 117817 | 24373 | 自动检查通过（仍需道路级复核） |
-| main-24-to-main-25 | 维也纳酒店（惠州博罗福田店） | 增城 | 22871 | 4206 | 自动检查通过（仍需道路级复核） |
+| main-23-to-main-24 | 亚朵酒店（河源越王大道店） | 维也纳酒店（惠州博罗福田店） | 115033 | 23451 | 自动检查通过（仍需道路级复核） |
+| main-24-to-main-25 | 维也纳酒店（惠州博罗福田店） | 增城 | 21505 | 4155 | 自动检查通过（仍需道路级复核） |
 | main-25-to-main-26 | 增城 | 番禺 | 93692 | 19531 | 自动检查通过（仍需道路级复核） |
 | main-26-to-main-27 | 番禺 | 香港科技大学（广州） | 17849 | 3461 | 自动检查通过（仍需道路级复核） |
 
@@ -260,8 +260,7 @@
 - `unknown` 未命名道路 — 17 m
 - `unknown` 未命名道路 — 252 m
 - `unknown` 未命名道路 — 75 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：进入嘉兴走廊包含约2.1公里G320及辅路连接，按实际生成路线记录。
+- 无自动生成的复核项。
 
 ### day1-tongxiang-hotel-to-day3-xixi-campus
 - `unknown` 未命名道路 — 69 m
@@ -314,8 +313,7 @@
 - `unknown` 未命名道路 — 42 m
 - `unknown` 阿里巴巴 — 109 m
 - `unknown` 未命名道路 — 136 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：桐乡至西溪最短连续路线包含约6.2公里G320及辅路，安排白天通过。
+- 无自动生成的复核项。
 
 ### day3-xixi-campus-to-main-05
 - `unknown` 未命名道路 — 183 m
@@ -343,32 +341,35 @@
 - `unknown` 闲富南路辅路 — 9410 m
 - `unknown` 富闲路辅路 — 1022 m
 - `unknown` 九龙大道辅路 — 3839 m
-- `national` 320国道辅路 — 1106 m
-- `unknown` 沪瑞线 — 107 m
-- `unknown` 沪瑞线 — 4417 m
-- `unknown` 高泰线 — 37 m
-- `unknown` 未命名道路 — 104 m
-- `unknown` 沪瑞线 — 7511 m
-- `provincial` 305省道辅路 — 5149 m
-- `provincial` 305省道辅路 — 4836 m
-- `unknown` 未命名道路 — 14 m
-- `provincial` 305省道辅路 — 2746 m
-- `unknown` 未命名道路 — 49 m
-- `provincial` 302省道 — 10 m
-- `unknown` 未命名道路 — 103 m
-- `provincial` 305省道 — 13783 m
-- `provincial` 305省道 — 50 m
-- `provincial` 305省道 — 23 m
-- `provincial` 305省道 — 3678 m
-- `county` 503县道 — 46 m
-- `unknown` 江南路 — 1173 m
+- `national` 320国道辅路 — 1173 m
+- `unknown` 未命名道路 — 84 m
+- `unknown` 恩波大道辅路 — 4687 m
+- `unknown` 北环路辅路 — 1045 m
+- `unknown` 金桥南路辅路 — 5907 m
+- `unknown` 未命名道路 — 1756 m
+- `unknown` 未命名道路 — 1652 m
+- `unknown` 未命名道路 — 35 m
+- `unknown` 横大线 — 30 m
+- `unknown` 横大线 — 2705 m
+- `unknown` 未命名道路 — 149 m
+- `unknown` 未命名道路 — 45 m
+- `unknown` 横大线 — 53 m
+- `unknown` 横大线 — 736 m
+- `unknown` 横大线 — 3009 m
+- `unknown` 窄后线 — 12141 m
+- `unknown` 未命名道路 — 223 m
+- `unknown` 未命名道路 — 157 m
+- `unknown` 未命名道路 — 384 m
+- `unknown` 未命名道路 — 61 m
+- `unknown` 未命名道路 — 536 m
+- `unknown` 未命名道路 — 51 m
+- `unknown` 江南路 — 1022 m
 - `unknown` 科技大道辅路 — 5283 m
 - `unknown` 未命名道路 — 45 m
 - `unknown` 凤川大道 — 804 m
 - `unknown` 未命名道路 — 5758 m
 - `unknown` 未命名道路 — 59 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：海创园至桐庐捷安特仅保留约1.2公里G320辅路连接。
+- 无自动生成的复核项。
 
 ### main-06-to-main-07
 - `unknown` 未命名道路 — 41 m
@@ -410,72 +411,75 @@
 - `unknown` 未命名道路 — 61 m
 - `unknown` 未命名道路 — 75 m
 - `unknown` 沪瑞线辅路 — 632 m
-- `unknown` 沪瑞线 — 4437 m
+- `unknown` 西朱线 — 372 m
+- `unknown` 朝阳路 — 413 m
+- `unknown` 未命名道路 — 214 m
+- `unknown` 江滨路 — 672 m
+- `cycleway` 新安绿道洋安段 — 58 m
+- `unknown` 江景路 — 335 m
+- `unknown` 沪瑞线 — 3156 m
 - `unknown` 未命名道路 — 66 m
 - `unknown` 新安东路辅路 — 2728 m
 - `unknown` 新安路 — 293 m
 - `unknown` 沧滩路 — 18 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：捷安特充电后经富春江镇，沿距离优先的沪瑞线连续通往建德；安排白天道路级复核。
-  - [warning] `HARD_RISK_EXCEPTION_APPROVED`：进入建德城区需短距离穿过新安江互通连接段；白天现场观察，无法确认非机动车通行条件时下车推行。
+- 无自动生成的复核项。
 
 ### main-07-to-main-08
 - `unknown` 沧滩路 — 18 m
 - `unknown` 严东关路 — 967 m
 - `unknown` 白沙路 — 163 m
 - `unknown` 白沙路 — 446 m
-- `unknown` 沪瑞线 — 9135 m
-- `unknown` 未命名道路 — 48 m
-- `provincial` 311省道 — 5891 m
-- `unknown` 东昌路 — 186 m
+- `unknown` 新衢路 — 2916 m
+- `unknown` 黄张线 — 2752 m
+- `unknown` 更石路 — 83 m
+- `unknown` 黄张线 — 5782 m
+- `unknown` 未命名道路 — 26 m
+- `unknown` 未命名道路 — 27 m
+- `unknown` 未命名道路 — 75 m
+- `unknown` 沪瑞线 — 1701 m
+- `unknown` 未命名道路 — 58 m
+- `unknown` 未命名道路 — 20 m
+- `unknown` 未命名道路 — 228 m
+- `unknown` 东昌路 — 830 m
 - `unknown` 东昌路 — 186 m
 - `provincial` 311省道 — 4203 m
 - `unknown` 沪瑞线 — 3624 m
 - `unknown` 沪瑞线 — 15098 m
 - `unknown` 未命名道路 — 22 m
-- `national` 320国道 — 8359 m
-- `county` 701乡道 — 453 m
-- `county` 701乡道 — 1503 m
-- `county` 702县道 — 314 m
-- `county` 702县道 — 428 m
-- `unknown` 未命名道路 — 2953 m
-- `unknown` 环城东路 — 23 m
-- `unknown` 未命名道路 — 32 m
-- `unknown` 环城东路 — 642 m
-- `unknown` 未命名道路 — 32 m
-- `unknown` 环城东路 — 59 m
-- `unknown` 环城东路 — 2830 m
-- `unknown` 龙翔东路 — 41 m
-- `unknown` 龙翔东路 — 3044 m
-- `unknown` 学士路 — 1545 m
-- `unknown` 东阁桥 — 1642 m
+- `national` 320国道 — 13126 m
+- `unknown` 未命名道路 — 1324 m
+- `unknown` 未命名道路 — 175 m
+- `unknown` 未命名道路 — 68 m
+- `unknown` 未命名道路 — 106 m
+- `provincial` 21省道 — 4280 m
+- `unknown` 太平东路 — 1043 m
 - `unknown` 未命名道路 — 13 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：寿昌锚点避开新安江互通，剩余短国道连接段白天复核。
+- 无自动生成的复核项。
 
 ### main-08-to-main-09
 - `unknown` 未命名道路 — 13 m
-- `unknown` 太平西路 — 395 m
-- `unknown` 太平西路 — 125 m
-- `unknown` 人民路 — 29 m
-- `unknown` 未命名道路 — 40 m
-- `unknown` 未命名道路 — 54 m
-- `unknown` 太平西路 — 146 m
-- `unknown` 环城西路 — 28 m
-- `unknown` 太平西路 — 468 m
-- `unknown` 竹海路 — 325 m
-- `national` 320国道 — 3069 m
+- `unknown` 太平西路 — 321 m
+- `unknown` 体育馆路 — 187 m
+- `unknown` 岑山路 — 232 m
+- `unknown` 人民路 — 159 m
+- `national` 320国道 — 3744 m
 - `national` 320国道 — 125 m
 - `unknown` 未命名道路 — 18 m
 - `unknown` 未命名道路 — 27 m
 - `unknown` 未命名道路 — 27 m
-- `unknown` 未命名道路 — 827 m
-- `unknown` 未命名道路 — 199 m
-- `unknown` 未命名道路 — 2894 m
-- `unknown` 未命名道路 — 1744 m
-- `unknown` 平团线 — 1027 m
-- `unknown` 沿江公路 — 7533 m
-- `unknown` 桂溪路 — 960 m
+- `unknown` 未命名道路 — 28 m
+- `national` 320国道 — 82 m
+- `national` 320国道 — 2907 m
+- `national` 320国道 — 65 m
+- `national` 320国道 — 4249 m
+- `unknown` 中央徐大桥 — 2523 m
+- `unknown` 未命名道路 — 202 m
+- `unknown` 未命名道路 — 13 m
+- `unknown` 未命名道路 — 134 m
+- `unknown` 未命名道路 — 1215 m
+- `unknown` 未命名道路 — 105 m
+- `unknown` 书香路 — 132 m
+- `unknown` 桂溪路 — 542 m
 - `unknown` 大桥北路 — 74 m
 - `unknown` 未命名道路 — 43 m
 - `unknown` 未命名道路 — 43 m
@@ -493,38 +497,27 @@
 - `unknown` 九华北大道 — 62 m
 - `unknown` 九华北大道 — 599 m
 - `unknown` 未命名道路 — 59 m
-- 待处理复核项：
-  - [warning] `DETOUR_OVER_15_PERCENT`：Anchored route exceeds the 15% detour limit.
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：詹家与高家锚点减少连续国道暴露。
+- 无自动生成的复核项。
 
 ### main-09-to-day5-changshan-hotel
 - `unknown` 未命名道路 — 59 m
 - `unknown` 三江东路 — 382 m
 - `unknown` 未命名道路 — 208 m
 - `unknown` 九龙南路 — 605 m
-- `unknown` 白云中大道 — 374 m
-- `unknown` 灵溪路 — 662 m
-- `unknown` 双岭中路 — 535 m
-- `unknown` 钱江大道 — 261 m
-- `unknown` 钱江大道 — 2611 m
-- `unknown` 钱江大道 — 270 m
-- `unknown` 黄山大道 — 17 m
-- `unknown` 未命名道路 — 33 m
-- `unknown` 钱江大道 — 39 m
-- `unknown` 钱江大道 — 712 m
-- `unknown` 石华线 — 30 m
-- `unknown` 未命名道路 — 43 m
-- `unknown` 柯城大道 — 45 m
-- `unknown` 柯城大道 — 2380 m
-- `unknown` 未命名道路 — 7086 m
-- `unknown` 常河线 — 36 m
-- `unknown` 常河线 — 1801 m
-- `unknown` 95号公路 — 1087 m
-- `unknown` 招五线 — 441 m
-- `unknown` 招五线 — 55 m
-- `unknown` 兴贤路 — 170 m
-- `unknown` 兴贤路 — 282 m
-- `unknown` 振贤路 — 6722 m
+- `unknown` 白云中大道 — 571 m
+- `unknown` 未命名道路 — 869 m
+- `unknown` 智慧大道 — 33 m
+- `unknown` 未命名道路 — 32 m
+- `unknown` 衢县路 — 55 m
+- `unknown` 衢县路 — 2072 m
+- `unknown` 江山路 — 1399 m
+- `national` 320国道 — 1658 m
+- `unknown` 石华线 — 43 m
+- `unknown` 未命名道路 — 40 m
+- `national` 320国道 — 77 m
+- `national` 320国道 — 3311 m
+- `national` 320国道 — 134 m
+- `unknown` 振贤路 — 15374 m
 - `national` 320国道 — 91 m
 - `national` 320国道 — 1342 m
 - `unknown` 未命名道路 — 11 m
@@ -535,8 +528,7 @@
 - `unknown` 琴雅路 — 273 m
 - `unknown` 春江路 — 121 m
 - `unknown` 春江路 — 42 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：进入常山包含约1.4公里G320连接段。
+- 无自动生成的复核项。
 
 ### day5-changshan-hotel-to-main-10
 - `unknown` 春江路 — 78 m
@@ -551,22 +543,14 @@
 - `unknown` 朝阳路 — 6610 m
 - `unknown` 耀光路 — 10722 m
 - `unknown` 利川南路 — 21 m
-- `national` 320国道 — 6881 m
-- `county` 651县道 — 3557 m
-- `unknown` 未命名道路 — 48 m
-- `unknown` 未命名道路 — 1221 m
-- `unknown` 未命名道路 — 2874 m
-- `unknown` 未命名道路 — 375 m
-- `unknown` 未命名道路 — 1053 m
-- `unknown` 未命名道路 — 60 m
-- `unknown` 玉紫线 — 4719 m
+- `national` 320国道 — 15549 m
+- `unknown` 东外环路 — 558 m
 - `unknown` 玉紫路 — 3151 m
 - `unknown` 玉华中路 — 349 m
 - `unknown` 府前路 — 142 m
 - `unknown` 未命名道路 — 30 m
 - `unknown` 未命名道路 — 20 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：常山至玉山包含约6.9公里G320连续连接段，安排白天通过。
+- 无自动生成的复核项。
 
 ### main-10-to-main-11
 - `unknown` 未命名道路 — 20 m
@@ -601,8 +585,7 @@
 - `unknown` 未命名道路 — 41 m
 - `unknown` 未命名道路 — 130 m
 - `unknown` 未命名道路 — 176 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：玉山至上饶仅保留必要的短连接段。
+- 无自动生成的复核项。
 
 ### main-11-to-day6-hengfeng-hotel
 - `unknown` 未命名道路 — 52 m
@@ -616,24 +599,14 @@
 - `unknown` 未命名道路 — 869 m
 - `unknown` 未命名道路 — 150 m
 - `unknown` 未命名道路 — 17 m
-- `unknown` 三清山西大道 — 5008 m
-- `county` 627县道 — 120 m
-- `county` 627县道 — 2677 m
-- `county` 628县道 — 4030 m
-- `county` 628县道 — 3522 m
-- `county` 628县道 — 6388 m
-- `county` 628县道 — 475 m
-- `unknown` 未命名道路 — 73 m
-- `unknown` 未命名道路 — 186 m
-- `national` 320国道 — 2789 m
+- `national` 320国道 — 23899 m
 - `unknown` 未命名道路 — 2776 m
 - `unknown` 未命名道路 — 845 m
 - `unknown` 解放东路 — 2152 m
 - `unknown` 古窑中大道 — 1095 m
 - `unknown` 未命名道路 — 38 m
 - `unknown` 未命名道路 — 34 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：上饶至横峰包含约2.8公里G320短连接。
+- 无自动生成的复核项。
 
 ### day6-hengfeng-hotel-to-main-12
 - `unknown` 未命名道路 — 34 m
@@ -659,15 +632,7 @@
 - `unknown` 未命名道路 — 20 m
 - `unknown` 未命名道路 — 34 m
 - `unknown` 龟峰大道 — 48 m
-- `unknown` 龟峰大道 — 2217 m
-- `county` 682县道 — 6094 m
-- `county` 682县道 — 375 m
-- `county` 682县道 — 5268 m
-- `unknown` 未命名道路 — 270 m
-- `county` 682县道 — 1083 m
-- `county` 682县道 — 21 m
-- `county` 683县道 — 7135 m
-- `national` 320国道 — 350 m
+- `national` 320国道 — 15317 m
 - `unknown` 未命名道路 — 2099 m
 - `unknown` 象山大道 — 1878 m
 - `unknown` 未命名道路 — 56 m
@@ -688,55 +653,40 @@
 - `unknown` 未命名道路 — 123 m
 - `unknown` 未命名道路 — 68 m
 - `unknown` 未命名道路 — 123 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：横峰至鹰潭包含约10.3公里G320连接，安排白天通过。
+- 无自动生成的复核项。
 
 ### main-12-to-day7-dongxiang-hotel
 - `unknown` 未命名道路 — 118 m
-- `unknown` 未命名道路 — 67 m
-- `unknown` 未命名道路 — 138 m
-- `unknown` 未命名道路 — 190 m
-- `unknown` 德政路 — 304 m
-- `unknown` 鹰潭大道 — 1621 m
-- `unknown` 麒麟西大道 — 25 m
-- `unknown` 未命名道路 — 37 m
-- `unknown` 未命名道路 — 45 m
-- `unknown` 未命名道路 — 1883 m
-- `unknown` 未命名道路 — 2126 m
-- `unknown` 未命名道路 — 1720 m
-- `unknown` 未命名道路 — 815 m
-- `unknown` 未命名道路 — 456 m
-- `unknown` 未命名道路 — 912 m
-- `county` 536乡道 — 973 m
-- `unknown` 未命名道路 — 110 m
-- `unknown` 未命名道路 — 629 m
-- `unknown` 未命名道路 — 717 m
-- `national` 206国道 — 6343 m
-- `unknown` 未命名道路 — 61 m
-- `unknown` 未命名道路 — 34 m
-- `county` 121乡道 — 85 m
-- `unknown` 未命名道路 — 93 m
-- `national` 206国道 — 1742 m
-- `county` 317县道 — 5847 m
-- `unknown` 未命名道路 — 368 m
-- `unknown` 未命名道路 — 226 m
-- `unknown` 未命名道路 — 441 m
-- `unknown` 春朱段 — 21 m
-- `unknown` 春朱段 — 4381 m
-- `unknown` 未命名道路 — 34 m
-- `county` 315县道 — 816 m
-- `county` 315县道 — 2923 m
-- `national` 236国道 — 19485 m
-- `national` 320国道 — 2190 m
+- `unknown` 未命名道路 — 72 m
+- `unknown` 未命名道路 — 120 m
+- `unknown` 和平路 — 940 m
+- `unknown` 龙虎山北大道 — 1486 m
+- `unknown` 麒麟西大道 — 47 m
+- `unknown` 未命名道路 — 40 m
+- `unknown` 龙虎山北大道 — 75 m
+- `unknown` 龙虎山大道 — 1354 m
+- `unknown` 未命名道路 — 94 m
+- `unknown` 西湖路 — 23 m
+- `unknown` 未命名道路 — 32 m
+- `unknown` 龙虎山中大道 — 45 m
+- `unknown` 龙虎山中大道 — 544 m
+- `unknown` 四海西路 — 25 m
+- `unknown` 龙虎山中大道 — 906 m
+- `unknown` 未命名道路 — 569 m
+- `unknown` 天洁西路 — 666 m
+- `unknown` 金桥南路 — 1315 m
+- `unknown` 鹰南大道 — 10235 m
+- `national` 320国道 — 11979 m
+- `national` 320国道 — 44 m
+- `national` 320国道 — 16501 m
+- `national` 320国道 — 2448 m
 - `unknown` 未命名道路 — 97 m
 - `unknown` 未命名道路 — 445 m
 - `unknown` 未命名道路 — 218 m
 - `unknown` 艾兴大道 — 165 m
 - `unknown` 兴民路 — 14 m
 - `unknown` 艾兴大道 — 111 m
-- 待处理复核项：
-  - [warning] `DETOUR_OVER_15_PERCENT`：Anchored route exceeds the 15% detour limit.
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：鹰潭至抚州东站距离优先路线包含约29.8公里G206/G236/G320，连续大车流明显时停下改线。
+- 无自动生成的复核项。
 
 ### day7-dongxiang-hotel-to-day8-nanfeng-hotel
 - `unknown` 艾兴大道 — 118 m
@@ -748,16 +698,13 @@
 - `unknown` 环城西路 — 16 m
 - `unknown` 未命名道路 — 23 m
 - `unknown` 未命名道路 — 42 m
-- `county` 981县道 — 9033 m
-- `unknown` 东临公路 — 3364 m
-- `unknown` 东临公路 — 3202 m
-- `unknown` 瑶虎段 — 2355 m
-- `unknown` 瑶虎段 — 1367 m
-- `unknown` 未命名道路 — 449 m
-- `county` 965县道 — 1266 m
-- `county` 965县道 — 1805 m
-- `unknown` 未命名道路 — 1679 m
-- `county` 945县道 — 10337 m
+- `unknown` 龙山大道 — 6911 m
+- `unknown` 堪虎段 — 23 m
+- `unknown` 虎西段 — 13371 m
+- `county` 965县道 — 456 m
+- `unknown` 未命名道路 — 1979 m
+- `unknown` 未命名道路 — 1559 m
+- `county` 945县道 — 7688 m
 - `county` 946县道 — 6390 m
 - `unknown` 下街 — 2193 m
 - `national` 316国道 — 84 m
@@ -802,8 +749,7 @@
 - `unknown` 傩丰路 — 120 m
 - `unknown` 未命名道路 — 63 m
 - `unknown` 未命名道路 — 46 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：浒湾、万坊顺路锚点将当日拆为三个补给子段；约35公里G206安排白天通过并按现场车流调整。
+- 无自动生成的复核项。
 
 ### day8-nanfeng-hotel-to-main-15
 - `unknown` 未命名道路 — 46 m
@@ -822,16 +768,15 @@
 - `national` 206国道 — 5982 m
 - `unknown` 红军大道 — 143 m
 - `unknown` 未命名道路 — 38 m
-- `unknown` 红军大道 — 3552 m
-- `unknown` 莲爽大道 — 968 m
-- `unknown` 西沿河路 — 1122 m
+- `unknown` 红军大道 — 295 m
+- `provincial` 222省道 — 37 m
+- `national` 528国道 — 4384 m
 - `unknown` 莲乡大道 — 572 m
 - `unknown` 府一路 — 124 m
 - `unknown` 未命名道路 — 21 m
 - `unknown` 未命名道路 — 28 m
 - `unknown` 未命名道路 — 72 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：南丰至广昌距离优先路线包含约39.2公里G206，安排白天通过并按现场大车流调整。
+- 无自动生成的复核项。
 
 ### main-15-to-main-16
 - `unknown` 未命名道路 — 72 m
@@ -855,8 +800,7 @@
 - `unknown` 未命名道路 — 36 m
 - `unknown` 中山北路 — 46 m
 - `unknown` 中山北路 — 997 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：广昌至宁都仅保留短连接段。
+- 无自动生成的复核项。
 
 ### main-16-to-main-17
 - `unknown` 中山路 — 1223 m
@@ -899,45 +843,35 @@
 - `unknown` 未命名道路 — 2025 m
 - `county` 387县道 — 3786 m
 - `county` 428县道 — 788 m
-- `county` 428县道 — 1750 m
-- `unknown` 未命名道路 — 1286 m
-- `unknown` 未命名道路 — 163 m
-- `national` 319国道 — 53 m
-- `national` 319国道 — 6841 m
-- `unknown` 未命名道路 — 716 m
-- `unknown` 未命名道路 — 661 m
-- `unknown` 未命名道路 — 262 m
-- `unknown` 未命名道路 — 305 m
-- `unknown` 未命名道路 — 1119 m
-- `unknown` 未命名道路 — 382 m
-- `county` 433县道 — 38 m
-- `county` 433县道 — 3350 m
-- `county` 433县道 — 1191 m
-- `provincial` 451省道 — 54 m
-- `county` 433县道 — 662 m
-- `county` 433县道 — 2975 m
-- `county` 433县道 — 1885 m
-- `county` 433县道 — 418 m
-- `county` 433县道 — 454 m
-- `unknown` 未命名道路 — 21 m
-- `unknown` 未命名道路 — 181 m
-- `county` 862乡道 — 1182 m
-- `unknown` 未命名道路 — 68 m
-- `unknown` 未命名道路 — 694 m
-- `unknown` 未命名道路 — 1873 m
-- `unknown` 未命名道路 — 1447 m
-- `unknown` 未命名道路 — 1663 m
-- `unknown` 未命名道路 — 1999 m
-- `unknown` 未命名道路 — 739 m
-- `unknown` 未命名道路 — 211 m
-- `unknown` 未命名道路 — 5261 m
-- `county` 545乡道 — 377 m
-- `unknown` 未命名道路 — 790 m
-- `provincial` 543省道 — 3805 m
-- `provincial` 543省道 — 217 m
-- `provincial` 543省道 — 463 m
-- `provincial` 543省道 — 1426 m
-- `national` 319国道 — 33 m
+- `county` 428县道 — 1770 m
+- `unknown` 未命名道路 — 297 m
+- `unknown` 未命名道路 — 221 m
+- `unknown` 未命名道路 — 1474 m
+- `unknown` 未命名道路 — 114 m
+- `unknown` 未命名道路 — 60 m
+- `unknown` 未命名道路 — 1076 m
+- `county` 500乡道 — 420 m
+- `county` 500乡道 — 322 m
+- `unknown` 未命名道路 — 174 m
+- `unknown` 未命名道路 — 1045 m
+- `unknown` 未命名道路 — 250 m
+- `unknown` 未命名道路 — 2128 m
+- `unknown` 未命名道路 — 1124 m
+- `provincial` 451省道 — 1164 m
+- `provincial` 451省道 — 3359 m
+- `provincial` 451省道 — 29 m
+- `provincial` 451省道 — 576 m
+- `unknown` 未命名道路 — 1765 m
+- `unknown` 未命名道路 — 635 m
+- `unknown` 未命名道路 — 1508 m
+- `unknown` 未命名道路 — 2724 m
+- `unknown` 未命名道路 — 271 m
+- `unknown` 未命名道路 — 139 m
+- `county` 543乡道 — 6459 m
+- `county` 543乡道 — 768 m
+- `national` 319国道 — 204 m
+- `national` 319国道 — 8968 m
+- `national` 319国道 — 5130 m
 - `national` 319国道 — 698 m
 - `provincial` 219省道 — 4465 m
 - `provincial` 219省道 — 18390 m
@@ -949,7 +883,6 @@
 - `unknown` 未命名道路 — 11 m
 - 待处理复核项：
   - [warning] `DETOUR_OVER_15_PERCENT`：Anchored route exceeds the 15% detour limit.
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：黄石与银坑锚点减少国道暴露并避开互通。
 
 ### main-17-to-main-18
 - `unknown` 未命名道路 — 11 m
@@ -1008,8 +941,7 @@
 - `unknown` 赞贤路 — 596 m
 - `unknown` 长征大道辅路 — 174 m
 - `unknown` 未命名道路 — 170 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：于都至赣州连续走廊替代线绕行过长，安排白天通过。
+- 无自动生成的复核项。
 
 ### main-18-to-main-19
 - `unknown` 未命名道路 — 170 m
@@ -1075,8 +1007,7 @@
 - `unknown` 未命名道路 — 31 m
 - `unknown` 未命名道路 — 256 m
 - `unknown` 未命名道路 — 191 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：沙石与王母渡锚点避开高架和高速入口。
+- 无自动生成的复核项。
 
 ### main-19-to-main-20
 - `unknown` 未命名道路 — 15 m
@@ -1090,29 +1021,27 @@
 - `national` 105国道 — 2591 m
 - `national` 105国道 — 2507 m
 - `national` 105国道 — 816 m
-- `national` 105国道 — 5909 m
-- `county` 877县道 — 276 m
-- `county` 877县道 — 7527 m
-- `unknown` 未命名道路 — 1849 m
-- `county` 878县道 — 1550 m
-- `county` 878县道 — 2494 m
-- `county` 878县道 — 4535 m
-- `county` 878县道 — 431 m
-- `county` 878县道 — 393 m
-- `unknown` 民主街 — 3956 m
-- `unknown` 未命名道路 — 220 m
-- `unknown` 解放街 — 116 m
-- `unknown` 红旗大道 — 604 m
-- `unknown` 明珠街 — 577 m
-- `unknown` 龙翔大道辅路 — 727 m
-- `unknown` 龙翔大道 — 221 m
-- `unknown` 翼龙路 — 42 m
-- `unknown` 未命名道路 — 54 m
+- `national` 105国道 — 18468 m
+- `national` 105国道 — 1110 m
+- `unknown` 未命名道路 — 47 m
+- `county` 303乡道 — 774 m
+- `unknown` 未命名道路 — 2813 m
+- `unknown` 迎宾大道 — 57 m
+- `unknown` 未命名道路 — 61 m
+- `unknown` 龙南大道 — 122 m
+- `unknown` 龙南大道 — 584 m
+- `unknown` 龙南大道辅路 — 3513 m
+- `unknown` 龙翔大道 — 67 m
+- `unknown` 龙翔大道辅路 — 550 m
+- `unknown` 未命名道路 — 42 m
+- `unknown` 龙翔大道 — 66 m
+- `unknown` 龙翔大道 — 264 m
+- `unknown` 翼龙路 — 39 m
+- `unknown` 未命名道路 — 34 m
 - `unknown` 龙翔大道 — 82 m
 - `unknown` 龙翔大道 — 49 m
 - `unknown` 未命名道路 — 39 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：信丰至龙南为重点人工复核段；仅在白天、天气和现场车流允许时使用。
+- 无自动生成的复核项。
 
 ### main-20-to-main-21
 - `unknown` 未命名道路 — 39 m
@@ -1158,7 +1087,6 @@
 - `unknown` 未命名道路 — 76 m
 - `unknown` 未命名道路 — 26 m
 - 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：龙南至定南的最短连续铺装通道包含约27公里G535；安排白天通过，现场发现连续大车流时停止并改线。
   - [warning] `HARD_RISK_EXCEPTION_APPROVED`：出龙南城区需短距离穿过龙南互通连接段；白天现场观察，无法确认非机动车通行条件时下车推行。
 
 ### main-21-to-main-22
@@ -1192,8 +1120,7 @@
 - `unknown` 工业大道 — 53 m
 - `unknown` 工业大道 — 156 m
 - `unknown` 未命名道路 — 48 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：粤赣山谷距离优先路线实际包含约42.7公里G358，安排白天并按现场车流决定。
+- 无自动生成的复核项。
 
 ### main-22-to-main-23
 - `unknown` 未命名道路 — 48 m
@@ -1261,8 +1188,7 @@
 - `unknown` 长安东路 — 28 m
 - `unknown` 未命名道路 — 50 m
 - `unknown` 未命名道路 — 71 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：船塘锚点后的距离优先路线包含约44.5公里G358/G205，安排白天并按现场车流调整。
+- 无自动生成的复核项。
 
 ### main-23-to-main-24
 - `unknown` 未命名道路 — 71 m
@@ -1327,27 +1253,15 @@
 - `national` 205国道 — 93 m
 - `national` 205国道 — 7375 m
 - `national` 205国道 — 1423 m
-- `unknown` 未命名道路 — 83 m
-- `unknown` 未命名道路 — 642 m
-- `unknown` 双杨路 — 29 m
-- `unknown` 未命名道路 — 30 m
-- `unknown` 双杨路 — 15 m
-- `unknown` 双杨大道 — 57 m
-- `unknown` 双杨大道 — 1152 m
-- `unknown` 双杨大道 — 112 m
-- `unknown` 双杨大道 — 429 m
-- `unknown` 未命名道路 — 30 m
-- `unknown` 未命名道路 — 28 m
-- `unknown` 双杨大道 — 54 m
-- `unknown` 双杨大道 — 1118 m
-- `unknown` 未命名道路 — 51 m
-- `unknown` 未命名道路 — 19 m
-- `unknown` 双杨大道 — 62 m
-- `unknown` 双杨大道 — 3004 m
-- `unknown` 双杨大道 — 881 m
-- `county` 218县道 — 777 m
-- `unknown` 金杨大道 — 16 m
-- `unknown` 未命名道路 — 28 m
+- `unknown` 未命名道路 — 48 m
+- `unknown` 未命名道路 — 42 m
+- `unknown` 未命名道路 — 49 m
+- `national` 205国道 — 799 m
+- `unknown` 杨侨大道 — 39 m
+- `unknown` 未命名道路 — 45 m
+- `unknown` 未命名道路 — 76 m
+- `unknown` 未命名道路 — 392 m
+- `unknown` 杨侨大道 — 4343 m
 - `unknown` 杨新一路 — 28 m
 - `unknown` 飞鹅二路 — 1295 m
 - `unknown` 飞鹅二路 — 437 m
@@ -1380,22 +1294,26 @@
 - `unknown` 福园路 — 483 m
 - `unknown` 广贵路 — 51 m
 - `unknown` 未命名道路 — 20 m
-- 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：埔前与杨村锚点后的距离优先路线包含约22.5公里国道连接，安排白天通过。
+- 无自动生成的复核项。
 
 ### main-24-to-main-25
 - `unknown` 未命名道路 — 20 m
 - `unknown` 广贵路 — 51 m
 - `unknown` 福园路 — 483 m
-- `unknown` 广汕公路 — 10808 m
-- `unknown` 牛利社路 — 1510 m
-- `unknown` 未命名道路 — 1520 m
-- `tourism` 环南昆山罗浮山引领区最美旅游公路 — 110 m
-- `tourism` 环南昆山罗浮山引领区最美旅游公路 — 2245 m
-- `unknown` 沿江东路 — 213 m
-- `unknown` 沿江东路 — 2346 m
-- `unknown` 未命名道路 — 91 m
-- `unknown` 雁塔大桥 — 387 m
+- `unknown` 广汕公路 — 14109 m
+- `unknown` 鹤源路 — 33 m
+- `unknown` 未命名道路 — 29 m
+- `unknown` 广汕公路 — 58 m
+- `unknown` 广汕公路 — 1250 m
+- `unknown` 经三路 — 22 m
+- `unknown` 未命名道路 — 19 m
+- `unknown` 广汕公路 — 35 m
+- `unknown` 广汕公路 — 215 m
+- `unknown` 广汕公路 — 679 m
+- `unknown` 增江大道南 — 43 m
+- `unknown` 未命名道路 — 52 m
+- `unknown` 广汕公路 — 75 m
+- `unknown` 雁塔大桥 — 1245 m
 - `unknown` 荔城沿江西路 — 18 m
 - `unknown` 未命名道路 — 394 m
 - `unknown` 未命名道路 — 52 m

@@ -17,11 +17,10 @@ from route_planner.amap import load_amap_key
 from route_planner.artifacts import ArtifactPaths
 from route_planner.config import load_route_config
 from route_planner.manifest import load_manifest
-from route_planner.models import PlannedSegment, ReviewItem, RoadClass, RouteConfig, Waypoint
-from route_planner.roads import classify_risks, classify_road
+from route_planner.models import PlannedSegment, ReviewItem, RouteConfig, Waypoint
+from route_planner.roads import effective_risk_tags
 
 
-NATIONAL_EXCEPTION_APPROVAL = "NATIONAL_ROAD_EXCEPTION_APPROVED"
 HARD_RISK_EXCEPTION_APPROVAL = "HARD_RISK_EXCEPTION_APPROVED"
 
 
@@ -72,18 +71,15 @@ def _audit_segment(segment: PlannedSegment) -> list[ReviewItem]:
     for distance_m in segment.subleg_distances_m:
         if distance_m > 80_000:
             items.append(_item("SUBLEG_OVER_80_KM", segment.segment_id, "API subleg exceeds 80 km.", distance_m))
-    national_distance_m = 0
     hard_risk_distance_m = 0
     hard_risk_road = ""
     for step in segment.selected.steps:
-        risk_tags = step.risk_tags | classify_risks(step.road_name, step.instruction)
+        risk_tags = effective_risk_tags(step, segment.rule.verified_safe_steps)
         if "hard" in risk_tags:
             hard_risk_distance_m += step.distance_m
             hard_risk_road = hard_risk_road or step.road_name
         if "freight" in risk_tags:
             items.append(_item("FREIGHT_RISK", segment.segment_id, "Freight-risk road step is selected.", step.distance_m, step.road_name))
-        if classify_road(step.road_name, step.instruction) is RoadClass.NATIONAL:
-            national_distance_m += step.distance_m
     hard_risk_approved = any(
         item.code == HARD_RISK_EXCEPTION_APPROVAL
         and item.distance_m == hard_risk_distance_m
@@ -103,13 +99,6 @@ def _audit_segment(segment: PlannedSegment) -> list[ReviewItem]:
                 hard_risk_road,
             )
         )
-    if national_distance_m:
-        if segment.rule.parallel_road_available and national_distance_m > segment.rule.allowed_national_m:
-            items.append(_item("PARALLEL_ROAD_RULE_VIOLATION", segment.segment_id, "National road selected despite an available parallel road.", national_distance_m))
-        elif national_distance_m > segment.rule.allowed_national_m:
-            items.append(_item("NATIONAL_ROAD_ALLOWANCE_EXCEEDED", segment.segment_id, "National-road distance exceeds the measured unavoidable allowance.", national_distance_m))
-        elif not any(item.code == NATIONAL_EXCEPTION_APPROVAL for item in segment.reviews):
-            items.append(_item("NATIONAL_ROAD_EXCEPTION_UNREVIEWED", segment.segment_id, "National-road use lacks an explicit recorded review approval.", national_distance_m))
     return items
 
 

@@ -165,9 +165,11 @@ def _reviews(
                     distance_m=distance_m,
                 )
             )
-    national_m = candidate_metrics(selected).national_m
+    national_m = candidate_metrics(selected, rule.verified_safe_steps).national_m
     if (
-        national_m
+        rule.parallel_road_available
+        and rule.parallel_road_max_extra_m > 0
+        and national_m
         and national_m <= rule.allowed_national_m
         and rule.national_exception_reason.strip()
     ):
@@ -180,7 +182,7 @@ def _reviews(
                 distance_m=national_m,
             )
         )
-    hard_risk_m = candidate_metrics(selected).hard_risk_m
+    hard_risk_m = candidate_metrics(selected, rule.verified_safe_steps).hard_risk_m
     if (
         hard_risk_m
         and hard_risk_m <= rule.allowed_hard_risk_m

@@ -1,6 +1,13 @@
 import unittest
 
-from route_planner.models import CandidateRoute, Coordinate, RoadClass, RouteStep, SegmentRule
+from route_planner.models import (
+    CandidateRoute,
+    Coordinate,
+    RoadClass,
+    RouteStep,
+    SegmentRule,
+    VerifiedSafeStep,
+)
 from route_planner.roads import (
     ReviewRequired,
     candidate_metrics,
@@ -130,8 +137,12 @@ class CandidateSelectionTests(unittest.TestCase):
 
     def test_parallel_provincial_road_makes_national_candidate_ineligible(self):
         national = candidate(0, national_m=9000, distance_m=50_000)
-        provincial = candidate(1, national_m=0, distance_m=55_500)
-        rule = SegmentRule("霞浦-宁德", parallel_road_available=True)
+        provincial = candidate(1, national_m=0, distance_m=51_500)
+        rule = SegmentRule(
+            "霞浦-宁德",
+            parallel_road_available=True,
+            parallel_road_max_extra_m=2_000,
+        )
 
         self.assertIs(choose_candidate([national, provincial], rule), provincial)
 
@@ -175,6 +186,50 @@ class CandidateSelectionTests(unittest.TestCase):
             reviewed_crossing,
         )
 
+    def test_evidence_backed_exact_step_override_clears_only_bounded_hard_risk(self):
+        override = VerifiedSafeStep(
+            road_name="新安江互通",
+            max_distance_m=60,
+            evidence_url="https://www.openstreetmap.org/way/1376423198",
+            evidence_note="平行设施为连续的指定沥青自行车道。",
+        )
+        verified = CandidateRoute(
+            0,
+            60,
+            20,
+            (
+                RouteStep(
+                    "沿新安江互通骑行60米左转",
+                    "新安江互通",
+                    60,
+                    (POINT_A, POINT_B),
+                    RoadClass.CITY,
+                    frozenset({"hard"}),
+                ),
+            ),
+        )
+        rule = SegmentRule("day3", verified_safe_steps=(override,))
+
+        self.assertIs(choose_candidate([verified], rule), verified)
+        self.assertEqual(
+            candidate_metrics(verified, rule.verified_safe_steps).hard_risk_m,
+            0,
+        )
+
+        for road_name, distance_m in (("新安江互通", 61), ("另一互通", 60)):
+            with self.subTest(road_name=road_name, distance_m=distance_m):
+                step = RouteStep(
+                    "沿互通骑行",
+                    road_name,
+                    distance_m,
+                    (POINT_A, POINT_B),
+                    RoadClass.CITY,
+                    frozenset({"hard"}),
+                )
+                candidate_route = CandidateRoute(0, distance_m, 20, (step,))
+                with self.assertRaises(ReviewRequired):
+                    choose_candidate([candidate_route], rule)
+
     def test_freight_risk_is_ineligible_even_if_shorter(self):
         freight = candidate(0, freight_risk_m=100, distance_m=30_000)
         county = candidate(1, distance_m=34_000)
@@ -188,11 +243,16 @@ class CandidateSelectionTests(unittest.TestCase):
     def test_parallel_road_rule_allows_national_distance_at_the_limit(self):
         at_limit = candidate(0, national_m=1000, distance_m=30_000)
         over_limit = candidate(1, national_m=1001, distance_m=20_000)
-        rule = SegmentRule("a-b", parallel_road_available=True, allowed_national_m=1000)
+        rule = SegmentRule(
+            "a-b",
+            parallel_road_available=True,
+            allowed_national_m=1000,
+            parallel_road_max_extra_m=10_000,
+        )
 
         self.assertIs(choose_candidate([over_limit, at_limit], rule), at_limit)
 
-    def test_selection_prioritizes_lower_national_distance_over_total_distance(self):
+    def test_selection_prioritizes_distance_over_small_national_reduction(self):
         lower_national = candidate(0, national_m=200, distance_m=50_000)
         more_national = candidate(1, national_m=300, distance_m=20_000)
 
@@ -201,8 +261,28 @@ class CandidateSelectionTests(unittest.TestCase):
                 [more_national, lower_national],
                 SegmentRule("a-b"),
             ),
-            lower_national,
+            more_national,
         )
+
+    def test_distance_first_matches_the_day3_amap_candidates(self):
+        shorter = candidate(1, national_m=1173, unknown_m=71_465, distance_m=72_638)
+        less_national = candidate(2, national_m=1106, unknown_m=48_512, distance_m=79_939)
+
+        self.assertIs(
+            choose_candidate([less_national, shorter], SegmentRule("day3")),
+            shorter,
+        )
+
+    def test_far_parallel_road_does_not_replace_materially_shorter_national_route(self):
+        national = candidate(0, national_m=9000, distance_m=50_000)
+        provincial = candidate(1, national_m=0, distance_m=52_001)
+        rule = SegmentRule(
+            "a-b",
+            parallel_road_available=True,
+            parallel_road_max_extra_m=2_000,
+        )
+
+        self.assertIs(choose_candidate([provincial, national], rule), national)
 
     def test_unknown_candidate_remains_eligible_when_alternative_has_freight_risk(self):
         freight = candidate(0, freight_risk_m=100, distance_m=50_000)
@@ -240,14 +320,16 @@ class CandidateSelectionTests(unittest.TestCase):
         self.assertEqual(caught.exception.segment_id, "a-b")
         self.assertEqual(caught.exception.reasons, ("no eligible safe candidate",))
 
-    def test_raises_review_when_parallel_road_excludes_all_national_routes(self):
-        with self.assertRaises(ReviewRequired) as caught:
-            choose_candidate(
-                [candidate(0, national_m=1)],
-                SegmentRule("a-b", parallel_road_available=True),
-            )
+    def test_parallel_metadata_without_a_close_alternative_keeps_the_shortest_route(self):
+        national = candidate(0, national_m=1)
 
-        self.assertEqual(caught.exception.reasons, ("no eligible safe candidate",))
+        self.assertIs(
+            choose_candidate(
+                [national],
+                SegmentRule("a-b", parallel_road_available=True),
+            ),
+            national,
+        )
 
 
 if __name__ == "__main__":

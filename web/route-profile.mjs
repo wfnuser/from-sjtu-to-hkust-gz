@@ -20,7 +20,7 @@ const PROFILES = {
     mainLabel: "内陆主线",
     hasOptionalBranches: false,
     showSchedule: false,
-    summaryNote: "当前为内陆审查基线；国道与未分类道路仍在逐段优化。",
+    summaryNote: "旧内陆审查基线；仅把距离接近的平行道路作为安全备选。",
   },
   coastal: {
     id: "coastal",

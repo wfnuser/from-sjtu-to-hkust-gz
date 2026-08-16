@@ -69,6 +69,8 @@ class RoutePlannerTests(unittest.TestCase):
         client = _NationalAmapClient()
         rule = SegmentRule(
             "a-b",
+            parallel_road_available=True,
+            parallel_road_max_extra_m=2_000,
             allowed_national_m=1_000,
             national_exception_reason="连续铺装的平行县乡道中断，保留国道接驳段。",
         )

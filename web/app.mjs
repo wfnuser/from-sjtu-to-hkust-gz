@@ -1,4 +1,4 @@
-import { selectRouteProfile } from "./route-profile.mjs?v=20260816-1";
+import { selectRouteProfile } from "./route-profile.mjs?v=20260816-2";
 import {
   rerouteComparisonText,
   rerouteFeaturesForOption,
@@ -9,7 +9,7 @@ import {
   dayCardModel,
   visibleItineraryDays,
   visibleRouteFeatures,
-} from "./day-card-model.mjs?v=20260816-1";
+} from "./day-card-model.mjs?v=20260816-2";
 
 const routeProfile = selectRouteProfile(window.location.search);
 const GEOJSON_URL = routeProfile.geojsonUrl;
@@ -108,7 +108,7 @@ export function addRerouteOptions(payload) {
   elements.reroutePanel.hidden = options.length === 0;
   elements.rerouteSummary.textContent = options.length
     ? `若全部采用：多骑 ${formatDistance(summary.distance_delta_m)}，少走国道 ${formatDistance(summary.national_reduction_m)}；原路线均保留。`
-    : "当前没有可展示的避国道备选。";
+    : "当前没有可展示的近距离安全备选。";
   for (const option of options) {
     const candidateId = String(option.candidate_id || "");
     if (!candidateId) continue;
@@ -130,7 +130,7 @@ export function addRerouteOptions(payload) {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = true;
-    checkbox.setAttribute("aria-label", `显示${option.from_name}至${option.to_name}原线与避国道路线对照`);
+    checkbox.setAttribute("aria-label", `显示${option.from_name}至${option.to_name}原线与近距离安全备选对照`);
     checkbox.addEventListener("change", () => {
       if (checkbox.checked) group.addTo(map);
       else map.removeLayer(group);
@@ -498,7 +498,7 @@ function popupContent(properties) {
 
 function reroutePopupContent(properties) {
   const status = properties.review_status === "recommended" ? "推荐候选" : "需复核候选";
-  const role = properties.route_role === "original" ? "原路线对照" : "避国道备选";
+  const role = properties.route_role === "original" ? "原路线对照" : "近距离安全备选";
   return `
     <h3 class="popup-title">${escapeHtml(properties.from_name || "起点")} → ${escapeHtml(properties.to_name || "终点")} · ${role}</h3>
     <p class="popup-detail"><strong>当前道路：</strong>${escapeHtml(properties.road_name || "未命名道路")}</p>

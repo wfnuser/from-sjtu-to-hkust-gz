@@ -5,6 +5,7 @@ import tempfile
 import unittest
 
 from route_planner.manifest import build_manifest, load_manifest
+from route_planner.models import VerifiedSafeStep
 from tests.test_export import _segment
 
 
@@ -47,6 +48,46 @@ class ManifestRerouteMetadataTests(unittest.TestCase):
             loaded = load_manifest(path, "route-test")[0]
 
         self.assertEqual(loaded.rule.preferred_candidate_index, 2)
+
+    def test_round_trip_preserves_parallel_road_distance_bound(self):
+        original = _segment()
+        segment = replace(
+            original,
+            rule=replace(original.rule, parallel_road_max_extra_m=2_000),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "manifest.json"
+            path.write_text(
+                json.dumps(build_manifest("route-test", [segment]), ensure_ascii=False),
+                encoding="utf-8",
+            )
+
+            loaded = load_manifest(path, "route-test")[0]
+
+        self.assertEqual(loaded.rule.parallel_road_max_extra_m, 2_000)
+
+    def test_round_trip_preserves_verified_safe_step_evidence(self):
+        original = _segment()
+        override = VerifiedSafeStep(
+            "新安江互通",
+            60,
+            "https://www.openstreetmap.org/way/1376423198",
+            "平行设施为连续的指定沥青自行车道。",
+        )
+        segment = replace(
+            original,
+            rule=replace(original.rule, verified_safe_steps=(override,)),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "manifest.json"
+            path.write_text(
+                json.dumps(build_manifest("route-test", [segment]), ensure_ascii=False),
+                encoding="utf-8",
+            )
+
+            loaded = load_manifest(path, "route-test")[0]
+
+        self.assertEqual(loaded.rule.verified_safe_steps, (override,))
 
     def test_round_trip_preserves_reviewed_reroute_decision(self):
         original = _segment()

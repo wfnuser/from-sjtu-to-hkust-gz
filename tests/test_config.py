@@ -120,6 +120,63 @@ class ConfigTests(unittest.TestCase):
         self.assertEqual(rule.reroute_status, "adopted")
         self.assertEqual(rule.reroute_reason, "国道由40公里降至4公里。")
 
+    def test_loads_bounded_parallel_road_preference(self):
+        payload = _valid_payload()
+        payload["segment_rules"] = {
+            "start-to-end": {
+                "parallel_road_available": True,
+                "parallel_road_max_extra_m": 2000,
+            }
+        }
+
+        cfg = _load_payload(payload)
+
+        self.assertEqual(
+            cfg.segment_rules["start-to-end"].parallel_road_max_extra_m,
+            2000,
+        )
+
+    def test_loads_evidence_backed_verified_safe_step(self):
+        payload = _valid_payload()
+        payload["segment_rules"] = {
+            "start-to-end": {
+                "verified_safe_steps": [
+                    {
+                        "road_name": "新安江互通",
+                        "max_distance_m": 60,
+                        "evidence_url": "https://www.openstreetmap.org/way/1376423198",
+                        "evidence_note": "平行设施为连续的指定沥青自行车道。",
+                    }
+                ]
+            }
+        }
+
+        cfg = _load_payload(payload)
+        override = cfg.segment_rules["start-to-end"].verified_safe_steps[0]
+
+        self.assertEqual(override.road_name, "新安江互通")
+        self.assertEqual(override.max_distance_m, 60)
+
+    def test_rejects_verified_safe_step_without_https_evidence_or_note(self):
+        for evidence_url, evidence_note in (("http://example.com", "有证据"), ("https://example.com", "")):
+            with self.subTest(evidence_url=evidence_url, evidence_note=evidence_note):
+                payload = _valid_payload()
+                payload["segment_rules"] = {
+                    "start-to-end": {
+                        "verified_safe_steps": [
+                            {
+                                "road_name": "新安江互通",
+                                "max_distance_m": 60,
+                                "evidence_url": evidence_url,
+                                "evidence_note": evidence_note,
+                            }
+                        ]
+                    }
+                }
+
+                with self.assertRaisesRegex(ValueError, "verified_safe_steps"):
+                    _load_payload(payload)
+
     def test_rejects_unknown_reroute_status_and_reason_without_decision(self):
         for rule, message in (
             ({"reroute_status": "maybe", "reroute_reason": "已检查"}, "reroute_status"),

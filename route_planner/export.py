@@ -7,7 +7,7 @@ from datetime import date
 
 from route_planner.coordinates import gcj02_to_wgs84
 from route_planner.models import Coordinate, PlannedSegment, RoadClass, RouteStep
-from route_planner.roads import classify_risks
+from route_planner.roads import effective_risk_tags
 
 
 _BRANCH_IDS = frozenset({"main", "ningbo", "shenzhen"})
@@ -248,7 +248,7 @@ def build_review_markdown(
         "",
         f"- UNKNOWN：{unknown_m} m（{unknown_m * 100 / distance_m:.2f}%）；其中未命名道路 {blank_name_m} m。" if distance_m else "- UNKNOWN：0 m。",
         "- AMap 配额受限的补充探路清单见 `summary.json`；未完成的并行道路探测保持 provisional。",
-        "- 国道例外须以 `NATIONAL_ROAD_EXCEPTION_APPROVED` 明确记录，且仍需道路级复核。",
+        "- 国道本身不阻断发布；仅在距离接近且有更安全平行道路时切换，硬风险和货运风险仍阻断。",
         f"- {schedule['deadline_note']}",
         "",
     ]
@@ -398,7 +398,7 @@ def _step_properties(
         "road_class": step.road_class.value,
         "distance_m": step.distance_m,
         "segment_duration_s": segment.selected.duration_s,
-        "risk_tags": sorted(step.risk_tags),
+        "risk_tags": sorted(effective_risk_tags(step, segment.rule.verified_safe_steps)),
         "review_status": _review_status(segment),
         "reroute_status": segment.rule.reroute_status,
         "reroute_reason": segment.rule.reroute_reason,
@@ -435,7 +435,7 @@ def _review_status(segment: PlannedSegment) -> str:
     if any(not step.polyline_gcj for step in segment.selected.steps):
         return "unresolved"
     if any(
-        (step.risk_tags | classify_risks(step.road_name, step.instruction))
+        effective_risk_tags(step, segment.rule.verified_safe_steps)
         & {"hard", "freight"}
         for step in segment.selected.steps
     ):
@@ -481,7 +481,7 @@ def _has_pending_review(segment: PlannedSegment) -> bool:
     return (
         any(item.severity in {"warning", "hard"} for item in segment.reviews)
         or any(
-            (step.risk_tags | classify_risks(step.road_name, step.instruction))
+            effective_risk_tags(step, segment.rule.verified_safe_steps)
             & {"hard", "freight"}
             for step in segment.selected.steps
         )

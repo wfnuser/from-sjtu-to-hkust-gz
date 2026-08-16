@@ -15,6 +15,7 @@ from route_planner.models import (
     RoadClass,
     RouteStep,
     SegmentRule,
+    VerifiedSafeStep,
     Waypoint,
 )
 
@@ -53,6 +54,16 @@ def _segment_data(segment: PlannedSegment) -> dict[str, object]:
             "segment_id": segment.rule.segment_id,
             "anchor_queries": list(segment.rule.anchor_queries),
             "parallel_road_available": segment.rule.parallel_road_available,
+            "parallel_road_max_extra_m": segment.rule.parallel_road_max_extra_m,
+            "verified_safe_steps": [
+                {
+                    "road_name": item.road_name,
+                    "max_distance_m": item.max_distance_m,
+                    "evidence_url": item.evidence_url,
+                    "evidence_note": item.evidence_note,
+                }
+                for item in segment.rule.verified_safe_steps
+            ],
             "allowed_national_m": segment.rule.allowed_national_m,
             "allowed_hard_risk_m": segment.rule.allowed_hard_risk_m,
             "day": segment.rule.day,
@@ -180,6 +191,18 @@ def _rule_from_data(value: dict[str, Any]) -> SegmentRule:
         segment_id=_string(value["segment_id"]),
         anchor_queries=tuple(_string(item) for item in _list(value["anchor_queries"])),
         parallel_road_available=_bool(value["parallel_road_available"]),
+        parallel_road_max_extra_m=_integer(
+            value.get("parallel_road_max_extra_m", 0)
+        ),
+        verified_safe_steps=tuple(
+            VerifiedSafeStep(
+                _string(_mapping(item)["road_name"]),
+                _integer(_mapping(item)["max_distance_m"]),
+                _string(_mapping(item)["evidence_url"]),
+                _string(_mapping(item)["evidence_note"]),
+            )
+            for item in _list(value.get("verified_safe_steps", []))
+        ),
         allowed_national_m=_integer(value["allowed_national_m"]),
         allowed_hard_risk_m=_integer(value.get("allowed_hard_risk_m", 0)),
         day=_integer(day) if day is not None else None,

@@ -1,5 +1,5 @@
 {
-  "average_riding_distance_m": 129688,
+  "average_riding_distance_m": 125554,
   "days": [
     {
       "day": 0,
@@ -72,12 +72,13 @@
     },
     {
       "day": 3,
-      "distance_m": 141233,
-      "duration_s": 28142,
+      "distance_m": 134715,
+      "duration_s": 27611,
       "from_name": "杭州未来科技城海创园地铁站亚朵酒店",
       "key_waypoints": [
         "捷安特自行车（桐庐店）",
-        "富春江镇"
+        "富春江镇",
+        "新安绿道洋溪段"
       ],
       "lodging": {
         "booking_status": "candidate",
@@ -86,7 +87,7 @@
         "name": "麗枫酒店（杭州建德新安江店）"
       },
       "long_day": false,
-      "risk_note": "在桐庐捷安特充电休整约两小时；新安江互通附近约60米需现场确认，条件不清楚时下车推行。",
+      "risk_note": "在桐庐捷安特充电休整约两小时；经富春绿道南线和新安绿道洋溪段进入建德。",
       "segments": [
         "main-05-to-main-06",
         "main-06-to-main-07"
@@ -96,8 +97,8 @@
     },
     {
       "day": 4,
-      "distance_m": 142556,
-      "duration_s": 29656,
+      "distance_m": 134969,
+      "duration_s": 27603,
       "from_name": "麗枫酒店（杭州建德新安江店）",
       "key_waypoints": [
         "龙游",
@@ -120,8 +121,8 @@
     },
     {
       "day": 5,
-      "distance_m": 125392,
-      "duration_s": 25607,
+      "distance_m": 119342,
+      "duration_s": 23735,
       "from_name": "常山东方广场酒店",
       "key_waypoints": [
         "玉山",
@@ -144,8 +145,8 @@
     },
     {
       "day": 6,
-      "distance_m": 128497,
-      "duration_s": 26662,
+      "distance_m": 112703,
+      "duration_s": 22429,
       "from_name": "维也纳酒店（上饶横峰古窑路店）",
       "key_waypoints": [
         "鹰潭"
@@ -167,8 +168,8 @@
     },
     {
       "day": 7,
-      "distance_m": 144160,
-      "duration_s": 32597,
+      "distance_m": 141290,
+      "duration_s": 32352,
       "from_name": "维也纳国际酒店（抚州东站店）",
       "key_waypoints": [
         "浒湾镇",
@@ -190,8 +191,8 @@
     },
     {
       "day": 8,
-      "distance_m": 111635,
-      "duration_s": 26283,
+      "distance_m": 110709,
+      "duration_s": 26104,
       "from_name": "维也纳国际酒店（南丰桔都大道店）",
       "key_waypoints": [
         "广昌"
@@ -213,8 +214,8 @@
     },
     {
       "day": 9,
-      "distance_m": 113275,
-      "duration_s": 25204,
+      "distance_m": 110434,
+      "duration_s": 24331,
       "from_name": "汉庭酒店（赣州宁都州城文化街店）",
       "key_waypoints": [
         "黄石镇",
@@ -257,8 +258,8 @@
     },
     {
       "day": 11,
-      "distance_m": 160919,
-      "duration_s": 38044,
+      "distance_m": 158049,
+      "duration_s": 35848,
       "from_name": "维也纳酒店（赣州信丰高铁西站店）",
       "key_waypoints": [
         "龙南",
@@ -304,8 +305,8 @@
     },
     {
       "day": 13,
-      "distance_m": 117817,
-      "duration_s": 24373,
+      "distance_m": 115033,
+      "duration_s": 23451,
       "from_name": "亚朵酒店（河源越王大道店）",
       "key_waypoints": [
         "埔前镇",
@@ -327,8 +328,8 @@
     },
     {
       "day": 14,
-      "distance_m": 134412,
-      "duration_s": 27198,
+      "distance_m": 133046,
+      "duration_s": 27147,
       "from_name": "维也纳酒店（惠州博罗福田店）",
       "key_waypoints": [
         "增城",
@@ -345,8 +346,8 @@
     }
   ],
   "display_start_day": 1,
-  "public_total_distance_m": 1738048,
-  "remaining_distance_m": 1556253,
+  "public_total_distance_m": 1688442,
+  "remaining_distance_m": 1506647,
   "remaining_start_day": 3,
   "route_id": "inland-execution",
   "segment_days": {
@@ -387,5 +388,5 @@
     "pre-06-to-pre-07": 0,
     "pre-07-to-main-01": 0
   },
-  "total_distance_m": 1803734
+  "total_distance_m": 1754128
 }

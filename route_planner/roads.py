@@ -4,7 +4,13 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 import re
 
-from route_planner.models import CandidateRoute, RoadClass, SegmentRule
+from route_planner.models import (
+    CandidateRoute,
+    RoadClass,
+    RouteStep,
+    SegmentRule,
+    VerifiedSafeStep,
+)
 
 
 HARD_RISK_TERMS = ("高速", "快速路", "高架", "禁止非机动车", "禁行")
@@ -84,7 +90,24 @@ def classify_risks(road_name: str, instruction: str) -> frozenset[str]:
     return frozenset(tags)
 
 
-def candidate_metrics(candidate: CandidateRoute) -> CandidateMetrics:
+def effective_risk_tags(
+    step: RouteStep,
+    verified_safe_steps: Sequence[VerifiedSafeStep] = (),
+) -> frozenset[str]:
+    """Return observed risks after applying exact evidence-backed hard-risk overrides."""
+    risk_tags = set(step.risk_tags | classify_risks(step.road_name, step.instruction))
+    if any(
+        item.road_name == step.road_name and step.distance_m <= item.max_distance_m
+        for item in verified_safe_steps
+    ):
+        risk_tags.discard("hard")
+    return frozenset(risk_tags)
+
+
+def candidate_metrics(
+    candidate: CandidateRoute,
+    verified_safe_steps: Sequence[VerifiedSafeStep] = (),
+) -> CandidateMetrics:
     """Aggregate road-class and safety-risk distances for a candidate."""
     national_m = 0
     unknown_m = 0
@@ -97,7 +120,7 @@ def candidate_metrics(candidate: CandidateRoute) -> CandidateMetrics:
         if step.road_class is RoadClass.UNKNOWN:
             unknown_m += step.distance_m
 
-        risk_tags = step.risk_tags | classify_risks(step.road_name, step.instruction)
+        risk_tags = effective_risk_tags(step, verified_safe_steps)
         if "freight" in risk_tags:
             freight_risk_m += step.distance_m
         if "hard" in risk_tags:
@@ -112,15 +135,10 @@ def choose_candidate(
     """Select the safest eligible candidate by the stable policy ordering."""
     eligible = []
     for candidate in candidates:
-        metrics = candidate_metrics(candidate)
+        metrics = candidate_metrics(candidate, rule.verified_safe_steps)
         if metrics.freight_risk_m:
             continue
         if metrics.hard_risk_m > rule.allowed_hard_risk_m:
-            continue
-        if (
-            rule.parallel_road_available
-            and metrics.national_m > rule.allowed_national_m
-        ):
             continue
         eligible.append((candidate, metrics))
 
@@ -136,13 +154,29 @@ def choose_candidate(
             ("preferred candidate is unavailable or unsafe",),
         )
 
-    return min(
+    shortest = min(
         eligible,
         key=lambda item: (
-            item[1].national_m,
-            item[1].unknown_m,
-            item[1].freight_risk_m,
-            item[1].hard_risk_m,
+            item[0].distance_m,
+            item[0].duration_s,
+            item[0].source_index,
+        ),
+    )
+    selection_pool = eligible
+    if rule.parallel_road_available and rule.parallel_road_max_extra_m > 0:
+        close_parallel = [
+            item
+            for item in eligible
+            if item[1].national_m <= rule.allowed_national_m
+            and item[0].distance_m
+            <= shortest[0].distance_m + rule.parallel_road_max_extra_m
+        ]
+        if close_parallel:
+            selection_pool = close_parallel
+
+    return min(
+        selection_pool,
+        key=lambda item: (
             item[0].distance_m,
             item[0].duration_s,
             item[0].source_index,

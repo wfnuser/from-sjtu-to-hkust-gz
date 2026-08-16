@@ -208,6 +208,8 @@ class ExportTests(unittest.TestCase):
         self.assertIn("county-road-0", markdown)
         self.assertIn("人工复核", markdown)
         self.assertIn("临时路线：仍需道路级复核", markdown)
+        self.assertIn("国道本身不阻断发布", markdown)
+        self.assertNotIn("国道例外须以", markdown)
         self.assertIn("每日计划", markdown)
         self.assertIn("自动检查通过（仍需道路级复核）", markdown)
         self.assertIn("预计骑行时长", markdown)

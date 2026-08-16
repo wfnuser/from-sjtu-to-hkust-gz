@@ -34,19 +34,19 @@
 - Produces: `SegmentRule.parallel_road_max_extra_m: int` with default `0`.
 - Produces: `choose_candidate(candidates, rule) -> CandidateRoute` that ranks by distance after safety filtering.
 
-- [ ] **Step 1: Add failing ranking tests**
+- [x] **Step 1: Add failing ranking tests**
 
 Add tests proving that a 72,638 m candidate with 1,173 m national road beats a 79,939 m candidate with 1,106 m national road, while an explicitly configured parallel-road candidate may win only within `parallel_road_max_extra_m=2_000`.
 
-- [ ] **Step 2: Run the focused tests and verify the current national-first order fails**
+- [x] **Step 2: Run the focused tests and verify the current national-first order fails**
 
 Run: `python3 -m unittest tests.test_roads.CandidateSelectionTests -v`
 
-- [ ] **Step 3: Implement distance-first ranking and config/manifest round-trip**
+- [x] **Step 3: Implement distance-first ranking and config/manifest round-trip**
 
 Filter freight and effective hard risks first. Build the pool from all safe candidates; only narrow it to candidates at or below `allowed_national_m` when `parallel_road_available` is true, `parallel_road_max_extra_m > 0`, and a compliant candidate is no more than that threshold longer than the shortest safe candidate. Select the remaining minimum by `(distance_m, duration_s, source_index)`.
 
-- [ ] **Step 4: Run focused road, config, and manifest tests**
+- [x] **Step 4: Run focused road, config, and manifest tests**
 
 Run: `python3 -m unittest tests.test_roads tests.test_config tests.test_manifest -v`
 
@@ -69,23 +69,23 @@ Run: `python3 -m unittest tests.test_roads tests.test_config tests.test_manifest
 - Produces: `SegmentRule.verified_safe_steps: tuple[VerifiedSafeStep, ...]`.
 - Produces: `effective_risk_tags(step, verified_safe_steps) -> frozenset[str]` used by both selection and audit.
 
-- [ ] **Step 1: Add failing tests for exact scoped overrides**
+- [x] **Step 1: Add failing tests for exact scoped overrides**
 
 Cover an exact `新安江互通` 60 m hard step cleared by an HTTPS-evidenced override, a 61 m step that remains hard, a different road name that remains hard, manifest round-trip, and config rejection of missing evidence.
 
-- [ ] **Step 2: Run focused tests and verify the override schema is absent**
+- [x] **Step 2: Run focused tests and verify the override schema is absent**
 
 Run: `python3 -m unittest tests.test_roads tests.test_config tests.test_manifest tests.test_audit -v`
 
-- [ ] **Step 3: Implement the model, parsing, manifest, metrics, planner, and audit support**
+- [x] **Step 3: Implement the model, parsing, manifest, metrics, planner, and audit support**
 
 Only remove the `hard` tag when the step road name exactly matches and its distance is at most the configured bound. Do not clear `freight`. Require a non-empty note and an `https://` evidence URL.
 
-- [ ] **Step 4: Stop treating ordinary national-road distance as a publication blocker**
+- [x] **Step 4: Stop treating ordinary national-road distance as a publication blocker**
 
 Remove ordinary `NATIONAL_ROAD_ALLOWANCE_EXCEEDED` and `NATIONAL_ROAD_EXCEPTION_UNREVIEWED` findings. Keep route generation's explicit near-distance parallel-road choice, but do not make national-road presence itself a hard audit finding.
 
-- [ ] **Step 5: Run the focused suite**
+- [x] **Step 5: Run the focused suite**
 
 Run: `python3 -m unittest tests.test_roads tests.test_config tests.test_manifest tests.test_planner tests.test_audit -v`
 
@@ -105,23 +105,23 @@ Run: `python3 -m unittest tests.test_roads tests.test_config tests.test_manifest
 - Consumes: distance-first selection and verified safe-step override from Tasks 1–2.
 - Produces: Day 3 execution data with anchors `桐庐县富春江镇` and `杭州::建德市新安绿道洋溪段`.
 
-- [ ] **Step 1: Add failing Day 3 contract assertions**
+- [x] **Step 1: Add failing Day 3 contract assertions**
 
 Assert key waypoints are `捷安特自行车（桐庐店）`, `富春江镇`, and `新安绿道洋溪段`; generated Day 3 distance is between 134,000 and 136,000 m; the published route has no unresolved hard-risk review.
 
-- [ ] **Step 2: Run the execution tests and verify they fail against the 141.2 km artifact**
+- [x] **Step 2: Run the execution tests and verify they fail against the 141.2 km artifact**
 
 Run: `python3 -m unittest tests.test_execution_itinerary -v`
 
-- [ ] **Step 3: Update Day 3 config**
+- [x] **Step 3: Update Day 3 config**
 
 Add `杭州::建德市新安绿道洋溪段` after `桐庐县富春江镇`. Replace the old hard-risk allowance with a 60 m verified-safe override for `新安江互通`, using `https://www.openstreetmap.org/way/1376423198` and a note that the mapped parallel facility is a continuous designated asphalt cycleway. Remove the 60 m push/walk risk note from the itinerary.
 
-- [ ] **Step 4: Regenerate route and itinerary artifacts**
+- [x] **Step 4: Regenerate route and itinerary artifacts**
 
 Run `scripts/generate_route.py` with the execution config, stored resolutions, `.env.local`, `.cache/amap`, and `web/data`, then run `scripts/export_itinerary.py`. Do not run a GPX exporter.
 
-- [ ] **Step 5: Run the execution tests and inspect Day 3 metrics**
+- [x] **Step 5: Run the execution tests and inspect Day 3 metrics**
 
 Run: `python3 -m unittest tests.test_execution_itinerary -v`
 
@@ -138,19 +138,19 @@ Inspect: `jq '.days[] | select(.day==3)' web/data/inland-itinerary.json`
 **Interfaces:**
 - Produces: public copy describing `近距离安全备选` rather than `避国道备选`.
 
-- [ ] **Step 1: Add failing UI copy and cache-version assertions**
+- [x] **Step 1: Add failing UI copy and cache-version assertions**
 
 Require the new safety-alternative copy, reject `避国道备选`, and bump execution static asset cache version to `20260816-2`.
 
-- [ ] **Step 2: Run the web contract tests and verify failure**
+- [x] **Step 2: Run the web contract tests and verify failure**
 
 Run: `python3 -m unittest tests.test_web_contract -v`
 
-- [ ] **Step 3: Update copy, cache versions, and README policy/status**
+- [x] **Step 3: Update copy, cache versions, and README policy/status**
 
 State that national roads are accepted when they are the materially shorter eligible route. Keep specific road-risk facts and original-route comparison controls.
 
-- [ ] **Step 4: Run web contract and JavaScript syntax checks**
+- [x] **Step 4: Run web contract and JavaScript syntax checks**
 
 Run: `python3 -m unittest tests.test_web_contract -v`
 
@@ -161,15 +161,15 @@ Run: `node --check web/app.mjs`
 **Files:**
 - Verify all modified and generated files.
 
-- [ ] **Step 1: Run the complete offline suite excluding the live AMap smoke test**
+- [x] **Step 1: Run the complete offline suite excluding the live AMap smoke test**
 
 Run the test modules documented in `README.md`; expected result is zero failures.
 
-- [ ] **Step 2: Run strict execution-route audit**
+- [x] **Step 2: Run strict execution-route audit**
 
 Run: `python3 scripts/audit_route.py --config config/inland-execution-route.json --data-dir web/data --env .env.local --profile execution --strict`
 
-- [ ] **Step 3: Run final hygiene checks**
+- [x] **Step 3: Run final hygiene checks**
 
 Run: `git diff --check`, `node --check web/app.mjs`, verify `.env.local` is untracked, and inspect Day 3 distance, anchors, reviews, and selected route indices.
 

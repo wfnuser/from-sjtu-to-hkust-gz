@@ -18,6 +18,7 @@ from route_planner.models import (
     RouteConfig,
     RouteStep,
     SegmentRule,
+    VerifiedSafeStep,
     Waypoint,
 )
 from scripts.audit_route import audit, scan_for_secret
@@ -35,11 +36,13 @@ def _segment(
     polyline=True,
     subleg_distances=(1_000,),
     reviews=(),
+    road_name=None,
+    verified_safe_steps=(),
 ):
     segment_id = "main-01-to-main-02"
     road_class = RoadClass.NATIONAL if national else RoadClass.COUNTY
     step = RouteStep(
-        "沿道路骑行", "G228国道" if national else "X101县道", 1_000,
+        "沿道路骑行", road_name or ("G228国道" if national else "X101县道"), 1_000,
         (Coordinate(121.0, 31.0), Coordinate(121.01, 31.01)) if polyline else (),
         road_class, risk_tags,
     )
@@ -50,19 +53,19 @@ def _segment(
         SegmentRule(segment_id, parallel_road_available=parallel_road_available,
                     allowed_national_m=allowed_national_m,
                     allowed_hard_risk_m=allowed_hard_risk_m,
-                    hard_risk_exception_reason=hard_risk_exception_reason),
+                    hard_risk_exception_reason=hard_risk_exception_reason,
+                    verified_safe_steps=verified_safe_steps),
         1_000, CandidateRoute(0, 1_000, 300, (step,)), 1.0,
         subleg_distances, reviews,
     )
 
 
 class AuditTests(unittest.TestCase):
-    def test_audit_rejects_national_road_when_parallel_override_exists(self):
-        """Would fail if a national-road restriction was treated as advisory."""
+    def test_audit_does_not_block_national_road_presence(self):
         result = audit([_segment(national=True, parallel_road_available=True)])
 
-        self.assertIn("PARALLEL_ROAD_RULE_VIOLATION", [item.code for item in result.items])
-        self.assertFalse(result.ok)
+        self.assertNotIn("PARALLEL_ROAD_RULE_VIOLATION", [item.code for item in result.items])
+        self.assertTrue(result.ok)
 
     def test_audit_reclassifies_g104_alias_even_when_manifest_says_unknown(self):
         segment = _segment(parallel_road_available=True)
@@ -73,8 +76,8 @@ class AuditTests(unittest.TestCase):
         )
         result = audit([replace(segment, selected=replace(segment.selected, steps=(step,)))])
 
-        self.assertIn("PARALLEL_ROAD_RULE_VIOLATION", [item.code for item in result.items])
-        self.assertFalse(result.ok)
+        self.assertNotIn("PARALLEL_ROAD_RULE_VIOLATION", [item.code for item in result.items])
+        self.assertTrue(result.ok)
 
     def test_audit_rejects_hard_risk_steps(self):
         """Would fail if hard-exclusion tags reached generated route artifacts."""
@@ -97,6 +100,24 @@ class AuditTests(unittest.TestCase):
                         distance_m=1_000,
                     ),
                 ),
+            )
+        ])
+
+        self.assertNotIn("HARD_RISK", [item.code for item in result.items])
+        self.assertTrue(result.ok)
+
+    def test_audit_accepts_exact_evidence_backed_safe_cycleway_override(self):
+        override = VerifiedSafeStep(
+            "新安江互通",
+            1_000,
+            "https://www.openstreetmap.org/way/1376423198",
+            "平行设施为连续的指定沥青自行车道。",
+        )
+        result = audit([
+            _segment(
+                road_name="新安江互通",
+                risk_tags=frozenset({"hard"}),
+                verified_safe_steps=(override,),
             )
         ])
 
@@ -135,11 +156,11 @@ class AuditTests(unittest.TestCase):
 
         self.assertIn("SUBLEG_OVER_80_KM", [item.code for item in result.items])
 
-    def test_audit_requires_explicit_review_for_national_exception(self):
-        """Would fail if a permitted national-road distance silently became approved."""
+    def test_audit_accepts_ordinary_national_road_without_exception_review(self):
         result = audit([_segment(national=True, allowed_national_m=1_000)])
 
-        self.assertIn("NATIONAL_ROAD_EXCEPTION_UNREVIEWED", [item.code for item in result.items])
+        self.assertNotIn("NATIONAL_ROAD_EXCEPTION_UNREVIEWED", [item.code for item in result.items])
+        self.assertTrue(result.ok)
 
     def test_parallel_rule_respects_its_bounded_national_road_allowance(self):
         """Would fail if an allowed, reviewed exception was still reported as a violation."""
@@ -168,7 +189,7 @@ class AuditTests(unittest.TestCase):
         self.assertNotIn("NATIONAL_ROAD_EXCEPTION_UNREVIEWED", [item.code for item in result.items])
         self.assertTrue(result.ok)
 
-    def test_audit_rejects_national_distance_over_measured_allowance_even_without_parallel(self):
+    def test_audit_ignores_national_distance_allowance_without_parallel_requirement(self):
         result = audit(
             [
                 _segment(
@@ -186,8 +207,8 @@ class AuditTests(unittest.TestCase):
             ]
         )
 
-        self.assertFalse(result.ok)
-        self.assertIn("NATIONAL_ROAD_ALLOWANCE_EXCEEDED", [item.code for item in result.items])
+        self.assertTrue(result.ok)
+        self.assertNotIn("NATIONAL_ROAD_ALLOWANCE_EXCEEDED", [item.code for item in result.items])
 
     def test_secret_scan_rejects_generated_artifact(self):
         """Would fail if generated files could retain a supplied service-key value."""

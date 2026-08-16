@@ -5,7 +5,14 @@ import re
 from pathlib import Path
 from typing import Any
 
-from .models import Coordinate, OptionalBranch, RouteConfig, SegmentRule, Waypoint
+from .models import (
+    Coordinate,
+    OptionalBranch,
+    RouteConfig,
+    SegmentRule,
+    VerifiedSafeStep,
+    Waypoint,
+)
 
 
 _CHINESE_CHARACTER = re.compile(r"[\u4e00-\u9fff]")
@@ -219,6 +226,52 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
             allowed_national_m, bool
         ):
             raise ValueError(f"Segment rule {segment_id} allowed_national_m must be an integer")
+        parallel_road_max_extra_m = item.get("parallel_road_max_extra_m", 0)
+        if (
+            not isinstance(parallel_road_max_extra_m, int)
+            or isinstance(parallel_road_max_extra_m, bool)
+            or parallel_road_max_extra_m < 0
+        ):
+            raise ValueError(
+                f"Segment rule {segment_id} parallel_road_max_extra_m must be a non-negative integer"
+            )
+        verified_safe_steps_value = item.get("verified_safe_steps", [])
+        if not isinstance(verified_safe_steps_value, list):
+            raise ValueError(
+                f"Segment rule {segment_id} verified_safe_steps must be a list"
+            )
+        verified_safe_steps: list[VerifiedSafeStep] = []
+        for verified_step in verified_safe_steps_value:
+            if not isinstance(verified_step, dict):
+                raise ValueError(
+                    f"Segment rule {segment_id} verified_safe_steps must contain objects"
+                )
+            road_name = verified_step.get("road_name")
+            max_distance_m = verified_step.get("max_distance_m")
+            evidence_url = verified_step.get("evidence_url")
+            evidence_note = verified_step.get("evidence_note")
+            if (
+                not isinstance(road_name, str)
+                or not road_name.strip()
+                or not isinstance(max_distance_m, int)
+                or isinstance(max_distance_m, bool)
+                or max_distance_m <= 0
+                or not isinstance(evidence_url, str)
+                or not evidence_url.startswith("https://")
+                or not isinstance(evidence_note, str)
+                or not evidence_note.strip()
+            ):
+                raise ValueError(
+                    f"Segment rule {segment_id} verified_safe_steps entries require a road name, positive distance, HTTPS evidence, and note"
+                )
+            verified_safe_steps.append(
+                VerifiedSafeStep(
+                    road_name.strip(),
+                    max_distance_m,
+                    evidence_url,
+                    evidence_note.strip(),
+                )
+            )
         allowed_hard_risk_m = item.get("allowed_hard_risk_m", 0)
         if (
             not isinstance(allowed_hard_risk_m, int)
@@ -280,6 +333,8 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
             parallel_road_available=_optional_bool(
                 item, "parallel_road_available", False, "segment rule"
             ),
+            parallel_road_max_extra_m=parallel_road_max_extra_m,
+            verified_safe_steps=tuple(verified_safe_steps),
             allowed_national_m=allowed_national_m,
             allowed_hard_risk_m=allowed_hard_risk_m,
             day=day,
