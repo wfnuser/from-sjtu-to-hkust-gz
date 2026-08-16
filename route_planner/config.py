@@ -231,9 +231,10 @@ def _parse_segment_rules(value: Any) -> dict[str, SegmentRule]:
             not isinstance(parallel_road_max_extra_m, int)
             or isinstance(parallel_road_max_extra_m, bool)
             or parallel_road_max_extra_m < 0
+            or parallel_road_max_extra_m > 2_000
         ):
             raise ValueError(
-                f"Segment rule {segment_id} parallel_road_max_extra_m must be a non-negative integer"
+                f"Segment rule {segment_id} parallel_road_max_extra_m must be a non-negative integer at most 2000"
             )
         verified_safe_steps_value = item.get("verified_safe_steps", [])
         if not isinstance(verified_safe_steps_value, list):

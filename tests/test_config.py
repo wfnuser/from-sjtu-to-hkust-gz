@@ -136,6 +136,18 @@ class ConfigTests(unittest.TestCase):
             2000,
         )
 
+    def test_rejects_parallel_road_preference_over_two_kilometres(self):
+        payload = _valid_payload()
+        payload["segment_rules"] = {
+            "start-to-end": {
+                "parallel_road_available": True,
+                "parallel_road_max_extra_m": 2001,
+            }
+        }
+
+        with self.assertRaisesRegex(ValueError, "at most 2000"):
+            _load_payload(payload)
+
     def test_loads_evidence_backed_verified_safe_step(self):
         payload = _valid_payload()
         payload["segment_rules"] = {
