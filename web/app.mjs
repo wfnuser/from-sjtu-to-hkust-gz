@@ -1,4 +1,4 @@
-import { selectRouteProfile } from "./route-profile.mjs?v=20260815-8";
+import { selectRouteProfile } from "./route-profile.mjs?v=20260816-1";
 import {
   rerouteComparisonText,
   rerouteFeaturesForOption,
@@ -9,7 +9,7 @@ import {
   dayCardModel,
   visibleItineraryDays,
   visibleRouteFeatures,
-} from "./day-card-model.mjs?v=20260815-8";
+} from "./day-card-model.mjs?v=20260816-1";
 
 const routeProfile = selectRouteProfile(window.location.search);
 const GEOJSON_URL = routeProfile.geojsonUrl;
@@ -209,11 +209,21 @@ function renderItineraryTotals(itinerary, summary) {
 function renderLimitations(summary, itinerary = null) {
   const limitations = summary.limitations || {};
   const probes = Array.isArray(limitations.quota_limited_probes) ? limitations.quota_limited_probes : [];
+  const ridingDays = itinerary
+    ? visibleItineraryDays(itinerary).filter((day) => Number(day.distance_m || 0) > 0)
+    : [];
+  const longestRidingDay = ridingDays.reduce(
+    (longest, day) => (!longest || Number(day.distance_m) > Number(longest.distance_m) ? day : longest),
+    null,
+  );
+  const itineraryPacing = longestRidingDay
+    ? `公开行程没有休整日；当前最长为 Day ${longestRidingDay.day} · ${formatDistance(longestRidingDay.distance_m)}。`
+    : `公开行程没有休整日。`;
   const items = itinerary
     ? [
         `道路级状态：临时；自动检查通过仍需道路级复核。`,
         `UNKNOWN ${Number(limitations.unknown_percent || 0).toFixed(2)}%，其中未命名 ${formatDistance(limitations.blank_name_distance_m)}。`,
-        `Day 2 为桐乡休整日；Day 12 为 160.9 km 最长日。`,
+        itineraryPacing,
         `高德时长不含停留；部分日超过 6 小时，需早出发并压缩当天工作安排。`,
       ]
     : [

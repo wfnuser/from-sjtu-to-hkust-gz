@@ -1,17 +1,17 @@
 {
   "all_branches": {
-    "baseline_distance_m": 1706816,
+    "baseline_distance_m": 1707202,
     "city_distance_m": 0,
-    "county_distance_m": 185318,
-    "cycleway_distance_m": 7559,
-    "detour_ratio": 1.052432130938543,
-    "distance_m": 1796308,
-    "duration_s": 382504,
-    "national_distance_m": 372469,
-    "provincial_distance_m": 109061,
+    "county_distance_m": 185364,
+    "cycleway_distance_m": 9736,
+    "detour_ratio": 1.0565439824929914,
+    "distance_m": 1803734,
+    "duration_s": 383298,
+    "national_distance_m": 372402,
+    "provincial_distance_m": 139336,
     "segment_count": 36,
     "tourism_distance_m": 2355,
-    "unknown_distance_m": 1119547,
+    "unknown_distance_m": 1094542,
     "unresolved_count": 5
   },
   "days": [
@@ -101,74 +101,69 @@
     },
     {
       "day": 3,
-      "distance_m": 70406,
+      "distance_m": 69336,
       "distance_target_met": false,
       "duration_limit_met": true,
-      "duration_s": 13735,
+      "duration_s": 13457,
       "duration_target_met": false,
       "from_name": "桐乡万象汇振兴西路亚朵酒店",
       "legs": [
         {
           "segment_id": "day1-tongxiang-hotel-to-day3-xixi-campus",
           "subleg_index": 0
-        },
-        {
-          "segment_id": "day3-xixi-campus-to-main-05",
-          "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "杭州阿里巴巴西溪园区爱橙街亚朵S酒店",
+      "lodging_network_endpoint": "阿里巴巴西溪园区",
       "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
+      "segment_count": 1,
       "segments": [
-        "day1-tongxiang-hotel-to-day3-xixi-campus",
-        "day3-xixi-campus-to-main-05"
+        "day1-tongxiang-hotel-to-day3-xixi-campus"
       ],
-      "to_name": "杭州阿里巴巴西溪园区爱橙街亚朵S酒店"
+      "to_name": "阿里巴巴西溪园区"
     },
     {
       "day": 4,
-      "distance_m": 86027,
+      "distance_m": 80819,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 16709,
+      "duration_s": 15098,
       "duration_target_met": true,
-      "from_name": "杭州阿里巴巴西溪园区爱橙街亚朵S酒店",
+      "from_name": "阿里巴巴西溪园区",
       "legs": [
+        {
+          "segment_id": "day3-xixi-campus-to-main-05",
+          "subleg_index": 0
+        },
         {
           "segment_id": "main-05-to-main-06",
           "subleg_index": 0
-        },
-        {
-          "segment_id": "main-06-to-main-07",
-          "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "桐庐县富春江镇",
+      "lodging_network_endpoint": "捷安特自行车（桐庐店）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 2,
       "segments": [
-        "main-05-to-main-06",
-        "main-06-to-main-07"
+        "day3-xixi-campus-to-main-05",
+        "main-05-to-main-06"
       ],
-      "to_name": "桐庐县富春江镇"
+      "to_name": "捷安特自行车（桐庐店）"
     },
     {
       "day": 5,
-      "distance_m": 64444,
+      "distance_m": 78148,
       "distance_target_met": false,
       "duration_limit_met": true,
-      "duration_s": 14171,
-      "duration_target_met": false,
-      "from_name": "桐庐县富春江镇",
+      "duration_s": 16854,
+      "duration_target_met": true,
+      "from_name": "捷安特自行车（桐庐店）",
       "legs": [
         {
           "segment_id": "main-06-to-main-07",
-          "subleg_index": 1
+          "subleg_index": 0
         },
         {
           "segment_id": "main-06-to-main-07",
-          "subleg_index": 2
+          "subleg_index": 1
         },
         {
           "segment_id": "main-07-to-main-08",
@@ -679,7 +674,7 @@
   ],
   "limitations": {
     "automatic_checks_are_not_road_level_verification": true,
-    "blank_name_distance_m": 311652,
+    "blank_name_distance_m": 310738,
     "quota_limited_probes": [
       "main-06-to-main-07",
       "main-07-to-main-08",
@@ -689,22 +684,22 @@
       "main-17-to-main-18"
     ],
     "road_level_status": "provisional",
-    "unknown_distance_m": 1119547,
-    "unknown_percent": 62.32
+    "unknown_distance_m": 1094542,
+    "unknown_percent": 60.68
   },
   "main": {
-    "baseline_distance_m": 1706816,
+    "baseline_distance_m": 1707202,
     "city_distance_m": 0,
-    "county_distance_m": 185318,
-    "cycleway_distance_m": 7559,
-    "detour_ratio": 1.052432130938543,
-    "distance_m": 1796308,
-    "duration_s": 382504,
-    "national_distance_m": 372469,
-    "provincial_distance_m": 109061,
+    "county_distance_m": 185364,
+    "cycleway_distance_m": 9736,
+    "detour_ratio": 1.0565439824929914,
+    "distance_m": 1803734,
+    "duration_s": 383298,
+    "national_distance_m": 372402,
+    "provincial_distance_m": 139336,
     "segment_count": 36,
     "tourism_distance_m": 2355,
-    "unknown_distance_m": 1119547,
+    "unknown_distance_m": 1094542,
     "unresolved_count": 5
   },
   "max_detour_ratio": 1.15,
@@ -757,7 +752,7 @@
       2
     ],
     "day3-xixi-campus-to-main-05": [
-      3
+      4
     ],
     "day5-changshan-hotel-to-main-10": [
       7
@@ -781,7 +776,6 @@
       4
     ],
     "main-06-to-main-07": [
-      4,
       5
     ],
     "main-07-to-main-08": [

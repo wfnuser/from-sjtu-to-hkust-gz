@@ -293,73 +293,51 @@
       ]
     },
     {
-      "query": "杭州阿里巴巴西溪园区爱橙街亚朵S酒店",
+      "query": "杭州未来科技城海创园地铁站亚朵酒店",
       "city": "杭州",
       "candidates": [
         {
-          "poi_id": "B0MATHW7W6",
-          "name": "杭州阿里巴巴西溪园区爱橙街亚朵S酒店",
-          "formatted_address": "浙江省杭州市余杭区五常街道高教路970-1号联合科技广场5幢",
+          "poi_id": "B0FFJM7REK",
+          "name": "杭州未来科技城海创园地铁站亚朵酒店",
+          "formatted_address": "浙江省杭州市余杭区常街道文一西路与常二路交叉富力天贸广场(未来天地)26号楼一楼大厅至3层、4层、5层",
           "district": "余杭区",
           "location_gcj": {
-            "lon": 120.023918,
-            "lat": 30.275941
+            "lon": 120.027783,
+            "lat": 30.282957
           },
           "selected": true
-        },
-        {
-          "poi_id": "",
-          "name": "杭州阿里巴巴西溪园区爱橙街亚朵S酒店",
-          "formatted_address": "浙江省杭州市余杭区爱橙街",
-          "district": "余杭区",
-          "location_gcj": {
-            "lon": 120.015913,
-            "lat": 30.274114
-          },
-          "selected": false
-        },
-        {
-          "poi_id": "",
-          "name": "杭州阿里巴巴西溪园区爱橙街亚朵S酒店",
-          "formatted_address": "浙江省杭州市余杭区爱橙街",
-          "district": "余杭区",
-          "location_gcj": {
-            "lon": 120.013984,
-            "lat": 30.273598
-          },
-          "selected": false
         }
       ]
     },
     {
-      "query": "桐庐",
+      "query": "捷安特自行车(桐庐店)",
       "city": "杭州",
       "candidates": [
         {
-          "poi_id": "",
-          "name": "桐庐",
-          "formatted_address": "浙江省杭州市桐庐县",
+          "poi_id": "B0I3NAB8VQ",
+          "name": "捷安特自行车(桐庐店)",
+          "formatted_address": "浙江省杭州市桐庐县城南街道春江东路17号",
           "district": "桐庐县",
           "location_gcj": {
-            "lon": 119.691755,
-            "lat": 29.79418
+            "lon": 119.694115,
+            "lat": 29.803593
           },
           "selected": true
         }
       ]
     },
     {
-      "query": "杭州建德新安江风景区新安东路亚朵酒店",
+      "query": "麗枫酒店(杭州建德新安江店)",
       "city": "建德",
       "candidates": [
         {
-          "poi_id": "",
-          "name": "杭州建德新安江风景区新安东路亚朵酒店",
-          "formatted_address": "浙江省杭州市建德市",
+          "poi_id": "B0L6ASY3FW",
+          "name": "麗枫酒店(杭州建德新安江店)",
+          "formatted_address": "浙江省杭州市建德市新安江街道沧滩路2号",
           "district": "建德市",
           "location_gcj": {
-            "lon": 119.296242,
-            "lat": 29.486494
+            "lon": 119.272872,
+            "lat": 29.471826
           },
           "selected": true
         }

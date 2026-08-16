@@ -2,7 +2,7 @@
 
 > **临时路线：仍需道路级复核。** 自动分类/审核不等于现场或权威道路核验；不得据此宣称已完全避开国道、高速或货运道路。
 
-- UNKNOWN：1119547 m（62.32%）；其中未命名道路 311652 m。
+- UNKNOWN：1094542 m（60.68%）；其中未命名道路 310738 m。
 - AMap 配额受限的补充探路清单见 `summary.json`；未完成的并行道路探测保持 provisional。
 - 国道例外须以 `NATIONAL_ROAD_EXCEPTION_APPROVED` 明确记录，且仍需道路级复核。
 - 江西线执行路线需24个骑行日，超过最多15个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留3天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。
@@ -27,10 +27,10 @@
 | day1-yexin-east-to-day1-yexin-west | 叶新公路东段 | 叶新公路西段 | 29005 | 5044 | 自动检查通过（仍需道路级复核） |
 | day1-yexin-west-to-day1-tongxiang-hotel | 叶新公路西段 | 桐乡万象汇振兴西路亚朵酒店 | 63487 | 12153 | 自动检查通过（仍需道路级复核） |
 | day1-tongxiang-hotel-to-day3-xixi-campus | 桐乡万象汇振兴西路亚朵酒店 | 阿里巴巴西溪园区 | 69336 | 13457 | 自动检查通过（仍需道路级复核） |
-| day3-xixi-campus-to-main-05 | 阿里巴巴西溪园区 | 杭州阿里巴巴西溪园区爱橙街亚朵S酒店 | 1070 | 278 | 自动检查通过（仍需道路级复核） |
-| main-05-to-main-06 | 杭州阿里巴巴西溪园区爱橙街亚朵S酒店 | 桐庐 | 73305 | 14346 | 自动检查通过（仍需道路级复核） |
-| main-06-to-main-07 | 桐庐 | 杭州建德新安江风景区新安东路亚朵酒店 | 58514 | 12526 | 阻断：不得作为可骑行路线发布 |
-| main-07-to-main-08 | 杭州建德新安江风景区新安东路亚朵酒店 | 龙游 | 65698 | 14660 | 自动检查通过（仍需道路级复核） |
+| day3-xixi-campus-to-main-05 | 阿里巴巴西溪园区 | 杭州未来科技城海创园地铁站亚朵酒店 | 880 | 220 | 自动检查通过（仍需道路级复核） |
+| main-05-to-main-06 | 杭州未来科技城海创园地铁站亚朵酒店 | 捷安特自行车（桐庐店） | 79939 | 14878 | 自动检查通过（仍需道路级复核） |
+| main-06-to-main-07 | 捷安特自行车（桐庐店） | 麗枫酒店（杭州建德新安江店） | 61294 | 13264 | 阻断：不得作为可骑行路线发布 |
+| main-07-to-main-08 | 麗枫酒店（杭州建德新安江店） | 龙游 | 63900 | 14242 | 自动检查通过（仍需道路级复核） |
 | main-08-to-main-09 | 龙游 | 衢州 | 41857 | 8080 | 需人工复核 |
 | main-09-to-day5-changshan-hotel | 衢州 | 常山东方广场酒店 | 36799 | 7334 | 自动检查通过（仍需道路级复核） |
 | day5-changshan-hotel-to-main-10 | 常山东方广场酒店 | 玉山 | 44536 | 9795 | 自动检查通过（仍需道路级复核） |
@@ -318,31 +318,24 @@
   - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：桐乡至西溪最短连续路线包含约6.2公里G320及辅路，安排白天通过。
 
 ### day3-xixi-campus-to-main-05
-- `unknown` 未命名道路 — 52 m
-- `unknown` 未命名道路 — 102 m
-- `unknown` 未命名道路 — 117 m
-- `unknown` 未命名道路 — 28 m
-- `unknown` 未命名道路 — 21 m
-- `unknown` 未命名道路 — 192 m
-- `unknown` 未命名道路 — 54 m
-- `unknown` 爱橙街 — 43 m
-- `unknown` 茶师庵路 — 114 m
-- `unknown` 未命名道路 — 17 m
-- `unknown` 未命名道路 — 99 m
-- `unknown` 未命名道路 — 97 m
-- `unknown` 未命名道路 — 114 m
-- `unknown` 未命名道路 — 20 m
+- `unknown` 未命名道路 — 183 m
+- `unknown` 未命名道路 — 71 m
+- `unknown` 文一西路 — 355 m
+- `unknown` 未命名道路 — 50 m
+- `unknown` 文一西路辅路 — 38 m
+- `unknown` 未命名道路 — 59 m
+- `unknown` 未命名道路 — 24 m
+- `unknown` 未命名道路 — 100 m
 - 无自动生成的复核项。
 
 ### main-05-to-main-06
-- `unknown` 未命名道路 — 20 m
-- `unknown` 未命名道路 — 114 m
-- `unknown` 未命名道路 — 207 m
-- `unknown` 永寿街 — 123 m
-- `unknown` 未命名道路 — 419 m
-- `unknown` 文二西路辅路 — 1079 m
-- `unknown` 未命名道路 — 51 m
-- `unknown` 良睦路 — 23 m
+- `unknown` 未命名道路 — 64 m
+- `unknown` 未命名道路 — 16 m
+- `unknown` 文一西路 — 362 m
+- `unknown` 文一西路辅路 — 276 m
+- `unknown` 文一西路辅路 — 1082 m
+- `unknown` 未命名道路 — 1081 m
+- `unknown` 未命名道路 — 47 m
 - `unknown` 未命名道路 — 1195 m
 - `unknown` 良睦路辅路 — 370 m
 - `unknown` 未命名道路 — 1957 m
@@ -350,53 +343,36 @@
 - `unknown` 闲富南路辅路 — 9410 m
 - `unknown` 富闲路辅路 — 1022 m
 - `unknown` 九龙大道辅路 — 3839 m
-- `national` 320国道辅路 — 1173 m
-- `unknown` 未命名道路 — 84 m
-- `unknown` 恩波大道辅路 — 4687 m
-- `unknown` 北环路辅路 — 1045 m
-- `unknown` 金桥南路辅路 — 5907 m
-- `unknown` 未命名道路 — 1756 m
-- `unknown` 未命名道路 — 1652 m
-- `unknown` 未命名道路 — 35 m
-- `unknown` 横大线 — 30 m
-- `unknown` 横大线 — 2705 m
-- `unknown` 未命名道路 — 149 m
-- `unknown` 未命名道路 — 45 m
-- `unknown` 横大线 — 53 m
-- `unknown` 横大线 — 736 m
-- `unknown` 横大线 — 3009 m
-- `unknown` 窄后线 — 12141 m
-- `unknown` 未命名道路 — 223 m
-- `unknown` 未命名道路 — 157 m
-- `unknown` 未命名道路 — 384 m
-- `unknown` 未命名道路 — 61 m
-- `unknown` 未命名道路 — 536 m
-- `unknown` 未命名道路 — 51 m
-- `unknown` 江南路 — 1022 m
+- `national` 320国道辅路 — 1106 m
+- `unknown` 沪瑞线 — 107 m
+- `unknown` 沪瑞线 — 4417 m
+- `unknown` 高泰线 — 37 m
+- `unknown` 未命名道路 — 104 m
+- `unknown` 沪瑞线 — 7511 m
+- `provincial` 305省道辅路 — 5149 m
+- `provincial` 305省道辅路 — 4836 m
+- `unknown` 未命名道路 — 14 m
+- `provincial` 305省道辅路 — 2746 m
+- `unknown` 未命名道路 — 49 m
+- `provincial` 302省道 — 10 m
+- `unknown` 未命名道路 — 103 m
+- `provincial` 305省道 — 13783 m
+- `provincial` 305省道 — 50 m
+- `provincial` 305省道 — 23 m
+- `provincial` 305省道 — 3678 m
+- `county` 503县道 — 46 m
+- `unknown` 江南路 — 1173 m
 - `unknown` 科技大道辅路 — 5283 m
-- `unknown` 未命名道路 — 44 m
-- `unknown` 环城南路辅路 — 2421 m
-- `unknown` 环城南路辅路 — 990 m
-- `unknown` 未命名道路 — 544 m
-- `unknown` 白云源东路辅路 — 892 m
-- `unknown` 白云源路 — 2839 m
-- `unknown` 未命名道路 — 351 m
-- `unknown` 未命名道路 — 85 m
-- `unknown` 未命名道路 — 28 m
-- `unknown` 未命名道路 — 31 m
+- `unknown` 未命名道路 — 45 m
+- `unknown` 凤川大道 — 804 m
+- `unknown` 未命名道路 — 5758 m
+- `unknown` 未命名道路 — 59 m
 - 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：杭州至桐庐仅保留约1.2公里G320辅路连接。
+  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：海创园至桐庐捷安特仅保留约1.2公里G320辅路连接。
 
 ### main-06-to-main-07
-- `unknown` 未命名道路 — 31 m
-- `unknown` 未命名道路 — 28 m
-- `unknown` 未命名道路 — 85 m
-- `unknown` 未命名道路 — 125 m
-- `unknown` 金堂山路 — 621 m
-- `unknown` 大奇山路 — 107 m
-- `unknown` 瑶琳路 — 532 m
-- `unknown` 未命名道路 — 240 m
-- `cycleway` 富春绿道南线湾里段 — 7559 m
+- `unknown` 未命名道路 — 41 m
+- `cycleway` 富春绿道南线湾里段 — 9736 m
 - `unknown` 湾茆线 — 1508 m
 - `unknown` 湾茆线 — 476 m
 - `unknown` 未命名道路 — 544 m
@@ -425,14 +401,9 @@
 - `unknown` 站前大道 — 38 m
 - `unknown` 未命名道路 — 44 m
 - `unknown` 沪瑞线 — 73 m
-- `unknown` 沪瑞线 — 5008 m
-- `unknown` 之江路 — 662 m
-- `unknown` 未命名道路 — 122 m
-- `unknown` 和美路 — 504 m
-- `unknown` 未命名道路 — 20 m
-- `unknown` 未命名道路 — 165 m
-- `unknown` 之江路 — 383 m
-- `unknown` 沪瑞线 — 1478 m
+- `unknown` 沪瑞线 — 5640 m
+- `unknown` 未命名道路 — 92 m
+- `unknown` 沪瑞线 — 2349 m
 - `unknown` 万奇太宝路 — 31 m
 - `unknown` 沪瑞线辅路 — 2690 m
 - `unknown` 新安江互通 — 60 m
@@ -441,20 +412,17 @@
 - `unknown` 沪瑞线辅路 — 632 m
 - `unknown` 沪瑞线 — 4437 m
 - `unknown` 未命名道路 — 66 m
-- `unknown` 新安东路 — 270 m
-- `unknown` 明珠路 — 63 m
-- `unknown` 仁爱路 — 114 m
+- `unknown` 新安东路辅路 — 2728 m
+- `unknown` 新安路 — 293 m
+- `unknown` 沧滩路 — 18 m
 - 待处理复核项：
-  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：富春江河谷连续铺装连接段，保留并要求白天道路级复核。
+  - [info] `NATIONAL_ROAD_EXCEPTION_APPROVED`：捷安特充电后经富春江镇，沿距离优先的沪瑞线连续通往建德；安排白天道路级复核。
   - [warning] `HARD_RISK_EXCEPTION_APPROVED`：进入建德城区需短距离穿过新安江互通连接段；白天现场观察，无法确认非机动车通行条件时下车推行。
 
 ### main-07-to-main-08
-- `unknown` 仁爱路 — 249 m
-- `unknown` 沪瑞线辅路 — 28 m
-- `unknown` 未命名道路 — 66 m
-- `unknown` 新安东路辅路 — 1930 m
-- `unknown` 未命名道路 — 52 m
-- `unknown` 白沙路 — 621 m
+- `unknown` 沧滩路 — 18 m
+- `unknown` 严东关路 — 967 m
+- `unknown` 白沙路 — 163 m
 - `unknown` 白沙路 — 446 m
 - `unknown` 沪瑞线 — 9135 m
 - `unknown` 未命名道路 — 48 m
