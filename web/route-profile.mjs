@@ -3,7 +3,7 @@ const PROFILES = {
     id: "execution",
     geojsonUrl: "data/inland-execution-route.geojson",
     summaryUrl: "data/inland-execution-summary.json",
-    itineraryUrl: "data/inland-itinerary.json?v=20260818-1",
+    itineraryUrl: "data/inland-itinerary.json?v=20260818-2",
     rerouteOptionsUrl: null,
     title: "宇宙骑行路线（江西线）",
     mainLabel: "Day 1–15 执行路线",

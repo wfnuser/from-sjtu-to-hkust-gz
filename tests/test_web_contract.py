@@ -82,8 +82,8 @@ class WebMapContractTests(unittest.TestCase):
         js = Path("web/app.mjs").read_text(encoding="utf-8")
 
         self.assertIn("styles.css?v=20260818-1", html)
-        self.assertIn("app.mjs?v=20260818-2", html)
-        self.assertIn('route-profile.mjs?v=20260818-2', js)
+        self.assertIn("app.mjs?v=20260818-3", html)
+        self.assertIn('route-profile.mjs?v=20260818-3', js)
         self.assertIn('day-card-model.mjs?v=20260818-1', js)
         self.assertIn('day-selection.mjs?v=20260818-1', js)
 

@@ -20,7 +20,7 @@ class ExecutionItineraryContractTests(unittest.TestCase):
     def test_fixed_actual_and_planned_days_are_not_reassigned(self):
         days = self.itinerary["days"]
         self.assertEqual([day["day"] for day in days], list(range(16)))
-        self.assertEqual(self.itinerary["start_date"], "2026-08-14")
+        self.assertEqual(self.itinerary["start_date"], "2026-08-13")
         self.assertEqual(days[0]["from_name"], "阳曲路")
         self.assertEqual(days[0]["to_name"], "上海交通大学闵行校区")
         self.assertEqual(
@@ -170,7 +170,7 @@ class ExecutionItineraryBuildTests(unittest.TestCase):
 
         config = {
             "route_id": "inland-execution",
-            "start_date": "2026-08-14",
+            "start_date": "2026-08-13",
             "days": [
                 {"day": 0, "segments": ["a-to-b"]},
                 {"day": 4, "segments": ["b-to-c"]},
@@ -192,10 +192,10 @@ class ExecutionItineraryBuildTests(unittest.TestCase):
 
         itinerary, _ = build_itinerary(config, manifest, geojson)
 
-        self.assertEqual(itinerary["start_date"], "2026-08-14")
+        self.assertEqual(itinerary["start_date"], "2026-08-13")
         self.assertEqual(
             [day["date"] for day in itinerary["days"]],
-            ["2026-08-14", "2026-08-18"],
+            ["2026-08-13", "2026-08-17"],
         )
 
     def test_strict_audit_cli_accepts_the_execution_profile(self):

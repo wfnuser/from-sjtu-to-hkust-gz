@@ -16,7 +16,7 @@
 - Day buttons expose selection with `aria-pressed`; pointer, touch, and keyboard activation use the same button handler.
 - Optional branches, reroute comparison layers, review data, and popups remain unchanged.
 - The selected route keeps its road-class color while using greater weight and opacity.
-- Day 4 is `2026-08-18`; `start_date: 2026-08-14` derives Day 1–15 ISO dates through `2026-08-29`, and cards display them as `M月D日`.
+- Day 4 is `2026-08-17`; `start_date: 2026-08-13` derives Day 1–15 ISO dates through `2026-08-28`, and cards display them as `M月D日`.
 
 ---
 
@@ -127,7 +127,7 @@ self.assertIn('.day-card.is-selected', css)
 self.assertIn('date.textContent = model.dateLabel', js)
 ```
 
-Update the app and route-profile cache-version expectations to `20260818-2`, and version the published itinerary URL so deployed browsers cannot reuse stale date data.
+Update the app and route-profile cache-version expectations to `20260818-3`, and version the published itinerary URL so deployed browsers cannot reuse stale date data.
 
 - [x] **Step 2: Run the focused contract and verify failure**
 
@@ -164,7 +164,7 @@ function toggleDaySelection(dayId) {
 
 When rendering cards, clear `dayCards`, set `card.dataset.dayId`, initialize `aria-pressed="false"`, save the card in `dayCards`, render `model.dateLabel` next to the Day label, and replace `fitDay(model.day)` with `toggleDaySelection(model.day)`.
 
-Add `start_date: 2026-08-14` to `config/inland-itinerary.json`. In `route_planner/itinerary.py`, validate the ISO date and derive each published day's date by adding its Day ID; Day 4 becomes `2026-08-18` and Day 15 becomes `2026-08-29`. Add an execution-itinerary test for the derived sequence and regenerate `web/data/inland-itinerary.json`.
+Add `start_date: 2026-08-13` to `config/inland-itinerary.json`. In `route_planner/itinerary.py`, validate the ISO date and derive each published day's date by adding its Day ID; Day 4 becomes `2026-08-17` and Day 15 becomes `2026-08-28`. Add an execution-itinerary test for the derived sequence and regenerate `web/data/inland-itinerary.json`.
 
 - [x] **Step 4: Add the visible card selection style and refresh asset versions**
 

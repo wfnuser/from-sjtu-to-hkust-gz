@@ -1,4 +1,4 @@
-import { selectRouteProfile } from "./route-profile.mjs?v=20260818-2";
+import { selectRouteProfile } from "./route-profile.mjs?v=20260818-3";
 import {
   rerouteComparisonText,
   rerouteFeaturesForOption,
