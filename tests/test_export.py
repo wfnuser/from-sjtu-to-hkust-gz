@@ -53,6 +53,21 @@ def _segment(
 
 
 class ExportTests(unittest.TestCase):
+    def test_execution_profile_uses_configured_days_even_when_a_day_exceeds_six_hours(self):
+        segment = replace(
+            _segment(distances=(114_000,), duration_s=27_000),
+            rule=SegmentRule("main-01-to-main-02", day=4),
+            subleg_durations_s=(27_000,),
+        )
+
+        summary = build_summary([segment], 1.15, profile="execution")
+        geojson = build_geojson([segment], profile="execution")
+
+        self.assertEqual(summary["days"][0]["day"], 4)
+        self.assertEqual(summary["days"][0]["distance_m"], 114_000)
+        self.assertFalse(summary["days"][0]["duration_limit_met"])
+        self.assertEqual(geojson["features"][0]["properties"]["day"], 4)
+
     def test_day_partition_prefers_eighty_to_one_twenty_km_targets_at_equal_day_count(self):
         legs = [
             {"distance_m": 40_000, "duration_s": 7_200},

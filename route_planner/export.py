@@ -18,11 +18,13 @@ _MAX_RIDING_HOURS_PER_DAY = 6
 _MAX_RIDING_DAYS = 15
 
 
-def build_geojson(segments: Sequence[PlannedSegment]) -> dict[str, object]:
+def build_geojson(
+    segments: Sequence[PlannedSegment], *, profile: str = "coastal"
+) -> dict[str, object]:
     """Return one WGS84 LineString feature for every API road step with geometry."""
     features: list[dict[str, object]] = []
-    _, segment_days = _practical_day_summaries(
-        tuple(segment for segment in segments if not _is_optional(segment))
+    _, segment_days = _day_summaries(
+        tuple(segment for segment in segments if not _is_optional(segment)), profile
     )
     for segment in segments:
         for step in segment.selected.steps:
@@ -56,7 +58,7 @@ def build_summary(
     main = tuple(segment for segment in segments if not _is_optional(segment))
     optional = tuple(segment for segment in segments if _is_optional(segment))
     main_totals = _totals(main)
-    days, segment_days = _practical_day_summaries(main)
+    days, segment_days = _day_summaries(main, profile)
     schedule = _schedule_contract(days, profile)
     distance_m = int(main_totals["distance_m"])
     unknown_m = int(main_totals["unknown_distance_m"])
@@ -128,6 +130,64 @@ def _practical_day_summaries(
                         "subleg_index": leg["subleg_index"],
                     }
                     for leg in day_legs
+                ],
+            }
+        )
+    return summaries, segment_days
+
+
+def _day_summaries(
+    segments: Sequence[PlannedSegment], profile: str
+) -> tuple[list[dict[str, object]], dict[str, list[int]]]:
+    if profile == "execution":
+        return _configured_day_summaries(segments)
+    return _practical_day_summaries(segments)
+
+
+def _configured_day_summaries(
+    segments: Sequence[PlannedSegment],
+) -> tuple[list[dict[str, object]], dict[str, list[int]]]:
+    """Summarize execution segments by their explicit itinerary day contract."""
+    grouped: dict[int, list[PlannedSegment]] = {}
+    previous_day = -1
+    for segment in segments:
+        day = segment.rule.day
+        if not isinstance(day, int) or isinstance(day, bool) or day < 0:
+            raise ValueError("Execution segments require a non-negative configured day.")
+        if day < previous_day:
+            raise ValueError("Execution segment days must be non-decreasing.")
+        grouped.setdefault(day, []).append(segment)
+        previous_day = day
+
+    summaries: list[dict[str, object]] = []
+    segment_days: dict[str, list[int]] = {}
+    for day, day_segments in grouped.items():
+        distance_m = sum(segment.selected.distance_m for segment in day_segments)
+        duration_s = sum(segment.selected.duration_s for segment in day_segments)
+        segment_ids = [segment.segment_id for segment in day_segments]
+        for segment_id in segment_ids:
+            segment_days[segment_id] = [day]
+        summaries.append(
+            {
+                "day": day,
+                "from_name": day_segments[0].from_waypoint.name,
+                "to_name": day_segments[-1].to_waypoint.name,
+                "distance_m": distance_m,
+                "duration_s": duration_s,
+                "distance_target_met": 80_000 <= distance_m <= 120_000,
+                "duration_target_met": 14_400 <= duration_s <= 21_600,
+                "duration_limit_met": duration_s <= 21_600,
+                "lodging_network_endpoint": day_segments[-1].to_waypoint.name,
+                "lodging_network_status": "named_endpoint_unverified",
+                "segment_count": len(segment_ids),
+                "segments": segment_ids,
+                "legs": [
+                    {
+                        "segment_id": segment.segment_id,
+                        "subleg_index": subleg_index,
+                    }
+                    for segment in day_segments
+                    for subleg_index in range(len(segment.subleg_distances_m or (segment.selected.distance_m,)))
                 ],
             }
         )
@@ -231,7 +291,7 @@ def build_review_markdown(
     """Render the route and its unresolved review work for a human reviewer."""
     main = tuple(segment for segment in segments if not _is_optional(segment))
     totals = _totals(main)
-    days, _ = _practical_day_summaries(main)
+    days, _ = _day_summaries(main, profile)
     schedule = _schedule_contract(days, profile)
     distance_m = int(totals["distance_m"])
     unknown_m = int(totals["unknown_distance_m"])

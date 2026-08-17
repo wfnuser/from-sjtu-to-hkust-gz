@@ -1,26 +1,26 @@
 {
   "all_branches": {
-    "baseline_distance_m": 1707202,
+    "baseline_distance_m": 1584224,
     "city_distance_m": 0,
-    "county_distance_m": 95182,
+    "county_distance_m": 27056,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.0274870812007015,
-    "distance_m": 1754128,
-    "duration_s": 370143,
-    "national_distance_m": 462578,
-    "provincial_distance_m": 106650,
-    "segment_count": 36,
+    "detour_ratio": 1.0088339780233098,
+    "distance_m": 1598219,
+    "duration_s": 347115,
+    "national_distance_m": 481072,
+    "provincial_distance_m": 166544,
+    "segment_count": 26,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 1079925,
-    "unresolved_count": 2
+    "unknown_distance_m": 913754,
+    "unresolved_count": 0
   },
   "days": [
     {
-      "day": 1,
-      "distance_m": 84773,
-      "distance_target_met": true,
+      "day": 0,
+      "distance_m": 65686,
+      "distance_target_met": false,
       "duration_limit_met": true,
-      "duration_s": 18823,
+      "duration_s": 15271,
       "duration_target_met": true,
       "from_name": "阳曲路",
       "legs": [
@@ -51,15 +51,11 @@
         {
           "segment_id": "pre-07-to-main-01",
           "subleg_index": 0
-        },
-        {
-          "segment_id": "main-01-to-day1-yexin-east",
-          "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "叶新公路东段",
+      "lodging_network_endpoint": "上海交通大学闵行校区",
       "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 8,
+      "segment_count": 7,
       "segments": [
         "pre-01-to-pre-02",
         "pre-02-to-pre-03",
@@ -67,20 +63,23 @@
         "pre-04-to-pre-05",
         "pre-05-to-pre-06",
         "pre-06-to-pre-07",
-        "pre-07-to-main-01",
-        "main-01-to-day1-yexin-east"
+        "pre-07-to-main-01"
       ],
-      "to_name": "叶新公路东段"
+      "to_name": "上海交通大学闵行校区"
     },
     {
-      "day": 2,
-      "distance_m": 92492,
+      "day": 1,
+      "distance_m": 111579,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 17197,
+      "duration_s": 20749,
       "duration_target_met": true,
-      "from_name": "叶新公路东段",
+      "from_name": "上海交通大学闵行校区",
       "legs": [
+        {
+          "segment_id": "main-01-to-day1-yexin-east",
+          "subleg_index": 0
+        },
         {
           "segment_id": "day1-yexin-east-to-day1-yexin-west",
           "subleg_index": 0
@@ -92,15 +91,16 @@
       ],
       "lodging_network_endpoint": "桐乡万象汇振兴西路亚朵酒店",
       "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
+      "segment_count": 3,
       "segments": [
+        "main-01-to-day1-yexin-east",
         "day1-yexin-east-to-day1-yexin-west",
         "day1-yexin-west-to-day1-tongxiang-hotel"
       ],
       "to_name": "桐乡万象汇振兴西路亚朵酒店"
     },
     {
-      "day": 3,
+      "day": 2,
       "distance_m": 70216,
       "distance_target_met": false,
       "duration_limit_met": true,
@@ -127,12 +127,12 @@
       "to_name": "杭州未来科技城海创园地铁站亚朵酒店"
     },
     {
-      "day": 4,
-      "distance_m": 85809,
-      "distance_target_met": true,
-      "duration_limit_met": true,
-      "duration_s": 16620,
-      "duration_target_met": true,
+      "day": 3,
+      "distance_m": 134715,
+      "distance_target_met": false,
+      "duration_limit_met": false,
+      "duration_s": 27611,
+      "duration_target_met": false,
       "from_name": "杭州未来科技城海创园地铁站亚朵酒店",
       "legs": [
         {
@@ -142,94 +142,36 @@
         {
           "segment_id": "main-06-to-main-07",
           "subleg_index": 0
+        },
+        {
+          "segment_id": "main-06-to-main-07",
+          "subleg_index": 1
+        },
+        {
+          "segment_id": "main-06-to-main-07",
+          "subleg_index": 2
         }
       ],
-      "lodging_network_endpoint": "桐庐县富春江镇",
+      "lodging_network_endpoint": "麗枫酒店（杭州建德新安江店）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 2,
       "segments": [
         "main-05-to-main-06",
         "main-06-to-main-07"
       ],
-      "to_name": "桐庐县富春江镇"
+      "to_name": "麗枫酒店（杭州建德新安江店）"
     },
     {
-      "day": 5,
-      "distance_m": 64998,
-      "distance_target_met": false,
-      "duration_limit_met": true,
-      "duration_s": 14234,
-      "duration_target_met": false,
-      "from_name": "桐庐县富春江镇",
-      "legs": [
-        {
-          "segment_id": "main-06-to-main-07",
-          "subleg_index": 1
-        },
-        {
-          "segment_id": "main-06-to-main-07",
-          "subleg_index": 2
-        },
-        {
-          "segment_id": "main-07-to-main-08",
-          "subleg_index": 0
-        }
-      ],
-      "lodging_network_endpoint": "建德市寿昌镇",
-      "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
-      "segments": [
-        "main-06-to-main-07",
-        "main-07-to-main-08"
-      ],
-      "to_name": "建德市寿昌镇"
-    },
-    {
-      "day": 6,
-      "distance_m": 82102,
+      "day": 4,
+      "distance_m": 113827,
       "distance_target_met": true,
-      "duration_limit_met": true,
-      "duration_s": 17406,
-      "duration_target_met": true,
-      "from_name": "建德市寿昌镇",
-      "legs": [
-        {
-          "segment_id": "main-07-to-main-08",
-          "subleg_index": 1
-        },
-        {
-          "segment_id": "main-08-to-main-09",
-          "subleg_index": 0
-        },
-        {
-          "segment_id": "main-08-to-main-09",
-          "subleg_index": 1
-        },
-        {
-          "segment_id": "main-08-to-main-09",
-          "subleg_index": 2
-        }
-      ],
-      "lodging_network_endpoint": "衢州",
-      "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
-      "segments": [
-        "main-07-to-main-08",
-        "main-08-to-main-09"
-      ],
-      "to_name": "衢州"
-    },
-    {
-      "day": 7,
-      "distance_m": 36775,
-      "distance_target_met": false,
-      "duration_limit_met": true,
-      "duration_s": 6954,
+      "duration_limit_met": false,
+      "duration_s": 26772,
       "duration_target_met": false,
-      "from_name": "衢州",
+      "from_name": "麗枫酒店（杭州建德新安江店）",
       "legs": [
         {
-          "segment_id": "main-09-to-day5-changshan-hotel",
+          "segment_id": "main-07-to-day4-changshan-hotel",
           "subleg_index": 0
         }
       ],
@@ -237,432 +179,256 @@
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "main-09-to-day5-changshan-hotel"
+        "main-07-to-day4-changshan-hotel"
       ],
       "to_name": "常山东方广场酒店"
     },
     {
-      "day": 8,
-      "distance_m": 83167,
+      "day": 5,
+      "distance_m": 93276,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 16675,
+      "duration_s": 18801,
       "duration_target_met": true,
       "from_name": "常山东方广场酒店",
       "legs": [
         {
-          "segment_id": "day5-changshan-hotel-to-main-10",
-          "subleg_index": 0
-        },
-        {
-          "segment_id": "main-10-to-main-11",
+          "segment_id": "day4-changshan-hotel-to-day5-shangrao-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "上饶",
+      "lodging_network_endpoint": "维也纳国际酒店（上饶经开区店）",
       "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
+      "segment_count": 1,
       "segments": [
-        "day5-changshan-hotel-to-main-10",
-        "main-10-to-main-11"
+        "day4-changshan-hotel-to-day5-shangrao-hotel"
       ],
-      "to_name": "上饶"
+      "to_name": "维也纳国际酒店（上饶经开区店）"
+    },
+    {
+      "day": 6,
+      "distance_m": 95158,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 19533,
+      "duration_target_met": true,
+      "from_name": "维也纳国际酒店（上饶经开区店）",
+      "legs": [
+        {
+          "segment_id": "day5-shangrao-hotel-to-day6-yingtan-hotel",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "汉庭酒店（鹰潭高新龙虎山大道店）",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "day5-shangrao-hotel-to-day6-yingtan-hotel"
+      ],
+      "to_name": "汉庭酒店（鹰潭高新龙虎山大道店）"
+    },
+    {
+      "day": 7,
+      "distance_m": 97512,
+      "distance_target_met": true,
+      "duration_limit_met": false,
+      "duration_s": 22342,
+      "duration_target_met": false,
+      "from_name": "汉庭酒店（鹰潭高新龙虎山大道店）",
+      "legs": [
+        {
+          "segment_id": "day6-yingtan-hotel-to-day7-nancheng-hotel",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "南城法莱德国际大酒店",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "day6-yingtan-hotel-to-day7-nancheng-hotel"
+      ],
+      "to_name": "南城法莱德国际大酒店"
+    },
+    {
+      "day": 8,
+      "distance_m": 88587,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 20514,
+      "duration_target_met": true,
+      "from_name": "南城法莱德国际大酒店",
+      "legs": [
+        {
+          "segment_id": "day7-nancheng-hotel-to-day8-guangchang-hotel",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "维也纳酒店（抚州广昌沿江路店）",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "day7-nancheng-hotel-to-day8-guangchang-hotel"
+      ],
+      "to_name": "维也纳酒店（抚州广昌沿江路店）"
     },
     {
       "day": 9,
-      "distance_m": 98150,
+      "distance_m": 114197,
       "distance_target_met": true,
-      "duration_limit_met": true,
-      "duration_s": 19358,
-      "duration_target_met": true,
-      "from_name": "上饶",
+      "duration_limit_met": false,
+      "duration_s": 26344,
+      "duration_target_met": false,
+      "from_name": "维也纳酒店（抚州广昌沿江路店）",
       "legs": [
         {
-          "segment_id": "main-11-to-day6-hengfeng-hotel",
-          "subleg_index": 0
-        },
-        {
-          "segment_id": "day6-hengfeng-hotel-to-main-12",
+          "segment_id": "day8-guangchang-hotel-to-day9-yinkeng-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "鹰潭",
+      "lodging_network_endpoint": "于都银鑫大酒店",
       "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
+      "segment_count": 1,
       "segments": [
-        "main-11-to-day6-hengfeng-hotel",
-        "day6-hengfeng-hotel-to-main-12"
+        "day8-guangchang-hotel-to-day9-yinkeng-hotel"
       ],
-      "to_name": "鹰潭"
+      "to_name": "于都银鑫大酒店"
     },
     {
       "day": 10,
-      "distance_m": 95610,
+      "distance_m": 112919,
       "distance_target_met": true,
-      "duration_limit_met": true,
-      "duration_s": 20386,
-      "duration_target_met": true,
-      "from_name": "鹰潭",
+      "duration_limit_met": false,
+      "duration_s": 24778,
+      "duration_target_met": false,
+      "from_name": "于都银鑫大酒店",
       "legs": [
         {
-          "segment_id": "main-12-to-day7-dongxiang-hotel",
-          "subleg_index": 0
-        },
-        {
-          "segment_id": "day7-dongxiang-hotel-to-day8-nanfeng-hotel",
+          "segment_id": "day9-yinkeng-hotel-to-day10-hanfang-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "金溪县浒湾镇",
+      "lodging_network_endpoint": "赣州市赣县区星月湾大酒店",
       "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
+      "segment_count": 1,
       "segments": [
-        "main-12-to-day7-dongxiang-hotel",
-        "day7-dongxiang-hotel-to-day8-nanfeng-hotel"
+        "day9-yinkeng-hotel-to-day10-hanfang-hotel"
       ],
-      "to_name": "金溪县浒湾镇"
+      "to_name": "赣州市赣县区星月湾大酒店"
     },
     {
       "day": 11,
-      "distance_m": 49587,
-      "distance_target_met": false,
-      "duration_limit_met": true,
-      "duration_s": 11930,
+      "distance_m": 107813,
+      "distance_target_met": true,
+      "duration_limit_met": false,
+      "duration_s": 24864,
       "duration_target_met": false,
-      "from_name": "金溪县浒湾镇",
+      "from_name": "赣州市赣县区星月湾大酒店",
       "legs": [
         {
-          "segment_id": "day7-dongxiang-hotel-to-day8-nanfeng-hotel",
-          "subleg_index": 1
+          "segment_id": "day10-hanfang-hotel-to-day11-dingnan-hotel",
+          "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "南城县万坊镇",
+      "lodging_network_endpoint": "7天酒店（赣州定南火车站店）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day7-dongxiang-hotel-to-day8-nanfeng-hotel"
+        "day10-hanfang-hotel-to-day11-dingnan-hotel"
       ],
-      "to_name": "南城县万坊镇"
+      "to_name": "7天酒店（赣州定南火车站店）"
     },
     {
       "day": 12,
-      "distance_m": 84220,
+      "distance_m": 101666,
       "distance_target_met": true,
-      "duration_limit_met": true,
-      "duration_s": 19255,
-      "duration_target_met": true,
-      "from_name": "南城县万坊镇",
+      "duration_limit_met": false,
+      "duration_s": 24735,
+      "duration_target_met": false,
+      "from_name": "7天酒店（赣州定南火车站店）",
       "legs": [
         {
-          "segment_id": "day7-dongxiang-hotel-to-day8-nanfeng-hotel",
-          "subleg_index": 2
-        },
-        {
-          "segment_id": "day8-nanfeng-hotel-to-main-15",
+          "segment_id": "day11-dingnan-hotel-to-day12-chuantang-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "广昌县甘竹镇",
+      "lodging_network_endpoint": "东源万和宾馆",
       "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
+      "segment_count": 1,
       "segments": [
-        "day7-dongxiang-hotel-to-day8-nanfeng-hotel",
-        "day8-nanfeng-hotel-to-main-15"
+        "day11-dingnan-hotel-to-day12-chuantang-hotel"
       ],
-      "to_name": "广昌县甘竹镇"
+      "to_name": "东源万和宾馆"
     },
     {
       "day": 13,
-      "distance_m": 73310,
-      "distance_target_met": false,
-      "duration_limit_met": true,
-      "duration_s": 17016,
-      "duration_target_met": true,
-      "from_name": "广昌县甘竹镇",
+      "distance_m": 107542,
+      "distance_target_met": true,
+      "duration_limit_met": false,
+      "duration_s": 23833,
+      "duration_target_met": false,
+      "from_name": "东源万和宾馆",
       "legs": [
         {
-          "segment_id": "day8-nanfeng-hotel-to-main-15",
-          "subleg_index": 1
-        },
-        {
-          "segment_id": "main-15-to-main-16",
+          "segment_id": "day12-chuantang-hotel-to-day13-yangqiao-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "汉庭酒店（赣州宁都州城文化街店）",
+      "lodging_network_endpoint": "简居HOTEL酒店",
       "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
+      "segment_count": 1,
       "segments": [
-        "day8-nanfeng-hotel-to-main-15",
-        "main-15-to-main-16"
+        "day12-chuantang-hotel-to-day13-yangqiao-hotel"
       ],
-      "to_name": "汉庭酒店（赣州宁都州城文化街店）"
+      "to_name": "简居HOTEL酒店"
     },
     {
       "day": 14,
-      "distance_m": 71933,
-      "distance_target_met": false,
+      "distance_m": 88688,
+      "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 17011,
+      "duration_s": 18034,
       "duration_target_met": true,
-      "from_name": "汉庭酒店（赣州宁都州城文化街店）",
+      "from_name": "简居HOTEL酒店",
       "legs": [
         {
-          "segment_id": "main-16-to-main-17",
+          "segment_id": "day13-yangqiao-hotel-to-day14-zengcheng-hotel",
           "subleg_index": 0
-        },
-        {
-          "segment_id": "main-16-to-main-17",
-          "subleg_index": 1
         }
       ],
-      "lodging_network_endpoint": "于都县银坑镇",
+      "lodging_network_endpoint": "广州增城荔湖木莲庄酒店",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "main-16-to-main-17"
+        "day13-yangqiao-hotel-to-day14-zengcheng-hotel"
       ],
-      "to_name": "于都县银坑镇"
+      "to_name": "广州增城荔湖木莲庄酒店"
     },
     {
       "day": 15,
-      "distance_m": 99551,
+      "distance_m": 94838,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 18389,
+      "duration_s": 19257,
       "duration_target_met": true,
-      "from_name": "于都县银坑镇",
+      "from_name": "广州增城荔湖木莲庄酒店",
       "legs": [
         {
-          "segment_id": "main-16-to-main-17",
-          "subleg_index": 2
-        },
-        {
-          "segment_id": "main-17-to-main-18",
-          "subleg_index": 0
-        }
-      ],
-      "lodging_network_endpoint": "赣州",
-      "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
-      "segments": [
-        "main-16-to-main-17",
-        "main-17-to-main-18"
-      ],
-      "to_name": "赣州"
-    },
-    {
-      "day": 16,
-      "distance_m": 72483,
-      "distance_target_met": false,
-      "duration_limit_met": true,
-      "duration_s": 13978,
-      "duration_target_met": false,
-      "from_name": "赣州",
-      "legs": [
-        {
-          "segment_id": "main-18-to-main-19",
-          "subleg_index": 0
-        },
-        {
-          "segment_id": "main-18-to-main-19",
-          "subleg_index": 1
-        },
-        {
-          "segment_id": "main-18-to-main-19",
-          "subleg_index": 2
-        }
-      ],
-      "lodging_network_endpoint": "维也纳酒店（赣州信丰高铁西站店）",
-      "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 1,
-      "segments": [
-        "main-18-to-main-19"
-      ],
-      "to_name": "维也纳酒店（赣州信丰高铁西站店）"
-    },
-    {
-      "day": 17,
-      "distance_m": 69130,
-      "distance_target_met": false,
-      "duration_limit_met": true,
-      "duration_s": 14908,
-      "duration_target_met": true,
-      "from_name": "维也纳酒店（赣州信丰高铁西站店）",
-      "legs": [
-        {
-          "segment_id": "main-19-to-main-20",
-          "subleg_index": 0
-        }
-      ],
-      "lodging_network_endpoint": "龙南",
-      "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 1,
-      "segments": [
-        "main-19-to-main-20"
-      ],
-      "to_name": "龙南"
-    },
-    {
-      "day": 18,
-      "distance_m": 88919,
-      "distance_target_met": true,
-      "duration_limit_met": true,
-      "duration_s": 20940,
-      "duration_target_met": true,
-      "from_name": "龙南",
-      "legs": [
-        {
-          "segment_id": "main-20-to-main-21",
-          "subleg_index": 0
-        },
-        {
-          "segment_id": "main-21-to-main-22",
-          "subleg_index": 0
-        }
-      ],
-      "lodging_network_endpoint": "维也纳酒店（河源和平店）",
-      "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
-      "segments": [
-        "main-20-to-main-21",
-        "main-21-to-main-22"
-      ],
-      "to_name": "维也纳酒店（河源和平店）"
-    },
-    {
-      "day": 19,
-      "distance_m": 41560,
-      "distance_target_met": false,
-      "duration_limit_met": true,
-      "duration_s": 10095,
-      "duration_target_met": false,
-      "from_name": "维也纳酒店（河源和平店）",
-      "legs": [
-        {
-          "segment_id": "main-22-to-main-23",
-          "subleg_index": 0
-        }
-      ],
-      "lodging_network_endpoint": "东源县船塘镇",
-      "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 1,
-      "segments": [
-        "main-22-to-main-23"
-      ],
-      "to_name": "东源县船塘镇"
-    },
-    {
-      "day": 20,
-      "distance_m": 86350,
-      "distance_target_met": true,
-      "duration_limit_met": true,
-      "duration_s": 19319,
-      "duration_target_met": true,
-      "from_name": "东源县船塘镇",
-      "legs": [
-        {
-          "segment_id": "main-22-to-main-23",
-          "subleg_index": 1
-        },
-        {
-          "segment_id": "main-23-to-main-24",
-          "subleg_index": 0
-        }
-      ],
-      "lodging_network_endpoint": "河源市源城区埔前镇",
-      "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
-      "segments": [
-        "main-22-to-main-23",
-        "main-23-to-main-24"
-      ],
-      "to_name": "河源市源城区埔前镇"
-    },
-    {
-      "day": 21,
-      "distance_m": 89947,
-      "distance_target_met": true,
-      "duration_limit_met": true,
-      "duration_s": 18825,
-      "duration_target_met": true,
-      "from_name": "河源市源城区埔前镇",
-      "legs": [
-        {
-          "segment_id": "main-23-to-main-24",
-          "subleg_index": 1
-        },
-        {
-          "segment_id": "main-23-to-main-24",
-          "subleg_index": 2
-        }
-      ],
-      "lodging_network_endpoint": "维也纳酒店（惠州博罗福田店）",
-      "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 1,
-      "segments": [
-        "main-23-to-main-24"
-      ],
-      "to_name": "维也纳酒店（惠州博罗福田店）"
-    },
-    {
-      "day": 22,
-      "distance_m": 50920,
-      "distance_target_met": false,
-      "duration_limit_met": true,
-      "duration_s": 9667,
-      "duration_target_met": false,
-      "from_name": "维也纳酒店（惠州博罗福田店）",
-      "legs": [
-        {
-          "segment_id": "main-24-to-main-25",
-          "subleg_index": 0
-        },
-        {
-          "segment_id": "main-25-to-main-26",
-          "subleg_index": 0
-        }
-      ],
-      "lodging_network_endpoint": "广州市增城区新塘镇",
-      "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
-      "segments": [
-        "main-24-to-main-25",
-        "main-25-to-main-26"
-      ],
-      "to_name": "广州市增城区新塘镇"
-    },
-    {
-      "day": 23,
-      "distance_m": 82126,
-      "distance_target_met": true,
-      "duration_limit_met": true,
-      "duration_s": 17480,
-      "duration_target_met": true,
-      "from_name": "广州市增城区新塘镇",
-      "legs": [
-        {
-          "segment_id": "main-25-to-main-26",
-          "subleg_index": 1
-        },
-        {
-          "segment_id": "main-26-to-main-27",
+          "segment_id": "day14-zengcheng-hotel-to-main-27",
           "subleg_index": 0
         }
       ],
       "lodging_network_endpoint": "香港科技大学（广州）",
       "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 2,
+      "segment_count": 1,
       "segments": [
-        "main-25-to-main-26",
-        "main-26-to-main-27"
+        "day14-zengcheng-hotel-to-main-27"
       ],
       "to_name": "香港科技大学（广州）"
     }
   ],
   "limitations": {
     "automatic_checks_are_not_road_level_verification": true,
-    "blank_name_distance_m": 283918,
+    "blank_name_distance_m": 210390,
     "quota_limited_probes": [
       "main-06-to-main-07",
       "main-07-to-main-08",
@@ -672,23 +438,23 @@
       "main-17-to-main-18"
     ],
     "road_level_status": "provisional",
-    "unknown_distance_m": 1079925,
-    "unknown_percent": 61.56
+    "unknown_distance_m": 913754,
+    "unknown_percent": 57.17
   },
   "main": {
-    "baseline_distance_m": 1707202,
+    "baseline_distance_m": 1584224,
     "city_distance_m": 0,
-    "county_distance_m": 95182,
+    "county_distance_m": 27056,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.0274870812007015,
-    "distance_m": 1754128,
-    "duration_s": 370143,
-    "national_distance_m": 462578,
-    "provincial_distance_m": 106650,
-    "segment_count": 36,
+    "detour_ratio": 1.0088339780233098,
+    "distance_m": 1598219,
+    "duration_s": 347115,
+    "national_distance_m": 481072,
+    "provincial_distance_m": 166544,
+    "segment_count": 26,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 1079925,
-    "unresolved_count": 2
+    "unknown_distance_m": 913754,
+    "unresolved_count": 0
   },
   "max_detour_ratio": 1.15,
   "optional_branch_excluded": {
@@ -709,12 +475,12 @@
   "publication_status": "provisional_road_level_review_required",
   "schedule": {
     "buffer_days": 3,
-    "daily_time_constraints_met": true,
-    "day_count": 23,
+    "daily_time_constraints_met": false,
+    "day_count": 16,
     "deadline_available_days": 18,
     "deadline_end": "2026-08-30",
     "deadline_feasible": false,
-    "deadline_note": "江西线执行路线需23个骑行日，超过最多15个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留3天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。",
+    "deadline_note": "江西线执行路线需16个骑行日，超过最多15个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留3天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。",
     "deadline_start": "2026-08-13",
     "max_duration_s": 21600,
     "max_riding_days": 15,
@@ -731,121 +497,82 @@
   },
   "segment_days": {
     "day1-tongxiang-hotel-to-day3-xixi-campus": [
-      3
+      2
     ],
     "day1-yexin-east-to-day1-yexin-west": [
-      2
+      1
     ],
     "day1-yexin-west-to-day1-tongxiang-hotel": [
-      2
+      1
     ],
-    "day3-xixi-campus-to-main-05": [
-      3
+    "day10-hanfang-hotel-to-day11-dingnan-hotel": [
+      11
     ],
-    "day5-changshan-hotel-to-main-10": [
-      8
-    ],
-    "day6-hengfeng-hotel-to-main-12": [
-      9
-    ],
-    "day7-dongxiang-hotel-to-day8-nanfeng-hotel": [
-      10,
-      11,
+    "day11-dingnan-hotel-to-day12-chuantang-hotel": [
       12
     ],
-    "day8-nanfeng-hotel-to-main-15": [
-      12,
+    "day12-chuantang-hotel-to-day13-yangqiao-hotel": [
       13
+    ],
+    "day13-yangqiao-hotel-to-day14-zengcheng-hotel": [
+      14
+    ],
+    "day14-zengcheng-hotel-to-main-27": [
+      15
+    ],
+    "day3-xixi-campus-to-main-05": [
+      2
+    ],
+    "day4-changshan-hotel-to-day5-shangrao-hotel": [
+      5
+    ],
+    "day5-shangrao-hotel-to-day6-yingtan-hotel": [
+      6
+    ],
+    "day6-yingtan-hotel-to-day7-nancheng-hotel": [
+      7
+    ],
+    "day7-nancheng-hotel-to-day8-guangchang-hotel": [
+      8
+    ],
+    "day8-guangchang-hotel-to-day9-yinkeng-hotel": [
+      9
+    ],
+    "day9-yinkeng-hotel-to-day10-hanfang-hotel": [
+      10
     ],
     "main-01-to-day1-yexin-east": [
       1
     ],
     "main-05-to-main-06": [
-      4
+      3
     ],
     "main-06-to-main-07": [
-      4,
-      5
+      3
     ],
-    "main-07-to-main-08": [
-      5,
-      6
-    ],
-    "main-08-to-main-09": [
-      6
-    ],
-    "main-09-to-day5-changshan-hotel": [
-      7
-    ],
-    "main-10-to-main-11": [
-      8
-    ],
-    "main-11-to-day6-hengfeng-hotel": [
-      9
-    ],
-    "main-12-to-day7-dongxiang-hotel": [
-      10
-    ],
-    "main-15-to-main-16": [
-      13
-    ],
-    "main-16-to-main-17": [
-      14,
-      15
-    ],
-    "main-17-to-main-18": [
-      15
-    ],
-    "main-18-to-main-19": [
-      16
-    ],
-    "main-19-to-main-20": [
-      17
-    ],
-    "main-20-to-main-21": [
-      18
-    ],
-    "main-21-to-main-22": [
-      18
-    ],
-    "main-22-to-main-23": [
-      19,
-      20
-    ],
-    "main-23-to-main-24": [
-      20,
-      21
-    ],
-    "main-24-to-main-25": [
-      22
-    ],
-    "main-25-to-main-26": [
-      22,
-      23
-    ],
-    "main-26-to-main-27": [
-      23
+    "main-07-to-day4-changshan-hotel": [
+      4
     ],
     "pre-01-to-pre-02": [
-      1
+      0
     ],
     "pre-02-to-pre-03": [
-      1
+      0
     ],
     "pre-03-to-pre-04": [
-      1
+      0
     ],
     "pre-04-to-pre-05": [
-      1
+      0
     ],
     "pre-05-to-pre-06": [
-      1
+      0
     ],
     "pre-06-to-pre-07": [
-      1
+      0
     ],
     "pre-07-to-main-01": [
-      1
+      0
     ]
   }
 }

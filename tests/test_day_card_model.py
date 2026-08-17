@@ -6,7 +6,7 @@ import unittest
 
 class DayCardModelTests(unittest.TestCase):
     def test_visible_itinerary_starts_at_day_one(self):
-        days = [{"day": 0}, {"day": 1}, {"day": 2}]
+        days = [{"day": day} for day in range(16)]
         script = """
           import { visibleItineraryDays } from './web/day-card-model.mjs';
           console.log(JSON.stringify(visibleItineraryDays({
@@ -25,7 +25,7 @@ class DayCardModelTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(
             [day["day"] for day in json.loads(result.stdout)],
-            [1, 2],
+            list(range(1, 16)),
         )
 
     def test_visible_route_features_exclude_days_before_public_start(self):

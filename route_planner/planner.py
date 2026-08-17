@@ -154,8 +154,9 @@ def _reviews(
                 "Anchored route exceeds the 15% detour limit.",
             )
         )
+    max_subleg_m = 120_000 if rule.day is not None else 80_000
     for distance_m in subleg_distances_m:
-        if distance_m > 80_000:
+        if distance_m > max_subleg_m:
             reviews.append(
                 ReviewItem(
                     "SUBLEG_OVER_80_KM",

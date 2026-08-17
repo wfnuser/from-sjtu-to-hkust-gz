@@ -9,7 +9,7 @@ const PROFILES = {
     mainLabel: "Day 1–15 执行路线",
     hasOptionalBranches: false,
     showSchedule: false,
-    summaryNote: "西溪版本 · 每晚落在可洗衣酒店；点击 Day 卡片聚焦当天路线。",
+    summaryNote: "Day 5–15 已压到 115 km 内；三晚小镇酒店的洗衣设施仍需电话确认。",
   },
   inland: {
     id: "inland",

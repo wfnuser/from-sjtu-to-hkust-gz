@@ -19,7 +19,7 @@ class ExecutionItineraryContractTests(unittest.TestCase):
 
     def test_fixed_actual_and_planned_days_are_not_reassigned(self):
         days = self.itinerary["days"]
-        self.assertEqual([day["day"] for day in days], list(range(15)))
+        self.assertEqual([day["day"] for day in days], list(range(16)))
         self.assertEqual(days[0]["from_name"], "阳曲路")
         self.assertEqual(days[0]["to_name"], "上海交通大学闵行校区")
         self.assertEqual(
@@ -38,7 +38,7 @@ class ExecutionItineraryContractTests(unittest.TestCase):
             days[3]["key_waypoints"],
             ["捷安特自行车（桐庐店）", "富春江镇", "新安绿道洋溪段"],
         )
-        self.assertEqual(days[14]["to_name"], "香港科技大学（广州）")
+        self.assertEqual(days[15]["to_name"], "香港科技大学（广州）")
 
         names = [waypoint.name for waypoint in self.route.waypoints]
         self.assertEqual(
@@ -121,26 +121,46 @@ class ExecutionItineraryContractTests(unittest.TestCase):
         planned_nights = [
             day
             for day in self.itinerary["days"]
-            if day["status"] == "planned" and day["day"] < 14
+            if day["status"] == "planned" and day["day"] < 15
         ]
 
         for day in planned_nights:
             with self.subTest(day=day["day"]):
                 lodging = day["lodging"]
                 self.assertTrue(lodging["name"])
-                self.assertEqual(lodging["laundry"], "confirmed")
+                self.assertIn(lodging["laundry"], {"confirmed", "call_required"})
                 self.assertTrue(lodging["evidence_url"].startswith("https://"))
                 self.assertEqual(lodging["booking_status"], "candidate")
 
-    def test_day7_uses_the_direct_southbound_corridor_without_city_center_detours(self):
-        day7 = self.itinerary["days"][7]
-
         self.assertEqual(
-            day7["segments"],
-            ["day7-dongxiang-hotel-to-day8-nanfeng-hotel"],
+            [
+                day["day"]
+                for day in planned_nights
+                if day["lodging"]["laundry"] == "call_required"
+            ],
+            [9, 10, 12],
         )
-        self.assertNotIn("抚州", day7["key_waypoints"])
-        self.assertNotIn("南城", day7["key_waypoints"])
+
+    def test_day4_is_direct_and_day5_to_day15_stay_at_or_below_115_km(self):
+        configured_days = self.itinerary["days"]
+        self.assertEqual(
+            configured_days[4]["segments"],
+            ["main-07-to-day4-changshan-hotel"],
+        )
+        self.assertEqual(configured_days[4]["key_waypoints"], [])
+
+        published = json.loads(
+            Path("web/data/inland-itinerary.json").read_text(encoding="utf-8")
+        )
+        day4 = published["days"][4]
+        self.assertGreaterEqual(day4["distance_m"], 112_000)
+        self.assertLessEqual(day4["distance_m"], 115_000)
+        balanced_days = [day for day in published["days"] if 5 <= day["day"] <= 15]
+        self.assertEqual(len(balanced_days), 11)
+        self.assertTrue(
+            all(day["distance_m"] <= 115_000 for day in balanced_days),
+            [(day["day"], day["distance_m"]) for day in balanced_days],
+        )
 
 
 class ExecutionItineraryBuildTests(unittest.TestCase):

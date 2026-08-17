@@ -156,6 +156,12 @@ class AuditTests(unittest.TestCase):
 
         self.assertIn("SUBLEG_OVER_80_KM", [item.code for item in result.items])
 
+    def test_audit_accepts_daily_execution_subleg_up_to_120_kilometres(self):
+        segment = _segment(subleg_distances=(114_000,))
+        segment = replace(segment, rule=replace(segment.rule, day=4))
+
+        self.assertTrue(audit([segment]).ok)
+
     def test_audit_accepts_ordinary_national_road_without_exception_review(self):
         result = audit([_segment(national=True, allowed_national_m=1_000)])
 

@@ -90,7 +90,7 @@ def generate_from_segments(
     """Publish exactly the supplied immutable plans and their lossless audit manifest."""
     write_artifacts(
         output_dir,
-        build_geojson(segments),
+        build_geojson(segments, profile=profile),
         build_summary(
             segments,
             config.max_detour_ratio,

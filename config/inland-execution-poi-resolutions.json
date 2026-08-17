@@ -1025,6 +1025,146 @@
           "selected": false
         }
       ]
+    },
+    {
+      "query": "维也纳国际酒店上饶经开区店",
+      "city": "上饶",
+      "candidates": [
+        {
+          "poi_id": "B0JRYZCPEH",
+          "name": "维也纳国际酒店(上饶经开区店)",
+          "formatted_address": "江西省上饶市广信区思瑞达广场1号楼",
+          "district": "广信区",
+          "location_gcj": {"lon": 117.873483, "lat": 28.382647},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "汉庭酒店鹰潭高新龙虎山大道店",
+      "city": "鹰潭",
+      "candidates": [
+        {
+          "poi_id": "B0JGFAKBTL",
+          "name": "汉庭酒店(鹰潭高新龙虎山大道店)",
+          "formatted_address": "江西省鹰潭市月湖区天洁西路10号",
+          "district": "月湖区",
+          "location_gcj": {"lon": 117.01584, "lat": 28.227686},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "南城法莱德国际大酒店",
+      "city": "抚州",
+      "candidates": [
+        {
+          "poi_id": "B031A0NSIW",
+          "name": "法莱德国际大酒店",
+          "formatted_address": "江西省抚州市南城县建昌南大道1号",
+          "district": "南城县",
+          "location_gcj": {"lon": 116.630095, "lat": 27.543227},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "维也纳酒店抚州广昌沿江路店",
+      "city": "抚州",
+      "candidates": [
+        {
+          "poi_id": "B0H3ZSETQ5",
+          "name": "维也纳酒店(抚州广昌沿江路店)",
+          "formatted_address": "江西省抚州市广昌县沿江路2号",
+          "district": "广昌县",
+          "location_gcj": {"lon": 116.333166, "lat": 26.835837},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "于都银鑫大酒店",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "B031D0QT17",
+          "name": "于都银鑫大酒店",
+          "formatted_address": "江西省赣州市于都县319国道南于都二医院西南",
+          "district": "于都县",
+          "location_gcj": {"lon": 115.623037, "lat": 26.209209},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "星月湾大酒店韩坊",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "B0I3FLY2ZX",
+          "name": "赣州市赣县区星月湾大酒店",
+          "formatted_address": "江西省赣州市赣县区韩坊镇兴业街中国石化韩坊加油站对面",
+          "district": "赣县区",
+          "location_gcj": {"lon": 115.105148, "lat": 25.491301},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "7天酒店赣州定南火车站店",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "B0FFILHAAQ",
+          "name": "7天酒店(赣州定南火车站店)",
+          "formatted_address": "江西省赣州市定南县历市镇京九大道55号",
+          "district": "定南县",
+          "location_gcj": {"lon": 115.021175, "lat": 24.773044},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "东源万和宾馆",
+      "city": "河源",
+      "candidates": [
+        {
+          "poi_id": "B02FA0OJM7",
+          "name": "东源万和宾馆",
+          "formatted_address": "广东省河源市东源县船塘镇新建路东源船塘汽车客运站东北侧",
+          "district": "东源县",
+          "location_gcj": {"lon": 114.944594, "lat": 24.156927},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "简居HOTEL杨侨镇",
+      "city": "惠州",
+      "candidates": [
+        {
+          "poi_id": "B0JKKO4VV2",
+          "name": "简居HOTEL酒店",
+          "formatted_address": "广东省惠州市博罗县杨侨镇观杨大道16号",
+          "district": "博罗县",
+          "location_gcj": {"lon": 114.496419, "lat": 23.43003},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "广州增城荔湖木莲庄酒店",
+      "city": "广州",
+      "candidates": [
+        {
+          "poi_id": "B0LRO7XGLU",
+          "name": "广州增城荔湖木莲庄酒店",
+          "formatted_address": "广东省广州市增城区荔湖街景上街2号",
+          "district": "增城区",
+          "location_gcj": {"lon": 113.821282, "lat": 23.246917},
+          "selected": true
+        }
+      ]
     }
   ],
   "unresolved_queries": []

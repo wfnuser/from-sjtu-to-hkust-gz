@@ -53,6 +53,14 @@ class RoutePlannerTests(unittest.TestCase):
 
         self.assertNotIn("SUBLEG_OVER_80_KM", [review.code for review in planned.reviews])
 
+    def test_explicit_execution_day_allows_one_daily_subleg_up_to_120_km(self):
+        rule = SegmentRule("a-b", day=4)
+        planned = RoutePlanner(
+            _FakeAmapClient(direct_distance_m=114_000, subleg_distances_m=(114_000,))
+        ).plan_segment(START, END, rule)
+
+        self.assertNotIn("SUBLEG_OVER_80_KM", [review.code for review in planned.reviews])
+
     def test_refuses_a_selected_subleg_without_an_api_polyline(self):
         with self.assertRaisesRegex(ReviewRequired, "real API polyline"):
             RoutePlanner(_EmptyRouteClient()).plan_segment(START, END, RULE)

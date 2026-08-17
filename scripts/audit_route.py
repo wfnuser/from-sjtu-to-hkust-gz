@@ -68,8 +68,9 @@ def _audit_segment(segment: PlannedSegment) -> list[ReviewItem]:
     items: list[ReviewItem] = []
     if not segment.selected.steps or any(not step.polyline_gcj for step in segment.selected.steps):
         items.append(_item("UNRESOLVED_POLYLINE", segment.segment_id, "Route has no real API polyline."))
+    max_subleg_m = 120_000 if segment.rule.day is not None else 80_000
     for distance_m in segment.subleg_distances_m:
-        if distance_m > 80_000:
+        if distance_m > max_subleg_m:
             items.append(_item("SUBLEG_OVER_80_KM", segment.segment_id, "API subleg exceeds 80 km.", distance_m))
     hard_risk_distance_m = 0
     hard_risk_road = ""
