@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from datetime import date, timedelta
 from typing import Any
 
 
@@ -17,6 +18,7 @@ def build_itinerary(
         raise ValueError("Itinerary and manifest route IDs must match.")
 
     days = deepcopy(_list(day_config, "days"))
+    start_date = _optional_date(day_config, "start_date")
     segments = _list(manifest, "segments")
     ordered_ids = [_string(segment, "segment_id") for segment in segments]
     assigned_ids = [
@@ -39,6 +41,8 @@ def build_itinerary(
 
     for day in days:
         day_id = _integer(day, "day")
+        if start_date is not None:
+            day["date"] = (start_date + timedelta(days=day_id)).isoformat()
         ids = _string_list(day, "segments")
         distance_m = sum(segment_metrics[segment_id][0] for segment_id in ids)
         duration_s = sum(segment_metrics[segment_id][1] for segment_id in ids)
@@ -72,6 +76,8 @@ def build_itinerary(
         if remaining_days
         else 0,
     }
+    if start_date is not None:
+        itinerary["start_date"] = start_date.isoformat()
 
     tagged = deepcopy(geojson)
     for feature in _list(tagged, "features"):
@@ -117,6 +123,18 @@ def _optional_integer(value: dict[str, Any], key: str, default: int) -> int:
     if not isinstance(item, int) or isinstance(item, bool):
         raise ValueError(f"{key} must be an integer")
     return item
+
+
+def _optional_date(value: dict[str, Any], key: str) -> date | None:
+    item = value.get(key)
+    if item is None:
+        return None
+    if not isinstance(item, str):
+        raise ValueError(f"{key} must be an ISO date")
+    try:
+        return date.fromisoformat(item)
+    except ValueError as error:
+        raise ValueError(f"{key} must be an ISO date") from error
 
 
 def _string_list(value: dict[str, Any], key: str) -> list[str]:

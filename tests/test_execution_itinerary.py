@@ -20,6 +20,7 @@ class ExecutionItineraryContractTests(unittest.TestCase):
     def test_fixed_actual_and_planned_days_are_not_reassigned(self):
         days = self.itinerary["days"]
         self.assertEqual([day["day"] for day in days], list(range(16)))
+        self.assertEqual(self.itinerary["start_date"], "2026-08-14")
         self.assertEqual(days[0]["from_name"], "阳曲路")
         self.assertEqual(days[0]["to_name"], "上海交通大学闵行校区")
         self.assertEqual(
@@ -164,6 +165,39 @@ class ExecutionItineraryContractTests(unittest.TestCase):
 
 
 class ExecutionItineraryBuildTests(unittest.TestCase):
+    def test_build_itinerary_assigns_consecutive_dates_from_start_date(self):
+        from route_planner.itinerary import build_itinerary
+
+        config = {
+            "route_id": "inland-execution",
+            "start_date": "2026-08-14",
+            "days": [
+                {"day": 0, "segments": ["a-to-b"]},
+                {"day": 4, "segments": ["b-to-c"]},
+            ],
+        }
+        manifest = {
+            "route_id": "inland-execution",
+            "segments": [
+                {"segment_id": "a-to-b", "selected": {"distance_m": 1, "duration_s": 1}},
+                {"segment_id": "b-to-c", "selected": {"distance_m": 1, "duration_s": 1}},
+            ],
+        }
+        geojson = {
+            "features": [
+                {"properties": {"segment_id": "a-to-b"}},
+                {"properties": {"segment_id": "b-to-c"}},
+            ]
+        }
+
+        itinerary, _ = build_itinerary(config, manifest, geojson)
+
+        self.assertEqual(itinerary["start_date"], "2026-08-14")
+        self.assertEqual(
+            [day["date"] for day in itinerary["days"]],
+            ["2026-08-14", "2026-08-18"],
+        )
+
     def test_strict_audit_cli_accepts_the_execution_profile(self):
         result = subprocess.run(
             ["python3", "scripts/audit_route.py", "--help"],

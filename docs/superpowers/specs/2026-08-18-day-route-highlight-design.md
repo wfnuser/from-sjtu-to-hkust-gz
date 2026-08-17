@@ -32,7 +32,7 @@
 
 - 新增单一的 `selectedDayId` 页面状态。
 - Day 卡片保存对应 Day ID，并同步 `.is-selected`、`aria-pressed`。
-- 日期以 ISO `YYYY-MM-DD` 保存在 itinerary 的每日数据中，卡片显示为 `M月D日`，避免把时间规则硬编码在界面中。
+- 源 itinerary 保存 `start_date: 2026-08-14`；发布器为每日数据生成 ISO `YYYY-MM-DD`，卡片显示为 `M月D日`，避免把 16 个日期硬编码在界面中。
 - 路线样式切换只影响主路线道路步骤，不改变可选支线、复核路线和弹窗数据。
 - 保留现有道路分类颜色；当天路线通过加粗和高不透明度突出，非当天路线降低透明度。
 - 选中当天继续使用现有 `dayGroups` 缩放；清除选择时使用 `mainLayer` 恢复总览。

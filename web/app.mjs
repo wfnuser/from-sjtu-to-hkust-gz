@@ -1,4 +1,4 @@
-import { selectRouteProfile } from "./route-profile.mjs?v=20260817-1";
+import { selectRouteProfile } from "./route-profile.mjs?v=20260818-2";
 import {
   rerouteComparisonText,
   rerouteFeaturesForOption,
@@ -6,10 +6,14 @@ import {
 } from "./reroute-options.mjs";
 import { rerouteLabel } from "./reroute-status.mjs";
 import {
+  nextSelectedDayId,
+  routeStyleForSelectedDay,
+} from "./day-selection.mjs?v=20260818-1";
+import {
   dayCardModel,
   visibleItineraryDays,
   visibleRouteFeatures,
-} from "./day-card-model.mjs?v=20260817-1";
+} from "./day-card-model.mjs?v=20260818-1";
 
 const routeProfile = selectRouteProfile(window.location.search);
 const GEOJSON_URL = routeProfile.geojsonUrl;
@@ -53,6 +57,8 @@ const segmentGroups = new Map();
 const dayGroups = new Map();
 const stepLayers = new Map();
 const rerouteOptionLayers = new Map();
+const dayCards = new Map();
+let selectedDayId = null;
 
 const elements = {
   cards: document.querySelector("#segment-cards"),
@@ -309,16 +315,19 @@ export function renderDayCards(itinerary) {
   const days = visibleItineraryDays(itinerary);
   elements.cards.innerHTML = "";
   elements.count.textContent = days.length ? `${days.length} 天` : "";
+  dayCards.clear();
 
   for (const day of days) {
     const model = dayCardModel(day);
     const card = document.createElement("article");
     card.className = `day-card is-${model.status}${model.longDay ? " is-long" : ""}`;
+    card.dataset.dayId = String(model.day);
 
     const button = document.createElement("button");
     button.type = "button";
     button.className = "day-card__button";
     button.setAttribute("aria-label", `查看 ${model.title}`);
+    button.setAttribute("aria-pressed", "false");
 
     const header = document.createElement("span");
     header.className = "day-card__header";
@@ -327,10 +336,13 @@ export function renderDayCards(itinerary) {
     const label = document.createElement("strong");
     label.className = "day-card__label";
     label.textContent = model.label;
+    const date = document.createElement("span");
+    date.className = "day-card__date";
+    date.textContent = model.dateLabel;
     const route = document.createElement("span");
     route.className = "day-card__route";
     route.textContent = model.route;
-    title.append(label, route);
+    title.append(label, date, route);
     const distance = document.createElement("strong");
     distance.className = "day-card__distance";
     distance.textContent = model.distance;
@@ -339,8 +351,9 @@ export function renderDayCards(itinerary) {
     duration.className = "day-card__meta";
     duration.textContent = model.status === "stay" ? "休整 / 工作日" : `高德预计 ${model.duration}`;
     button.append(header, duration);
-    button.addEventListener("click", () => fitDay(model.day));
+    button.addEventListener("click", () => toggleDaySelection(model.day));
     card.append(button);
+    dayCards.set(model.day, card);
 
     if (model.waypoints.length) {
       const waypoints = document.createElement("p");
@@ -362,6 +375,7 @@ export function renderDayCards(itinerary) {
     }
     elements.cards.append(card);
   }
+  applySelectedDayStyles();
 }
 
 /** Show or hide optional branches without changing the published main totals. */
@@ -467,6 +481,40 @@ function fitSegment(entry) {
 function fitDay(dayId) {
   const bounds = dayGroups.get(Number(dayId));
   if (bounds?.isValid()) map.fitBounds(bounds, { padding: [32, 32] });
+}
+
+function fitMainRoute() {
+  const bounds = mainLayer.getBounds();
+  if (bounds.isValid()) map.fitBounds(bounds, { padding: [32, 32] });
+}
+
+function applySelectedDayStyles() {
+  for (const [feature, layer] of stepLayers.entries()) {
+    layer.setStyle(routeStyleForSelectedDay(feature, selectedDayId, roadStyle(feature)));
+  }
+  if (selectedDayId !== null) {
+    for (const [feature, layer] of stepLayers.entries()) {
+      if (
+        !feature.properties?.optional_branch
+        && Number(feature.properties?.day_id) === selectedDayId
+      ) layer.bringToFront();
+    }
+  }
+  for (const [dayId, card] of dayCards.entries()) {
+    const selected = dayId === selectedDayId;
+    card.classList.toggle("is-selected", selected);
+    card.querySelector(".day-card__button")?.setAttribute("aria-pressed", String(selected));
+  }
+}
+
+function toggleDaySelection(dayId) {
+  selectedDayId = nextSelectedDayId(selectedDayId, dayId);
+  applySelectedDayStyles();
+  if (selectedDayId === null) {
+    fitMainRoute();
+  } else {
+    fitDay(selectedDayId);
+  }
 }
 
 function fitReviewFeature(entry, stepLayer) {
