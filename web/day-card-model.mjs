@@ -12,6 +12,19 @@ function formatDuration(seconds) {
   return hours ? `${hours} 小时 ${minutes} 分` : `${minutes} 分`;
 }
 
+function formatDateLabel(isoDate) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(isoDate || ""));
+  if (!match) return "";
+  const [, year, month, day] = match.map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  if (
+    date.getUTCFullYear() !== year
+    || date.getUTCMonth() !== month - 1
+    || date.getUTCDate() !== day
+  ) return "";
+  return `${month}月${day}日`;
+}
+
 /** Keep completed prelude data available while starting the public itinerary at Day 1. */
 export function visibleItineraryDays(itinerary) {
   const days = Array.isArray(itinerary?.days) ? itinerary.days : [];
@@ -44,6 +57,7 @@ export function dayCardModel(day) {
   return {
     day: Number(day?.day),
     label,
+    dateLabel: formatDateLabel(day?.date),
     status: String(day?.status || "planned"),
     route,
     title: `${label} ${route}`,

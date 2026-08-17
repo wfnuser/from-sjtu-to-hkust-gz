@@ -60,6 +60,7 @@ class DayCardModelTests(unittest.TestCase):
     def test_day_card_keeps_decision_fields_visible(self):
         day = {
             "day": 3,
+            "date": "2026-08-17",
             "status": "planned",
             "from_name": "桐乡酒店",
             "to_name": "西溪亚朵S",
@@ -84,6 +85,7 @@ class DayCardModelTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         model = json.loads(result.stdout)
         self.assertEqual(model["label"], "day3")
+        self.assertEqual(model["dateLabel"], "8月17日")
         self.assertEqual(model["distance"], "70.4 km")
         self.assertEqual(model["route"], "桐乡酒店 → 西溪亚朵S")
         self.assertEqual(model["title"], "day3 桐乡酒店 → 西溪亚朵S")
@@ -91,6 +93,22 @@ class DayCardModelTests(unittest.TestCase):
         self.assertEqual(model["lodging"], "西溪亚朵S")
         self.assertTrue(model["laundryConfirmed"])
         self.assertEqual(model["riskNote"], "白天通过")
+
+    def test_day_card_rejects_invalid_calendar_dates(self):
+        script = """
+          import { dayCardModel } from './web/day-card-model.mjs';
+          console.log(JSON.stringify(dayCardModel({ day: 4, date: '2026-02-30' })));
+        """
+        result = subprocess.run(
+            ["node", "--input-type=module", "--eval", script],
+            cwd=Path.cwd(),
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout)["dateLabel"], "")
 
 
 if __name__ == "__main__":
