@@ -16,6 +16,7 @@
 - Day buttons expose selection with `aria-pressed`; pointer, touch, and keyboard activation use the same button handler.
 - Optional branches, reroute comparison layers, review data, and popups remain unchanged.
 - The selected route keeps its road-class color while using greater weight and opacity.
+- Day 4 is `2026-08-18`; Day 1–15 carry explicit ISO dates from `2026-08-15` through `2026-08-29` and cards display them as `M月D日`.
 
 ---
 
@@ -24,6 +25,8 @@
 **Files:**
 - Create: `web/day-selection.mjs`
 - Create: `tests/test_day_selection.py`
+- Modify: `web/day-card-model.mjs`
+- Modify: `tests/test_day_card_model.py`
 
 **Interfaces:**
 - Consumes: a current selected Day ID (`number | null`), a clicked Day ID (`number`), a GeoJSON feature, and the feature's base Leaflet path style.
@@ -40,6 +43,8 @@ self.assertIsNone(run_selection(4, 4))
 ```
 
 Also assert that no selection returns the base style unchanged, a Day 4 feature selected on Day 4 has opacity `1` and weight at least `6`, a Day 5 feature selected on Day 4 has opacity no greater than `0.2`, and an optional-branch feature returns the base style unchanged.
+
+Extend `tests/test_day_card_model.py` with a Day 4 fixture containing `date: "2026-08-18"` and assert `model["dateLabel"] == "8月18日"`.
 
 - [ ] **Step 2: Run tests and verify the missing-module failure**
 
@@ -75,16 +80,18 @@ export function routeStyleForSelectedDay(feature, selectedDayId, baseStyle) {
 }
 ```
 
+Add a local `formatDateLabel(isoDate)` helper in `web/day-card-model.mjs` and expose the result as `dateLabel` from `dayCardModel(day)`. It returns an empty string for an absent or invalid ISO date and formats `2026-08-18` as `8月18日` without relying on the browser timezone.
+
 - [ ] **Step 4: Run the focused tests**
 
-Run: `python -m unittest tests.test_day_selection -v`
+Run: `python -m unittest tests.test_day_selection tests.test_day_card_model -v`
 
 Expected: all Day selection and style tests PASS.
 
 - [ ] **Step 5: Commit the pure selection unit**
 
 ```bash
-git add web/day-selection.mjs tests/test_day_selection.py
+git add web/day-selection.mjs web/day-card-model.mjs tests/test_day_selection.py tests/test_day_card_model.py
 git commit -m "feat: add day route selection rules"
 ```
 
@@ -94,7 +101,9 @@ git commit -m "feat: add day route selection rules"
 - Modify: `web/app.mjs`
 - Modify: `web/styles.css`
 - Modify: `web/index.html`
+- Modify: `config/inland-itinerary.json`
 - Modify: `tests/test_web_contract.py`
+- Modify: `tests/test_execution_itinerary.py`
 
 **Interfaces:**
 - Consumes: `nextSelectedDayId` and `routeStyleForSelectedDay` from Task 1; existing `stepLayers`, `dayGroups`, `mainLayer`, `roadStyle(feature)`, and rendered Day cards.
@@ -112,6 +121,7 @@ self.assertIn('toggleDaySelection(model.day)', js)
 self.assertIn('routeStyleForSelectedDay(feature, selectedDayId, roadStyle(feature))', js)
 self.assertIn('mainLayer.getBounds()', js)
 self.assertIn('.day-card.is-selected', css)
+self.assertIn('date.textContent = model.dateLabel', js)
 ```
 
 Update the static asset cache-version expectations from `20260817-1` to `20260818-1`.
@@ -149,7 +159,9 @@ function toggleDaySelection(dayId) {
 }
 ```
 
-When rendering cards, clear `dayCards`, set `card.dataset.dayId`, initialize `aria-pressed="false"`, save the card in `dayCards`, and replace `fitDay(model.day)` with `toggleDaySelection(model.day)`.
+When rendering cards, clear `dayCards`, set `card.dataset.dayId`, initialize `aria-pressed="false"`, save the card in `dayCards`, render `model.dateLabel` next to the Day label, and replace `fitDay(model.day)` with `toggleDaySelection(model.day)`.
+
+Add explicit `date` values to `config/inland-itinerary.json`: Day 0 starts at `2026-08-14`, Day 4 is `2026-08-18`, and Day 15 is `2026-08-29`. Add an execution-itinerary contract asserting the complete consecutive date sequence. Regenerate the published itinerary so the dates flow through to `web/data/inland-itinerary.json`.
 
 - [ ] **Step 4: Add the visible card selection style and refresh asset versions**
 
@@ -184,7 +196,6 @@ Open `http://127.0.0.1:8765/`, click a Day card, and confirm its route is the on
 - [ ] **Step 7: Commit the integration**
 
 ```bash
-git add web/app.mjs web/styles.css web/index.html tests/test_web_contract.py
+git add web/app.mjs web/styles.css web/index.html config/inland-itinerary.json web/data/inland-itinerary.json tests/test_web_contract.py tests/test_execution_itinerary.py
 git commit -m "feat: highlight the selected day route"
 ```
-
