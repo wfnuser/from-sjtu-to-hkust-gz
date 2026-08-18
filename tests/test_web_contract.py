@@ -77,13 +77,23 @@ class WebMapContractTests(unittest.TestCase):
         self.assertIn("深圳支线", html)
         self.assertNotIn("AMAP_WEB_SERVICE_KEY", html + js)
 
+    def test_map_uses_amap_tiles_with_gcj_aligned_route_geometry(self):
+        js = Path("web/app.mjs").read_text(encoding="utf-8")
+
+        self.assertIn("is.autonavi.com/appmaptile", js)
+        self.assertIn("高德地图", js)
+        self.assertNotIn("tile.openstreetmap.org", js)
+        self.assertIn('map-coordinates.mjs?v=20260819-1', js)
+        self.assertIn("geojsonWgs84ToGcj02", js)
+        self.assertIn("addFeatures(alignedGeojson)", js)
+
     def test_execution_ui_static_assets_have_a_fresh_cache_version(self):
         html = Path("web/index.html").read_text(encoding="utf-8")
         js = Path("web/app.mjs").read_text(encoding="utf-8")
 
         self.assertIn("styles.css?v=20260818-1", html)
-        self.assertIn("app.mjs?v=20260818-3", html)
-        self.assertIn('route-profile.mjs?v=20260818-3', js)
+        self.assertIn("app.mjs?v=20260819-1", html)
+        self.assertIn('route-profile.mjs?v=20260819-1', js)
         self.assertIn('day-card-model.mjs?v=20260818-1', js)
         self.assertIn('day-selection.mjs?v=20260818-1', js)
 

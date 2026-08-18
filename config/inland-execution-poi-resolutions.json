@@ -1041,113 +1041,113 @@
       ]
     },
     {
-      "query": "汉庭酒店鹰潭高新龙虎山大道店",
+      "query": "鹰潭市雲锦君澜大饭店",
       "city": "鹰潭",
       "candidates": [
         {
-          "poi_id": "B0JGFAKBTL",
-          "name": "汉庭酒店(鹰潭高新龙虎山大道店)",
-          "formatted_address": "江西省鹰潭市月湖区天洁西路10号",
+          "poi_id": "B0FFGFV7IP",
+          "name": "鹰潭市雲锦君澜大饭店",
+          "formatted_address": "江西省鹰潭市月湖区白露街道炬能路1号",
           "district": "月湖区",
-          "location_gcj": {"lon": 117.01584, "lat": 28.227686},
+          "location_gcj": {"lon": 117.017532, "lat": 28.210987},
           "selected": true
         }
       ]
     },
     {
-      "query": "南城法莱德国际大酒店",
+      "query": "莱特斯国际酒店南城河东工业园区店",
       "city": "抚州",
       "candidates": [
         {
-          "poi_id": "B031A0NSIW",
-          "name": "法莱德国际大酒店",
-          "formatted_address": "江西省抚州市南城县建昌南大道1号",
+          "poi_id": "B0LGV1YH4U",
+          "name": "莱特斯国际酒店(南城河东工业园区店)",
+          "formatted_address": "江西省抚州市南城县星联国际城",
           "district": "南城县",
-          "location_gcj": {"lon": 116.630095, "lat": 27.543227},
+          "location_gcj": {"lon": 116.617985, "lat": 27.494982},
           "selected": true
         }
       ]
     },
     {
-      "query": "维也纳酒店抚州广昌沿江路店",
+      "query": "富源大酒店广昌头陂镇",
       "city": "抚州",
       "candidates": [
         {
-          "poi_id": "B0H3ZSETQ5",
-          "name": "维也纳酒店(抚州广昌沿江路店)",
-          "formatted_address": "江西省抚州市广昌县沿江路2号",
+          "poi_id": "B0I2B72J4I",
+          "name": "富源大酒店",
+          "formatted_address": "江西省抚州市广昌县头陂镇",
           "district": "广昌县",
-          "location_gcj": {"lon": 116.333166, "lat": 26.835837},
+          "location_gcj": {"lon": 116.199957, "lat": 26.751059},
           "selected": true
         }
       ]
     },
     {
-      "query": "于都银鑫大酒店",
+      "query": "于都仙霞酒店",
       "city": "赣州",
       "candidates": [
         {
-          "poi_id": "B031D0QT17",
-          "name": "于都银鑫大酒店",
-          "formatted_address": "江西省赣州市于都县319国道南于都二医院西南",
+          "poi_id": "B0FFHOZIUY",
+          "name": "于都仙霞酒店",
+          "formatted_address": "江西省赣州市于都县仙下乡仙下圩马安路36号",
           "district": "于都县",
-          "location_gcj": {"lon": 115.623037, "lat": 26.209209},
+          "location_gcj": {"lon": 115.5671, "lat": 26.110913},
           "selected": true
         }
       ]
     },
     {
-      "query": "星月湾大酒店韩坊",
+      "query": "枕山月酒店韩坊镇",
       "city": "赣州",
       "candidates": [
         {
-          "poi_id": "B0I3FLY2ZX",
-          "name": "赣州市赣县区星月湾大酒店",
-          "formatted_address": "江西省赣州市赣县区韩坊镇兴业街中国石化韩坊加油站对面",
+          "poi_id": "B0L065NNZQ",
+          "name": "枕山月酒店",
+          "formatted_address": "江西省赣州市赣县区韩坊镇大大段",
           "district": "赣县区",
-          "location_gcj": {"lon": 115.105148, "lat": 25.491301},
+          "location_gcj": {"lon": 115.105769, "lat": 25.491862},
           "selected": true
         }
       ]
     },
     {
-      "query": "7天酒店赣州定南火车站店",
+      "query": "定南格兰云天国际酒店",
       "city": "赣州",
       "candidates": [
         {
-          "poi_id": "B0FFILHAAQ",
-          "name": "7天酒店(赣州定南火车站店)",
-          "formatted_address": "江西省赣州市定南县历市镇京九大道55号",
+          "poi_id": "B0LA3S8XCZ",
+          "name": "定南格兰云天国际酒店",
+          "formatted_address": "江西省赣州市定南县前程大道16号",
           "district": "定南县",
-          "location_gcj": {"lon": 115.021175, "lat": 24.773044},
+          "location_gcj": {"lon": 115.014871, "lat": 24.783989},
           "selected": true
         }
       ]
     },
     {
-      "query": "东源万和宾馆",
+      "query": "亚瓦酒店漳溪畲族乡",
       "city": "河源",
       "candidates": [
         {
-          "poi_id": "B02FA0OJM7",
-          "name": "东源万和宾馆",
-          "formatted_address": "广东省河源市东源县船塘镇新建路东源船塘汽车客运站东北侧",
+          "poi_id": "B0JDPSQMMY",
+          "name": "亚瓦酒店",
+          "formatted_address": "广东省河源市东源县漳溪畲族乡乡委东侧",
           "district": "东源县",
-          "location_gcj": {"lon": 114.944594, "lat": 24.156927},
+          "location_gcj": {"lon": 114.925596, "lat": 24.102851},
           "selected": true
         }
       ]
     },
     {
-      "query": "简居HOTEL杨侨镇",
+      "query": "博罗云鹏酒店麻陂镇",
       "city": "惠州",
       "candidates": [
         {
-          "poi_id": "B0JKKO4VV2",
-          "name": "简居HOTEL酒店",
-          "formatted_address": "广东省惠州市博罗县杨侨镇观杨大道16号",
+          "poi_id": "B0FFIJJ33C",
+          "name": "博罗云鹏酒店(麻陂镇人民政府和红女广场旁)",
+          "formatted_address": "广东省惠州市博罗县麻陂镇麻陂大道102号",
           "district": "博罗县",
-          "location_gcj": {"lon": 114.496419, "lat": 23.43003},
+          "location_gcj": {"lon": 114.52606, "lat": 23.480167},
           "selected": true
         }
       ]

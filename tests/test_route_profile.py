@@ -28,7 +28,7 @@ class RouteProfileTests(unittest.TestCase):
         self.assertEqual(profile["summaryUrl"], "data/inland-execution-summary.json")
         self.assertEqual(
             profile["itineraryUrl"],
-            "data/inland-itinerary.json?v=20260818-2",
+            "data/inland-itinerary.json?v=20260819-1",
         )
         self.assertEqual(profile["title"], "宇宙骑行路线（江西线）")
         self.assertEqual(profile["mainLabel"], "Day 1–15 执行路线")

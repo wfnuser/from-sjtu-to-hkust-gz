@@ -1,17 +1,17 @@
 {
   "all_branches": {
-    "baseline_distance_m": 1584224,
+    "baseline_distance_m": 1583351,
     "city_distance_m": 0,
-    "county_distance_m": 27056,
+    "county_distance_m": 35902,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.0088339780233098,
-    "distance_m": 1598219,
-    "duration_s": 347115,
-    "national_distance_m": 481072,
-    "provincial_distance_m": 166544,
+    "detour_ratio": 1.002670917566604,
+    "distance_m": 1587580,
+    "duration_s": 344275,
+    "national_distance_m": 549825,
+    "provincial_distance_m": 85672,
     "segment_count": 26,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 913754,
+    "unknown_distance_m": 906388,
     "unresolved_count": 0
   },
   "days": [
@@ -207,10 +207,10 @@
     },
     {
       "day": 6,
-      "distance_m": 95158,
+      "distance_m": 96011,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 19533,
+      "duration_s": 19664,
       "duration_target_met": true,
       "from_name": "维也纳国际酒店（上饶经开区店）",
       "legs": [
@@ -219,176 +219,176 @@
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "汉庭酒店（鹰潭高新龙虎山大道店）",
+      "lodging_network_endpoint": "鹰潭枫丹白露酒店（雲锦君澜）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day5-shangrao-hotel-to-day6-yingtan-hotel"
       ],
-      "to_name": "汉庭酒店（鹰潭高新龙虎山大道店）"
+      "to_name": "鹰潭枫丹白露酒店（雲锦君澜）"
     },
     {
       "day": 7,
-      "distance_m": 97512,
+      "distance_m": 101077,
       "distance_target_met": true,
       "duration_limit_met": false,
-      "duration_s": 22342,
+      "duration_s": 22800,
       "duration_target_met": false,
-      "from_name": "汉庭酒店（鹰潭高新龙虎山大道店）",
+      "from_name": "鹰潭枫丹白露酒店（雲锦君澜）",
       "legs": [
         {
           "segment_id": "day6-yingtan-hotel-to-day7-nancheng-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "南城法莱德国际大酒店",
+      "lodging_network_endpoint": "莱特斯国际酒店（南城河东工业园区店）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day6-yingtan-hotel-to-day7-nancheng-hotel"
       ],
-      "to_name": "南城法莱德国际大酒店"
+      "to_name": "莱特斯国际酒店（南城河东工业园区店）"
     },
     {
       "day": 8,
-      "distance_m": 88587,
+      "distance_m": 103593,
       "distance_target_met": true,
-      "duration_limit_met": true,
-      "duration_s": 20514,
-      "duration_target_met": true,
-      "from_name": "南城法莱德国际大酒店",
+      "duration_limit_met": false,
+      "duration_s": 24549,
+      "duration_target_met": false,
+      "from_name": "莱特斯国际酒店（南城河东工业园区店）",
       "legs": [
         {
           "segment_id": "day7-nancheng-hotel-to-day8-guangchang-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "维也纳酒店（抚州广昌沿江路店）",
+      "lodging_network_endpoint": "富源大酒店（广昌头陂镇）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day7-nancheng-hotel-to-day8-guangchang-hotel"
       ],
-      "to_name": "维也纳酒店（抚州广昌沿江路店）"
+      "to_name": "富源大酒店（广昌头陂镇）"
     },
     {
       "day": 9,
-      "distance_m": 114197,
+      "distance_m": 106494,
       "distance_target_met": true,
       "duration_limit_met": false,
-      "duration_s": 26344,
+      "duration_s": 24478,
       "duration_target_met": false,
-      "from_name": "维也纳酒店（抚州广昌沿江路店）",
+      "from_name": "富源大酒店（广昌头陂镇）",
       "legs": [
         {
           "segment_id": "day8-guangchang-hotel-to-day9-yinkeng-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "于都银鑫大酒店",
+      "lodging_network_endpoint": "于都仙霞酒店",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day8-guangchang-hotel-to-day9-yinkeng-hotel"
       ],
-      "to_name": "于都银鑫大酒店"
+      "to_name": "于都仙霞酒店"
     },
     {
       "day": 10,
-      "distance_m": 112919,
+      "distance_m": 99146,
       "distance_target_met": true,
-      "duration_limit_met": false,
-      "duration_s": 24778,
-      "duration_target_met": false,
-      "from_name": "于都银鑫大酒店",
+      "duration_limit_met": true,
+      "duration_s": 21554,
+      "duration_target_met": true,
+      "from_name": "于都仙霞酒店",
       "legs": [
         {
           "segment_id": "day9-yinkeng-hotel-to-day10-hanfang-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "赣州市赣县区星月湾大酒店",
+      "lodging_network_endpoint": "枕山月酒店（韩坊镇）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day9-yinkeng-hotel-to-day10-hanfang-hotel"
       ],
-      "to_name": "赣州市赣县区星月湾大酒店"
+      "to_name": "枕山月酒店（韩坊镇）"
     },
     {
       "day": 11,
-      "distance_m": 107813,
+      "distance_m": 107016,
       "distance_target_met": true,
       "duration_limit_met": false,
-      "duration_s": 24864,
+      "duration_s": 24687,
       "duration_target_met": false,
-      "from_name": "赣州市赣县区星月湾大酒店",
+      "from_name": "枕山月酒店（韩坊镇）",
       "legs": [
         {
           "segment_id": "day10-hanfang-hotel-to-day11-dingnan-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "7天酒店（赣州定南火车站店）",
+      "lodging_network_endpoint": "定南格兰云天国际酒店",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day10-hanfang-hotel-to-day11-dingnan-hotel"
       ],
-      "to_name": "7天酒店（赣州定南火车站店）"
+      "to_name": "定南格兰云天国际酒店"
     },
     {
       "day": 12,
-      "distance_m": 101666,
+      "distance_m": 100762,
       "distance_target_met": true,
       "duration_limit_met": false,
-      "duration_s": 24735,
+      "duration_s": 24290,
       "duration_target_met": false,
-      "from_name": "7天酒店（赣州定南火车站店）",
+      "from_name": "定南格兰云天国际酒店",
       "legs": [
         {
           "segment_id": "day11-dingnan-hotel-to-day12-chuantang-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "东源万和宾馆",
+      "lodging_network_endpoint": "亚瓦酒店（漳溪畲族乡）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day11-dingnan-hotel-to-day12-chuantang-hotel"
       ],
-      "to_name": "东源万和宾馆"
+      "to_name": "亚瓦酒店（漳溪畲族乡）"
     },
     {
       "day": 13,
-      "distance_m": 107542,
+      "distance_m": 94015,
       "distance_target_met": true,
-      "duration_limit_met": false,
-      "duration_s": 23833,
-      "duration_target_met": false,
-      "from_name": "东源万和宾馆",
+      "duration_limit_met": true,
+      "duration_s": 20758,
+      "duration_target_met": true,
+      "from_name": "亚瓦酒店（漳溪畲族乡）",
       "legs": [
         {
           "segment_id": "day12-chuantang-hotel-to-day13-yangqiao-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "简居HOTEL酒店",
+      "lodging_network_endpoint": "博罗云鹏酒店（麻陂镇）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day12-chuantang-hotel-to-day13-yangqiao-hotel"
       ],
-      "to_name": "简居HOTEL酒店"
+      "to_name": "博罗云鹏酒店（麻陂镇）"
     },
     {
       "day": 14,
-      "distance_m": 88688,
+      "distance_m": 95329,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 18034,
+      "duration_s": 19357,
       "duration_target_met": true,
-      "from_name": "简居HOTEL酒店",
+      "from_name": "博罗云鹏酒店（麻陂镇）",
       "legs": [
         {
           "segment_id": "day13-yangqiao-hotel-to-day14-zengcheng-hotel",
@@ -428,7 +428,7 @@
   ],
   "limitations": {
     "automatic_checks_are_not_road_level_verification": true,
-    "blank_name_distance_m": 210390,
+    "blank_name_distance_m": 206004,
     "quota_limited_probes": [
       "main-06-to-main-07",
       "main-07-to-main-08",
@@ -438,22 +438,22 @@
       "main-17-to-main-18"
     ],
     "road_level_status": "provisional",
-    "unknown_distance_m": 913754,
-    "unknown_percent": 57.17
+    "unknown_distance_m": 906388,
+    "unknown_percent": 57.09
   },
   "main": {
-    "baseline_distance_m": 1584224,
+    "baseline_distance_m": 1583351,
     "city_distance_m": 0,
-    "county_distance_m": 27056,
+    "county_distance_m": 35902,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.0088339780233098,
-    "distance_m": 1598219,
-    "duration_s": 347115,
-    "national_distance_m": 481072,
-    "provincial_distance_m": 166544,
+    "detour_ratio": 1.002670917566604,
+    "distance_m": 1587580,
+    "duration_s": 344275,
+    "national_distance_m": 549825,
+    "provincial_distance_m": 85672,
     "segment_count": 26,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 913754,
+    "unknown_distance_m": 906388,
     "unresolved_count": 0
   },
   "max_detour_ratio": 1.15,

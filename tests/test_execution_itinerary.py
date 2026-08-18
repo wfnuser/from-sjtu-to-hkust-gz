@@ -139,10 +139,30 @@ class ExecutionItineraryContractTests(unittest.TestCase):
                 for day in planned_nights
                 if day["lodging"]["laundry"] == "call_required"
             ],
-            [9, 10, 12],
+            [6, 7, 8, 9, 10, 12, 13],
         )
 
-    def test_day4_is_direct_and_day5_to_day15_stay_at_or_below_115_km(self):
+    def test_future_route_uses_better_lodging_without_fixed_midday_stops(self):
+        future_days = [day for day in self.itinerary["days"] if 6 <= day["day"] <= 15]
+
+        self.assertEqual(
+            future_days[0]["to_name"],
+            "鹰潭枫丹白露酒店（雲锦君澜）",
+        )
+        self.assertEqual(
+            [day.get("key_waypoints", []) for day in future_days],
+            [[] for _ in future_days],
+        )
+        future_lodging_names = [
+            day.get("lodging", {}).get("name", "") for day in future_days
+        ]
+        self.assertFalse(
+            any("汉庭" in name or "7天" in name for name in future_lodging_names),
+            future_lodging_names,
+        )
+        self.assertIn("定南格兰云天国际酒店", future_lodging_names)
+
+    def test_day4_is_direct_and_future_days_are_about_100_km(self):
         configured_days = self.itinerary["days"]
         self.assertEqual(
             configured_days[4]["segments"],
@@ -156,10 +176,14 @@ class ExecutionItineraryContractTests(unittest.TestCase):
         day4 = published["days"][4]
         self.assertGreaterEqual(day4["distance_m"], 112_000)
         self.assertLessEqual(day4["distance_m"], 115_000)
-        balanced_days = [day for day in published["days"] if 5 <= day["day"] <= 15]
-        self.assertEqual(len(balanced_days), 11)
+        balanced_days = [day for day in published["days"] if 6 <= day["day"] <= 15]
+        self.assertEqual(len(balanced_days), 10)
         self.assertTrue(
-            all(day["distance_m"] <= 115_000 for day in balanced_days),
+            all(day["distance_m"] <= 108_000 for day in balanced_days),
+            [(day["day"], day["distance_m"]) for day in balanced_days],
+        )
+        self.assertTrue(
+            all(day["distance_m"] >= 90_000 for day in balanced_days),
             [(day["day"], day["distance_m"]) for day in balanced_days],
         )
 

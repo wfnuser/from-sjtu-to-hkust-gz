@@ -1,5 +1,5 @@
 {
-  "average_riding_distance_m": 103903,
+  "average_riding_distance_m": 103085,
   "days": [
     {
       "date": "2026-08-13",
@@ -144,193 +144,170 @@
     {
       "date": "2026-08-19",
       "day": 6,
-      "distance_m": 95158,
-      "duration_s": 19533,
+      "distance_m": 96011,
+      "duration_s": 19664,
       "from_name": "维也纳国际酒店（上饶经开区店）",
-      "key_waypoints": [
-        "横峰县",
-        "弋阳县"
-      ],
+      "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://hotels.ctrip.com/hotels/107183486.html",
-        "laundry": "confirmed",
-        "name": "汉庭酒店（鹰潭高新龙虎山大道店）"
+        "evidence_url": "https://www.klook.com/zh-TW/hotels/detail/1047960/",
+        "laundry": "call_required",
+        "name": "鹰潭枫丹白露酒店（雲锦君澜）"
       },
       "long_day": false,
       "segments": [
         "day5-shangrao-hotel-to-day6-yingtan-hotel"
       ],
       "status": "planned",
-      "to_name": "汉庭酒店（鹰潭高新龙虎山大道店）"
+      "to_name": "鹰潭枫丹白露酒店（雲锦君澜）"
     },
     {
       "date": "2026-08-20",
       "day": 7,
-      "distance_m": 97512,
-      "duration_s": 22342,
-      "from_name": "汉庭酒店（鹰潭高新龙虎山大道店）",
-      "key_waypoints": [
-        "金溪县"
-      ],
+      "distance_m": 101077,
+      "duration_s": 22800,
+      "from_name": "鹰潭枫丹白露酒店（雲锦君澜）",
+      "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://hotels.ctrip.com/hotels/1409774.html",
-        "laundry": "confirmed",
-        "name": "南城法莱德国际大酒店"
+        "evidence_url": "https://ditu.amap.com/place/B0LGV1YH4U",
+        "laundry": "call_required",
+        "name": "莱特斯国际酒店（南城河东工业园区店）"
       },
       "long_day": false,
       "segments": [
         "day6-yingtan-hotel-to-day7-nancheng-hotel"
       ],
       "status": "planned",
-      "to_name": "南城法莱德国际大酒店"
+      "to_name": "莱特斯国际酒店（南城河东工业园区店）"
     },
     {
       "date": "2026-08-21",
       "day": 8,
-      "distance_m": 88587,
-      "duration_s": 20514,
-      "from_name": "南城法莱德国际大酒店",
-      "key_waypoints": [
-        "南丰县"
-      ],
+      "distance_m": 103593,
+      "duration_s": 24549,
+      "from_name": "莱特斯国际酒店（南城河东工业园区店）",
+      "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://hotels.ctrip.com/hotels/920635.html",
-        "laundry": "confirmed",
-        "name": "维也纳酒店（抚州广昌沿江路店）"
+        "evidence_url": "https://ditu.amap.com/place/B0I2B72J4I",
+        "laundry": "call_required",
+        "name": "富源大酒店（广昌头陂镇）"
       },
       "long_day": false,
       "segments": [
         "day7-nancheng-hotel-to-day8-guangchang-hotel"
       ],
       "status": "planned",
-      "to_name": "维也纳酒店（抚州广昌沿江路店）"
+      "to_name": "富源大酒店（广昌头陂镇）"
     },
     {
       "date": "2026-08-22",
       "day": 9,
-      "distance_m": 114197,
-      "duration_s": 26344,
-      "from_name": "维也纳酒店（抚州广昌沿江路店）",
-      "key_waypoints": [
-        "宁都县"
-      ],
+      "distance_m": 106494,
+      "duration_s": 24478,
+      "from_name": "富源大酒店（广昌头陂镇）",
+      "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://in.trip.com/hotels/yudou-hotel-detail-6734872/wu-dou-yin-xin-da-jiu-dian/",
+        "evidence_url": "https://hotel.eztravel.com.tw/detail-ganzhou-268-72170767/yudu-xianxia-hotel/",
         "laundry": "call_required",
-        "name": "于都银鑫大酒店"
+        "name": "于都仙霞酒店"
       },
       "long_day": false,
-      "risk_note": "银坑镇暂无可核验的自助洗衣设施；预订前必须电话确认酒店可提供洗衣机。",
       "segments": [
         "day8-guangchang-hotel-to-day9-yinkeng-hotel"
       ],
       "status": "planned",
-      "to_name": "于都银鑫大酒店"
+      "to_name": "于都仙霞酒店"
     },
     {
       "date": "2026-08-23",
       "day": 10,
-      "distance_m": 112919,
-      "duration_s": 24778,
-      "from_name": "于都银鑫大酒店",
-      "key_waypoints": [
-        "于都县南部"
-      ],
+      "distance_m": 99146,
+      "duration_s": 21554,
+      "from_name": "于都仙霞酒店",
+      "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://ditu.amap.com/place/B0I3FLY2ZX",
+        "evidence_url": "https://ditu.amap.com/place/B0L065NNZQ",
         "laundry": "call_required",
-        "name": "赣州市赣县区星月湾大酒店"
+        "name": "枕山月酒店（韩坊镇）"
       },
       "long_day": false,
-      "risk_note": "韩坊镇暂无公开自助洗衣证据；预订前必须电话确认酒店可提供洗衣机。",
       "segments": [
         "day9-yinkeng-hotel-to-day10-hanfang-hotel"
       ],
       "status": "planned",
-      "to_name": "赣州市赣县区星月湾大酒店"
+      "to_name": "枕山月酒店（韩坊镇）"
     },
     {
       "date": "2026-08-24",
       "day": 11,
-      "distance_m": 107813,
-      "duration_s": 24864,
-      "from_name": "赣州市赣县区星月湾大酒店",
-      "key_waypoints": [
-        "信丰县东部"
-      ],
+      "distance_m": 107016,
+      "duration_s": 24687,
+      "from_name": "枕山月酒店（韩坊镇）",
+      "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://hotels.ctrip.com/hotels/6003487.html",
+        "evidence_url": "https://hotels.ctrip.com/hotels/131549914.html",
         "laundry": "confirmed",
-        "name": "7天酒店（赣州定南火车站店）"
+        "name": "定南格兰云天国际酒店"
       },
       "long_day": false,
       "segments": [
         "day10-hanfang-hotel-to-day11-dingnan-hotel"
       ],
       "status": "planned",
-      "to_name": "7天酒店（赣州定南火车站店）"
+      "to_name": "定南格兰云天国际酒店"
     },
     {
       "date": "2026-08-25",
       "day": 12,
-      "distance_m": 101666,
-      "duration_s": 24735,
-      "from_name": "7天酒店（赣州定南火车站店）",
-      "key_waypoints": [
-        "和平县东部"
-      ],
+      "distance_m": 100762,
+      "duration_s": 24290,
+      "from_name": "定南格兰云天国际酒店",
+      "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://www.trip.com/hotels/dongyuan-hotel-detail-68487857/wanhe-hotel/",
+        "evidence_url": "https://ditu.amap.com/place/B0JDPSQMMY",
         "laundry": "call_required",
-        "name": "东源万和宾馆"
+        "name": "亚瓦酒店（漳溪畲族乡）"
       },
       "long_day": false,
-      "risk_note": "船塘镇住宿条件普通，且暂无公开自助洗衣证据；预订前必须电话确认。",
       "segments": [
         "day11-dingnan-hotel-to-day12-chuantang-hotel"
       ],
       "status": "planned",
-      "to_name": "东源万和宾馆"
+      "to_name": "亚瓦酒店（漳溪畲族乡）"
     },
     {
       "date": "2026-08-26",
       "day": 13,
-      "distance_m": 107542,
-      "duration_s": 23833,
-      "from_name": "东源万和宾馆",
-      "key_waypoints": [
-        "东源县",
-        "杨村镇"
-      ],
+      "distance_m": 94015,
+      "duration_s": 20758,
+      "from_name": "亚瓦酒店（漳溪畲族乡）",
+      "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://m.ctrip.com/html5/hotel/hoteldetail/114680529.html",
-        "laundry": "confirmed",
-        "name": "简居HOTEL酒店"
+        "evidence_url": "https://ditu.amap.com/place/B0FFIJJ33C",
+        "laundry": "call_required",
+        "name": "博罗云鹏酒店（麻陂镇）"
       },
       "long_day": false,
       "segments": [
         "day12-chuantang-hotel-to-day13-yangqiao-hotel"
       ],
       "status": "planned",
-      "to_name": "简居HOTEL酒店"
+      "to_name": "博罗云鹏酒店（麻陂镇）"
     },
     {
       "date": "2026-08-27",
       "day": 14,
-      "distance_m": 88688,
-      "duration_s": 18034,
-      "from_name": "简居HOTEL酒店",
-      "key_waypoints": [
-        "增城区"
-      ],
+      "distance_m": 95329,
+      "duration_s": 19357,
+      "from_name": "博罗云鹏酒店（麻陂镇）",
+      "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
         "evidence_url": "https://hotels.ctrip.com/hotels/133458405.html",
@@ -350,9 +327,7 @@
       "distance_m": 94838,
       "duration_s": 19257,
       "from_name": "广州增城荔湖木莲庄酒店",
-      "key_waypoints": [
-        "番禺区"
-      ],
+      "key_waypoints": [],
       "long_day": false,
       "segments": [
         "day14-zengcheng-hotel-to-main-27"
@@ -362,8 +337,8 @@
     }
   ],
   "display_start_day": 1,
-  "public_total_distance_m": 1532533,
-  "remaining_distance_m": 1350738,
+  "public_total_distance_m": 1521894,
+  "remaining_distance_m": 1340099,
   "remaining_start_day": 3,
   "route_id": "inland-execution",
   "segment_days": {
@@ -395,5 +370,5 @@
     "pre-07-to-main-01": 0
   },
   "start_date": "2026-08-13",
-  "total_distance_m": 1598219
+  "total_distance_m": 1587580
 }

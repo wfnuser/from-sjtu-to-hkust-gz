@@ -1,4 +1,4 @@
-import { selectRouteProfile } from "./route-profile.mjs?v=20260818-3";
+import { selectRouteProfile } from "./route-profile.mjs?v=20260819-1";
 import {
   rerouteComparisonText,
   rerouteFeaturesForOption,
@@ -14,6 +14,7 @@ import {
   visibleItineraryDays,
   visibleRouteFeatures,
 } from "./day-card-model.mjs?v=20260818-1";
+import { geojsonWgs84ToGcj02 } from "./map-coordinates.mjs?v=20260819-1";
 
 const routeProfile = selectRouteProfile(window.location.search);
 const GEOJSON_URL = routeProfile.geojsonUrl;
@@ -43,9 +44,10 @@ const ROAD_LABELS = {
 };
 
 const map = L.map("map", { zoomControl: true, preferCanvas: true }).setView([27.2, 119.5], 5);
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}", {
+  subdomains: "1234",
+  maxZoom: 18,
+  attribution: '&copy; <a href="https://www.amap.com/">高德地图</a>',
 }).addTo(map);
 
 const mainLayer = L.featureGroup().addTo(map);
@@ -652,8 +654,15 @@ async function loadRoute() {
     ]);
     if (!geojsonResponse.ok || !summaryResponse.ok) throw new Error("Route artifacts are unavailable");
     const [geojson, summary] = await Promise.all([geojsonResponse.json(), summaryResponse.json()]);
-    addFeatures(itinerary ? visibleRouteFeatures(geojson, itinerary) : geojson);
-    if (rerouteOptions) addRerouteOptions(rerouteOptions);
+    const publishedGeojson = itinerary ? visibleRouteFeatures(geojson, itinerary) : geojson;
+    const alignedGeojson = geojsonWgs84ToGcj02(publishedGeojson);
+    addFeatures(alignedGeojson);
+    if (rerouteOptions) {
+      addRerouteOptions({
+        ...rerouteOptions,
+        features: (rerouteOptions.features || []).map(geojsonWgs84ToGcj02),
+      });
+    }
     if (!segmentGroups.size) throw new Error("No published road steps");
     if (itinerary) {
       renderItineraryTotals(itinerary, summary);
