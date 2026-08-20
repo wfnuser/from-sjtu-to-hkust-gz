@@ -12,7 +12,7 @@
 
 - Preserve all Day 0–6 route segments, itinerary facts, dates, and published geometry.
 - Day 7 starts at 鹰潭枫丹白露酒店（雲锦君澜）; Day 16 ends at 香港科技大学（广州） on 2026-08-29.
-- Each Day 7–15 distance must be 95,000–102,000 m, with at least five of those nine days at or below 100,000 m.
+- **Each Day 7–15 distance must be ≤ 100,000 m (no 100–102 km grace band).**
 - Day 16 must be 15,000–35,000 m and should target roughly 25,000 m.
 - Day 7–16 must have empty `key_waypoints`; no fixed lunch, charging, or rest stops are introduced.
 - Prefer the shortest eligible AMap cycling candidate; do not add detours solely to hit a round-number distance.
@@ -46,8 +46,7 @@ Replace the current Day 6–15 range assertion with:
 ```python
 balanced_days = [day for day in published["days"] if 7 <= day["day"] <= 15]
 self.assertEqual(len(balanced_days), 9)
-self.assertTrue(all(95_000 <= day["distance_m"] <= 102_000 for day in balanced_days))
-self.assertGreaterEqual(sum(day["distance_m"] <= 100_000 for day in balanced_days), 5)
+self.assertTrue(all(day["distance_m"] <= 100_000 for day in balanced_days))
 day16 = next(day for day in published["days"] if day["day"] == 16)
 self.assertTrue(15_000 <= day16["distance_m"] <= 35_000)
 self.assertTrue(all(day.get("key_waypoints", []) == [] for day in published["days"] if 7 <= day["day"] <= 16))
@@ -150,7 +149,7 @@ git commit -m "feat: allow sixteen execution riding days"
 
 - [ ] **Step 1: Establish cumulative target bands**
 
-Measure candidates from the fixed Day 7 start against these cumulative targets: 98, 196, 294, 392, 490, 588, 686, 782, and 877 km. Each accepted adjacent leg must be 95–102 km; the remaining final leg must be 15–35 km.
+Measure candidates from the fixed Day 7 start against these cumulative targets: 95, 190, 285, 380, 475, 570, 665, 760, and 855 km. Each accepted adjacent leg must be ≤ 100 km; the remaining final leg must be 15–35 km. If a target lacks an acceptable hotel, the leg may drop to the 80–100 km band but never exceed 100 km.
 
 - [ ] **Step 2: Search hotel POIs inside each target band**
 
@@ -211,7 +210,7 @@ jq -r '.days[] | select(.day >= 7) | [.day,.date,.distance_m,.duration_s,.to_nam
   web/data/inland-itinerary.json
 ```
 
-If a Day 7–15 leg is outside 95–102 km, move the shared endpoint and regenerate both adjacent legs. If Day 16 is outside 15–35 km, replace only the Day 15 hotel. Never add a detour anchor to manufacture distance.
+If any Day 7–15 leg is over 100,000 m, move the shared endpoint back toward the previous night's hotel and regenerate both adjacent legs (do not widen the cap). If Day 16 is outside 15–35 km, replace only the Day 15 hotel. Never add a detour anchor to manufacture distance.
 
 - [ ] **Step 9: Run itinerary tests and verify GREEN**
 

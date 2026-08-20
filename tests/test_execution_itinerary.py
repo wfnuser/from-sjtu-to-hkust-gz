@@ -139,7 +139,7 @@ class ExecutionItineraryContractTests(unittest.TestCase):
                 for day in planned_nights
                 if day["lodging"]["laundry"] == "call_required"
             ],
-            [6, 7, 8, 9, 10, 12, 13],
+            [6, 8, 9, 10, 12, 13],
         )
 
     def test_future_route_uses_better_lodging_without_fixed_midday_stops(self):

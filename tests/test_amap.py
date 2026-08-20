@@ -51,6 +51,36 @@ class AmapClientTests(unittest.TestCase):
 
         self.assertEqual(load_amap_key(path), "secret-123")
 
+    def test_load_amap_key_prefers_primary_over_backup(self):
+        path = Path(self.tmp.name) / ".env.local"
+        path.write_text(
+            "AMAP_WEB_SERVICE_KEY=primary-123\n"
+            "AMAP_WEB_SERVICE_KEY_BACKUP=backup-456\n",
+            encoding="utf-8",
+        )
+
+        self.assertEqual(load_amap_key(path), "primary-123")
+
+    def test_load_amap_key_falls_back_when_primary_empty(self):
+        path = Path(self.tmp.name) / ".env.local"
+        path.write_text(
+            "AMAP_WEB_SERVICE_KEY=\n"
+            "AMAP_WEB_SERVICE_KEY_BACKUP=backup-456\n",
+            encoding="utf-8",
+        )
+
+        self.assertEqual(load_amap_key(path), "backup-456")
+
+    def test_load_amap_key_raises_when_both_empty(self):
+        path = Path(self.tmp.name) / ".env.local"
+        path.write_text(
+            "AMAP_WEB_SERVICE_KEY=\nAMAP_WEB_SERVICE_KEY_BACKUP=\n",
+            encoding="utf-8",
+        )
+
+        with self.assertRaises(ValueError):
+            load_amap_key(path)
+
     def test_cache_key_is_independent_of_client_or_parameter_secret(self):
         params = {"origin": "1,2", "key": "parameter-secret"}
         key = AmapClient("secret-123", Path(self.tmp.name), min_interval_s=0).cache_key(

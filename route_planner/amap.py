@@ -17,7 +17,8 @@ from route_planner.roads import classify_risks, classify_road
 
 
 _BASE_URL = "https://restapi.amap.com"
-_KEY_NAMES = ("AMAP_WEB_SERVICE_KEY", "AMAP_KEY")
+_PRIMARY_KEY_NAMES = ("AMAP_WEB_SERVICE_KEY", "AMAP_KEY")
+_BACKUP_KEY_NAMES = ("AMAP_WEB_SERVICE_KEY_BACKUP",)
 _FALLBACK_CA_FILES = (Path("/etc/ssl/cert.pem"),)
 
 
@@ -26,12 +27,19 @@ class AmapError(RuntimeError):
 
 
 def load_amap_key(path: Path) -> str:
-    """Load the AMap web-service key from a local dotenv-style file."""
+    """Load the AMap web-service key from a local dotenv-style file.
+
+    Primary names are checked first; if none of them carry a non-empty value,
+    the backup names (``AMAP_WEB_SERVICE_KEY_BACKUP``) are used. Only one key
+    is returned at a time, so switching between main and backup requires
+    editing the dotenv file (rename or clear the active line).
+    """
     try:
         lines = path.read_text(encoding="utf-8").splitlines()
     except OSError as error:
         raise ValueError(f"Unable to read AMap key file: {path}") from error
 
+    parsed: dict[str, str] = {}
     for line in lines:
         stripped = line.strip()
         if stripped.startswith("export "):
@@ -39,14 +47,17 @@ def load_amap_key(path: Path) -> str:
         if not stripped or stripped.startswith("#") or "=" not in stripped:
             continue
         name, value = stripped.split("=", 1)
-        if name.strip() not in _KEY_NAMES:
-            continue
-        key = value.strip().strip("\"'")
-        if key:
-            return key
-        break
+        parsed[name.strip()] = value.strip().strip("\"'")
 
-    raise ValueError(f"one of {', '.join(_KEY_NAMES)} must be set in {path}")
+    for primary in _PRIMARY_KEY_NAMES:
+        if parsed.get(primary):
+            return parsed[primary]
+    for backup in _BACKUP_KEY_NAMES:
+        if parsed.get(backup):
+            return parsed[backup]
+
+    names = ", ".join(_PRIMARY_KEY_NAMES + _BACKUP_KEY_NAMES)
+    raise ValueError(f"one of {names} must be set in {path}")
 
 
 class AmapClient:
