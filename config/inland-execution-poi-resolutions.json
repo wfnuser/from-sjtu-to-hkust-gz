@@ -1091,15 +1091,15 @@
       ]
     },
     {
-      "query": "于都锦汇酒店葛坳",
+      "query": "于都仙霞酒店",
       "city": "赣州",
       "candidates": [
         {
-          "poi_id": "B0FFJPO80R",
-          "name": "于都锦汇酒店",
-          "formatted_address": "江西省赣州市于都县葛坳乡蛇颈村蛇颈组厦成线中国石油南20米",
+          "poi_id": "B0FFHOZIUY",
+          "name": "于都仙霞酒店",
+          "formatted_address": "江西省赣州市于都县仙下乡仙下圩马安路36号",
           "district": "于都县",
-          "location_gcj": {"lon": 115.729528, "lat": 26.260356},
+          "location_gcj": {"lon": 115.5671, "lat": 26.110913},
           "selected": true
         }
       ]
@@ -1170,6 +1170,20 @@
           "formatted_address": "广东省广州市增城区荔湖街景上街2号",
           "district": "增城区",
           "location_gcj": {"lon": 113.821282, "lat": 23.246917},
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "维也纳酒店广州番禺亚运城店",
+      "city": "广州",
+      "candidates": [
+        {
+          "poi_id": "B0FFJ8M0DQ",
+          "name": "维也纳酒店(广州番禺亚运城店)",
+          "formatted_address": "广东省广州市番禺区石楼镇石清路18号之46号",
+          "district": "番禺区",
+          "location_gcj": {"lon": 113.4844, "lat": 22.9626},
           "selected": true
         }
       ]

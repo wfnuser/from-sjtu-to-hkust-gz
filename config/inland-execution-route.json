@@ -20,14 +20,15 @@
     {"id": "day4-changshan-hotel", "name": "常山东方广场酒店", "city": "衢州", "query": "常山东方广场酒店", "coordinate": null},
     {"id": "day5-shangrao-hotel", "name": "维也纳国际酒店（上饶经开区店）", "city": "上饶", "query": "维也纳国际酒店上饶经开区店", "coordinate": null},
     {"id": "day6-yingtan-hotel", "name": "鹰潭枫丹白露酒店（雲锦君澜）", "city": "鹰潭", "query": "鹰潭市雲锦君澜大饭店", "coordinate": null},
-    {"id": "day7-nancheng-hotel", "name": "维也纳酒店（南城店）", "city": "抚州", "query": "维也纳酒店南城店", "coordinate": null},
+    {"id": "day7-nancheng-hotel", "name": "维也纳酒店 南城", "city": "抚州", "query": "维也纳酒店南城店", "coordinate": null},
     {"id": "day8-guangchang-hotel", "name": "富源大酒店（广昌头陂镇）", "city": "抚州", "query": "富源大酒店广昌头陂镇", "coordinate": null},
-    {"id": "day9-yinkeng-hotel", "name": "于都锦汇酒店（葛坳乡）", "city": "赣州", "query": "于都锦汇酒店葛坳", "coordinate": null},
+    {"id": "day9-yinkeng-hotel", "name": "于都仙霞酒店", "city": "赣州", "query": "于都仙霞酒店", "coordinate": null},
     {"id": "day10-hanfang-hotel", "name": "枕山月酒店（韩坊镇）", "city": "赣州", "query": "枕山月酒店韩坊镇", "coordinate": null},
     {"id": "day11-dingnan-hotel", "name": "定南格兰云天国际酒店", "city": "赣州", "query": "定南格兰云天国际酒店", "coordinate": null},
     {"id": "day12-chuantang-hotel", "name": "亚瓦酒店（漳溪畲族乡）", "city": "河源", "query": "亚瓦酒店漳溪畲族乡", "coordinate": null},
     {"id": "day13-yangqiao-hotel", "name": "博罗云鹏酒店（麻陂镇）", "city": "惠州", "query": "博罗云鹏酒店麻陂镇", "coordinate": null},
     {"id": "day14-zengcheng-hotel", "name": "广州增城荔湖木莲庄酒店", "city": "广州", "query": "广州增城荔湖木莲庄酒店", "coordinate": null},
+    {"id": "day15-panyu-hotel", "name": "维也纳酒店（广州番禺亚运城店）", "city": "广州", "query": "维也纳酒店广州番禺亚运城店", "coordinate": null},
     {"id": "main-27", "name": "香港科技大学（广州）", "city": "广州", "query": "香港科技大学（广州）", "coordinate": null}
   ],
   "checkin_waypoints": [],
@@ -57,7 +58,8 @@
     "day11-dingnan-hotel-to-day12-chuantang-hotel": {"day": 12, "preferred_candidate_index": 1, "allowed_national_m": 68000, "national_exception_reason": "粤赣山谷的距离优先连续路线，不设置中途停靠。"},
     "day12-chuantang-hotel-to-day13-yangqiao-hotel": {"day": 13, "allowed_national_m": 52000, "national_exception_reason": "采用距离优先连续路线，不设置中途停靠。"},
     "day13-yangqiao-hotel-to-day14-zengcheng-hotel": {"day": 14, "allowed_national_m": 18000, "national_exception_reason": "采用距离优先连续路线，不设置中途停靠。"},
-    "day14-zengcheng-hotel-to-main-27": {"day": 15, "preferred_candidate_index": 1}
+    "day14-zengcheng-hotel-to-day15-panyu-hotel": {"day": 15},
+    "day15-panyu-hotel-to-main-27": {"day": 16}
   },
   "optional_branches": {}
 }

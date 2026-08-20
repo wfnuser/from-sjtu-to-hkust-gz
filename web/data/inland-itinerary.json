@@ -1,5 +1,5 @@
 {
-  "average_riding_distance_m": 103085,
+  "average_riding_distance_m": 98236,
   "days": [
     {
       "date": "2026-08-13",
@@ -164,29 +164,29 @@
     {
       "date": "2026-08-20",
       "day": 7,
-      "distance_m": 101077,
-      "duration_s": 22800,
+      "distance_m": 90956,
+      "duration_s": 21035,
       "from_name": "鹰潭枫丹白露酒店（雲锦君澜）",
       "key_waypoints": [],
       "lodging": {
-        "booking_status": "candidate",
-        "evidence_url": "https://ditu.amap.com/place/B0LGV1YH4U",
+        "booking_status": "completed",
+        "evidence_url": "https://ditu.amap.com/place/B0FFIIFKKJ",
         "laundry": "call_required",
-        "name": "莱特斯国际酒店（南城河东工业园区店）"
+        "name": "维也纳酒店 南城"
       },
       "long_day": false,
       "segments": [
         "day6-yingtan-hotel-to-day7-nancheng-hotel"
       ],
-      "status": "planned",
-      "to_name": "莱特斯国际酒店（南城河东工业园区店）"
+      "status": "completed",
+      "to_name": "维也纳酒店 南城"
     },
     {
       "date": "2026-08-21",
       "day": 8,
-      "distance_m": 103593,
-      "duration_s": 24549,
-      "from_name": "莱特斯国际酒店（南城河东工业园区店）",
+      "distance_m": 112617,
+      "duration_s": 26167,
+      "from_name": "维也纳酒店 南城",
       "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
@@ -210,7 +210,7 @@
       "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://hotel.eztravel.com.tw/detail-ganzhou-268-72170767/yudu-xianxia-hotel/",
+        "evidence_url": "https://ditu.amap.com/place/B0FFHOZIUY",
         "laundry": "call_required",
         "name": "于都仙霞酒店"
       },
@@ -324,21 +324,41 @@
     {
       "date": "2026-08-28",
       "day": 15,
-      "distance_m": 94838,
-      "duration_s": 19257,
+      "distance_m": 101842,
+      "duration_s": 21200,
       "from_name": "广州增城荔湖木莲庄酒店",
+      "key_waypoints": [],
+      "lodging": {
+        "booking_status": "candidate",
+        "evidence_url": "https://ditu.amap.com/place/B0FFJ8M0DQ",
+        "laundry": "call_required",
+        "name": "维也纳酒店（广州番禺亚运城店）"
+      },
+      "long_day": false,
+      "segments": [
+        "day14-zengcheng-hotel-to-day15-panyu-hotel"
+      ],
+      "status": "planned",
+      "to_name": "维也纳酒店（广州番禺亚运城店）"
+    },
+    {
+      "date": "2026-08-29",
+      "day": 16,
+      "distance_m": 29299,
+      "duration_s": 5762,
+      "from_name": "维也纳酒店（广州番禺亚运城店）",
       "key_waypoints": [],
       "long_day": false,
       "segments": [
-        "day14-zengcheng-hotel-to-main-27"
+        "day15-panyu-hotel-to-main-27"
       ],
       "status": "planned",
       "to_name": "香港科技大学（广州）"
     }
   ],
   "display_start_day": 1,
-  "public_total_distance_m": 1521894,
-  "remaining_distance_m": 1340099,
+  "public_total_distance_m": 1557100,
+  "remaining_distance_m": 1375305,
   "remaining_start_day": 3,
   "route_id": "inland-execution",
   "segment_days": {
@@ -349,7 +369,8 @@
     "day11-dingnan-hotel-to-day12-chuantang-hotel": 12,
     "day12-chuantang-hotel-to-day13-yangqiao-hotel": 13,
     "day13-yangqiao-hotel-to-day14-zengcheng-hotel": 14,
-    "day14-zengcheng-hotel-to-main-27": 15,
+    "day14-zengcheng-hotel-to-day15-panyu-hotel": 15,
+    "day15-panyu-hotel-to-main-27": 16,
     "day3-xixi-campus-to-main-05": 2,
     "day4-changshan-hotel-to-day5-shangrao-hotel": 5,
     "day5-shangrao-hotel-to-day6-yingtan-hotel": 6,
@@ -370,5 +391,5 @@
     "pre-07-to-main-01": 0
   },
   "start_date": "2026-08-13",
-  "total_distance_m": 1587580
+  "total_distance_m": 1622786
 }
