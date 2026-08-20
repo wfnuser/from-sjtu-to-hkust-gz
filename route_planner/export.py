@@ -15,7 +15,11 @@ _DEADLINE_START = date(2026, 8, 13)
 _DEADLINE_END = date(2026, 8, 30)
 _REQUIRED_WORK_HOURS_PER_DAY = 4
 _MAX_RIDING_HOURS_PER_DAY = 6
-_MAX_RIDING_DAYS = 15
+_MAX_RIDING_DAYS_BY_PROFILE = {
+    "coastal": 15,
+    "inland": 15,
+    "execution": 16,
+}
 
 
 def build_geojson(
@@ -328,12 +332,12 @@ def build_review_markdown(
             ]
         )
     else:
-        riding_day_excess = max(0, len(days) - int(schedule["max_riding_days"]))
+        riding_day_excess = max(0, schedule["riding_day_count"] - int(schedule["max_riding_days"]))
         lines.extend(
             [
                 "## 非执行排程诊断",
                 "",
-                f"- 需要{len(days)}个骑行日；最多{schedule['max_riding_days']}个骑行日，超出{riding_day_excess}天。",
+                f"- 需要{schedule['riding_day_count']}个骑行日；最多{schedule['max_riding_days']}个骑行日，超出{riding_day_excess}天。",
                 "- 该路线不满足硬性排程约束，未渲染每日计划、住宿或网络安排。",
                 "",
             ]
@@ -390,28 +394,35 @@ def _schedule_contract(
         raise ValueError(f"unsupported route profile: {profile}") from error
 
     available_days = (_DEADLINE_END - _DEADLINE_START).days + 1
-    buffer_days = available_days - _MAX_RIDING_DAYS
+    max_riding_days = _MAX_RIDING_DAYS_BY_PROFILE[profile]
+    buffer_days = available_days - max_riding_days
     work_duration_s = _REQUIRED_WORK_HOURS_PER_DAY * 3_600
     riding_duration_s = _MAX_RIDING_HOURS_PER_DAY * 3_600
     combined_duration_s = work_duration_s + riding_duration_s
+    # Day 0 is the Shanghai prelude; the 16-day cap counts only long-distance
+    # riding days (Day 1 and beyond). Daily-time constraints still apply to
+    # every published day so a city-prelude over the riding-time budget is
+    # flagged separately.
+    riding_days = [day for day in days if int(day.get("day", 0)) >= 1]
+    riding_day_count = len(riding_days)
     daily_time_constraints_met = all(
         int(day["duration_s"]) <= riding_duration_s
         and int(day["duration_s"]) + work_duration_s <= combined_duration_s
         for day in days
     )
     deadline_feasible = (
-        len(days) <= _MAX_RIDING_DAYS and daily_time_constraints_met
+        riding_day_count <= max_riding_days and daily_time_constraints_met
     )
     if deadline_feasible:
         deadline_note = (
             f"{route_label}可在8月13日至8月30日的{available_days}天自然日窗口内以"
-            f"{len(days)}个骑行日完成（保留{buffer_days}天缓冲），"
+            f"{riding_day_count}个骑行日完成（保留{buffer_days}天缓冲），"
             f"并保留每日{_REQUIRED_WORK_HOURS_PER_DAY}小时工作且每日骑行不超过"
             f"{_MAX_RIDING_HOURS_PER_DAY}小时。"
         )
     else:
         deadline_note = (
-            f"{route_label}需{len(days)}个骑行日，超过最多{_MAX_RIDING_DAYS}个骑行日"
+            f"{route_label}需{riding_day_count}个骑行日，超过最多{max_riding_days}个骑行日"
             f"的硬约束；8月13日至8月30日的{available_days}天自然日窗口仅保留"
             f"{buffer_days}天缓冲，"
             f"同时保留每日{_REQUIRED_WORK_HOURS_PER_DAY}小时工作且每日骑行不超过"
@@ -421,8 +432,9 @@ def _schedule_contract(
         "deadline_start": _DEADLINE_START.isoformat(),
         "deadline_end": _DEADLINE_END.isoformat(),
         "deadline_available_days": available_days,
-        "max_riding_days": _MAX_RIDING_DAYS,
+        "max_riding_days": max_riding_days,
         "buffer_days": buffer_days,
+        "riding_day_count": riding_day_count,
         "required_work_hours_per_day": _REQUIRED_WORK_HOURS_PER_DAY,
         "max_riding_hours_per_day": _MAX_RIDING_HOURS_PER_DAY,
         "daily_time_constraints_met": daily_time_constraints_met,

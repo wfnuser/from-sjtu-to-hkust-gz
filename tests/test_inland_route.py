@@ -18,7 +18,7 @@ from route_planner.models import (
 from scripts.generate_route import generate_from_segments
 
 
-def _schedule_segment(index: int) -> PlannedSegment:
+def _schedule_segment(index: int, day: int | None = None) -> PlannedSegment:
     segment_id = f"main-{index:02d}-to-main-{index + 1:02d}"
     start = Waypoint(
         f"main-{index:02d}", f"站点{index}", "测试市", f"站点{index}",
@@ -46,7 +46,7 @@ def _schedule_segment(index: int) -> PlannedSegment:
         segment_id,
         start,
         end,
-        SegmentRule(segment_id),
+        SegmentRule(segment_id, day=day),
         100_000,
         selected,
         1.0,
@@ -118,6 +118,35 @@ class InlandRouteAcceptanceTests(unittest.TestCase):
         self.assertIn("## 非执行排程诊断", review)
         self.assertIn("需16个骑行日", review)
         self.assertIn("最多15个骑行日", review)
+
+    def test_execution_schedule_accepts_sixteen_riding_days_with_two_day_buffer(self):
+        """Execution profile can stretch to sixteen riding days while keeping
+        the two-day work / rest buffer the inland baseline preserves."""
+        summary = build_summary(
+            tuple(_schedule_segment(index, day=index) for index in range(1, 17)),
+            1.15,
+            profile="execution",
+        )
+
+        self.assertEqual(summary["schedule"]["max_riding_days"], 16)
+        self.assertEqual(summary["schedule"]["buffer_days"], 2)
+        self.assertEqual(summary["schedule"]["riding_day_count"], 16)
+        self.assertTrue(summary["schedule"]["deadline_feasible"])
+        self.assertIn("16个骑行日完成", summary["schedule"]["deadline_note"])
+
+    def test_execution_schedule_rejects_seventeen_riding_days(self):
+        """Would fail if execution silently fell back to the inland fifteen
+        riding day cap."""
+        segments = tuple(
+            _schedule_segment(index, day=index) for index in range(1, 18)
+        )
+        summary = build_summary(segments, 1.15, profile="execution")
+        review = build_review_markdown(segments, profile="execution")
+
+        self.assertEqual(summary["schedule"]["max_riding_days"], 16)
+        self.assertEqual(summary["schedule"]["riding_day_count"], 17)
+        self.assertFalse(summary["schedule"]["deadline_feasible"])
+        self.assertIn("需17个骑行日", summary["schedule"]["deadline_note"])
         self.assertIn("超出1天", review)
         self.assertNotIn("## 每日计划", review)
 

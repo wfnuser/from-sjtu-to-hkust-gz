@@ -496,18 +496,19 @@
   },
   "publication_status": "provisional_road_level_review_required",
   "schedule": {
-    "buffer_days": 3,
+    "buffer_days": 2,
     "daily_time_constraints_met": false,
     "day_count": 17,
     "deadline_available_days": 18,
     "deadline_end": "2026-08-30",
     "deadline_feasible": false,
-    "deadline_note": "江西线执行路线需17个骑行日，超过最多15个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留3天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。",
+    "deadline_note": "江西线执行路线需16个骑行日，超过最多16个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留2天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。",
     "deadline_start": "2026-08-13",
     "max_duration_s": 21600,
-    "max_riding_days": 15,
+    "max_riding_days": 16,
     "max_riding_hours_per_day": 6,
     "required_work_hours_per_day": 4,
+    "riding_day_count": 16,
     "target_distance_m": [
       80000,
       120000
