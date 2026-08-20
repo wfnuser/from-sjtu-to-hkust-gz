@@ -1055,16 +1055,24 @@
       ]
     },
     {
-      "query": "莱特斯国际酒店南城河东工业园区店",
+      "query": "维也纳酒店南城店",
       "city": "抚州",
       "candidates": [
         {
-          "poi_id": "B0LGV1YH4U",
-          "name": "莱特斯国际酒店(南城河东工业园区店)",
-          "formatted_address": "江西省抚州市南城县星联国际城",
+          "poi_id": "B0FFIIFKKJ",
+          "name": "维也纳酒店(抚州南城店)",
+          "formatted_address": "江西省抚州市南城县河东大道2号",
           "district": "南城县",
-          "location_gcj": {"lon": 116.617985, "lat": 27.494982},
+          "location_gcj": {"lon": 116.654785, "lat": 27.560145},
           "selected": true
+        },
+        {
+          "poi_id": "B0J1AU2K9D",
+          "name": "维也纳酒店抚州南城店大堂",
+          "formatted_address": "江西省抚州市南城县河东大道2号维也纳酒店(抚州南城店)",
+          "district": "南城县",
+          "location_gcj": {"lon": 116.654734, "lat": 27.560056},
+          "selected": false
         }
       ]
     },
@@ -1083,15 +1091,15 @@
       ]
     },
     {
-      "query": "于都仙霞酒店",
+      "query": "于都锦汇酒店葛坳",
       "city": "赣州",
       "candidates": [
         {
-          "poi_id": "B0FFHOZIUY",
-          "name": "于都仙霞酒店",
-          "formatted_address": "江西省赣州市于都县仙下乡仙下圩马安路36号",
+          "poi_id": "B0FFJPO80R",
+          "name": "于都锦汇酒店",
+          "formatted_address": "江西省赣州市于都县葛坳乡蛇颈村蛇颈组厦成线中国石油南20米",
           "district": "于都县",
-          "location_gcj": {"lon": 115.5671, "lat": 26.110913},
+          "location_gcj": {"lon": 115.729528, "lat": 26.260356},
           "selected": true
         }
       ]
