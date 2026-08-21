@@ -1,5 +1,5 @@
 {
-  "average_riding_distance_m": 98236,
+  "average_riding_distance_m": 98396,
   "days": [
     {
       "date": "2026-08-13",
@@ -184,29 +184,29 @@
     {
       "date": "2026-08-21",
       "day": 8,
-      "distance_m": 112617,
-      "duration_s": 26167,
+      "distance_m": 91904,
+      "duration_s": 21223,
       "from_name": "维也纳酒店 南城",
       "key_waypoints": [],
       "lodging": {
-        "booking_status": "candidate",
-        "evidence_url": "https://ditu.amap.com/place/B0I2B72J4I",
+        "booking_status": "completed",
+        "evidence_url": "https://ditu.amap.com/place/B0KKZSOX11",
         "laundry": "call_required",
-        "name": "富源大酒店（广昌头陂镇）"
+        "name": "全季酒店（抚州广昌县政府店）"
       },
       "long_day": false,
       "segments": [
         "day7-nancheng-hotel-to-day8-guangchang-hotel"
       ],
-      "status": "planned",
-      "to_name": "富源大酒店（广昌头陂镇）"
+      "status": "completed",
+      "to_name": "全季酒店（抚州广昌县政府店）"
     },
     {
       "date": "2026-08-22",
       "day": 9,
-      "distance_m": 106494,
-      "duration_s": 24478,
-      "from_name": "富源大酒店（广昌头陂镇）",
+      "distance_m": 129443,
+      "duration_s": 30028,
+      "from_name": "全季酒店（抚州广昌县政府店）",
       "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
@@ -357,8 +357,8 @@
     }
   ],
   "display_start_day": 1,
-  "public_total_distance_m": 1557100,
-  "remaining_distance_m": 1375305,
+  "public_total_distance_m": 1559336,
+  "remaining_distance_m": 1377541,
   "remaining_start_day": 3,
   "route_id": "inland-execution",
   "segment_days": {
@@ -391,5 +391,5 @@
     "pre-07-to-main-01": 0
   },
   "start_date": "2026-08-13",
-  "total_distance_m": 1622786
+  "total_distance_m": 1625022
 }

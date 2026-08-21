@@ -2,7 +2,7 @@
 
 > **临时路线：仍需道路级复核。** 自动分类/审核不等于现场或权威道路核验；不得据此宣称已完全避开国道、高速或货运道路。
 
-- UNKNOWN：942718 m（58.09%）；其中未命名道路 210718 m。
+- UNKNOWN：944023 m（58.09%）；其中未命名道路 210796 m。
 - AMap 配额受限的补充探路清单见 `summary.json`；未完成的并行道路探测保持 provisional。
 - 国道本身不阻断发布；仅在距离接近且有更安全平行道路时切换，硬风险和货运风险仍阻断。
 - 江西线执行路线需16个骑行日，超过最多16个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留2天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。
@@ -34,8 +34,8 @@
 | day4-changshan-hotel-to-day5-shangrao-hotel | 常山东方广场酒店 | 维也纳国际酒店（上饶经开区店） | 93276 | 18801 | 自动检查通过（仍需道路级复核） |
 | day5-shangrao-hotel-to-day6-yingtan-hotel | 维也纳国际酒店（上饶经开区店） | 鹰潭枫丹白露酒店（雲锦君澜） | 96011 | 19664 | 自动检查通过（仍需道路级复核） |
 | day6-yingtan-hotel-to-day7-nancheng-hotel | 鹰潭枫丹白露酒店（雲锦君澜） | 维也纳酒店 南城 | 90956 | 21035 | 自动检查通过（仍需道路级复核） |
-| day7-nancheng-hotel-to-day8-guangchang-hotel | 维也纳酒店 南城 | 富源大酒店（广昌头陂镇） | 112617 | 26167 | 自动检查通过（仍需道路级复核） |
-| day8-guangchang-hotel-to-day9-yinkeng-hotel | 富源大酒店（广昌头陂镇） | 于都仙霞酒店 | 106494 | 24478 | 自动检查通过（仍需道路级复核） |
+| day7-nancheng-hotel-to-day8-guangchang-hotel | 维也纳酒店 南城 | 全季酒店（抚州广昌县政府店） | 91904 | 21223 | 自动检查通过（仍需道路级复核） |
+| day8-guangchang-hotel-to-day9-yinkeng-hotel | 全季酒店（抚州广昌县政府店） | 于都仙霞酒店 | 129443 | 30028 | 需人工复核 |
 | day9-yinkeng-hotel-to-day10-hanfang-hotel | 于都仙霞酒店 | 枕山月酒店（韩坊镇） | 99146 | 21554 | 自动检查通过（仍需道路级复核） |
 | day10-hanfang-hotel-to-day11-dingnan-hotel | 枕山月酒店（韩坊镇） | 定南格兰云天国际酒店 | 107016 | 24687 | 自动检查通过（仍需道路级复核） |
 | day11-dingnan-hotel-to-day12-chuantang-hotel | 定南格兰云天国际酒店 | 亚瓦酒店（漳溪畲族乡） | 100762 | 24290 | 自动检查通过（仍需道路级复核） |
@@ -633,21 +633,26 @@
 - `national` 206国道 — 7939 m
 - `unknown` 红军大道 — 143 m
 - `unknown` 未命名道路 — 38 m
-- `unknown` 红军大道 — 4746 m
-- `unknown` 莲乡大道 — 32 m
-- `unknown` 未命名道路 — 33 m
-- `national` 206国道 — 43 m
-- `national` 206国道 — 493 m
-- `unknown` 站前路 — 31 m
-- `unknown` 未命名道路 — 43 m
-- `national` 206国道 — 52 m
-- `national` 206国道 — 4933 m
-- `unknown` 广宁线 — 11185 m
-- `unknown` 未命名道路 — 4846 m
+- `unknown` 红军大道 — 295 m
+- `provincial` 222省道 — 37 m
+- `national` 528国道 — 4384 m
+- `unknown` 莲乡大道 — 486 m
+- `unknown` 东沿河路 — 360 m
+- `unknown` 东沿河路 — 86 m
+- `unknown` 未命名道路 — 76 m
 - 无自动生成的复核项。
 
 ### day8-guangchang-hotel-to-day9-yinkeng-hotel
-- `unknown` 未命名道路 — 4281 m
+- `unknown` 未命名道路 — 76 m
+- `unknown` 东沿河路 — 86 m
+- `unknown` 东沿河路 — 59 m
+- `unknown` 揭坊耆路 — 480 m
+- `unknown` 揭坊耆路 — 711 m
+- `unknown` 顺化路 — 291 m
+- `unknown` 西沿河路 — 3182 m
+- `national` 206国道 — 2031 m
+- `unknown` 广宁线 — 11185 m
+- `unknown` 未命名道路 — 9129 m
 - `unknown` 未命名道路 — 17136 m
 - `unknown` 广宁线 — 7643 m
 - `unknown` 城头大桥 — 543 m
@@ -670,7 +675,8 @@
 - `national` 319国道 — 5829 m
 - `provincial` 219省道 — 4465 m
 - `provincial` 219省道 — 8524 m
-- 无自动生成的复核项。
+- 待处理复核项：
+  - [warning] `SUBLEG_OVER_80_KM`：Subleg exceeds 80 km; add a real town or road anchor.
 
 ### day9-yinkeng-hotel-to-day10-hanfang-hotel
 - `provincial` 219省道 — 9866 m

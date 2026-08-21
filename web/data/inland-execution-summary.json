@@ -1,18 +1,18 @@
 {
   "all_branches": {
-    "baseline_distance_m": 1618557,
+    "baseline_distance_m": 1620793,
     "city_distance_m": 0,
     "county_distance_m": 35902,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.002612821173428,
-    "distance_m": 1622786,
-    "duration_s": 351833,
-    "national_distance_m": 549076,
-    "provincial_distance_m": 85297,
+    "detour_ratio": 1.0026092165995288,
+    "distance_m": 1625022,
+    "duration_s": 352439,
+    "national_distance_m": 549970,
+    "provincial_distance_m": 85334,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 942718,
-    "unresolved_count": 0
+    "unknown_distance_m": 944023,
+    "unresolved_count": 1
   },
   "days": [
     {
@@ -251,11 +251,11 @@
     },
     {
       "day": 8,
-      "distance_m": 112617,
+      "distance_m": 91904,
       "distance_target_met": true,
-      "duration_limit_met": false,
-      "duration_s": 26167,
-      "duration_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 21223,
+      "duration_target_met": true,
       "from_name": "维也纳酒店 南城",
       "legs": [
         {
@@ -263,22 +263,22 @@
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "富源大酒店（广昌头陂镇）",
+      "lodging_network_endpoint": "全季酒店（抚州广昌县政府店）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day7-nancheng-hotel-to-day8-guangchang-hotel"
       ],
-      "to_name": "富源大酒店（广昌头陂镇）"
+      "to_name": "全季酒店（抚州广昌县政府店）"
     },
     {
       "day": 9,
-      "distance_m": 106494,
-      "distance_target_met": true,
+      "distance_m": 129443,
+      "distance_target_met": false,
       "duration_limit_met": false,
-      "duration_s": 24478,
+      "duration_s": 30028,
       "duration_target_met": false,
-      "from_name": "富源大酒店（广昌头陂镇）",
+      "from_name": "全季酒店（抚州广昌县政府店）",
       "legs": [
         {
           "segment_id": "day8-guangchang-hotel-to-day9-yinkeng-hotel",
@@ -450,7 +450,7 @@
   ],
   "limitations": {
     "automatic_checks_are_not_road_level_verification": true,
-    "blank_name_distance_m": 210718,
+    "blank_name_distance_m": 210796,
     "quota_limited_probes": [
       "main-06-to-main-07",
       "main-07-to-main-08",
@@ -460,23 +460,23 @@
       "main-17-to-main-18"
     ],
     "road_level_status": "provisional",
-    "unknown_distance_m": 942718,
+    "unknown_distance_m": 944023,
     "unknown_percent": 58.09
   },
   "main": {
-    "baseline_distance_m": 1618557,
+    "baseline_distance_m": 1620793,
     "city_distance_m": 0,
     "county_distance_m": 35902,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.002612821173428,
-    "distance_m": 1622786,
-    "duration_s": 351833,
-    "national_distance_m": 549076,
-    "provincial_distance_m": 85297,
+    "detour_ratio": 1.0026092165995288,
+    "distance_m": 1625022,
+    "duration_s": 352439,
+    "national_distance_m": 549970,
+    "provincial_distance_m": 85334,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 942718,
-    "unresolved_count": 0
+    "unknown_distance_m": 944023,
+    "unresolved_count": 1
   },
   "max_detour_ratio": 1.15,
   "optional_branch_excluded": {

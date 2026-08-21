@@ -1035,7 +1035,10 @@
           "name": "维也纳国际酒店(上饶经开区店)",
           "formatted_address": "江西省上饶市广信区思瑞达广场1号楼",
           "district": "广信区",
-          "location_gcj": {"lon": 117.873483, "lat": 28.382647},
+          "location_gcj": {
+            "lon": 117.873483,
+            "lat": 28.382647
+          },
           "selected": true
         }
       ]
@@ -1049,7 +1052,10 @@
           "name": "鹰潭市雲锦君澜大饭店",
           "formatted_address": "江西省鹰潭市月湖区白露街道炬能路1号",
           "district": "月湖区",
-          "location_gcj": {"lon": 117.017532, "lat": 28.210987},
+          "location_gcj": {
+            "lon": 117.017532,
+            "lat": 28.210987
+          },
           "selected": true
         }
       ]
@@ -1063,7 +1069,10 @@
           "name": "维也纳酒店(抚州南城店)",
           "formatted_address": "江西省抚州市南城县河东大道2号",
           "district": "南城县",
-          "location_gcj": {"lon": 116.654785, "lat": 27.560145},
+          "location_gcj": {
+            "lon": 116.654785,
+            "lat": 27.560145
+          },
           "selected": true
         },
         {
@@ -1071,50 +1080,11 @@
           "name": "维也纳酒店抚州南城店大堂",
           "formatted_address": "江西省抚州市南城县河东大道2号维也纳酒店(抚州南城店)",
           "district": "南城县",
-          "location_gcj": {"lon": 116.654734, "lat": 27.560056},
+          "location_gcj": {
+            "lon": 116.654734,
+            "lat": 27.560056
+          },
           "selected": false
-        }
-      ]
-    },
-    {
-      "query": "富源大酒店广昌头陂镇",
-      "city": "抚州",
-      "candidates": [
-        {
-          "poi_id": "B0I2B72J4I",
-          "name": "富源大酒店",
-          "formatted_address": "江西省抚州市广昌县头陂镇",
-          "district": "广昌县",
-          "location_gcj": {"lon": 116.199957, "lat": 26.751059},
-          "selected": true
-        }
-      ]
-    },
-    {
-      "query": "于都仙霞酒店",
-      "city": "赣州",
-      "candidates": [
-        {
-          "poi_id": "B0FFHOZIUY",
-          "name": "于都仙霞酒店",
-          "formatted_address": "江西省赣州市于都县仙下乡仙下圩马安路36号",
-          "district": "于都县",
-          "location_gcj": {"lon": 115.5671, "lat": 26.110913},
-          "selected": true
-        }
-      ]
-    },
-    {
-      "query": "枕山月酒店韩坊镇",
-      "city": "赣州",
-      "candidates": [
-        {
-          "poi_id": "B0L065NNZQ",
-          "name": "枕山月酒店",
-          "formatted_address": "江西省赣州市赣县区韩坊镇大大段",
-          "district": "赣县区",
-          "location_gcj": {"lon": 115.105769, "lat": 25.491862},
-          "selected": true
         }
       ]
     },
@@ -1127,21 +1097,10 @@
           "name": "定南格兰云天国际酒店",
           "formatted_address": "江西省赣州市定南县前程大道16号",
           "district": "定南县",
-          "location_gcj": {"lon": 115.014871, "lat": 24.783989},
-          "selected": true
-        }
-      ]
-    },
-    {
-      "query": "亚瓦酒店漳溪畲族乡",
-      "city": "河源",
-      "candidates": [
-        {
-          "poi_id": "B0JDPSQMMY",
-          "name": "亚瓦酒店",
-          "formatted_address": "广东省河源市东源县漳溪畲族乡乡委东侧",
-          "district": "东源县",
-          "location_gcj": {"lon": 114.925596, "lat": 24.102851},
+          "location_gcj": {
+            "lon": 115.014871,
+            "lat": 24.783989
+          },
           "selected": true
         }
       ]
@@ -1155,7 +1114,10 @@
           "name": "博罗云鹏酒店(麻陂镇人民政府和红女广场旁)",
           "formatted_address": "广东省惠州市博罗县麻陂镇麻陂大道102号",
           "district": "博罗县",
-          "location_gcj": {"lon": 114.52606, "lat": 23.480167},
+          "location_gcj": {
+            "lon": 114.52606,
+            "lat": 23.480167
+          },
           "selected": true
         }
       ]
@@ -1169,7 +1131,78 @@
           "name": "广州增城荔湖木莲庄酒店",
           "formatted_address": "广东省广州市增城区荔湖街景上街2号",
           "district": "增城区",
-          "location_gcj": {"lon": 113.821282, "lat": 23.246917},
+          "location_gcj": {
+            "lon": 113.821282,
+            "lat": 23.246917
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "全季酒店抚州广昌县政府店",
+      "city": "抚州",
+      "candidates": [
+        {
+          "poi_id": "B0KKZSOX11",
+          "name": "全季酒店(抚州广昌县政府店)",
+          "formatted_address": "江西省抚州市广昌县立骅大厦",
+          "district": "广昌县",
+          "location_gcj": {
+            "lon": 116.3384,
+            "lat": 26.8467
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "亚瓦酒店漳溪畲族乡",
+      "city": "河源",
+      "candidates": [
+        {
+          "poi_id": "B0JDPSQMMY",
+          "name": "亚瓦酒店",
+          "formatted_address": "广东省河源市东源县漳溪畲族乡乡委东侧",
+          "district": "东源县",
+          "location_gcj": {
+            "lon": 114.925596,
+            "lat": 24.102851
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "于都仙霞酒店",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "B0FFHOZIUY",
+          "name": "于都仙霞酒店",
+          "formatted_address": "江西省赣州市于都县仙下乡仙下圩马安路36号",
+          "district": "于都县",
+          "location_gcj": {
+            "lon": 115.5671,
+            "lat": 26.110913
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "枕山月酒店韩坊镇",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "B0L065NNZQ",
+          "name": "枕山月酒店",
+          "formatted_address": "江西省赣州市赣县区韩坊镇大大段",
+          "district": "赣县区",
+          "location_gcj": {
+            "lon": 115.105769,
+            "lat": 25.491862
+          },
           "selected": true
         }
       ]
@@ -1183,7 +1216,10 @@
           "name": "维也纳酒店(广州番禺亚运城店)",
           "formatted_address": "广东省广州市番禺区石楼镇石清路18号之46号",
           "district": "番禺区",
-          "location_gcj": {"lon": 113.4844, "lat": 22.9626},
+          "location_gcj": {
+            "lon": 113.4844,
+            "lat": 22.9626
+          },
           "selected": true
         }
       ]
