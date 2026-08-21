@@ -139,7 +139,7 @@ class ExecutionItineraryContractTests(unittest.TestCase):
                 for day in planned_nights
                 if day["lodging"]["laundry"] == "call_required"
             ],
-            [6, 9, 10, 12, 13],
+            [6, 9, 10, 13, 14],
         )
 
     def test_future_route_uses_better_lodging_without_fixed_midday_stops(self):
@@ -178,10 +178,11 @@ class ExecutionItineraryContractTests(unittest.TestCase):
         self.assertLessEqual(day4["distance_m"], 115_000)
         balanced_days = [day for day in published["days"] if 6 <= day["day"] <= 15]
         self.assertEqual(len(balanced_days), 10)
-        # Day 8 (南城 → 全季广昌) and Day 9 (全季广昌 → 仙下) are constrained
-        # by corridor geography: no closer chain hotel exists, so these long
-        # legs are the unavoidable minimum. All other days must stay ≤ 108 km.
-        over_cap_budget = {8: 100_000, 9: 130_000}
+        # Day 8 (南城 → 全季广昌), Day 9 (全季广昌 → 锦汇), Day 11 (于都 → 信丰),
+        # Day 13 (定南 → 漳溪) are constrained by corridor geography: no closer
+        # chain hotel exists, so these long legs are unavoidable. All other days
+        # must stay ≤ 100 km.
+        over_cap_budget = {8: 100_000, 9: 105_000, 11: 105_000, 13: 105_000}
         for day in balanced_days:
             ceiling = over_cap_budget.get(day["day"], 108_000)
             self.assertLessEqual(

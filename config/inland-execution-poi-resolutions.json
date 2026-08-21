@@ -1174,51 +1174,51 @@
       ]
     },
     {
-      "query": "于都仙霞酒店",
+      "query": "于都锦汇酒店葛坳",
       "city": "赣州",
       "candidates": [
         {
-          "poi_id": "B0FFHOZIUY",
-          "name": "于都仙霞酒店",
-          "formatted_address": "江西省赣州市于都县仙下乡仙下圩马安路36号",
+          "poi_id": "B0L1XUQCCU",
+          "name": "锦汇酒店",
+          "formatted_address": "江西省赣州市于都县葛坳乡蛇颈村蛇颈组厦成线中国石油南20米",
           "district": "于都县",
           "location_gcj": {
-            "lon": 115.5671,
-            "lat": 26.110913
+            "lon": 115.7213,
+            "lat": 26.2645
           },
           "selected": true
         }
       ]
     },
     {
-      "query": "枕山月酒店韩坊镇",
+      "query": "维也纳酒店于都高铁站店",
       "city": "赣州",
       "candidates": [
         {
-          "poi_id": "B0L065NNZQ",
-          "name": "枕山月酒店",
-          "formatted_address": "江西省赣州市赣县区韩坊镇大大段",
-          "district": "赣县区",
+          "poi_id": "B0FFJBAWH4",
+          "name": "维也纳酒店(于都高铁站店)",
+          "formatted_address": "江西省赣州市于都县站前南路399号",
+          "district": "于都县",
           "location_gcj": {
-            "lon": 115.105769,
-            "lat": 25.491862
+            "lon": 115.4214,
+            "lat": 25.97
           },
           "selected": true
         }
       ]
     },
     {
-      "query": "维也纳酒店广州番禺亚运城店",
-      "city": "广州",
+      "query": "信丰格兰云天国际酒店",
+      "city": "赣州",
       "candidates": [
         {
-          "poi_id": "B0FFJ8M0DQ",
-          "name": "维也纳酒店(广州番禺亚运城店)",
-          "formatted_address": "广东省广州市番禺区石楼镇石清路18号之46号",
-          "district": "番禺区",
+          "poi_id": "B0FFL2E77Z",
+          "name": "信丰格兰云天国际酒店",
+          "formatted_address": "江西省赣州市信丰县嘉定镇滨江大道66号",
+          "district": "信丰县",
           "location_gcj": {
-            "lon": 113.4844,
-            "lat": 22.9626
+            "lon": 114.9455,
+            "lat": 25.3627
           },
           "selected": true
         }

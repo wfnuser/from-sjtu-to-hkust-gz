@@ -1,18 +1,18 @@
 {
   "all_branches": {
-    "baseline_distance_m": 1620793,
+    "baseline_distance_m": 1585830,
     "city_distance_m": 0,
-    "county_distance_m": 35902,
+    "county_distance_m": 51003,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.0026092165995288,
-    "distance_m": 1625022,
-    "duration_s": 352439,
-    "national_distance_m": 549970,
-    "provincial_distance_m": 85334,
+    "detour_ratio": 1.0026667423368205,
+    "distance_m": 1590059,
+    "duration_s": 344567,
+    "national_distance_m": 544137,
+    "provincial_distance_m": 76198,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 944023,
-    "unresolved_count": 1
+    "unknown_distance_m": 908928,
+    "unresolved_count": 0
   },
   "days": [
     {
@@ -273,59 +273,81 @@
     },
     {
       "day": 9,
-      "distance_m": 129443,
-      "distance_target_met": false,
+      "distance_m": 103019,
+      "distance_target_met": true,
       "duration_limit_met": false,
-      "duration_s": 30028,
+      "duration_s": 23708,
       "duration_target_met": false,
       "from_name": "全季酒店（抚州广昌县政府店）",
       "legs": [
         {
-          "segment_id": "day8-guangchang-hotel-to-day9-yinkeng-hotel",
+          "segment_id": "day8-guangchang-hotel-to-day9-jinhui-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "于都仙霞酒店",
+      "lodging_network_endpoint": "于都锦汇酒店（葛坳乡）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day8-guangchang-hotel-to-day9-yinkeng-hotel"
+        "day8-guangchang-hotel-to-day9-jinhui-hotel"
       ],
-      "to_name": "于都仙霞酒店"
+      "to_name": "于都锦汇酒店（葛坳乡）"
     },
     {
       "day": 10,
-      "distance_m": 99146,
-      "distance_target_met": true,
+      "distance_m": 51215,
+      "distance_target_met": false,
       "duration_limit_met": true,
-      "duration_s": 21554,
-      "duration_target_met": true,
-      "from_name": "于都仙霞酒店",
+      "duration_s": 10420,
+      "duration_target_met": false,
+      "from_name": "于都锦汇酒店（葛坳乡）",
       "legs": [
         {
-          "segment_id": "day9-yinkeng-hotel-to-day10-hanfang-hotel",
+          "segment_id": "day9-jinhui-hotel-to-day10-yudu-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "枕山月酒店（韩坊镇）",
+      "lodging_network_endpoint": "维也纳酒店（于都高铁站店）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day9-yinkeng-hotel-to-day10-hanfang-hotel"
+        "day9-jinhui-hotel-to-day10-yudu-hotel"
       ],
-      "to_name": "枕山月酒店（韩坊镇）"
+      "to_name": "维也纳酒店（于都高铁站店）"
     },
     {
       "day": 11,
-      "distance_m": 107016,
+      "distance_m": 101013,
       "distance_target_met": true,
       "duration_limit_met": false,
-      "duration_s": 24687,
+      "duration_s": 23602,
       "duration_target_met": false,
-      "from_name": "枕山月酒店（韩坊镇）",
+      "from_name": "维也纳酒店（于都高铁站店）",
       "legs": [
         {
-          "segment_id": "day10-hanfang-hotel-to-day11-dingnan-hotel",
+          "segment_id": "day10-yudu-hotel-to-day11-xinfeng-hotel",
+          "subleg_index": 0
+        }
+      ],
+      "lodging_network_endpoint": "信丰格兰云天国际酒店",
+      "lodging_network_status": "named_endpoint_unverified",
+      "segment_count": 1,
+      "segments": [
+        "day10-yudu-hotel-to-day11-xinfeng-hotel"
+      ],
+      "to_name": "信丰格兰云天国际酒店"
+    },
+    {
+      "day": 12,
+      "distance_m": 81698,
+      "distance_target_met": true,
+      "duration_limit_met": true,
+      "duration_s": 18372,
+      "duration_target_met": true,
+      "from_name": "信丰格兰云天国际酒店",
+      "legs": [
+        {
+          "segment_id": "day11-xinfeng-hotel-to-day12-dingnan-hotel",
           "subleg_index": 0
         }
       ],
@@ -333,12 +355,12 @@
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day10-hanfang-hotel-to-day11-dingnan-hotel"
+        "day11-xinfeng-hotel-to-day12-dingnan-hotel"
       ],
       "to_name": "定南格兰云天国际酒店"
     },
     {
-      "day": 12,
+      "day": 13,
       "distance_m": 100762,
       "distance_target_met": true,
       "duration_limit_met": false,
@@ -347,7 +369,7 @@
       "from_name": "定南格兰云天国际酒店",
       "legs": [
         {
-          "segment_id": "day11-dingnan-hotel-to-day12-chuantang-hotel",
+          "segment_id": "day12-dingnan-hotel-to-day13-zhangxi-hotel",
           "subleg_index": 0
         }
       ],
@@ -355,12 +377,12 @@
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day11-dingnan-hotel-to-day12-chuantang-hotel"
+        "day12-dingnan-hotel-to-day13-zhangxi-hotel"
       ],
       "to_name": "亚瓦酒店（漳溪畲族乡）"
     },
     {
-      "day": 13,
+      "day": 14,
       "distance_m": 94015,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -369,7 +391,7 @@
       "from_name": "亚瓦酒店（漳溪畲族乡）",
       "legs": [
         {
-          "segment_id": "day12-chuantang-hotel-to-day13-yangqiao-hotel",
+          "segment_id": "day13-zhangxi-hotel-to-day14-yangqiao-hotel",
           "subleg_index": 0
         }
       ],
@@ -377,12 +399,12 @@
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day12-chuantang-hotel-to-day13-yangqiao-hotel"
+        "day13-zhangxi-hotel-to-day14-yangqiao-hotel"
       ],
       "to_name": "博罗云鹏酒店（麻陂镇）"
     },
     {
-      "day": 14,
+      "day": 15,
       "distance_m": 95329,
       "distance_target_met": true,
       "duration_limit_met": true,
@@ -391,7 +413,7 @@
       "from_name": "博罗云鹏酒店（麻陂镇）",
       "legs": [
         {
-          "segment_id": "day13-yangqiao-hotel-to-day14-zengcheng-hotel",
+          "segment_id": "day14-yangqiao-hotel-to-day15-zengcheng-hotel",
           "subleg_index": 0
         }
       ],
@@ -399,43 +421,21 @@
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day13-yangqiao-hotel-to-day14-zengcheng-hotel"
+        "day14-yangqiao-hotel-to-day15-zengcheng-hotel"
       ],
       "to_name": "广州增城荔湖木莲庄酒店"
     },
     {
-      "day": 15,
-      "distance_m": 101842,
+      "day": 16,
+      "distance_m": 94838,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 21200,
+      "duration_s": 19257,
       "duration_target_met": true,
       "from_name": "广州增城荔湖木莲庄酒店",
       "legs": [
         {
-          "segment_id": "day14-zengcheng-hotel-to-day15-panyu-hotel",
-          "subleg_index": 0
-        }
-      ],
-      "lodging_network_endpoint": "维也纳酒店（广州番禺亚运城店）",
-      "lodging_network_status": "named_endpoint_unverified",
-      "segment_count": 1,
-      "segments": [
-        "day14-zengcheng-hotel-to-day15-panyu-hotel"
-      ],
-      "to_name": "维也纳酒店（广州番禺亚运城店）"
-    },
-    {
-      "day": 16,
-      "distance_m": 29299,
-      "distance_target_met": false,
-      "duration_limit_met": true,
-      "duration_s": 5762,
-      "duration_target_met": false,
-      "from_name": "维也纳酒店（广州番禺亚运城店）",
-      "legs": [
-        {
-          "segment_id": "day15-panyu-hotel-to-main-27",
+          "segment_id": "day15-zengcheng-hotel-to-main-27",
           "subleg_index": 0
         }
       ],
@@ -443,14 +443,14 @@
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day15-panyu-hotel-to-main-27"
+        "day15-zengcheng-hotel-to-main-27"
       ],
       "to_name": "香港科技大学（广州）"
     }
   ],
   "limitations": {
     "automatic_checks_are_not_road_level_verification": true,
-    "blank_name_distance_m": 210796,
+    "blank_name_distance_m": 204031,
     "quota_limited_probes": [
       "main-06-to-main-07",
       "main-07-to-main-08",
@@ -460,23 +460,23 @@
       "main-17-to-main-18"
     ],
     "road_level_status": "provisional",
-    "unknown_distance_m": 944023,
-    "unknown_percent": 58.09
+    "unknown_distance_m": 908928,
+    "unknown_percent": 57.16
   },
   "main": {
-    "baseline_distance_m": 1620793,
+    "baseline_distance_m": 1585830,
     "city_distance_m": 0,
-    "county_distance_m": 35902,
+    "county_distance_m": 51003,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.0026092165995288,
-    "distance_m": 1625022,
-    "duration_s": 352439,
-    "national_distance_m": 549970,
-    "provincial_distance_m": 85334,
+    "detour_ratio": 1.0026667423368205,
+    "distance_m": 1590059,
+    "duration_s": 344567,
+    "national_distance_m": 544137,
+    "provincial_distance_m": 76198,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 944023,
-    "unresolved_count": 1
+    "unknown_distance_m": 908928,
+    "unresolved_count": 0
   },
   "max_detour_ratio": 1.15,
   "optional_branch_excluded": {
@@ -528,22 +528,22 @@
     "day1-yexin-west-to-day1-tongxiang-hotel": [
       1
     ],
-    "day10-hanfang-hotel-to-day11-dingnan-hotel": [
+    "day10-yudu-hotel-to-day11-xinfeng-hotel": [
       11
     ],
-    "day11-dingnan-hotel-to-day12-chuantang-hotel": [
+    "day11-xinfeng-hotel-to-day12-dingnan-hotel": [
       12
     ],
-    "day12-chuantang-hotel-to-day13-yangqiao-hotel": [
+    "day12-dingnan-hotel-to-day13-zhangxi-hotel": [
       13
     ],
-    "day13-yangqiao-hotel-to-day14-zengcheng-hotel": [
+    "day13-zhangxi-hotel-to-day14-yangqiao-hotel": [
       14
     ],
-    "day14-zengcheng-hotel-to-day15-panyu-hotel": [
+    "day14-yangqiao-hotel-to-day15-zengcheng-hotel": [
       15
     ],
-    "day15-panyu-hotel-to-main-27": [
+    "day15-zengcheng-hotel-to-main-27": [
       16
     ],
     "day3-xixi-campus-to-main-05": [
@@ -561,10 +561,10 @@
     "day7-nancheng-hotel-to-day8-guangchang-hotel": [
       8
     ],
-    "day8-guangchang-hotel-to-day9-yinkeng-hotel": [
+    "day8-guangchang-hotel-to-day9-jinhui-hotel": [
       9
     ],
-    "day9-yinkeng-hotel-to-day10-hanfang-hotel": [
+    "day9-jinhui-hotel-to-day10-yudu-hotel": [
       10
     ],
     "main-01-to-day1-yexin-east": [
