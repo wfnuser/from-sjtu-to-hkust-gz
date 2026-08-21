@@ -325,9 +325,10 @@ export function renderDayCards(itinerary) {
     card.className = `day-card is-${model.status}${model.longDay ? " is-long" : ""}`;
     card.dataset.dayId = String(model.day);
 
-    const button = document.createElement("button");
-    button.type = "button";
+    const button = document.createElement("div");
     button.className = "day-card__button";
+    button.setAttribute("role", "button");
+    button.setAttribute("tabindex", "0");
     button.setAttribute("aria-label", `查看 ${model.title}`);
     button.setAttribute("aria-pressed", "false");
 
@@ -353,7 +354,17 @@ export function renderDayCards(itinerary) {
     duration.className = "day-card__meta";
     duration.textContent = model.status === "stay" ? "休整 / 工作日" : `高德预计 ${model.duration}`;
     button.append(header, duration);
-    button.addEventListener("click", () => toggleDaySelection(model.day));
+    button.addEventListener("click", (event) => {
+      // If the user just finished a text selection (drag), don't toggle the day.
+      if (window.getSelection()?.toString()) return;
+      toggleDaySelection(model.day);
+    });
+    button.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleDaySelection(model.day);
+      }
+    });
     card.append(button);
     dayCards.set(model.day, card);
 

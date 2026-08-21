@@ -59,7 +59,7 @@
     "day12-dingnan-hotel-to-day13-zhangxi-hotel": {"day": 13, "allowed_national_m": 60000, "national_exception_reason": "定南至漳溪走省道 S228，已避让硬风险路段。"},
     "day13-zhangxi-hotel-to-day14-yangqiao-hotel": {"day": 14, "allowed_national_m": 50000, "national_exception_reason": "漳溪至麻陂走省道 S340，安排白天通过。"},
     "day14-yangqiao-hotel-to-day15-zengcheng-hotel": {"day": 15, "allowed_national_m": 18000, "national_exception_reason": "采用距离优先连续路线，不设置中途停靠。"},
-    "day15-zengcheng-hotel-to-main-27": {"day": 16, "allowed_national_m": 30000, "national_exception_reason": "增城至 HKUST 广州走广深沿江高速辅路，最后一天较短抵达。"}
+    "day15-zengcheng-hotel-to-main-27": {"day": 16, "allowed_national_m": 30000, "national_exception_reason": "增城至 HKUST 广州走广深沿江高速辅路，最后一天长途骑行。"}
   },
   "optional_branches": {}
 }
