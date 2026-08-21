@@ -2,7 +2,7 @@
 
 > **临时路线：仍需道路级复核。** 自动分类/审核不等于现场或权威道路核验；不得据此宣称已完全避开国道、高速或货运道路。
 
-- UNKNOWN：908928 m（57.16%）；其中未命名道路 204031 m。
+- UNKNOWN：914884 m（57.44%）；其中未命名道路 210403 m。
 - AMap 配额受限的补充探路清单见 `summary.json`；未完成的并行道路探测保持 provisional。
 - 国道本身不阻断发布；仅在距离接近且有更安全平行道路时切换，硬风险和货运风险仍阻断。
 - 江西线执行路线需16个骑行日，超过最多16个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留2天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。
@@ -35,9 +35,9 @@
 | day5-shangrao-hotel-to-day6-yingtan-hotel | 维也纳国际酒店（上饶经开区店） | 鹰潭枫丹白露酒店（雲锦君澜） | 96011 | 19664 | 自动检查通过（仍需道路级复核） |
 | day6-yingtan-hotel-to-day7-nancheng-hotel | 鹰潭枫丹白露酒店（雲锦君澜） | 维也纳酒店 南城 | 90956 | 21035 | 自动检查通过（仍需道路级复核） |
 | day7-nancheng-hotel-to-day8-guangchang-hotel | 维也纳酒店 南城 | 全季酒店（抚州广昌县政府店） | 91904 | 21223 | 自动检查通过（仍需道路级复核） |
-| day8-guangchang-hotel-to-day9-jinhui-hotel | 全季酒店（抚州广昌县政府店） | 于都锦汇酒店（葛坳乡） | 103019 | 23708 | 自动检查通过（仍需道路级复核） |
-| day9-jinhui-hotel-to-day10-yudu-hotel | 于都锦汇酒店（葛坳乡） | 维也纳酒店（于都高铁站店） | 51215 | 10420 | 自动检查通过（仍需道路级复核） |
-| day10-yudu-hotel-to-day11-xinfeng-hotel | 维也纳酒店（于都高铁站店） | 信丰格兰云天国际酒店 | 101013 | 23602 | 自动检查通过（仍需道路级复核） |
+| day8-guangchang-hotel-to-day9-ningdu-hotel | 全季酒店（抚州广昌县政府店） | 维尔纳酒店（赣州宁都人民医院店） | 62191 | 14482 | 自动检查通过（仍需道路级复核） |
+| day9-ningdu-hotel-to-day10-yudu-hotel | 维尔纳酒店（赣州宁都人民医院店） | 赣州于都万达嘉华酒店 | 95956 | 20503 | 自动检查通过（仍需道路级复核） |
+| day10-yudu-hotel-to-day11-xinfeng-hotel | 赣州于都万达嘉华酒店 | 信丰格兰云天国际酒店 | 99694 | 23207 | 自动检查通过（仍需道路级复核） |
 | day11-xinfeng-hotel-to-day12-dingnan-hotel | 信丰格兰云天国际酒店 | 定南格兰云天国际酒店 | 81698 | 18372 | 自动检查通过（仍需道路级复核） |
 | day12-dingnan-hotel-to-day13-zhangxi-hotel | 定南格兰云天国际酒店 | 亚瓦酒店（漳溪畲族乡） | 100762 | 24290 | 自动检查通过（仍需道路级复核） |
 | day13-zhangxi-hotel-to-day14-yangqiao-hotel | 亚瓦酒店（漳溪畲族乡） | 博罗云鹏酒店（麻陂镇） | 94015 | 20758 | 自动检查通过（仍需道路级复核） |
@@ -642,7 +642,7 @@
 - `unknown` 未命名道路 — 76 m
 - 无自动生成的复核项。
 
-### day8-guangchang-hotel-to-day9-jinhui-hotel
+### day8-guangchang-hotel-to-day9-ningdu-hotel
 - `unknown` 未命名道路 — 76 m
 - `unknown` 东沿河路 — 86 m
 - `unknown` 东沿河路 — 59 m
@@ -654,66 +654,92 @@
 - `unknown` 广宁线 — 11185 m
 - `unknown` 未命名道路 — 9129 m
 - `unknown` 未命名道路 — 17136 m
-- `unknown` 广宁线 — 7643 m
-- `unknown` 城头大桥 — 543 m
-- `unknown` 未命名道路 — 537 m
-- `national` 236国道 — 2643 m
-- `unknown` 外环路 — 57 m
-- `unknown` 外环路 — 3754 m
-- `county` 430县道 — 25 m
+- `unknown` 广宁线 — 8429 m
+- `unknown` 广宁线 — 4611 m
+- `unknown` 广宁线 — 1301 m
+- `unknown` 未命名道路 — 42 m
+- `unknown` 广宁线 — 2435 m
+- `unknown` 赣江源大道 — 118 m
+- `unknown` 未命名道路 — 710 m
+- `unknown` 永宁路 — 102 m
+- `unknown` 未命名道路 — 14 m
+- `unknown` 未命名道路 — 63 m
+- 无自动生成的复核项。
+
+### day9-ningdu-hotel-to-day10-yudu-hotel
+- `unknown` 未命名道路 — 63 m
+- `unknown` 未命名道路 — 14 m
+- `unknown` 永宁路 — 1654 m
+- `unknown` 中山南路 — 551 m
+- `unknown` 东平路 — 18 m
+- `unknown` 未命名道路 — 37 m
+- `unknown` 宁都大道 — 60 m
+- `unknown` 未命名道路 — 730 m
+- `unknown` 狮子峰路 — 23 m
 - `unknown` 未命名道路 — 25 m
-- `unknown` 未命名道路 — 39 m
-- `unknown` 外环路 — 1494 m
-- `unknown` 龙溪路 — 47 m
-- `unknown` 未命名道路 — 58 m
-- `unknown` 外环路辅路 — 57 m
-- `unknown` 外环路 — 9789 m
+- `unknown` 未命名道路 — 50 m
+- `unknown` 宁都大道 — 172 m
+- `unknown` 云台泉路 — 14 m
+- `unknown` 未命名道路 — 36 m
+- `unknown` 宁都大道 — 685 m
+- `unknown` 平安路 — 19 m
+- `unknown` 未命名道路 — 54 m
+- `unknown` 宁都大道 — 1902 m
+- `unknown` 未命名道路 — 2271 m
+- `unknown` 未命名道路 — 216 m
+- `unknown` 外环路 — 70 m
+- `unknown` 外环路 — 428 m
+- `unknown` 外环路 — 440 m
 - `national` 319国道 — 76 m
 - `national` 319国道 — 14717 m
 - `national` 319国道 — 15787 m
-- `national` 319国道 — 1362 m
-- 无自动生成的复核项。
-
-### day9-jinhui-hotel-to-day10-yudu-hotel
-- `national` 319国道 — 7606 m
+- `national` 319国道 — 8968 m
 - `national` 319国道 — 5829 m
 - `provincial` 219省道 — 4465 m
 - `provincial` 219省道 — 18390 m
 - `provincial` 219省道 — 1701 m
 - `provincial` 219省道 — 11319 m
 - `unknown` 长征北路 — 1505 m
-- `unknown` 站前南路 — 81 m
-- `unknown` 站前南路 — 319 m
+- `unknown` 站前南路 — 40 m
+- `unknown` 未命名道路 — 30 m
+- `unknown` 于阳路 — 91 m
+- `unknown` 于阳路 — 669 m
+- `unknown` 于阳路 — 483 m
+- `unknown` 红旗大道 — 31 m
+- `unknown` 红旗大道 — 890 m
+- `unknown` 贡江大道 — 20 m
+- `unknown` 贡江大道 — 551 m
+- `unknown` 贡江大道 — 330 m
+- `unknown` 未命名道路 — 289 m
+- `unknown` 贡江大道 — 123 m
+- `unknown` 贡江大道 — 48 m
+- `unknown` 未命名道路 — 72 m
 - 无自动生成的复核项。
 
 ### day10-yudu-hotel-to-day11-xinfeng-hotel
-- `unknown` 站前南路 — 89 m
-- `unknown` 未命名道路 — 59 m
-- `unknown` 长龙路 — 1064 m
-- `unknown` 长龙路 — 79 m
-- `unknown` 长征大道 — 387 m
-- `unknown` 濂溪路 — 81 m
-- `unknown` 长征大道 — 486 m
-- `unknown` 阳明路 — 24 m
-- `unknown` 未命名道路 — 38 m
 - `unknown` 未命名道路 — 72 m
-- `unknown` 长征大道 — 182 m
-- `unknown` 红军大道 — 38 m
-- `unknown` 未命名道路 — 55 m
-- `unknown` 未命名道路 — 39 m
-- `unknown` 红军大道 — 277 m
-- `unknown` 渡江大道 — 36 m
-- `unknown` 盘古大道 — 662 m
-- `unknown` 盘古大道 — 180 m
-- `unknown` 贡江大道 — 89 m
-- `county` 445县道 — 694 m
-- `unknown` 思源大道 — 3126 m
-- `unknown` 振兴大道 — 40 m
+- `unknown` 贡江大道 — 734 m
+- `unknown` 银坑路 — 286 m
+- `unknown` 水南路 — 558 m
+- `unknown` 川江路 — 363 m
+- `unknown` 思源大道辅路 — 594 m
+- `unknown` 未命名道路 — 36 m
+- `unknown` 禾丰路 — 50 m
+- `unknown` 禾丰路 — 407 m
+- `unknown` 振兴大道 — 65 m
+- `unknown` 振兴大道辅路 — 646 m
+- `unknown` 盘古大道 — 36 m
 - `unknown` 未命名道路 — 42 m
-- `unknown` 上欧大道 — 61 m
-- `unknown` 上欧大道 — 608 m
-- `unknown` 齐民路 — 27 m
-- `unknown` 未命名道路 — 25 m
+- `unknown` 振兴大道 — 76 m
+- `unknown` 未命名道路 — 1646 m
+- `unknown` 于都大道 — 42 m
+- `unknown` 未命名道路 — 58 m
+- `unknown` 于都大道 — 12 m
+- `unknown` 未命名道路 — 749 m
+- `unknown` 齐民路 — 64 m
+- `unknown` 齐民路 — 636 m
+- `unknown` 上欧大道 — 27 m
+- `unknown` 未命名道路 — 42 m
 - `unknown` 上欧大道 — 45 m
 - `unknown` 上欧大道 — 2627 m
 - `unknown` 未命名道路 — 73 m

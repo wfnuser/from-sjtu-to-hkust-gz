@@ -1,5 +1,5 @@
 {
-  "average_riding_distance_m": 95898,
+  "average_riding_distance_m": 96084,
   "days": [
     {
       "date": "2026-08-13",
@@ -204,48 +204,48 @@
     {
       "date": "2026-08-22",
       "day": 9,
-      "distance_m": 103019,
-      "duration_s": 23708,
+      "distance_m": 62191,
+      "duration_s": 14482,
       "from_name": "全季酒店（抚州广昌县政府店）",
       "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://ditu.amap.com/place/B0L1XUQCCU",
+        "evidence_url": "https://ditu.amap.com/place/B0H6UUSMVK",
         "laundry": "call_required",
-        "name": "于都锦汇酒店（葛坳乡）"
+        "name": "维尔纳酒店（赣州宁都人民医院店）"
       },
       "long_day": false,
       "segments": [
-        "day8-guangchang-hotel-to-day9-jinhui-hotel"
+        "day8-guangchang-hotel-to-day9-ningdu-hotel"
       ],
       "status": "planned",
-      "to_name": "于都锦汇酒店（葛坳乡）"
+      "to_name": "维尔纳酒店（赣州宁都人民医院店）"
     },
     {
       "date": "2026-08-23",
       "day": 10,
-      "distance_m": 51215,
-      "duration_s": 10420,
-      "from_name": "于都锦汇酒店（葛坳乡）",
+      "distance_m": 95956,
+      "duration_s": 20503,
+      "from_name": "维尔纳酒店（赣州宁都人民医院店）",
       "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://ditu.amap.com/place/B0FFJBAWH4",
+        "evidence_url": "https://ditu.amap.com/place/B0J1XSQ8K0",
         "laundry": "call_required",
-        "name": "维也纳酒店（于都高铁站店）"
+        "name": "赣州于都万达嘉华酒店"
       },
       "long_day": false,
       "segments": [
-        "day9-jinhui-hotel-to-day10-yudu-hotel"
+        "day9-ningdu-hotel-to-day10-yudu-hotel"
       ],
       "status": "planned",
-      "to_name": "维也纳酒店（于都高铁站店）"
+      "to_name": "赣州于都万达嘉华酒店"
     },
     {
       "date": "2026-08-24",
       "day": 11,
-      "distance_m": 101013,
-      "duration_s": 23602,
+      "distance_m": 99694,
+      "duration_s": 23207,
       "from_name": "维也纳酒店（于都高铁站店）",
       "key_waypoints": [],
       "lodging": {
@@ -357,8 +357,8 @@
     }
   ],
   "display_start_day": 1,
-  "public_total_distance_m": 1524373,
-  "remaining_distance_m": 1342578,
+  "public_total_distance_m": 1526967,
+  "remaining_distance_m": 1345172,
   "remaining_start_day": 3,
   "route_id": "inland-execution",
   "segment_days": {
@@ -376,8 +376,8 @@
     "day5-shangrao-hotel-to-day6-yingtan-hotel": 6,
     "day6-yingtan-hotel-to-day7-nancheng-hotel": 7,
     "day7-nancheng-hotel-to-day8-guangchang-hotel": 8,
-    "day8-guangchang-hotel-to-day9-jinhui-hotel": 9,
-    "day9-jinhui-hotel-to-day10-yudu-hotel": 10,
+    "day8-guangchang-hotel-to-day9-ningdu-hotel": 9,
+    "day9-ningdu-hotel-to-day10-yudu-hotel": 10,
     "main-01-to-day1-yexin-east": 1,
     "main-05-to-main-06": 3,
     "main-06-to-main-07": 3,
@@ -391,5 +391,5 @@
     "pre-07-to-main-01": 0
   },
   "start_date": "2026-08-13",
-  "total_distance_m": 1590059
+  "total_distance_m": 1592653
 }

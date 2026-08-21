@@ -1,17 +1,17 @@
 {
   "all_branches": {
-    "baseline_distance_m": 1585830,
+    "baseline_distance_m": 1588424,
     "city_distance_m": 0,
-    "county_distance_m": 51003,
+    "county_distance_m": 50284,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.0026667423368205,
-    "distance_m": 1590059,
-    "duration_s": 344567,
-    "national_distance_m": 544137,
+    "detour_ratio": 1.002662387372641,
+    "distance_m": 1592653,
+    "duration_s": 345029,
+    "national_distance_m": 541494,
     "provincial_distance_m": 76198,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 908928,
+    "unknown_distance_m": 914884,
     "unresolved_count": 0
   },
   "days": [
@@ -273,56 +273,56 @@
     },
     {
       "day": 9,
-      "distance_m": 103019,
-      "distance_target_met": true,
-      "duration_limit_met": false,
-      "duration_s": 23708,
-      "duration_target_met": false,
+      "distance_m": 62191,
+      "distance_target_met": false,
+      "duration_limit_met": true,
+      "duration_s": 14482,
+      "duration_target_met": true,
       "from_name": "全季酒店（抚州广昌县政府店）",
       "legs": [
         {
-          "segment_id": "day8-guangchang-hotel-to-day9-jinhui-hotel",
+          "segment_id": "day8-guangchang-hotel-to-day9-ningdu-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "于都锦汇酒店（葛坳乡）",
+      "lodging_network_endpoint": "维尔纳酒店（赣州宁都人民医院店）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day8-guangchang-hotel-to-day9-jinhui-hotel"
+        "day8-guangchang-hotel-to-day9-ningdu-hotel"
       ],
-      "to_name": "于都锦汇酒店（葛坳乡）"
+      "to_name": "维尔纳酒店（赣州宁都人民医院店）"
     },
     {
       "day": 10,
-      "distance_m": 51215,
-      "distance_target_met": false,
+      "distance_m": 95956,
+      "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 10420,
-      "duration_target_met": false,
-      "from_name": "于都锦汇酒店（葛坳乡）",
+      "duration_s": 20503,
+      "duration_target_met": true,
+      "from_name": "维尔纳酒店（赣州宁都人民医院店）",
       "legs": [
         {
-          "segment_id": "day9-jinhui-hotel-to-day10-yudu-hotel",
+          "segment_id": "day9-ningdu-hotel-to-day10-yudu-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "维也纳酒店（于都高铁站店）",
+      "lodging_network_endpoint": "赣州于都万达嘉华酒店",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day9-jinhui-hotel-to-day10-yudu-hotel"
+        "day9-ningdu-hotel-to-day10-yudu-hotel"
       ],
-      "to_name": "维也纳酒店（于都高铁站店）"
+      "to_name": "赣州于都万达嘉华酒店"
     },
     {
       "day": 11,
-      "distance_m": 101013,
+      "distance_m": 99694,
       "distance_target_met": true,
       "duration_limit_met": false,
-      "duration_s": 23602,
+      "duration_s": 23207,
       "duration_target_met": false,
-      "from_name": "维也纳酒店（于都高铁站店）",
+      "from_name": "赣州于都万达嘉华酒店",
       "legs": [
         {
           "segment_id": "day10-yudu-hotel-to-day11-xinfeng-hotel",
@@ -450,7 +450,7 @@
   ],
   "limitations": {
     "automatic_checks_are_not_road_level_verification": true,
-    "blank_name_distance_m": 204031,
+    "blank_name_distance_m": 210403,
     "quota_limited_probes": [
       "main-06-to-main-07",
       "main-07-to-main-08",
@@ -460,22 +460,22 @@
       "main-17-to-main-18"
     ],
     "road_level_status": "provisional",
-    "unknown_distance_m": 908928,
-    "unknown_percent": 57.16
+    "unknown_distance_m": 914884,
+    "unknown_percent": 57.44
   },
   "main": {
-    "baseline_distance_m": 1585830,
+    "baseline_distance_m": 1588424,
     "city_distance_m": 0,
-    "county_distance_m": 51003,
+    "county_distance_m": 50284,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.0026667423368205,
-    "distance_m": 1590059,
-    "duration_s": 344567,
-    "national_distance_m": 544137,
+    "detour_ratio": 1.002662387372641,
+    "distance_m": 1592653,
+    "duration_s": 345029,
+    "national_distance_m": 541494,
     "provincial_distance_m": 76198,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 908928,
+    "unknown_distance_m": 914884,
     "unresolved_count": 0
   },
   "max_detour_ratio": 1.15,
@@ -561,10 +561,10 @@
     "day7-nancheng-hotel-to-day8-guangchang-hotel": [
       8
     ],
-    "day8-guangchang-hotel-to-day9-jinhui-hotel": [
+    "day8-guangchang-hotel-to-day9-ningdu-hotel": [
       9
     ],
-    "day9-jinhui-hotel-to-day10-yudu-hotel": [
+    "day9-ningdu-hotel-to-day10-yudu-hotel": [
       10
     ],
     "main-01-to-day1-yexin-east": [
