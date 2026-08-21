@@ -460,9 +460,11 @@ def _position(point: Coordinate) -> list[float]:
 def _step_properties(
     segment: PlannedSegment, step: RouteStep, days: Sequence[int]
 ) -> dict[str, object]:
+    day_value = days[0] if days else None
     return {
         "segment_id": segment.segment_id,
-        "day": days[0] if days else None,
+        "day": day_value,
+        "day_id": day_value,
         "days": list(days),
         "from_name": segment.from_waypoint.name,
         "to_name": segment.to_waypoint.name,
