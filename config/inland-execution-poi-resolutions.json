@@ -1174,23 +1174,6 @@
       ]
     },
     {
-      "query": "维尔纳酒店赣州宁都人民医院店",
-      "city": "赣州",
-      "candidates": [
-        {
-          "poi_id": "B0H6UUSMVK",
-          "name": "维尔纳酒店(赣州宁都人民医院店)",
-          "formatted_address": "江西省赣州市宁都县G319(厦成线)永宁桥头",
-          "district": "宁都县",
-          "location_gcj": {
-            "lon": 116.0254,
-            "lat": 26.4559
-          },
-          "selected": true
-        }
-      ]
-    },
-    {
       "query": "赣州于都万达嘉华酒店",
       "city": "赣州",
       "candidates": [
@@ -1202,6 +1185,23 @@
           "location_gcj": {
             "lon": 115.417,
             "lat": 25.9452
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "宁都达亿国际酒店",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "B0FFM9YRRK",
+          "name": "宁都达亿国际酒店",
+          "formatted_address": "江西省赣州市宁都县迎宾大道88号(东方丽都旁)",
+          "district": "宁都县",
+          "location_gcj": {
+            "lon": 116.0081,
+            "lat": 26.4467
           },
           "selected": true
         }

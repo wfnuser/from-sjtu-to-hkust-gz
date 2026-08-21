@@ -1,17 +1,17 @@
 {
   "all_branches": {
-    "baseline_distance_m": 1588424,
+    "baseline_distance_m": 1587983,
     "city_distance_m": 0,
     "county_distance_m": 50284,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.002662387372641,
-    "distance_m": 1592653,
-    "duration_s": 345029,
+    "detour_ratio": 1.002663126746319,
+    "distance_m": 1592212,
+    "duration_s": 344994,
     "national_distance_m": 541494,
     "provincial_distance_m": 76198,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 914884,
+    "unknown_distance_m": 914443,
     "unresolved_count": 0
   },
   "days": [
@@ -273,10 +273,10 @@
     },
     {
       "day": 9,
-      "distance_m": 62191,
+      "distance_m": 63883,
       "distance_target_met": false,
       "duration_limit_met": true,
-      "duration_s": 14482,
+      "duration_s": 14858,
       "duration_target_met": true,
       "from_name": "全季酒店（抚州广昌县政府店）",
       "legs": [
@@ -285,22 +285,22 @@
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "维尔纳酒店（赣州宁都人民医院店）",
+      "lodging_network_endpoint": "宁都达亿国际酒店",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day8-guangchang-hotel-to-day9-ningdu-hotel"
       ],
-      "to_name": "维尔纳酒店（赣州宁都人民医院店）"
+      "to_name": "宁都达亿国际酒店"
     },
     {
       "day": 10,
-      "distance_m": 95956,
+      "distance_m": 93823,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 20503,
+      "duration_s": 20092,
       "duration_target_met": true,
-      "from_name": "维尔纳酒店（赣州宁都人民医院店）",
+      "from_name": "宁都达亿国际酒店",
       "legs": [
         {
           "segment_id": "day9-ningdu-hotel-to-day10-yudu-hotel",
@@ -450,7 +450,7 @@
   ],
   "limitations": {
     "automatic_checks_are_not_road_level_verification": true,
-    "blank_name_distance_m": 210403,
+    "blank_name_distance_m": 209751,
     "quota_limited_probes": [
       "main-06-to-main-07",
       "main-07-to-main-08",
@@ -460,22 +460,22 @@
       "main-17-to-main-18"
     ],
     "road_level_status": "provisional",
-    "unknown_distance_m": 914884,
-    "unknown_percent": 57.44
+    "unknown_distance_m": 914443,
+    "unknown_percent": 57.43
   },
   "main": {
-    "baseline_distance_m": 1588424,
+    "baseline_distance_m": 1587983,
     "city_distance_m": 0,
     "county_distance_m": 50284,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.002662387372641,
-    "distance_m": 1592653,
-    "duration_s": 345029,
+    "detour_ratio": 1.002663126746319,
+    "distance_m": 1592212,
+    "duration_s": 344994,
     "national_distance_m": 541494,
     "provincial_distance_m": 76198,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 914884,
+    "unknown_distance_m": 914443,
     "unresolved_count": 0
   },
   "max_detour_ratio": 1.15,

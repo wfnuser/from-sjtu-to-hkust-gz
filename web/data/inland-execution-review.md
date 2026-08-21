@@ -2,7 +2,7 @@
 
 > **临时路线：仍需道路级复核。** 自动分类/审核不等于现场或权威道路核验；不得据此宣称已完全避开国道、高速或货运道路。
 
-- UNKNOWN：914884 m（57.44%）；其中未命名道路 210403 m。
+- UNKNOWN：914443 m（57.43%）；其中未命名道路 209751 m。
 - AMap 配额受限的补充探路清单见 `summary.json`；未完成的并行道路探测保持 provisional。
 - 国道本身不阻断发布；仅在距离接近且有更安全平行道路时切换，硬风险和货运风险仍阻断。
 - 江西线执行路线需16个骑行日，超过最多16个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留2天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。
@@ -35,8 +35,8 @@
 | day5-shangrao-hotel-to-day6-yingtan-hotel | 维也纳国际酒店（上饶经开区店） | 鹰潭枫丹白露酒店（雲锦君澜） | 96011 | 19664 | 自动检查通过（仍需道路级复核） |
 | day6-yingtan-hotel-to-day7-nancheng-hotel | 鹰潭枫丹白露酒店（雲锦君澜） | 维也纳酒店 南城 | 90956 | 21035 | 自动检查通过（仍需道路级复核） |
 | day7-nancheng-hotel-to-day8-guangchang-hotel | 维也纳酒店 南城 | 全季酒店（抚州广昌县政府店） | 91904 | 21223 | 自动检查通过（仍需道路级复核） |
-| day8-guangchang-hotel-to-day9-ningdu-hotel | 全季酒店（抚州广昌县政府店） | 维尔纳酒店（赣州宁都人民医院店） | 62191 | 14482 | 自动检查通过（仍需道路级复核） |
-| day9-ningdu-hotel-to-day10-yudu-hotel | 维尔纳酒店（赣州宁都人民医院店） | 赣州于都万达嘉华酒店 | 95956 | 20503 | 自动检查通过（仍需道路级复核） |
+| day8-guangchang-hotel-to-day9-ningdu-hotel | 全季酒店（抚州广昌县政府店） | 宁都达亿国际酒店 | 63883 | 14858 | 自动检查通过（仍需道路级复核） |
+| day9-ningdu-hotel-to-day10-yudu-hotel | 宁都达亿国际酒店 | 赣州于都万达嘉华酒店 | 93823 | 20092 | 自动检查通过（仍需道路级复核） |
 | day10-yudu-hotel-to-day11-xinfeng-hotel | 赣州于都万达嘉华酒店 | 信丰格兰云天国际酒店 | 99694 | 23207 | 自动检查通过（仍需道路级复核） |
 | day11-xinfeng-hotel-to-day12-dingnan-hotel | 信丰格兰云天国际酒店 | 定南格兰云天国际酒店 | 81698 | 18372 | 自动检查通过（仍需道路级复核） |
 | day12-dingnan-hotel-to-day13-zhangxi-hotel | 定南格兰云天国际酒店 | 亚瓦酒店（漳溪畲族乡） | 100762 | 24290 | 自动检查通过（仍需道路级复核） |
@@ -656,24 +656,26 @@
 - `unknown` 未命名道路 — 17136 m
 - `unknown` 广宁线 — 8429 m
 - `unknown` 广宁线 — 4611 m
-- `unknown` 广宁线 — 1301 m
-- `unknown` 未命名道路 — 42 m
-- `unknown` 广宁线 — 2435 m
-- `unknown` 赣江源大道 — 118 m
-- `unknown` 未命名道路 — 710 m
-- `unknown` 永宁路 — 102 m
-- `unknown` 未命名道路 — 14 m
-- `unknown` 未命名道路 — 63 m
+- `unknown` 广宁线 — 1262 m
+- `unknown` 翠微东路 — 52 m
+- `unknown` 翠微东路 — 668 m
+- `unknown` 中山北路 — 29 m
+- `unknown` 未命名道路 — 36 m
+- `unknown` 中山北路 — 46 m
+- `unknown` 中山北路 — 2220 m
+- `unknown` 中山路 — 83 m
+- `unknown` 中山南路 — 1512 m
+- `unknown` 永宁路 — 19 m
+- `unknown` 中山南路 — 412 m
+- `unknown` 未命名道路 — 46 m
+- `unknown` 未命名道路 — 56 m
+- `unknown` 未命名道路 — 36 m
 - 无自动生成的复核项。
 
 ### day9-ningdu-hotel-to-day10-yudu-hotel
-- `unknown` 未命名道路 — 63 m
-- `unknown` 未命名道路 — 14 m
-- `unknown` 永宁路 — 1654 m
-- `unknown` 中山南路 — 551 m
-- `unknown` 东平路 — 18 m
-- `unknown` 未命名道路 — 37 m
-- `unknown` 宁都大道 — 60 m
+- `unknown` 未命名道路 — 117 m
+- `unknown` 东平路 — 82 m
+- `unknown` 宁都大道 — 65 m
 - `unknown` 未命名道路 — 730 m
 - `unknown` 狮子峰路 — 23 m
 - `unknown` 未命名道路 — 25 m

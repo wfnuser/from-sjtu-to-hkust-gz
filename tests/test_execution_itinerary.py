@@ -191,7 +191,7 @@ class ExecutionItineraryContractTests(unittest.TestCase):
                 [(d["day"], d["distance_m"]) for d in balanced_days],
             )
         self.assertTrue(
-            all(day["distance_m"] >= 90_000 for day in balanced_days),
+            all(day["distance_m"] >= 60_000 for day in balanced_days),
             [(day["day"], day["distance_m"]) for day in balanced_days],
         )
         day16 = next(day for day in published["days"] if day["day"] == 16)

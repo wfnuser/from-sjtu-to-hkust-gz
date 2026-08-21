@@ -1,5 +1,5 @@
 {
-  "average_riding_distance_m": 96084,
+  "average_riding_distance_m": 96052,
   "days": [
     {
       "date": "2026-08-13",
@@ -204,28 +204,28 @@
     {
       "date": "2026-08-22",
       "day": 9,
-      "distance_m": 62191,
-      "duration_s": 14482,
+      "distance_m": 63883,
+      "duration_s": 14858,
       "from_name": "全季酒店（抚州广昌县政府店）",
       "key_waypoints": [],
       "lodging": {
         "booking_status": "candidate",
-        "evidence_url": "https://ditu.amap.com/place/B0H6UUSMVK",
+        "evidence_url": "https://ditu.amap.com/place/B0FFM9YRRK",
         "laundry": "call_required",
-        "name": "维尔纳酒店（赣州宁都人民医院店）"
+        "name": "宁都达亿国际酒店"
       },
       "long_day": false,
       "segments": [
         "day8-guangchang-hotel-to-day9-ningdu-hotel"
       ],
       "status": "planned",
-      "to_name": "维尔纳酒店（赣州宁都人民医院店）"
+      "to_name": "宁都达亿国际酒店"
     },
     {
       "date": "2026-08-23",
       "day": 10,
-      "distance_m": 95956,
-      "duration_s": 20503,
+      "distance_m": 93823,
+      "duration_s": 20092,
       "from_name": "维尔纳酒店（赣州宁都人民医院店）",
       "key_waypoints": [],
       "lodging": {
@@ -357,8 +357,8 @@
     }
   ],
   "display_start_day": 1,
-  "public_total_distance_m": 1526967,
-  "remaining_distance_m": 1345172,
+  "public_total_distance_m": 1526526,
+  "remaining_distance_m": 1344731,
   "remaining_start_day": 3,
   "route_id": "inland-execution",
   "segment_days": {
@@ -391,5 +391,5 @@
     "pre-07-to-main-01": 0
   },
   "start_date": "2026-08-13",
-  "total_distance_m": 1592653
+  "total_distance_m": 1592212
 }
