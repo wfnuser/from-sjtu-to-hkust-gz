@@ -2,7 +2,7 @@
 
 > **临时路线：仍需道路级复核。** 自动分类/审核不等于现场或权威道路核验；不得据此宣称已完全避开国道、高速或货运道路。
 
-- UNKNOWN：932752 m（58.49%）；其中未命名道路 223814 m。
+- UNKNOWN：932428 m（58.46%）；其中未命名道路 224079 m。
 - AMap 配额受限的补充探路清单见 `summary.json`；未完成的并行道路探测保持 provisional。
 - 国道本身不阻断发布；仅在距离接近且有更安全平行道路时切换，硬风险和货运风险仍阻断。
 - 江西线执行路线需16个骑行日，超过最多16个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留2天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。
@@ -36,8 +36,8 @@
 | day6-yingtan-hotel-to-day7-nancheng-hotel | 鹰潭枫丹白露酒店（雲锦君澜） | 维也纳酒店 南城 | 90956 | 21035 | 自动检查通过（仍需道路级复核） |
 | day7-nancheng-hotel-to-day8-guangchang-hotel | 维也纳酒店 南城 | 全季酒店（抚州广昌县政府店） | 91904 | 21223 | 自动检查通过（仍需道路级复核） |
 | day8-guangchang-hotel-to-day9-ningdu-hotel | 全季酒店（抚州广昌县政府店） | 宁都达亿国际酒店 | 63883 | 14858 | 自动检查通过（仍需道路级复核） |
-| day9-ningdu-hotel-to-day10-yudu-hotel | 宁都达亿国际酒店 | 橘桔酒店（赣州于都国际服装城店） | 98086 | 20985 | 自动检查通过（仍需道路级复核） |
-| day10-yudu-hotel-to-day11-xinfeng-hotel | 橘桔酒店（赣州于都国际服装城店） | 麗枫酒店（赣州信丰高铁西站店） | 93145 | 21965 | 自动检查通过（仍需道路级复核） |
+| day9-ningdu-hotel-to-day10-yudu-hotel | 宁都达亿国际酒店 | 全季酒店(赣州于都万达广场店) | 95314 | 20448 | 自动检查通过（仍需道路级复核） |
+| day10-yudu-hotel-to-day11-xinfeng-hotel | 全季酒店(赣州于都万达广场店) | 麗枫酒店（赣州信丰高铁西站店） | 96294 | 22578 | 自动检查通过（仍需道路级复核） |
 | day11-xinfeng-hotel-to-day12-dingnan-hotel | 麗枫酒店（赣州信丰高铁西站店） | 次第花开·卜拉酒店（定南客家古城店） | 97206 | 22022 | 自动检查通过（仍需道路级复核） |
 | day12-dingnan-hotel-to-day13-dingyuan-taibao-hotel | 次第花开·卜拉酒店（定南客家古城店） | 泰宝酒店（灯塔盆地店） | 99304 | 24270 | 自动检查通过（仍需道路级复核） |
 | day13-dingyuan-taibao-hotel-to-day14-yangqiao-hotel | 泰宝酒店（灯塔盆地店） | 博罗云鹏酒店（麻陂镇） | 84641 | 18457 | 自动检查通过（仍需道路级复核） |
@@ -719,33 +719,31 @@
 - `unknown` 红军大道 — 277 m
 - `unknown` 渡江大道 — 36 m
 - `unknown` 盘古大道 — 662 m
-- `unknown` 盘古大道辅路 — 756 m
-- `unknown` 未命名道路 — 44 m
-- `unknown` 盘古大道辅路 — 340 m
-- `unknown` 未命名道路 — 79 m
-- `unknown` 未命名道路 — 223 m
-- `unknown` 未命名道路 — 405 m
-- `unknown` 未命名道路 — 705 m
-- `unknown` 祁禄山路 — 11 m
-- `unknown` 未命名道路 — 62 m
-- `unknown` 祁禄山路 — 486 m
-- `unknown` 罗坳路 — 462 m
-- `unknown` 未命名道路 — 282 m
-- `unknown` 齐民路 — 229 m
-- `unknown` 未命名道路 — 72 m
+- `unknown` 盘古大道 — 180 m
+- `unknown` 贡江大道 — 89 m
+- `county` 445县道 — 701 m
+- `unknown` 思源大道 — 359 m
+- `unknown` 未命名道路 — 55 m
 - 无自动生成的复核项。
 
 ### day10-yudu-hotel-to-day11-xinfeng-hotel
-- `unknown` 未命名道路 — 72 m
-- `unknown` 齐民路 — 190 m
-- `unknown` 于都大道 — 59 m
-- `unknown` 于都大道辅路 — 479 m
-- `unknown` 九章路 — 19 m
-- `unknown` 未命名道路 — 31 m
-- `unknown` 未命名道路 — 40 m
-- `unknown` 未命名道路 — 804 m
-- `unknown` 光启路 — 611 m
-- `unknown` 上欧大道 — 1402 m
+- `unknown` 未命名道路 — 55 m
+- `unknown` 思源大道 — 20 m
+- `unknown` 盘古大道辅路 — 354 m
+- `unknown` 未命名道路 — 79 m
+- `unknown` 未命名道路 — 223 m
+- `unknown` 未命名道路 — 405 m
+- `unknown` 未命名道路 — 1418 m
+- `unknown` 于都大道 — 42 m
+- `unknown` 未命名道路 — 58 m
+- `unknown` 于都大道 — 12 m
+- `unknown` 未命名道路 — 749 m
+- `unknown` 齐民路 — 64 m
+- `unknown` 齐民路 — 636 m
+- `unknown` 上欧大道 — 27 m
+- `unknown` 未命名道路 — 42 m
+- `unknown` 上欧大道 — 45 m
+- `unknown` 上欧大道 — 2627 m
 - `unknown` 未命名道路 — 73 m
 - `county` 445县道 — 1236 m
 - `county` 445县道 — 37 m

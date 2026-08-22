@@ -1,17 +1,17 @@
 {
   "all_branches": {
-    "baseline_distance_m": 1581588,
+    "baseline_distance_m": 1581965,
     "city_distance_m": 0,
-    "county_distance_m": 65385,
+    "county_distance_m": 66086,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.0082284387590195,
-    "distance_m": 1594602,
-    "duration_s": 345974,
+    "detour_ratio": 1.0082264778297876,
+    "distance_m": 1594979,
+    "duration_s": 346050,
     "national_distance_m": 517329,
     "provincial_distance_m": 69343,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 932752,
+    "unknown_distance_m": 932428,
     "unresolved_count": 0
   },
   "days": [
@@ -295,10 +295,10 @@
     },
     {
       "day": 10,
-      "distance_m": 98086,
+      "distance_m": 95314,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 20985,
+      "duration_s": 20448,
       "duration_target_met": true,
       "from_name": "宁都达亿国际酒店",
       "legs": [
@@ -307,22 +307,22 @@
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "橘桔酒店（赣州于都国际服装城店）",
+      "lodging_network_endpoint": "全季酒店(赣州于都万达广场店)",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day9-ningdu-hotel-to-day10-yudu-hotel"
       ],
-      "to_name": "橘桔酒店（赣州于都国际服装城店）"
+      "to_name": "全季酒店(赣州于都万达广场店)"
     },
     {
       "day": 11,
-      "distance_m": 93145,
+      "distance_m": 96294,
       "distance_target_met": true,
       "duration_limit_met": false,
-      "duration_s": 21965,
+      "duration_s": 22578,
       "duration_target_met": false,
-      "from_name": "橘桔酒店（赣州于都国际服装城店）",
+      "from_name": "全季酒店(赣州于都万达广场店)",
       "legs": [
         {
           "segment_id": "day10-yudu-hotel-to-day11-xinfeng-hotel",
@@ -450,7 +450,7 @@
   ],
   "limitations": {
     "automatic_checks_are_not_road_level_verification": true,
-    "blank_name_distance_m": 223814,
+    "blank_name_distance_m": 224079,
     "quota_limited_probes": [
       "main-06-to-main-07",
       "main-07-to-main-08",
@@ -460,22 +460,22 @@
       "main-17-to-main-18"
     ],
     "road_level_status": "provisional",
-    "unknown_distance_m": 932752,
-    "unknown_percent": 58.49
+    "unknown_distance_m": 932428,
+    "unknown_percent": 58.46
   },
   "main": {
-    "baseline_distance_m": 1581588,
+    "baseline_distance_m": 1581965,
     "city_distance_m": 0,
-    "county_distance_m": 65385,
+    "county_distance_m": 66086,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.0082284387590195,
-    "distance_m": 1594602,
-    "duration_s": 345974,
+    "detour_ratio": 1.0082264778297876,
+    "distance_m": 1594979,
+    "duration_s": 346050,
     "national_distance_m": 517329,
     "provincial_distance_m": 69343,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 932752,
+    "unknown_distance_m": 932428,
     "unresolved_count": 0
   },
   "max_detour_ratio": 1.15,

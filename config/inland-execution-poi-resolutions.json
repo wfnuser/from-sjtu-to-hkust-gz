@@ -1157,23 +1157,6 @@
       ]
     },
     {
-      "query": "橘桔酒店赣州于都国际服装城店",
-      "city": "赣州",
-      "candidates": [
-        {
-          "poi_id": "B0JKH5A5IE",
-          "name": "橘桔酒店(赣州于都国际服装城店)",
-          "formatted_address": "江西省赣州市于都县于都大道于都城南客运站综合楼",
-          "district": "于都县",
-          "location_gcj": {
-            "lon": 115.3916,
-            "lat": 25.922
-          },
-          "selected": true
-        }
-      ]
-    },
-    {
       "query": "麗枫酒店赣州信丰高铁西站店",
       "city": "赣州",
       "candidates": [
@@ -1219,6 +1202,23 @@
           "location_gcj": {
             "lon": 114.7909,
             "lat": 24.0843
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "全季酒店赣州于都万达广场店",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "B0J0UC8OGD",
+          "name": "全季酒店(赣州于都万达广场店)",
+          "formatted_address": "江西省赣州市于都县思源大道与盘古大道交叉口西80米",
+          "district": "于都县",
+          "location_gcj": {
+            "lon": 115.4077,
+            "lat": 25.9375
           },
           "selected": true
         }
