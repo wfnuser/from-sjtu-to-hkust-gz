@@ -2,7 +2,7 @@
 
 > **临时路线：仍需道路级复核。** 自动分类/审核不等于现场或权威道路核验；不得据此宣称已完全避开国道、高速或货运道路。
 
-- UNKNOWN：914443 m（57.43%）；其中未命名道路 209751 m。
+- UNKNOWN：932752 m（58.49%）；其中未命名道路 223814 m。
 - AMap 配额受限的补充探路清单见 `summary.json`；未完成的并行道路探测保持 provisional。
 - 国道本身不阻断发布；仅在距离接近且有更安全平行道路时切换，硬风险和货运风险仍阻断。
 - 江西线执行路线需16个骑行日，超过最多16个骑行日的硬约束；8月13日至8月30日的18天自然日窗口仅保留2天缓冲，同时保留每日4小时工作且每日骑行不超过6小时。
@@ -36,11 +36,11 @@
 | day6-yingtan-hotel-to-day7-nancheng-hotel | 鹰潭枫丹白露酒店（雲锦君澜） | 维也纳酒店 南城 | 90956 | 21035 | 自动检查通过（仍需道路级复核） |
 | day7-nancheng-hotel-to-day8-guangchang-hotel | 维也纳酒店 南城 | 全季酒店（抚州广昌县政府店） | 91904 | 21223 | 自动检查通过（仍需道路级复核） |
 | day8-guangchang-hotel-to-day9-ningdu-hotel | 全季酒店（抚州广昌县政府店） | 宁都达亿国际酒店 | 63883 | 14858 | 自动检查通过（仍需道路级复核） |
-| day9-ningdu-hotel-to-day10-yudu-hotel | 宁都达亿国际酒店 | 赣州于都万达嘉华酒店 | 93823 | 20092 | 自动检查通过（仍需道路级复核） |
-| day10-yudu-hotel-to-day11-xinfeng-hotel | 赣州于都万达嘉华酒店 | 信丰格兰云天国际酒店 | 99694 | 23207 | 自动检查通过（仍需道路级复核） |
-| day11-xinfeng-hotel-to-day12-dingnan-hotel | 信丰格兰云天国际酒店 | 定南格兰云天国际酒店 | 81698 | 18372 | 自动检查通过（仍需道路级复核） |
-| day12-dingnan-hotel-to-day13-zhangxi-hotel | 定南格兰云天国际酒店 | 亚瓦酒店（漳溪畲族乡） | 100762 | 24290 | 自动检查通过（仍需道路级复核） |
-| day13-zhangxi-hotel-to-day14-yangqiao-hotel | 亚瓦酒店（漳溪畲族乡） | 博罗云鹏酒店（麻陂镇） | 94015 | 20758 | 自动检查通过（仍需道路级复核） |
+| day9-ningdu-hotel-to-day10-yudu-hotel | 宁都达亿国际酒店 | 橘桔酒店（赣州于都国际服装城店） | 98086 | 20985 | 自动检查通过（仍需道路级复核） |
+| day10-yudu-hotel-to-day11-xinfeng-hotel | 橘桔酒店（赣州于都国际服装城店） | 麗枫酒店（赣州信丰高铁西站店） | 93145 | 21965 | 自动检查通过（仍需道路级复核） |
+| day11-xinfeng-hotel-to-day12-dingnan-hotel | 麗枫酒店（赣州信丰高铁西站店） | 次第花开·卜拉酒店（定南客家古城店） | 97206 | 22022 | 自动检查通过（仍需道路级复核） |
+| day12-dingnan-hotel-to-day13-dingyuan-taibao-hotel | 次第花开·卜拉酒店（定南客家古城店） | 泰宝酒店（灯塔盆地店） | 99304 | 24270 | 自动检查通过（仍需道路级复核） |
+| day13-dingyuan-taibao-hotel-to-day14-yangqiao-hotel | 泰宝酒店（灯塔盆地店） | 博罗云鹏酒店（麻陂镇） | 84641 | 18457 | 自动检查通过（仍需道路级复核） |
 | day14-yangqiao-hotel-to-day15-zengcheng-hotel | 博罗云鹏酒店（麻陂镇） | 广州增城荔湖木莲庄酒店 | 95329 | 19357 | 自动检查通过（仍需道路级复核） |
 | day15-zengcheng-hotel-to-main-27 | 广州增城荔湖木莲庄酒店 | 香港科技大学（广州） | 94838 | 19257 | 自动检查通过（仍需道路级复核） |
 
@@ -706,44 +706,46 @@
 - `unknown` 未命名道路 — 30 m
 - `unknown` 于阳路 — 91 m
 - `unknown` 于阳路 — 669 m
-- `unknown` 于阳路 — 483 m
-- `unknown` 红旗大道 — 31 m
-- `unknown` 红旗大道 — 890 m
-- `unknown` 贡江大道 — 20 m
-- `unknown` 贡江大道 — 551 m
-- `unknown` 贡江大道 — 330 m
-- `unknown` 未命名道路 — 289 m
-- `unknown` 贡江大道 — 123 m
-- `unknown` 贡江大道 — 48 m
+- `unknown` 长征大道 — 954 m
+- `unknown` 濂溪路 — 81 m
+- `unknown` 长征大道 — 486 m
+- `unknown` 阳明路 — 24 m
+- `unknown` 未命名道路 — 38 m
+- `unknown` 未命名道路 — 72 m
+- `unknown` 长征大道 — 182 m
+- `unknown` 红军大道 — 38 m
+- `unknown` 未命名道路 — 55 m
+- `unknown` 未命名道路 — 39 m
+- `unknown` 红军大道 — 277 m
+- `unknown` 渡江大道 — 36 m
+- `unknown` 盘古大道 — 662 m
+- `unknown` 盘古大道辅路 — 756 m
+- `unknown` 未命名道路 — 44 m
+- `unknown` 盘古大道辅路 — 340 m
+- `unknown` 未命名道路 — 79 m
+- `unknown` 未命名道路 — 223 m
+- `unknown` 未命名道路 — 405 m
+- `unknown` 未命名道路 — 705 m
+- `unknown` 祁禄山路 — 11 m
+- `unknown` 未命名道路 — 62 m
+- `unknown` 祁禄山路 — 486 m
+- `unknown` 罗坳路 — 462 m
+- `unknown` 未命名道路 — 282 m
+- `unknown` 齐民路 — 229 m
 - `unknown` 未命名道路 — 72 m
 - 无自动生成的复核项。
 
 ### day10-yudu-hotel-to-day11-xinfeng-hotel
 - `unknown` 未命名道路 — 72 m
-- `unknown` 贡江大道 — 734 m
-- `unknown` 银坑路 — 286 m
-- `unknown` 水南路 — 558 m
-- `unknown` 川江路 — 363 m
-- `unknown` 思源大道辅路 — 594 m
-- `unknown` 未命名道路 — 36 m
-- `unknown` 禾丰路 — 50 m
-- `unknown` 禾丰路 — 407 m
-- `unknown` 振兴大道 — 65 m
-- `unknown` 振兴大道辅路 — 646 m
-- `unknown` 盘古大道 — 36 m
-- `unknown` 未命名道路 — 42 m
-- `unknown` 振兴大道 — 76 m
-- `unknown` 未命名道路 — 1646 m
-- `unknown` 于都大道 — 42 m
-- `unknown` 未命名道路 — 58 m
-- `unknown` 于都大道 — 12 m
-- `unknown` 未命名道路 — 749 m
-- `unknown` 齐民路 — 64 m
-- `unknown` 齐民路 — 636 m
-- `unknown` 上欧大道 — 27 m
-- `unknown` 未命名道路 — 42 m
-- `unknown` 上欧大道 — 45 m
-- `unknown` 上欧大道 — 2627 m
+- `unknown` 齐民路 — 190 m
+- `unknown` 于都大道 — 59 m
+- `unknown` 于都大道辅路 — 479 m
+- `unknown` 九章路 — 19 m
+- `unknown` 未命名道路 — 31 m
+- `unknown` 未命名道路 — 40 m
+- `unknown` 未命名道路 — 804 m
+- `unknown` 光启路 — 611 m
+- `unknown` 上欧大道 — 1402 m
 - `unknown` 未命名道路 — 73 m
 - `county` 445县道 — 1236 m
 - `county` 445县道 — 37 m
@@ -776,36 +778,36 @@
 - `unknown` 未命名道路 — 432 m
 - `unknown` 未命名道路 — 255 m
 - `unknown` 未命名道路 — 1180 m
-- `county` 351县道 — 13594 m
+- `county` 351县道 — 6474 m
+- `unknown` 未命名道路 — 2757 m
+- `unknown` 未命名道路 — 2308 m
+- `unknown` 虎形路 — 763 m
 - `unknown` 城东大道 — 1505 m
 - `national` 357国道 — 276 m
 - `national` 357国道 — 286 m
-- `unknown` 城南大道 — 1192 m
-- `unknown` 城南大道 — 57 m
-- `unknown` 城南大道 — 389 m
+- `unknown` 城南大道 — 1490 m
+- `unknown` 城南大道 — 32 m
 - `unknown` 未命名道路 — 29 m
-- `unknown` 未命名道路 — 85 m
+- `unknown` 未命名道路 — 50 m
+- `unknown` 未命名道路 — 94 m
+- `unknown` 中学路 — 42 m
+- `unknown` 中学路 — 806 m
+- `unknown` 阳明南路 — 105 m
+- `unknown` 未命名道路 — 35 m
+- `unknown` 未命名道路 — 18 m
 - 无自动生成的复核项。
 
 ### day11-xinfeng-hotel-to-day12-dingnan-hotel
-- `unknown` 未命名道路 — 23 m
-- `unknown` 未命名道路 — 12 m
-- `unknown` 滨江大道 — 206 m
-- `unknown` 城南大道 — 25 m
-- `unknown` 未命名道路 — 32 m
-- `unknown` 滨江大道 — 44 m
-- `unknown` 滨江大道 — 789 m
-- `unknown` 城南大道 — 41 m
-- `unknown` 未命名道路 — 29 m
-- `unknown` 滨江大道 — 503 m
-- `unknown` 城南大道 — 56 m
-- `unknown` 城南大道 — 183 m
-- `unknown` 北江源大道 — 29 m
-- `unknown` 未命名道路 — 41 m
-- `unknown` 北江源大道 — 62 m
-- `unknown` 北江源大道辅路 — 206 m
-- `unknown` 迎宾大道 — 51 m
-- `unknown` 未命名道路 — 50 m
+- `unknown` 未命名道路 — 18 m
+- `unknown` 未命名道路 — 35 m
+- `unknown` 阳明南路 — 125 m
+- `unknown` 阳明南路 — 1147 m
+- `unknown` 迎宾大道 — 32 m
+- `unknown` 未命名道路 — 69 m
+- `unknown` 未命名道路 — 49 m
+- `unknown` 未命名道路 — 973 m
+- `unknown` 北江源大道 — 34 m
+- `unknown` 未命名道路 — 39 m
 - `unknown` 迎宾大道 — 71 m
 - `national` 105国道 — 26850 m
 - `national` 105国道 — 4567 m
@@ -818,19 +820,11 @@
 - `unknown` 小定段 — 1032 m
 - `unknown` 小定段 — 308 m
 - `unknown` 小定段 — 1586 m
-- `unknown` 仙岭大道 — 2089 m
-- `unknown` 锦绣中大道 — 1113 m
-- `unknown` 前程大道 — 39 m
-- `unknown` 前程大道 — 703 m
-- 无自动生成的复核项。
-
-### day12-dingnan-hotel-to-day13-zhangxi-hotel
-- `unknown` 前程大道 — 205 m
-- `unknown` 前程大道 — 905 m
-- `unknown` 锦绣南大道 — 39 m
-- `unknown` 锦绣南大道 — 1047 m
-- `unknown` 京九大道 — 667 m
-- `unknown` 大世界源江路 — 1750 m
+- `unknown` 仙岭大道 — 2817 m
+- `unknown` 未命名道路 — 57 m
+- `unknown` 龙亭路 — 92 m
+- `unknown` 胜利北路 — 38 m
+- `unknown` 胜利北路 — 2715 m
 - `unknown` 太湖路 — 681 m
 - `unknown` 清华大道 — 342 m
 - `unknown` 广州大道 — 36 m
@@ -839,7 +833,25 @@
 - `unknown` 未命名道路 — 39 m
 - `unknown` 广州大道 — 45 m
 - `national` 358国道 — 2627 m
-- `national` 358国道 — 25643 m
+- `national` 358国道 — 7599 m
+- `unknown` 未命名道路 — 189 m
+- `unknown` 未命名道路 — 455 m
+- `unknown` 未命名道路 — 133 m
+- `unknown` 未命名道路 — 70 m
+- `unknown` 未命名道路 — 134 m
+- `unknown` 未命名道路 — 310 m
+- `unknown` 未命名道路 — 112 m
+- 无自动生成的复核项。
+
+### day12-dingnan-hotel-to-day13-dingyuan-taibao-hotel
+- `unknown` 未命名道路 — 112 m
+- `unknown` 未命名道路 — 310 m
+- `unknown` 未命名道路 — 134 m
+- `unknown` 未命名道路 — 203 m
+- `unknown` 未命名道路 — 388 m
+- `unknown` 未命名道路 — 67 m
+- `unknown` 未命名道路 — 189 m
+- `national` 358国道 — 18044 m
 - `national` 358国道 — 10422 m
 - `national` 358国道 — 3982 m
 - `unknown` 和平大道 — 2502 m
@@ -852,30 +864,38 @@
 - `unknown` 工业大道 — 11 m
 - `unknown` 未命名道路 — 23 m
 - `unknown` 和平大道 — 40 m
-- `national` 358国道 — 23980 m
-- `county` 244乡道 — 286 m
-- `county` 244乡道 — 658 m
-- `county` 244乡道 — 1564 m
-- `unknown` 未命名道路 — 59 m
-- `unknown` 未命名道路 — 61 m
-- `unknown` 未命名道路 — 190 m
-- `county` 244乡道 — 76 m
-- `county` 239乡道 — 8492 m
-- `county` 163县道 — 438 m
+- `national` 358国道 — 10010 m
+- `county` 163县道 — 862 m
+- `unknown` 未命名道路 — 1202 m
+- `county` 163县道 — 342 m
+- `county` 163县道 — 11486 m
+- `county` 163县道 — 7288 m
+- `county` 163县道 — 4813 m
 - `county` 163县道 — 401 m
 - `county` 163县道 — 406 m
 - `county` 163县道 — 432 m
-- `county` 163县道 — 2112 m
-- `provincial` 229省道 — 1789 m
-- `provincial` 229省道 — 6374 m
-- `county` 255乡道 — 39 m
+- `unknown` 未命名道路 — 1957 m
+- `county` 164县道 — 231 m
+- `county` 166县道 — 1810 m
+- `unknown` 船顺路 — 6120 m
+- `county` 166县道 — 9093 m
+- `unknown` 未命名道路 — 1775 m
+- `provincial` 341省道 — 2671 m
+- `provincial` 341省道 — 339 m
+- `unknown` 未命名道路 — 62 m
 - 无自动生成的复核项。
 
-### day13-zhangxi-hotel-to-day14-yangqiao-hotel
-- `county` 255乡道 — 39 m
-- `provincial` 229省道 — 3047 m
-- `provincial` 229省道 — 7433 m
-- `national` 205国道 — 16864 m
+### day13-dingyuan-taibao-hotel-to-day14-yangqiao-hotel
+- `unknown` 未命名道路 — 62 m
+- `provincial` 341省道 — 632 m
+- `provincial` 341省道 — 8146 m
+- `unknown` 未命名道路 — 232 m
+- `unknown` 镇北路 — 490 m
+- `unknown` 未命名道路 — 30 m
+- `unknown` 镇东路 — 338 m
+- `unknown` 镇南路 — 1075 m
+- `unknown` 镇南路 — 335 m
+- `national` 205国道 — 6669 m
 - `national` 205国道 — 103 m
 - `national` 205国道 — 14566 m
 - `unknown` 未命名道路 — 22 m

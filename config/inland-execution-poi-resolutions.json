@@ -1072,23 +1072,6 @@
       ]
     },
     {
-      "query": "定南格兰云天国际酒店",
-      "city": "赣州",
-      "candidates": [
-        {
-          "poi_id": "B0LA3S8XCZ",
-          "name": "定南格兰云天国际酒店",
-          "formatted_address": "江西省赣州市定南县前程大道16号",
-          "district": "定南县",
-          "location_gcj": {
-            "lon": 115.014871,
-            "lat": 24.783989
-          },
-          "selected": true
-        }
-      ]
-    },
-    {
       "query": "博罗云鹏酒店麻陂镇",
       "city": "惠州",
       "candidates": [
@@ -1140,40 +1123,6 @@
       ]
     },
     {
-      "query": "亚瓦酒店漳溪畲族乡",
-      "city": "河源",
-      "candidates": [
-        {
-          "poi_id": "B0JDPSQMMY",
-          "name": "亚瓦酒店",
-          "formatted_address": "广东省河源市东源县漳溪畲族乡乡委东侧",
-          "district": "东源县",
-          "location_gcj": {
-            "lon": 114.925596,
-            "lat": 24.102851
-          },
-          "selected": true
-        }
-      ]
-    },
-    {
-      "query": "信丰格兰云天国际酒店",
-      "city": "赣州",
-      "candidates": [
-        {
-          "poi_id": "B0FFL2E77Z",
-          "name": "信丰格兰云天国际酒店",
-          "formatted_address": "江西省赣州市信丰县嘉定镇滨江大道66号",
-          "district": "信丰县",
-          "location_gcj": {
-            "lon": 114.9455,
-            "lat": 25.3627
-          },
-          "selected": true
-        }
-      ]
-    },
-    {
       "query": "赣州于都万达嘉华酒店",
       "city": "赣州",
       "candidates": [
@@ -1202,6 +1151,74 @@
           "location_gcj": {
             "lon": 116.0081,
             "lat": 26.4467
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "橘桔酒店赣州于都国际服装城店",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "B0JKH5A5IE",
+          "name": "橘桔酒店(赣州于都国际服装城店)",
+          "formatted_address": "江西省赣州市于都县于都大道于都城南客运站综合楼",
+          "district": "于都县",
+          "location_gcj": {
+            "lon": 115.3916,
+            "lat": 25.922
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "麗枫酒店赣州信丰高铁西站店",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "B0H0M7M4BA",
+          "name": "麗枫酒店(赣州信丰高铁西站店)",
+          "formatted_address": "江西省赣州市信丰县嘉定镇阳明南路298号(原农行培训大楼)",
+          "district": "信丰县",
+          "location_gcj": {
+            "lon": 114.9344,
+            "lat": 25.3703
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "次第花开卜拉酒店定南客家古城店",
+      "city": "赣州",
+      "candidates": [
+        {
+          "poi_id": "B0LAYRZG0I",
+          "name": "次第花开·卜拉酒店(定南客家古城店)",
+          "formatted_address": "江西省赣州市定南县老城镇莲塘村项目I1号商铺",
+          "district": "定南县",
+          "location_gcj": {
+            "lon": 114.9952,
+            "lat": 24.6832
+          },
+          "selected": true
+        }
+      ]
+    },
+    {
+      "query": "泰宝酒店灯塔盆地店",
+      "city": "河源",
+      "candidates": [
+        {
+          "poi_id": "B0J1FB7YR2",
+          "name": "泰宝酒店(灯塔盆地店)",
+          "formatted_address": "广东省河源市东源县灯塔盆地顺天S341省道旁",
+          "district": "东源县",
+          "location_gcj": {
+            "lon": 114.7909,
+            "lat": 24.0843
           },
           "selected": true
         }

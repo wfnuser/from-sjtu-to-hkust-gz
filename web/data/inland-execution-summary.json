@@ -1,17 +1,17 @@
 {
   "all_branches": {
-    "baseline_distance_m": 1587983,
+    "baseline_distance_m": 1581588,
     "city_distance_m": 0,
-    "county_distance_m": 50284,
+    "county_distance_m": 65385,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.002663126746319,
-    "distance_m": 1592212,
-    "duration_s": 344994,
-    "national_distance_m": 541494,
-    "provincial_distance_m": 76198,
+    "detour_ratio": 1.0082284387590195,
+    "distance_m": 1594602,
+    "duration_s": 345974,
+    "national_distance_m": 517329,
+    "provincial_distance_m": 69343,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 914443,
+    "unknown_distance_m": 932752,
     "unresolved_count": 0
   },
   "days": [
@@ -295,10 +295,10 @@
     },
     {
       "day": 10,
-      "distance_m": 93823,
+      "distance_m": 98086,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 20092,
+      "duration_s": 20985,
       "duration_target_met": true,
       "from_name": "宁都达亿国际酒店",
       "legs": [
@@ -307,91 +307,91 @@
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "赣州于都万达嘉华酒店",
+      "lodging_network_endpoint": "橘桔酒店（赣州于都国际服装城店）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day9-ningdu-hotel-to-day10-yudu-hotel"
       ],
-      "to_name": "赣州于都万达嘉华酒店"
+      "to_name": "橘桔酒店（赣州于都国际服装城店）"
     },
     {
       "day": 11,
-      "distance_m": 99694,
+      "distance_m": 93145,
       "distance_target_met": true,
       "duration_limit_met": false,
-      "duration_s": 23207,
+      "duration_s": 21965,
       "duration_target_met": false,
-      "from_name": "赣州于都万达嘉华酒店",
+      "from_name": "橘桔酒店（赣州于都国际服装城店）",
       "legs": [
         {
           "segment_id": "day10-yudu-hotel-to-day11-xinfeng-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "信丰格兰云天国际酒店",
+      "lodging_network_endpoint": "麗枫酒店（赣州信丰高铁西站店）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day10-yudu-hotel-to-day11-xinfeng-hotel"
       ],
-      "to_name": "信丰格兰云天国际酒店"
+      "to_name": "麗枫酒店（赣州信丰高铁西站店）"
     },
     {
       "day": 12,
-      "distance_m": 81698,
+      "distance_m": 97206,
       "distance_target_met": true,
-      "duration_limit_met": true,
-      "duration_s": 18372,
-      "duration_target_met": true,
-      "from_name": "信丰格兰云天国际酒店",
+      "duration_limit_met": false,
+      "duration_s": 22022,
+      "duration_target_met": false,
+      "from_name": "麗枫酒店（赣州信丰高铁西站店）",
       "legs": [
         {
           "segment_id": "day11-xinfeng-hotel-to-day12-dingnan-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "定南格兰云天国际酒店",
+      "lodging_network_endpoint": "次第花开·卜拉酒店（定南客家古城店）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
         "day11-xinfeng-hotel-to-day12-dingnan-hotel"
       ],
-      "to_name": "定南格兰云天国际酒店"
+      "to_name": "次第花开·卜拉酒店（定南客家古城店）"
     },
     {
       "day": 13,
-      "distance_m": 100762,
+      "distance_m": 99304,
       "distance_target_met": true,
       "duration_limit_met": false,
-      "duration_s": 24290,
+      "duration_s": 24270,
       "duration_target_met": false,
-      "from_name": "定南格兰云天国际酒店",
+      "from_name": "次第花开·卜拉酒店（定南客家古城店）",
       "legs": [
         {
-          "segment_id": "day12-dingnan-hotel-to-day13-zhangxi-hotel",
+          "segment_id": "day12-dingnan-hotel-to-day13-dingyuan-taibao-hotel",
           "subleg_index": 0
         }
       ],
-      "lodging_network_endpoint": "亚瓦酒店（漳溪畲族乡）",
+      "lodging_network_endpoint": "泰宝酒店（灯塔盆地店）",
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day12-dingnan-hotel-to-day13-zhangxi-hotel"
+        "day12-dingnan-hotel-to-day13-dingyuan-taibao-hotel"
       ],
-      "to_name": "亚瓦酒店（漳溪畲族乡）"
+      "to_name": "泰宝酒店（灯塔盆地店）"
     },
     {
       "day": 14,
-      "distance_m": 94015,
+      "distance_m": 84641,
       "distance_target_met": true,
       "duration_limit_met": true,
-      "duration_s": 20758,
+      "duration_s": 18457,
       "duration_target_met": true,
-      "from_name": "亚瓦酒店（漳溪畲族乡）",
+      "from_name": "泰宝酒店（灯塔盆地店）",
       "legs": [
         {
-          "segment_id": "day13-zhangxi-hotel-to-day14-yangqiao-hotel",
+          "segment_id": "day13-dingyuan-taibao-hotel-to-day14-yangqiao-hotel",
           "subleg_index": 0
         }
       ],
@@ -399,7 +399,7 @@
       "lodging_network_status": "named_endpoint_unverified",
       "segment_count": 1,
       "segments": [
-        "day13-zhangxi-hotel-to-day14-yangqiao-hotel"
+        "day13-dingyuan-taibao-hotel-to-day14-yangqiao-hotel"
       ],
       "to_name": "博罗云鹏酒店（麻陂镇）"
     },
@@ -450,7 +450,7 @@
   ],
   "limitations": {
     "automatic_checks_are_not_road_level_verification": true,
-    "blank_name_distance_m": 209751,
+    "blank_name_distance_m": 223814,
     "quota_limited_probes": [
       "main-06-to-main-07",
       "main-07-to-main-08",
@@ -460,22 +460,22 @@
       "main-17-to-main-18"
     ],
     "road_level_status": "provisional",
-    "unknown_distance_m": 914443,
-    "unknown_percent": 57.43
+    "unknown_distance_m": 932752,
+    "unknown_percent": 58.49
   },
   "main": {
-    "baseline_distance_m": 1587983,
+    "baseline_distance_m": 1581588,
     "city_distance_m": 0,
-    "county_distance_m": 50284,
+    "county_distance_m": 65385,
     "cycleway_distance_m": 9794,
-    "detour_ratio": 1.002663126746319,
-    "distance_m": 1592212,
-    "duration_s": 344994,
-    "national_distance_m": 541494,
-    "provincial_distance_m": 76198,
+    "detour_ratio": 1.0082284387590195,
+    "distance_m": 1594602,
+    "duration_s": 345974,
+    "national_distance_m": 517329,
+    "provincial_distance_m": 69343,
     "segment_count": 27,
     "tourism_distance_m": 0,
-    "unknown_distance_m": 914443,
+    "unknown_distance_m": 932752,
     "unresolved_count": 0
   },
   "max_detour_ratio": 1.15,
@@ -534,10 +534,10 @@
     "day11-xinfeng-hotel-to-day12-dingnan-hotel": [
       12
     ],
-    "day12-dingnan-hotel-to-day13-zhangxi-hotel": [
+    "day12-dingnan-hotel-to-day13-dingyuan-taibao-hotel": [
       13
     ],
-    "day13-zhangxi-hotel-to-day14-yangqiao-hotel": [
+    "day13-dingyuan-taibao-hotel-to-day14-yangqiao-hotel": [
       14
     ],
     "day14-yangqiao-hotel-to-day15-zengcheng-hotel": [
